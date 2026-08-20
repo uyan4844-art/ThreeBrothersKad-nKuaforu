@@ -77,44 +77,77 @@
       font-family: 'Playfair Display', Georgia, serif;
     }
 
-    /* Ambient Pulsing Glow */
+    /* Ambient Pulsing Glow - GPU Optimized */
     .glow-sphere {
       position: absolute;
       border-radius: 9999px;
-      filter: blur(100px);
       pointer-events: none;
       z-index: 0;
-      animation: floatGlow 8s ease-in-out infinite alternate;
+    }
+
+    @media (min-width: 769px) {
+      .glow-sphere {
+        filter: blur(100px);
+        animation: floatGlow 8s ease-in-out infinite alternate;
+        will-change: transform, opacity;
+      }
+    }
+
+    /* Mobile: Pure zero-cost CSS radial gradient instead of 100px GPU blur */
+    @media (max-width: 768px) {
+      .glow-sphere {
+        filter: none !important;
+        animation: none !important;
+        background: radial-gradient(circle, rgba(212, 175, 55, 0.12) 0%, rgba(212, 175, 55, 0) 70%) !important;
+        opacity: 0.9 !important;
+      }
     }
 
     @keyframes floatGlow {
-      0% { transform: scale(1) translateY(0); opacity: 0.15; }
-      100% { transform: scale(1.1) translateY(-20px); opacity: 0.25; }
+      0% { transform: scale(1) translate3d(0, 0, 0); opacity: 0.15; }
+      100% { transform: scale(1.1) translate3d(0, -20px, 0); opacity: 0.25; }
     }
 
-    /* Floating Glass Header with Deep Solid Protection */
+    /* Floating Glass Header */
     .glass-header {
       background: rgba(15, 15, 17, 0.98) !important;
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
       box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.85);
+    }
+    @media (min-width: 769px) {
+      .glass-header {
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+      }
     }
 
     /* Editorial Glass Cards */
     .luxury-card {
-      background: rgba(24, 24, 28, 0.75);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
       border: 1px solid rgba(255, 255, 255, 0.08);
-      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+      contain: layout style;
     }
 
-    @media (hover: hover) {
+    @media (min-width: 769px) {
+      .luxury-card {
+        background: rgba(24, 24, 28, 0.75);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+      }
       .luxury-card:hover {
         border-color: rgba(197, 168, 128, 0.4);
         transform: translateY(-4px);
         box-shadow: 0 16px 35px -10px rgba(0, 0, 0, 0.7), 0 0 20px -5px rgba(197, 168, 128, 0.15);
+      }
+    }
+
+    /* Mobile: Solid dark surface for instant 60 FPS scrolling without GPU composite stall */
+    @media (max-width: 768px) {
+      .luxury-card {
+        background: #18181D !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        box-shadow: 0 4px 18px -4px rgba(0, 0, 0, 0.5) !important;
       }
     }
 
@@ -132,23 +165,26 @@
       color: #0F0F11;
       font-weight: 700;
       box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
       overflow: hidden;
+      contain: paint;
     }
     .btn-gold-glow::after {
       content: '';
       position: absolute;
       top: -50%;
-      left: -60%;
-      width: 40%;
+      left: 0;
+      width: 45%;
       height: 200%;
       background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
-      transform: rotate(30deg);
-      animation: buttonShimmer 4.5s infinite;
+      transform: rotate(30deg) translate3d(-250%, 0, 0);
+      animation: buttonShimmer 5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+      pointer-events: none;
+      will-change: transform;
     }
     @keyframes buttonShimmer {
-      0%, 75% { left: -60%; }
-      100% { left: 140%; }
+      0%, 70% { transform: rotate(30deg) translate3d(-250%, 0, 0); }
+      100% { transform: rotate(30deg) translate3d(450%, 0, 0); }
     }
     .btn-gold-glow:hover {
       background: linear-gradient(135deg, #E5C07B 0%, #D4AF37 50%, #C5A880 100%);
@@ -165,7 +201,7 @@
       border: 1px solid rgba(197, 168, 128, 0.35);
       color: #EFE2CE;
       font-weight: 600;
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
     }
     .btn-outline-gold:hover {
       background: rgba(197, 168, 128, 0.12);
@@ -186,6 +222,7 @@
       -webkit-user-select: none;
       touch-action: pan-y;
       cursor: default;
+      contain: layout paint;
     }
     .ba-slider-box img {
       width: 100%;
@@ -204,6 +241,7 @@
       clip-path: inset(0 0 0 50%);
       -webkit-clip-path: inset(0 0 0 50%);
       pointer-events: none;
+      will-change: clip-path;
     }
     .ba-slider-handle {
       position: absolute;
@@ -213,15 +251,16 @@
       width: 3px;
       background: #D4AF37;
       z-index: 20;
-      transform: translateX(-50%);
+      transform: translate3d(-50%, 0, 0);
       box-shadow: 0 0 15px rgba(212, 175, 55, 0.9);
       pointer-events: none;
+      will-change: left;
     }
     .ba-slider-button {
       position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%);
+      transform: translate3d(-50%, -50%, 0);
       width: 42px;
       height: 42px;
       border-radius: 50%;
@@ -238,7 +277,7 @@
     }
     .ba-slider-button:active {
       cursor: grabbing;
-      transform: translate(-50%, -50%) scale(1.1);
+      transform: translate3d(-50%, -50%, 0) scale(1.1);
     }
 
     /* ========================================================================= */
@@ -246,45 +285,52 @@
     /* ========================================================================= */
     .reveal-on-scroll {
       opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: opacity, transform;
+      transform: translate3d(0, 22px, 0);
+      transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
       backface-visibility: hidden;
+      contain: layout style;
     }
     .reveal-on-scroll.is-visible {
       opacity: 1;
-      transform: translateY(0);
+      transform: translate3d(0, 0, 0);
     }
 
-    /* Text Specific Reveal (with subtle elegant blur-in & smooth slide up) */
+    /* Text Specific Reveal */
     .reveal-text {
       opacity: 0;
-      transform: translateY(24px);
-      filter: blur(4px);
-      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), 
-                  transform 0.75s cubic-bezier(0.16, 1, 0.3, 1),
-                  filter 0.75s cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: opacity, transform, filter;
+      transform: translate3d(0, 20px, 0);
+      transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
       backface-visibility: hidden;
+      contain: layout style;
+    }
+    @media (min-width: 769px) {
+      .reveal-text {
+        filter: blur(4px);
+        transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), 
+                    transform 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+                    filter 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .reveal-text.is-visible {
+        filter: blur(0);
+      }
     }
     .reveal-text.is-visible {
       opacity: 1;
-      transform: translateY(0);
-      filter: blur(0);
+      transform: translate3d(0, 0, 0);
     }
 
-    /* Card & Media Container Reveal (with subtle scale up) */
+    /* Card & Media Container Reveal */
     .reveal-card {
       opacity: 0;
-      transform: translateY(28px) scale(0.98);
-      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
-                  transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: opacity, transform;
+      transform: translate3d(0, 22px, 0) scale(0.985);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), 
+                  transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
       backface-visibility: hidden;
+      contain: layout style;
     }
     .reveal-card.is-visible {
       opacity: 1;
-      transform: translateY(0) scale(1);
+      transform: translate3d(0, 0, 0) scale(1);
     }
 
     /* Stagger Delays for Hierarchical Reveal */
@@ -318,19 +364,20 @@
         transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
       }
       #hero {
-        padding-top: 5rem !important; /* 80px: ~17% reduction from 96px */
-        padding-bottom: 5.75rem !important; /* 92px: ~18% reduction from 112px */
+        padding-top: 5rem !important;
+        padding-bottom: 5.75rem !important;
       }
     }
 
     /* Scroll Indicator Dot Animation */
     @keyframes scrollDotFloat {
-      0% { transform: translateY(0); opacity: 1; }
-      50% { transform: translateY(8px); opacity: 0.7; }
-      100% { transform: translateY(14px); opacity: 0; }
+      0% { transform: translate3d(0, 0, 0); opacity: 1; }
+      50% { transform: translate3d(0, 8px, 0); opacity: 0.7; }
+      100% { transform: translate3d(0, 14px, 0); opacity: 0; }
     }
     .animate-scroll-dot {
       animation: scrollDotFloat 1.8s ease-in-out infinite;
+      will-change: transform, opacity;
     }
 
     /* Top Page Scroll Progress Bar */
@@ -343,21 +390,24 @@
       background: linear-gradient(90deg, #D4AF37, #EFE2CE, #C5A880, #D4AF37);
       z-index: 100;
       pointer-events: none;
-      box-shadow: 0 0 12px rgba(212, 175, 55, 0.8);
+      box-shadow: 0 0 10px rgba(212, 175, 55, 0.7);
       transition: width 0.05s linear;
+      transform: translateZ(0);
+      will-change: width;
     }
 
     /* Floating Back-to-Top Button */
     .btn-scroll-top {
       opacity: 0;
       visibility: hidden;
-      transform: translateY(14px) scale(0.9);
-      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: translate3d(0, 14px, 0) scale(0.9);
+      transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s ease;
+      will-change: transform, opacity;
     }
     .btn-scroll-top.is-visible {
       opacity: 1;
       visibility: visible;
-      transform: translateY(0) scale(1);
+      transform: translate3d(0, 0, 0) scale(1);
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -511,15 +561,20 @@
 
       <!-- Hero Background Image with Editorial Warm Grading -->
       <div class="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-        <img 
-          src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=1920&q=80" 
-          alt="ThreeBrothers Lüks Kuaför Salonu İç Mekan Manavgat" 
-          width="1920" 
-          height="1080" 
-          fetchpriority="high"
-          loading="eager"
-          class="hero-bg-img w-full h-full object-cover object-center opacity-40 sm:opacity-45 filter contrast-125 brightness-100"
-        />
+        <picture class="w-full h-full block">
+          <source media="(max-width: 640px)" srcset="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=720&q=75" />
+          <source media="(min-width: 641px)" srcset="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=1920&q=80" />
+          <img 
+            src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=1920&q=80" 
+            alt="ThreeBrothers Lüks Kuaför Salonu İç Mekan Manavgat" 
+            width="1920" 
+            height="1080" 
+            fetchpriority="high"
+            loading="eager"
+            decoding="async"
+            class="hero-bg-img w-full h-full object-cover object-center opacity-40 sm:opacity-45 filter contrast-125 brightness-100"
+          />
+        </picture>
         <div class="absolute inset-0 bg-black/65"></div>
         <div class="absolute inset-0 bg-gradient-to-t from-[#0F0F11] via-[#0F0F11]/80 to-[#0F0F11]/40"></div>
         <div class="absolute inset-0 bg-gradient-to-r from-[#0F0F11]/80 via-transparent to-[#0F0F11]/80"></div>
@@ -615,11 +670,12 @@
             
             <!-- Before Image (Base Layer: Left Side) -->
             <img 
-              src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=800&q=80" 
+              src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=800&q=75" 
               alt="İşlem Öncesi Yıpranmış Saç Görünümü" 
               width="800" 
               height="600" 
               loading="lazy" 
+              decoding="async"
             />
             <span class="absolute bottom-3 left-3 z-0 px-2.5 sm:px-3 py-1 rounded-full bg-black/80 backdrop-blur-md text-[10px] sm:text-xs font-bold text-zinc-300 border border-white/10">
               İŞLEM ÖNCESİ
@@ -628,11 +684,12 @@
             <!-- After Image (Overlay: Right Side clipped) -->
             <div id="ba-after-layer" class="ba-after-layer">
               <img 
-                src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80" 
+                src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=75" 
                 alt="İşlem Sonrası Işıltılı Sarı Ombre" 
                 width="800" 
                 height="600" 
                 loading="lazy" 
+                decoding="async"
               />
               <span class="absolute bottom-3 right-3 z-10 px-2.5 sm:px-3 py-1 rounded-full bg-gradient-to-r from-brand-gold to-brand-champagne text-black text-[10px] sm:text-xs font-extrabold shadow-md">
                 İŞLEM SONRASI
@@ -680,11 +737,12 @@
         <article class="luxury-card rounded-2xl sm:rounded-3xl overflow-hidden flex flex-col justify-between group reveal-card delay-100">
           <div class="aspect-[4/3] overflow-hidden bg-zinc-900">
             <img 
-              src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=800&q=80" 
+              src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=700&q=75" 
               alt="ThreeBrothers Platin Sarı Ombre ve Balyaj Saç Tasarımı" 
-              width="800" 
-              height="600" 
+              width="700" 
+              height="525" 
               loading="lazy" 
+              decoding="async"
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
           </div>
@@ -713,11 +771,12 @@
         <article class="luxury-card rounded-2xl sm:rounded-3xl overflow-hidden flex flex-col justify-between group reveal-card delay-200">
           <div class="aspect-[4/3] overflow-hidden bg-zinc-900">
             <img 
-              src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80" 
+              src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=700&q=75" 
               alt="ThreeBrothers Taçlı Lüks Gelin Başı ve Nişan Topuz Tasarımı" 
-              width="800" 
-              height="600" 
+              width="700" 
+              height="525" 
               loading="lazy" 
+              decoding="async"
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
           </div>
@@ -746,11 +805,12 @@
         <article class="luxury-card rounded-2xl sm:rounded-3xl overflow-hidden flex flex-col justify-between group reveal-card delay-300">
           <div class="aspect-[4/3] overflow-hidden bg-zinc-900">
             <img 
-              src="https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?auto=format&fit=crop&w=800&q=80" 
+              src="https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?auto=format&fit=crop&w=700&q=75" 
               alt="ThreeBrothers Keratin Botox Düz ve Parlak İpeksi Saç Bakımı" 
-              width="800" 
-              height="600" 
+              width="700" 
+              height="525" 
               loading="lazy" 
+              decoding="async"
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
           </div>
@@ -779,11 +839,12 @@
         <article class="luxury-card rounded-2xl sm:rounded-3xl overflow-hidden flex flex-col justify-between group reveal-card delay-400">
           <div class="aspect-[4/3] overflow-hidden bg-zinc-900">
             <img 
-              src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=800&q=80" 
+              src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=700&q=75" 
               alt="ThreeBrothers Katlı Kesim, Hacimli Fön ve Saç Şekillendirme" 
-              width="800" 
-              height="600" 
+              width="700" 
+              height="525" 
               loading="lazy" 
+              decoding="async"
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
           </div>
@@ -835,11 +896,12 @@
           <!-- Photo 1: Hacimli Fön & Şekillendirme -->
           <div class="relative aspect-square rounded-xl sm:rounded-2xl overflow-hidden group luxury-card p-1 reveal-card delay-75">
             <img 
-              src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=600&q=80" 
+              src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=600&q=75" 
               alt="Hacimli fön ve saç şekillendirme anı - ThreeBrothers Bayan Kuaförü" 
               width="600" 
               height="600" 
               loading="lazy" 
+              decoding="async"
               class="w-full h-full object-cover rounded-lg sm:rounded-xl group-hover:scale-105 transition-transform duration-500"
             />
             <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-2 text-center rounded-xl">
@@ -852,11 +914,12 @@
           <!-- Photo 2: Makyaj Aynası & Bakım İstasyonu -->
           <div class="relative aspect-square rounded-xl sm:rounded-2xl overflow-hidden group luxury-card p-1 reveal-card delay-150">
             <img 
-              src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=600&q=80" 
+              src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=600&q=75" 
               alt="Işıklı makyaj aynası ve profesyonel kozmetik istasyonu - ThreeBrothers" 
               width="600" 
               height="600" 
               loading="lazy" 
+              decoding="async"
               class="w-full h-full object-cover rounded-lg sm:rounded-xl group-hover:scale-105 transition-transform duration-500"
             />
             <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-2 text-center rounded-xl">
@@ -869,11 +932,12 @@
           <!-- Photo 3: Lüks Kuaför Salonu Atmosferi -->
           <div class="relative aspect-square rounded-xl sm:rounded-2xl overflow-hidden group luxury-card p-1 reveal-card delay-200">
             <img 
-              src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=600&q=80" 
+              src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=600&q=75" 
               alt="ThreeBrothers Lüks Kuaför Salonu İç Mekan Manavgat" 
               width="600" 
               height="600" 
               loading="lazy" 
+              decoding="async"
               class="w-full h-full object-cover rounded-lg sm:rounded-xl group-hover:scale-105 transition-transform duration-500"
             />
             <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-2 text-center rounded-xl">
@@ -886,11 +950,12 @@
           <!-- Photo 4: Ayna Yansıması & Hazırlık Dokunuşu -->
           <div class="relative aspect-square rounded-xl sm:rounded-2xl overflow-hidden group luxury-card p-1 reveal-card delay-250">
             <img 
-              src="https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?auto=format&fit=crop&w=600&q=80" 
+              src="https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?auto=format&fit=crop&w=600&q=75" 
               alt="Işıklı kemerli aynada saç hazırlığı ve son dokunuşlar - ThreeBrothers" 
               width="600" 
               height="600" 
               loading="lazy" 
+              decoding="async"
               class="w-full h-full object-cover rounded-lg sm:rounded-xl group-hover:scale-105 transition-transform duration-500"
             />
             <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-2 text-center rounded-xl">
@@ -903,11 +968,12 @@
           <!-- Photo 5: Modern Saç Tasarım ve Şekillendirme -->
           <div class="relative aspect-square rounded-xl sm:rounded-2xl overflow-hidden group luxury-card p-1 reveal-card delay-300">
             <img 
-              src="https://images.unsplash.com/photo-1582095133179-bfd08e2fc6b3?auto=format&fit=crop&w=600&q=80" 
+              src="https://images.unsplash.com/photo-1582095133179-bfd08e2fc6b3?auto=format&fit=crop&w=600&q=75" 
               alt="Sıcak karamel ve bal ışıltılı dalgalı saç renklendirme - ThreeBrothers" 
               width="600" 
               height="600" 
               loading="lazy" 
+              decoding="async"
               class="w-full h-full object-cover rounded-lg sm:rounded-xl group-hover:scale-105 transition-transform duration-500"
             />
             <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-2 text-center rounded-xl">
@@ -920,11 +986,12 @@
           <!-- Photo 6: Profesyonel Kuaför İstasyonu -->
           <div class="relative aspect-square rounded-xl sm:rounded-2xl overflow-hidden group luxury-card p-1 reveal-card delay-350">
             <img 
-              src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=600&q=80" 
+              src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=600&q=75" 
               alt="ThreeBrothers modern butik bayan kuaförü salon içi görünümü" 
               width="600" 
               height="600" 
               loading="lazy" 
+              decoding="async"
               class="w-full h-full object-cover rounded-lg sm:rounded-xl group-hover:scale-105 transition-transform duration-500"
             />
             <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-2 text-center rounded-xl">
@@ -1695,9 +1762,6 @@
     </div>
   </div>
 
-  <!-- ========================================================================= -->
-  <!-- LIGHTWEIGHT JS CONTROLLER: SLIDER + SCROLL REVEAL                        -->
-  <!-- ========================================================================= -->
   <script>
     // 1. Fully Mobile-Responsive & Touch-Friendly Before / After Slider (Drag Only on Center Handle)
     (function initBeforeAfter() {
@@ -1708,23 +1772,40 @@
       if (!container || !handle || !handleButton || !afterLayer) return;
 
       let isDragging = false;
+      let cachedRect = null;
+      let targetPct = 50;
+      let rafId = null;
 
-      function updatePosition(clientX) {
-        const rect = container.getBoundingClientRect();
-        let x = clientX - rect.left;
+      function updateRect() {
+        cachedRect = container.getBoundingClientRect();
+      }
+
+      function renderSlider() {
+        handle.style.left = targetPct + '%';
+        afterLayer.style.clipPath = `inset(0 0 0 ${targetPct}%)`;
+        afterLayer.style.webkitClipPath = `inset(0 0 0 ${targetPct}%)`;
+        rafId = null;
+      }
+
+      function requestSliderUpdate(clientX) {
+        if (!cachedRect || cachedRect.width === 0) {
+          updateRect();
+        }
+        let x = clientX - cachedRect.left;
         if (x < 0) x = 0;
-        if (x > rect.width) x = rect.width;
-        const pct = Math.max(0, Math.min(100, (x / rect.width) * 100));
-        
-        handle.style.left = pct + '%';
-        afterLayer.style.clipPath = `inset(0 0 0 ${pct}%)`;
-        afterLayer.style.webkitClipPath = `inset(0 0 0 ${pct}%)`;
+        if (x > cachedRect.width) x = cachedRect.width;
+        targetPct = Math.max(0, Math.min(100, (x / cachedRect.width) * 100));
+
+        if (!rafId) {
+          rafId = requestAnimationFrame(renderSlider);
+        }
       }
 
       function onStart(e) {
         isDragging = true;
+        updateRect();
         const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-        updatePosition(clientX);
+        requestSliderUpdate(clientX);
         if (e.type === 'touchstart') {
           e.stopPropagation();
         }
@@ -1733,7 +1814,7 @@
       function onMove(e) {
         if (!isDragging) return;
         const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-        updatePosition(clientX);
+        requestSliderUpdate(clientX);
         if (e.cancelable && e.type === 'touchmove') {
           e.preventDefault();
         }
@@ -1745,13 +1826,15 @@
 
       // Dragging ONLY initiates when the center handle button is grabbed
       handleButton.addEventListener('mousedown', onStart);
-      window.addEventListener('mousemove', onMove);
+      window.addEventListener('mousemove', onMove, { passive: true });
       window.addEventListener('mouseup', onEnd);
 
       handleButton.addEventListener('touchstart', onStart, { passive: true });
       window.addEventListener('touchmove', onMove, { passive: false });
       window.addEventListener('touchend', onEnd);
       window.addEventListener('touchcancel', onEnd);
+      window.addEventListener('resize', updateRect, { passive: true });
+      window.addEventListener('orientationchange', updateRect, { passive: true });
     })();
 
     // 2. Interactive Single Google Review Carousel
@@ -1797,7 +1880,7 @@
         if (index < 0) index = totalSlides - 1;
         if (index >= totalSlides) index = 0;
         currentIndex = index;
-        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        track.style.transform = `translate3d(-${currentIndex * 100}%, 0, 0)`;
         updateDots();
       }
 
@@ -1867,7 +1950,7 @@
         return;
       }
 
-      // IntersectionObserver tuned for mobile touch and fast scroll response
+      // IntersectionObserver tuned for 60 FPS mobile touch scrolling
       const observer = new IntersectionObserver((entries, obs) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -1877,28 +1960,30 @@
         });
       }, {
         root: null,
-        rootMargin: '0px 0px -40px 0px',
-        threshold: 0.08
+        rootMargin: '0px 0px 60px 0px',
+        threshold: 0.05
       });
 
       revealElements.forEach(el => observer.observe(el));
 
       // Immediate check on load for elements already in initial viewport
       const checkInitialView = () => {
+        const winHeight = window.innerHeight;
         revealElements.forEach(el => {
           const rect = el.getBoundingClientRect();
-          if (rect.top < window.innerHeight && rect.bottom > 0) {
+          if (rect.top < winHeight && rect.bottom > 0) {
             el.classList.add('is-visible');
+            observer.unobserve(el);
           }
         });
       };
 
       if (document.readyState === 'loading') {
-        window.addEventListener('DOMContentLoaded', checkInitialView);
+        window.addEventListener('DOMContentLoaded', checkInitialView, { passive: true });
       } else {
         checkInitialView();
       }
-      setTimeout(checkInitialView, 100);
+      setTimeout(checkInitialView, 120);
     })();
 
     // 4. Smooth Scroll Dynamics: Top Progress Bar + Hero Indicator Fade + Back-to-Top Button
@@ -1907,7 +1992,9 @@
       const heroIndicator = document.getElementById('hero-scroll-indicator');
       const scrollTopBtn = document.getElementById('scroll-top-btn');
 
-      function onScroll() {
+      let ticking = false;
+
+      function updateScrollDynamics() {
         const scrollTop = window.scrollY || document.documentElement.scrollTop;
         const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
         
@@ -1932,6 +2019,15 @@
           } else {
             scrollTopBtn.classList.remove('is-visible');
           }
+        }
+
+        ticking = false;
+      }
+
+      function onScroll() {
+        if (!ticking) {
+          window.requestAnimationFrame(updateScrollDynamics);
+          ticking = true;
         }
       }
 
