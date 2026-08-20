@@ -59,6 +59,11 @@
       --gold-light: #EFE2CE;
     }
 
+    * {
+      -webkit-tap-highlight-color: transparent;
+      box-sizing: border-box;
+    }
+
     html, body {
       background-color: var(--bg-dark);
       color: #F4F4F6;
@@ -67,6 +72,7 @@
       text-rendering: optimizeLegibility;
       overflow-x: hidden;
       max-width: 100vw;
+      width: 100%;
     }
 
     .font-serif-luxury {
@@ -90,7 +96,7 @@
 
     /* Floating Glass Header */
     .glass-header {
-      background: rgba(15, 15, 17, 0.82);
+      background: rgba(15, 15, 17, 0.88);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
@@ -98,7 +104,7 @@
 
     /* Editorial Glass Cards */
     .luxury-card {
-      background: rgba(24, 24, 28, 0.75);
+      background: rgba(24, 24, 28, 0.78);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
       border: 1px solid rgba(255, 255, 255, 0.08);
@@ -217,22 +223,71 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 40px;
-      height: 40px;
+      width: 42px;
+      height: 42px;
       border-radius: 50%;
       background: linear-gradient(135deg, #D4AF37, #C5A880);
       color: #0F0F11;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), 0 0 12px rgba(212, 175, 55, 0.4);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), 0 0 12px rgba(212, 175, 55, 0.5);
       border: 2px solid #FFFFFF;
       pointer-events: auto;
       cursor: grab;
+      touch-action: none;
     }
     .ba-slider-button:active {
       cursor: grabbing;
-      transform: translate(-50%, -50%) scale(1.1);
+      transform: translate(-50%, -50%) scale(1.08);
+    }
+
+    /* Mobile Services Snap Carousel */
+    @media (max-width: 639px) {
+      .services-mobile-snap {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 0.75rem;
+        margin-left: -1rem;
+        margin-right: -1rem;
+        padding-left: 1rem;
+        padding-right: 2rem;
+        gap: 1rem;
+        scrollbar-width: none;
+      }
+      .services-mobile-snap::-webkit-scrollbar {
+        display: none;
+      }
+      .services-mobile-snap > article {
+        flex: 0 0 84%;
+        max-width: 84%;
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+      }
+    }
+
+    /* Mobile Drawer & Backdrop */
+    .mobile-menu-drawer {
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+      opacity: 0;
+      pointer-events: none;
+    }
+    .mobile-menu-drawer.is-open {
+      transform: translateX(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .mobile-backdrop {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .mobile-backdrop.is-open {
+      opacity: 1;
+      pointer-events: auto;
     }
 
     /* Scroll Reveal Animation */
@@ -249,7 +304,7 @@
 
     /* Safe Area Padding for Mobile Bottom Bar */
     .pb-safe-dock {
-      padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 6.5rem);
+      padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 7rem);
     }
 
     /* Accessibility Focus Ring */
@@ -342,27 +397,27 @@
   <header class="fixed top-0 left-0 right-0 z-40 glass-header transition-all duration-300">
     
     <!-- Multilingual Top Bar -->
-    <div class="border-b border-white/[0.08] bg-[#0A0A0C]/90 py-1.5 px-4 sm:px-6 lg:px-8">
+    <div class="border-b border-white/[0.08] bg-[#0A0A0C]/90 py-1 sm:py-1.5 px-3 sm:px-6 lg:px-8">
       <div class="max-w-7xl mx-auto flex items-center justify-between text-[11px] sm:text-xs">
         
         <!-- Language Switcher -->
-        <div class="flex items-center gap-2 text-zinc-400 font-semibold">
+        <div class="flex items-center gap-1.5 sm:gap-2 text-zinc-400 font-semibold">
           <span class="text-brand-gold">TR</span>
-          <span>|</span>
+          <span class="text-zinc-600">|</span>
           <a href="#hero" class="hover:text-white transition-colors" title="English">EN</a>
-          <span>|</span>
+          <span class="text-zinc-600">|</span>
           <a href="#hero" class="hover:text-white transition-colors" title="Deutsch">DE</a>
         </div>
 
-        <!-- Center Status Info -->
+        <!-- Center Status Info (Hidden on mobile to save vertical space) -->
         <div class="hidden md:flex items-center gap-2 text-zinc-400">
           <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
           <span>Salı – Pazar: 08:30 – 20:30 (Pazartesi Kapalı)</span>
         </div>
 
         <!-- Right Quick Call Support -->
-        <div class="flex items-center gap-3">
-          <a href="tel:+905526856907" class="font-bold text-brand-goldLight hover:text-white flex items-center gap-1 transition-colors">
+        <div class="flex items-center gap-2 sm:gap-3">
+          <a href="tel:+905526856907" class="font-bold text-brand-goldLight hover:text-white flex items-center gap-1 text-[11px] sm:text-xs transition-colors">
             <span>📞</span>
             <span>+90 552 685 69 07</span>
           </a>
@@ -372,26 +427,26 @@
     </div>
 
     <!-- Main Navigation Bar -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-18 flex items-center justify-between">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-14 sm:h-18 flex items-center justify-between">
       
       <!-- Brand Typographic Logo -->
-      <a href="#hero" class="flex items-center gap-2.5 sm:gap-3 group focus:outline-none" aria-label="ThreeBrothers Bayan Kuaförü Ana Sayfa">
-        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-brand-gold via-brand-champagne to-zinc-900 flex items-center justify-center p-[1px] shadow-lg shadow-brand-gold/15 transition-transform group-hover:scale-105">
+      <a href="#hero" class="flex items-center gap-2 sm:gap-3 group focus:outline-none shrink-0" aria-label="ThreeBrothers Bayan Kuaförü Ana Sayfa">
+        <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-brand-gold via-brand-champagne to-zinc-900 flex items-center justify-center p-[1px] shadow-lg shadow-brand-gold/15 transition-transform group-hover:scale-105">
           <div class="w-full h-full bg-[#0F0F11] rounded-[11px] flex items-center justify-center">
-            <span class="font-serif-luxury text-base sm:text-lg font-bold text-brand-goldLight tracking-wider">3B</span>
+            <span class="font-serif-luxury text-sm sm:text-lg font-bold text-brand-goldLight tracking-wider">3B</span>
           </div>
         </div>
         <div class="flex flex-col">
-          <span class="font-serif-luxury text-base sm:text-xl font-bold tracking-tight text-white group-hover:text-brand-champagne transition-colors">
+          <span class="font-serif-luxury text-sm sm:text-xl font-bold tracking-tight text-white group-hover:text-brand-champagne transition-colors">
             ThreeBrothers
           </span>
-          <span class="text-[9px] sm:text-[10px] tracking-[0.2em] sm:tracking-[0.25em] uppercase font-semibold text-brand-champagne font-sans -mt-0.5">
+          <span class="text-[8px] sm:text-[10px] tracking-[0.18em] sm:tracking-[0.25em] uppercase font-semibold text-brand-champagne font-sans -mt-0.5">
             Bayan Kuaförü • Manavgat
           </span>
         </div>
       </a>
 
-      <!-- Desktop Navigation Menu -->
+      <!-- Desktop Navigation Menu (Untouched for Desktop) -->
       <nav class="hidden lg:flex items-center gap-6 xl:gap-8 text-xs font-semibold text-zinc-300">
         <a href="#hizmetler" class="hover:text-brand-champagne transition-colors">Hizmetlerimiz</a>
         <a href="#donusum" class="hover:text-brand-champagne transition-colors">Dönüşümler</a>
@@ -401,9 +456,9 @@
         <a href="#iletisim" class="hover:text-brand-champagne transition-colors">İletişim</a>
       </nav>
 
-      <!-- Quick Action Buttons -->
-      <div class="flex items-center gap-2 sm:gap-3">
-        <a href="https://www.instagram.com/threebrotherrrs/" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 sm:py-2 rounded-full btn-outline-gold text-xs font-semibold" aria-label="Instagram Profili">
+      <!-- Desktop & Tablet Action Buttons -->
+      <div class="hidden lg:flex items-center gap-2 sm:gap-3">
+        <a href="https://www.instagram.com/threebrotherrrs/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 sm:py-2 rounded-full btn-outline-gold text-xs font-semibold" aria-label="Instagram Profili">
           <svg class="w-3.5 h-3.5 text-brand-champagne shrink-0" fill="currentColor" viewBox="0 0 24 24">
             <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
           </svg>
@@ -418,19 +473,103 @@
         </a>
       </div>
 
+      <!-- Mobile Right Controls (Hamburger & Fast CTA) -->
+      <div class="flex lg:hidden items-center gap-2">
+        <a href="#randevu" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full btn-gold-glow text-[11px] font-bold shadow-sm">
+          <span>Randevu</span>
+        </a>
+
+        <button id="mobile-menu-btn" type="button" aria-label="Menüyü Aç" class="w-9 h-9 rounded-full btn-outline-gold flex items-center justify-center text-brand-goldLight active:scale-95 transition-transform">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+
     </div>
   </header>
 
-  <main class="flex-grow pt-24 sm:pt-28">
+  <!-- Mobile Offcanvas Menu Drawer & Backdrop -->
+  <div id="mobileMenuBackdrop" class="mobile-backdrop fixed inset-0 z-50 bg-black/75 backdrop-blur-sm lg:hidden"></div>
+
+  <div id="mobileMenuDrawer" class="mobile-menu-drawer fixed top-0 right-0 bottom-0 w-[85%] max-w-sm z-50 bg-[#121216] border-l border-white/10 shadow-2xl flex flex-col justify-between p-6 lg:hidden overflow-y-auto">
+    <div>
+      <!-- Drawer Header -->
+      <div class="flex items-center justify-between pb-4 border-b border-white/10 mb-5">
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-gold via-brand-champagne to-zinc-900 flex items-center justify-center p-[1px]">
+            <div class="w-full h-full bg-[#0F0F11] rounded-[7px] flex items-center justify-center">
+              <span class="font-serif-luxury text-xs font-bold text-brand-goldLight">3B</span>
+            </div>
+          </div>
+          <div>
+            <span class="font-serif-luxury text-sm font-bold text-white block">ThreeBrothers</span>
+            <span class="text-[8px] tracking-[0.2em] uppercase font-semibold text-brand-champagne font-sans block">Bayan Kuaförü</span>
+          </div>
+        </div>
+        <button id="closeMobileMenuBtn" type="button" aria-label="Menüyü Kapat" class="w-8 h-8 rounded-full btn-outline-gold flex items-center justify-center text-zinc-300 hover:text-white">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+        </button>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="flex flex-col space-y-2 text-sm font-medium">
+        <a href="#hizmetler" class="mobile-nav-link px-3 py-2.5 rounded-xl hover:bg-white/[0.05] text-zinc-200 hover:text-brand-champagne flex items-center justify-between transition-colors">
+          <span>Hizmetlerimiz</span>
+          <span class="text-zinc-500 text-xs">→</span>
+        </a>
+        <a href="#donusum" class="mobile-nav-link px-3 py-2.5 rounded-xl hover:bg-white/[0.05] text-zinc-200 hover:text-brand-champagne flex items-center justify-between transition-colors">
+          <span>Öncesi & Sonrası Dönüşümler</span>
+          <span class="text-zinc-500 text-xs">→</span>
+        </a>
+        <a href="#portfolyo" class="mobile-nav-link px-3 py-2.5 rounded-xl hover:bg-white/[0.05] text-zinc-200 hover:text-brand-champagne flex items-center justify-between transition-colors">
+          <span>Instagram Portfolyo</span>
+          <span class="text-zinc-500 text-xs">→</span>
+        </a>
+        <a href="#neden-biz" class="mobile-nav-link px-3 py-2.5 rounded-xl hover:bg-white/[0.05] text-zinc-200 hover:text-brand-champagne flex items-center justify-between transition-colors">
+          <span>Neden ThreeBrothers?</span>
+          <span class="text-zinc-500 text-xs">→</span>
+        </a>
+        <a href="#randevu" class="mobile-nav-link px-3 py-2.5 rounded-xl hover:bg-white/[0.05] text-zinc-200 hover:text-brand-champagne flex items-center justify-between transition-colors">
+          <span>7/24 Online Randevu Formu</span>
+          <span class="text-zinc-500 text-xs">→</span>
+        </a>
+        <a href="#yorumlar" class="mobile-nav-link px-3 py-2.5 rounded-xl hover:bg-white/[0.05] text-zinc-200 hover:text-brand-champagne flex items-center justify-between transition-colors">
+          <span>Google Yorumları (5.0 ★)</span>
+          <span class="text-zinc-500 text-xs">→</span>
+        </a>
+        <a href="#iletisim" class="mobile-nav-link px-3 py-2.5 rounded-xl hover:bg-white/[0.05] text-zinc-200 hover:text-brand-champagne flex items-center justify-between transition-colors">
+          <span>Konum & İletişim</span>
+          <span class="text-zinc-500 text-xs">→</span>
+        </a>
+      </nav>
+    </div>
+
+    <!-- Drawer Footer Actions -->
+    <div class="pt-5 border-t border-white/10 space-y-2.5">
+      <a href="https://wa.me/905526856907?text=Merhaba,%20web%20sitenizden%20ula%C5%9F%C4%B1yorum.%20Randevu%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" class="w-full py-3 px-4 rounded-xl btn-gold-glow text-black font-bold text-xs flex items-center justify-center gap-2 shadow-lg">
+        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.554 1.838.809 2.796.809 3.181 0 5.767-2.586 5.767-5.766.001-3.181-2.585-5.765-5.767-5.765zm0-2.172c4.378 0 7.931 3.553 7.931 7.938s-3.553 7.938-7.931 7.938c-1.34 0-2.604-.339-3.714-.932l-5.317 1.394 1.423-5.187c-.672-1.161-1.042-2.493-1.042-3.901 0-4.385 3.553-7.938 7.931-7.938zm3.896 11.233c-.229.645-1.119 1.189-1.543 1.229-.425.041-.852.193-2.825-.615-1.972-.808-3.237-2.793-3.336-2.924-.099-.131-.806-1.074-.806-2.049 0-.974.509-1.454.689-1.65.18-.197.393-.246.524-.246.131 0 .262.001.377.007.121.005.284-.046.444.339.164.393.557 1.359.606 1.458.049.098.082.213.016.344-.066.131-.098.213-.197.328-.098.115-.207.257-.295.344-.098.098-.201.205-.087.401.115.197.511.844 1.096 1.365.753.671 1.388.878 1.585.977.197.098.312.082.427-.049.115-.131.492-.573.623-.77.131-.197.262-.164.443-.098.18.066 1.147.541 1.344.639.197.098.328.147.377.23.049.082.049.475-.18 1.12z" /></svg>
+        <span>WhatsApp'tan Randevu</span>
+      </a>
+      <a href="tel:+905526856907" class="w-full py-2.5 px-4 rounded-xl btn-outline-gold text-white font-semibold text-xs flex items-center justify-center gap-2">
+        <span>📞 +90 552 685 69 07</span>
+      </a>
+      <div class="pt-1 text-[10px] text-center text-zinc-500">
+        Salı – Pazar: 08:30 – 20:30 (Pazartesi Kapalı)
+      </div>
+    </div>
+  </div>
+
+  <main class="flex-grow pt-20 sm:pt-28">
 
     <!-- ========================================================================= -->
     <!-- 2. IMMERSIVE ATMOSPHERIC HERO                                             -->
     <!-- ========================================================================= -->
-    <section id="hero" class="relative min-h-[85vh] sm:min-h-[90vh] flex items-center justify-center py-16 sm:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <section id="hero" class="relative min-h-[82vh] sm:min-h-[90vh] flex items-center justify-center py-12 sm:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
       
       <!-- Warm Ambient Glow Sprites -->
-      <div class="glow-sphere w-[300px] sm:w-[550px] h-[300px] sm:h-[550px] bg-brand-gold/15 top-[-50px] sm:top-[-100px] right-[-50px] sm:right-[-100px]"></div>
-      <div class="glow-sphere w-[350px] sm:w-[600px] h-[350px] sm:h-[600px] bg-amber-950/20 bottom-[-50px] sm:bottom-[-100px] left-[-80px] sm:left-[-150px]" style="animation-delay: -4s;"></div>
+      <div class="glow-sphere w-[280px] sm:w-[550px] h-[280px] sm:h-[550px] bg-brand-gold/15 top-[-40px] sm:top-[-100px] right-[-40px] sm:right-[-100px]"></div>
+      <div class="glow-sphere w-[300px] sm:w-[600px] h-[300px] sm:h-[600px] bg-amber-950/20 bottom-[-40px] sm:bottom-[-100px] left-[-60px] sm:left-[-150px]" style="animation-delay: -4s;"></div>
 
       <!-- Hero Background Image with Editorial Warm Grading -->
       <div class="absolute inset-0 z-0 pointer-events-none">
@@ -441,7 +580,7 @@
           height="1080" 
           fetchpriority="high"
           loading="eager"
-          class="w-full h-full object-cover opacity-25 filter contrast-125 brightness-90"
+          class="w-full h-full object-cover object-center opacity-25 filter contrast-125 brightness-90"
         />
         <div class="absolute inset-0 bg-gradient-to-t from-[#0F0F11] via-[#0F0F11]/85 to-[#0F0F11]/50"></div>
         <div class="absolute inset-0 bg-gradient-to-r from-[#0F0F11]/90 via-transparent to-[#0F0F11]/90"></div>
@@ -451,56 +590,58 @@
       <div class="max-w-4xl mx-auto relative z-10 text-center reveal-on-scroll">
         
         <!-- Social Proof Google Badge (Direct Link to Write Review / 5 Stars) -->
-        <a href="https://search.google.com/local/writereview?placeid=ChIJewW1RSBZwxQRng2U9jWTu-s" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white/[0.04] border border-brand-champagne/30 text-[11px] sm:text-sm font-semibold text-brand-goldLight mb-6 sm:mb-8 backdrop-blur-md shadow-xl transition-transform hover:scale-105" title="Google'da 5 Yıldız Verin & Yorum Yazın">
+        <a href="https://search.google.com/local/writereview?placeid=ChIJewW1RSBZwxQRng2U9jWTu-s" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white/[0.04] border border-brand-champagne/30 text-[11px] sm:text-sm font-semibold text-brand-goldLight mb-5 sm:mb-8 backdrop-blur-md shadow-xl transition-transform hover:scale-105" title="Google'da 5 Yıldız Verin & Yorum Yazın">
           <div class="flex items-center text-amber-400 gap-0.5 text-xs sm:text-sm" aria-hidden="true">
             <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
           </div>
-          <span class="font-bold text-white">✨ Manavgat'ın 5.0 Yıldızlı Sarı Saç & Renklendirme Stüdyosu</span>
+          <span class="font-bold text-white">✨ Manavgat'ın 5.0 Yıldızlı Sarı Saç Stüdyosu</span>
         </a>
 
         <!-- Hero Headline -->
-        <h1 class="text-2xl sm:text-5xl lg:text-6xl font-bold tracking-tight font-serif-luxury leading-[1.2] text-white text-balance mb-4 sm:mb-6">
+        <h1 class="text-2xl sm:text-5xl lg:text-6xl font-bold tracking-tight font-serif-luxury leading-[1.2] text-white text-balance mb-3.5 sm:mb-6">
           Yıpranmayan Kusursuz Sarı Saçlar <br class="hidden sm:inline" />
           <span class="gold-gradient-text">ve Kişiye Özel Saç Tasarımı</span>
         </h1>
 
         <!-- Hero Subtitle -->
-        <p class="text-xs sm:text-base lg:text-lg text-zinc-300 max-w-2xl mx-auto leading-relaxed text-pretty mb-8 sm:mb-10 font-normal px-2">
+        <p class="text-xs sm:text-base lg:text-lg text-zinc-300 max-w-2xl mx-auto leading-relaxed text-pretty mb-6 sm:mb-10 font-normal px-1 sm:px-2">
           Tonu tam istediğiniz gibi tutan platin ve bej sarılar, yumuşak geçişli sombre ve yüz anatomisine özel stilist kesimler. 119+ mutlu danışanın güveniyle, saç sağlığınızı riske atmadan hayalinizdeki görünüme kavuşun.
         </p>
 
-        <!-- Dual Action CTAs -->
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 max-w-sm sm:max-w-none mx-auto w-full px-2 sm:px-0">
+        <!-- Dual Action CTAs (Optimized Hierarchy for Mobile) -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 max-w-sm sm:max-w-none mx-auto w-full px-1 sm:px-0">
           
-          <a href="#randevu" class="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 rounded-full btn-gold-glow text-xs sm:text-base font-bold flex items-center justify-center gap-2.5 sm:gap-3">
-            <svg class="w-4 sm:w-5 h-4 sm:h-5 fill-current shrink-0" viewBox="0 0 24 24">
-              <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 002 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z" />
-            </svg>
-            <span>7/24 Online Randevu Al</span>
-          </a>
-
-          <a href="https://wa.me/905526856907?text=Merhaba,%20sa%C3%A7%20foto%C4%9Fraf%C4%B1m%C4%B1%20g%C3%B6nderip%20%C3%B6n%20analiz%20ve%20fiyat%20bilgisi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-6 sm:px-7 py-3.5 sm:py-4 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-black text-xs sm:text-base font-bold flex items-center justify-center gap-2 shadow-lg transition-all active:scale-95">
+          <!-- Primary CTA: WhatsApp (Top conversion focus on Mobile) -->
+          <a href="https://wa.me/905526856907?text=Merhaba,%20sa%C3%A7%20foto%C4%9Fraf%C4%B1m%C4%B1%20g%C3%B6nderip%20%C3%B6n%20analiz%20ve%20fiyat%20bilgisi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto min-h-[48px] px-6 sm:px-7 py-3.5 sm:py-4 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-black text-xs sm:text-base font-bold flex items-center justify-center gap-2 shadow-lg transition-all active:scale-95 order-1 sm:order-2">
             <svg class="w-4 sm:w-5 h-4 sm:h-5 fill-current shrink-0" viewBox="0 0 24 24">
               <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.554 1.838.809 2.796.809 3.181 0 5.767-2.586 5.767-5.766.001-3.181-2.585-5.765-5.767-5.765zm0-2.172c4.378 0 7.931 3.553 7.931 7.938s-3.553 7.938-7.931 7.938c-1.34 0-2.604-.339-3.714-.932l-5.317 1.394 1.423-5.187c-.672-1.161-1.042-2.493-1.042-3.901 0-4.385 3.553-7.938 7.931-7.938zm3.896 11.233c-.229.645-1.119 1.189-1.543 1.229-.425.041-.852.193-2.825-.615-1.972-.808-3.237-2.793-3.336-2.924-.099-.131-.806-1.074-.806-2.049 0-.974.509-1.454.689-1.65.18-.197.393-.246.524-.246.131 0 .262.001.377.007.121.005.284-.046.444.339.164.393.557 1.359.606 1.458.049.098.082.213.016.344-.066.131-.098.213-.197.328-.098.115-.207.257-.295.344-.098.098-.201.205-.087.401.115.197.511.844 1.096 1.365.753.671 1.388.878 1.585.977.197.098.312.082.427-.049.115-.131.492-.573.623-.77.131-.197.262-.164.443-.098.18.066 1.147.541 1.344.639.197.098.328.147.377.23.049.082.049.475-.18 1.12z" />
             </svg>
             <span>📱 WhatsApp ile Saç Analizi & Ön Fiyat Al</span>
           </a>
 
+          <!-- Secondary CTA: Online Form Link -->
+          <a href="#randevu" class="w-full sm:w-auto min-h-[48px] px-6 sm:px-8 py-3.5 sm:py-4 rounded-full btn-gold-glow text-xs sm:text-base font-bold flex items-center justify-center gap-2.5 sm:gap-3 order-2 sm:order-1">
+            <svg class="w-4 sm:w-5 h-4 sm:h-5 fill-current shrink-0" viewBox="0 0 24 24">
+              <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 002 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z" />
+            </svg>
+            <span>7/24 Online Randevu Formu</span>
+          </a>
+
         </div>
 
-        <!-- Trust Stats Bar -->
-        <div class="mt-12 sm:mt-16 pt-8 border-t border-white/[0.08] grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
-          <div class="p-3 rounded-2xl bg-white/[0.02] border border-white/[0.05]">
-            <div class="text-brand-champagne font-bold text-base sm:text-lg">5.0 ★ Google Harita Puanı</div>
-            <div class="text-zinc-400 text-xs mt-0.5">119 Doğrulanmış Müşteri Yorumu</div>
+        <!-- Trust Stats Bar (Compact 3-Card Strip on Mobile) -->
+        <div class="mt-8 sm:mt-16 pt-6 sm:pt-8 border-t border-white/[0.08] grid grid-cols-3 gap-2 sm:gap-4 text-center">
+          <div class="p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-white/[0.02] border border-white/[0.05]">
+            <div class="text-brand-champagne font-bold text-xs sm:text-lg">5.0 ★</div>
+            <div class="text-zinc-400 text-[9px] sm:text-xs mt-0.5 leading-tight">119 Google Yorumu</div>
           </div>
-          <div class="p-3 rounded-2xl bg-white/[0.02] border border-white/[0.05]">
-            <div class="text-brand-gold font-bold text-base sm:text-lg">%100 Sarı Saç Uzmanlığı</div>
-            <div class="text-zinc-400 text-xs mt-0.5">Kişiye Özel Tonlama ve Formüller</div>
+          <div class="p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-white/[0.02] border border-white/[0.05]">
+            <div class="text-brand-gold font-bold text-xs sm:text-lg">%100</div>
+            <div class="text-zinc-400 text-[9px] sm:text-xs mt-0.5 leading-tight">Sarı Saç Uzmanlığı</div>
           </div>
-          <div class="p-3 rounded-2xl bg-white/[0.02] border border-white/[0.05]">
-            <div class="text-brand-goldLight font-bold text-base sm:text-lg">Sıfır Yıpranma Güvencesi</div>
-            <div class="text-zinc-400 text-xs mt-0.5">Saç Bağ Koruyucu Orijinal Ürünler</div>
+          <div class="p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-white/[0.02] border border-white/[0.05]">
+            <div class="text-brand-goldLight font-bold text-xs sm:text-lg">Sıfır Yıpranma</div>
+            <div class="text-zinc-400 text-[9px] sm:text-xs mt-0.5 leading-tight">Orijinal Ürünler</div>
           </div>
         </div>
 
@@ -510,15 +651,15 @@
     <!-- ========================================================================= -->
     <!-- INTERACTIVE BEFORE / AFTER TRANSFORMATION SLIDER                          -->
     <!-- ========================================================================= -->
-    <section id="donusum" class="py-16 sm:py-20 bg-[#141417] border-t border-b border-white/[0.06] relative">
+    <section id="donusum" class="py-12 sm:py-20 bg-[#141417] border-t border-b border-white/[0.06] relative">
       <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div class="text-center max-w-2xl mx-auto mb-8 sm:mb-12 reveal-on-scroll">
+        <div class="text-center max-w-2xl mx-auto mb-6 sm:mb-12 reveal-on-scroll">
           <span class="text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] text-brand-champagne">Dönüşüm Vitrini</span>
-          <h2 class="text-2xl sm:text-4xl font-bold font-serif-luxury text-white mt-1.5 sm:mt-2">
+          <h2 class="text-2xl sm:text-4xl font-bold font-serif-luxury text-white mt-1 sm:mt-2">
             Öncesi & Sonrası Dönüşümü
           </h2>
-          <p class="text-zinc-400 text-xs sm:text-sm mt-2 sm:mt-3 px-2">
+          <p class="text-zinc-400 text-xs sm:text-sm mt-1.5 sm:mt-3 px-2">
             Aşağıdaki altın ayracı sağa-sola sürükleyerek renklendirme ve keratin botoks sonucunu canlı kıyaslayın.
           </p>
         </div>
@@ -532,10 +673,10 @@
               src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=1200&q=80" 
               alt="İşlem Öncesi Yıpranmış Saç Görünümü" 
               width="1200" 
-              height="675"
+              height="675" 
               loading="lazy" 
             />
-            <span class="absolute bottom-3 left-3 z-0 px-2.5 sm:px-3 py-1 rounded-full bg-black/80 backdrop-blur-md text-[10px] sm:text-xs font-bold text-zinc-300 border border-white/10">
+            <span class="absolute top-3 left-3 sm:top-auto sm:bottom-3 z-10 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full bg-black/80 backdrop-blur-md text-[9px] sm:text-xs font-bold text-zinc-300 border border-white/10">
               İŞLEM ÖNCESİ
             </span>
 
@@ -545,10 +686,10 @@
                 src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1200&q=80" 
                 alt="İşlem Sonrası Işıltılı Sarı Ombre" 
                 width="1200" 
-                height="675"
+                height="675" 
                 loading="lazy" 
               />
-              <span class="absolute bottom-3 right-3 z-10 px-2.5 sm:px-3 py-1 rounded-full bg-gradient-to-r from-brand-gold to-brand-champagne text-black text-[10px] sm:text-xs font-extrabold shadow-md">
+              <span class="absolute top-3 right-3 sm:top-auto sm:bottom-3 z-10 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full bg-gradient-to-r from-brand-gold to-brand-champagne text-black text-[9px] sm:text-xs font-extrabold shadow-md">
                 İŞLEM SONRASI
               </span>
             </div>
@@ -562,7 +703,7 @@
 
           </div>
 
-          <div class="pt-3 pb-1 text-center text-[11px] sm:text-xs text-brand-goldLight flex items-center justify-center gap-1.5 sm:gap-2">
+          <div class="pt-2.5 pb-1 text-center text-[11px] sm:text-xs text-brand-goldLight flex items-center justify-center gap-1.5 sm:gap-2">
             <span>👈</span>
             <span>Ayracı kaydırarak renk açma ve bakım sonucunu karşılaştırın</span>
             <span>👉</span>
@@ -574,21 +715,22 @@
     </section>
 
     <!-- ========================================================================= -->
-    <!-- 3. İŞLEM & HİZMET VİTRİNİ (4 FEATURED HIGH-END CARDS)                    -->
+    <!-- 3. İŞLEM & HİZMET VİTRİNİ (COMPACT SNAP CAROUSEL ON MOBILE)                -->
     <!-- ========================================================================= -->
-    <section id="hizmetler" class="py-16 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="hizmetler" class="py-12 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16 reveal-on-scroll">
+      <div class="text-center max-w-2xl mx-auto mb-8 sm:mb-16 reveal-on-scroll">
         <span class="text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] text-brand-champagne">İmza Hizmetlerimiz</span>
-        <h2 class="text-2xl sm:text-4xl font-bold font-serif-luxury text-white mt-1.5 sm:mt-3">
+        <h2 class="text-2xl sm:text-4xl font-bold font-serif-luxury text-white mt-1 sm:mt-3">
           Özel Saç Tasarım Koleksiyonu
         </h2>
-        <p class="text-zinc-400 text-xs sm:text-sm mt-2 sm:mt-3 leading-relaxed">
+        <p class="text-zinc-400 text-xs sm:text-sm mt-1.5 sm:mt-3 leading-relaxed">
           Saç bütünlüğünü koruyan açıcılar, kişiye özel tonlama formülleri ve kalıcı onarım terapileri.
         </p>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+      <!-- Services Container: Snap Carousel on Mobile (<640px), Standard 4-Col Grid on Desktop (sm+) -->
+      <div class="services-mobile-snap sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
         
         <!-- Card 1: Ombre & Blonde Açma -->
         <article class="luxury-card rounded-2xl sm:rounded-3xl overflow-hidden flex flex-col justify-between group reveal-on-scroll">
@@ -601,20 +743,20 @@
               loading="lazy" 
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
-            <span class="absolute top-3 sm:top-4 left-3 sm:left-4 px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full bg-black/70 backdrop-blur-md text-[10px] sm:text-[11px] font-bold text-brand-goldLight border border-white/10">
+            <span class="absolute top-2.5 sm:top-4 left-2.5 sm:left-4 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full bg-black/75 backdrop-blur-md text-[9px] sm:text-[11px] font-bold text-brand-goldLight border border-white/10">
               En Çok Tercih Edilen
             </span>
           </div>
-          <div class="p-5 sm:p-6 flex flex-col flex-grow justify-between">
+          <div class="p-4 sm:p-6 flex flex-col flex-grow justify-between">
             <div>
-              <h3 class="text-base sm:text-lg font-bold font-serif-luxury text-white group-hover:text-brand-champagne transition-colors">
+              <h3 class="text-sm sm:text-lg font-bold font-serif-luxury text-white group-hover:text-brand-champagne transition-colors">
                 Ombre & Blonde Açma
               </h3>
-              <p class="text-zinc-400 text-xs sm:text-sm mt-2 leading-relaxed">
+              <p class="text-zinc-400 text-xs sm:text-sm mt-1.5 sm:mt-2 leading-relaxed">
                 Küllü sarı, bebek sarısı ve sıcak balyaj geçişleriyle saç yıpranmadan ulaşılan mükemmel tonlar.
               </p>
             </div>
-            <a href="https://wa.me/905526856907?text=Merhaba,%20Ombre%20ve%20Blonde%20A%C3%A7ma%20hakk%C4%B1nda%20fiyat%20ve%20randevu%20bilgisi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" class="mt-5 sm:mt-6 pt-3 sm:pt-4 border-t border-white/[0.08] text-xs font-bold text-brand-champagne hover:text-white flex items-center justify-between transition-colors">
+            <a href="https://wa.me/905526856907?text=Merhaba,%20Ombre%20ve%20Blonde%20A%C3%A7ma%20hakk%C4%B1nda%20fiyat%20ve%20randevu%20bilgisi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" class="mt-4 sm:mt-6 pt-3 sm:pt-4 border-t border-white/[0.08] text-xs font-bold text-brand-champagne hover:text-white flex items-center justify-between min-h-[40px] transition-colors">
               <span>Fiyat & Randevu Sor</span>
               <span>→</span>
             </a>
@@ -632,20 +774,20 @@
               loading="lazy" 
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
-            <span class="absolute top-3 sm:top-4 left-3 sm:left-4 px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full bg-black/70 backdrop-blur-md text-[10px] sm:text-[11px] font-bold text-brand-goldLight border border-white/10">
+            <span class="absolute top-2.5 sm:top-4 left-2.5 sm:left-4 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full bg-black/75 backdrop-blur-md text-[9px] sm:text-[11px] font-bold text-brand-goldLight border border-white/10">
               Gelin Koleksiyonu
             </span>
           </div>
-          <div class="p-5 sm:p-6 flex flex-col flex-grow justify-between">
+          <div class="p-4 sm:p-6 flex flex-col flex-grow justify-between">
             <div>
-              <h3 class="text-base sm:text-lg font-bold font-serif-luxury text-white group-hover:text-brand-champagne transition-colors">
+              <h3 class="text-sm sm:text-lg font-bold font-serif-luxury text-white group-hover:text-brand-champagne transition-colors">
                 Gelin Başı & Özel Gün
               </h3>
-              <p class="text-zinc-400 text-xs sm:text-sm mt-2 leading-relaxed">
+              <p class="text-zinc-400 text-xs sm:text-sm mt-1.5 sm:mt-2 leading-relaxed">
                 Düğün ve nişan anlarınız için prova destekli, gece boyunca bozulmayan heykelsi topuz ve dalgalı tasarımlar.
               </p>
             </div>
-            <a href="https://wa.me/905526856907?text=Merhaba,%20Gelin%20Ba%C5%9F%C4%B1%20ve%20%C3%96zel%20G%C3%BCn%20tasar%C4%B1mlar%C4%B1%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" class="mt-5 sm:mt-6 pt-3 sm:pt-4 border-t border-white/[0.08] text-xs font-bold text-brand-champagne hover:text-white flex items-center justify-between transition-colors">
+            <a href="https://wa.me/905526856907?text=Merhaba,%20Gelin%20Ba%C5%9F%C4%B1%20ve%20%C3%96zel%20G%C3%BCn%20tasar%C4%B1mlar%C4%B1%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" class="mt-4 sm:mt-6 pt-3 sm:pt-4 border-t border-white/[0.08] text-xs font-bold text-brand-champagne hover:text-white flex items-center justify-between min-h-[40px] transition-colors">
               <span>Fiyat & Randevu Sor</span>
               <span>→</span>
             </a>
@@ -663,20 +805,20 @@
               loading="lazy" 
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
-            <span class="absolute top-3 sm:top-4 left-3 sm:left-4 px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full bg-black/70 backdrop-blur-md text-[10px] sm:text-[11px] font-bold text-brand-goldLight border border-white/10">
+            <span class="absolute top-2.5 sm:top-4 left-2.5 sm:left-4 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full bg-black/75 backdrop-blur-md text-[9px] sm:text-[11px] font-bold text-brand-goldLight border border-white/10">
               Yoğun Onarım
             </span>
           </div>
-          <div class="p-5 sm:p-6 flex flex-col flex-grow justify-between">
+          <div class="p-4 sm:p-6 flex flex-col flex-grow justify-between">
             <div>
-              <h3 class="text-base sm:text-lg font-bold font-serif-luxury text-white group-hover:text-brand-champagne transition-colors">
+              <h3 class="text-sm sm:text-lg font-bold font-serif-luxury text-white group-hover:text-brand-champagne transition-colors">
                 Keratin Botox & İpek Bakım
               </h3>
-              <p class="text-zinc-400 text-xs sm:text-sm mt-2 leading-relaxed">
+              <p class="text-zinc-400 text-xs sm:text-sm mt-1.5 sm:mt-2 leading-relaxed">
                 Yıpranmış saç liflerini aminoasitlerle dolduran, 4-6 ay kalıcı elektriklenme önleyici pürüzsüzlük terapisi.
               </p>
             </div>
-            <a href="https://wa.me/905526856907?text=Merhaba,%20Keratin%20Botox%20ve%20%C4%B0pek%20Bak%C4%B1m%20hakk%C4%B1nda%20fiyat%20ve%20randevu%20bilgisi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" class="mt-5 sm:mt-6 pt-3 sm:pt-4 border-t border-white/[0.08] text-xs font-bold text-brand-champagne hover:text-white flex items-center justify-between transition-colors">
+            <a href="https://wa.me/905526856907?text=Merhaba,%20Keratin%20Botox%20ve%20%C4%B0pek%20Bak%C4%B1m%20hakk%C4%B1nda%20fiyat%20ve%20randevu%20bilgisi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" class="mt-4 sm:mt-6 pt-3 sm:pt-4 border-t border-white/[0.08] text-xs font-bold text-brand-champagne hover:text-white flex items-center justify-between min-h-[40px] transition-colors">
               <span>Fiyat & Randevu Sor</span>
               <span>→</span>
             </a>
@@ -694,20 +836,20 @@
               loading="lazy" 
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
-            <span class="absolute top-3 sm:top-4 left-3 sm:left-4 px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full bg-black/70 backdrop-blur-md text-[10px] sm:text-[11px] font-bold text-brand-goldLight border border-white/10">
+            <span class="absolute top-2.5 sm:top-4 left-2.5 sm:left-4 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full bg-black/75 backdrop-blur-md text-[9px] sm:text-[11px] font-bold text-brand-goldLight border border-white/10">
               Dolgunluk & Uzunluk
             </span>
           </div>
-          <div class="p-5 sm:p-6 flex flex-col flex-grow justify-between">
+          <div class="p-4 sm:p-6 flex flex-col flex-grow justify-between">
             <div>
-              <h3 class="text-base sm:text-lg font-bold font-serif-luxury text-white group-hover:text-brand-champagne transition-colors">
+              <h3 class="text-sm sm:text-lg font-bold font-serif-luxury text-white group-hover:text-brand-champagne transition-colors">
                 Mikro Kaynak & Yoğunlaştırma
               </h3>
-              <p class="text-zinc-400 text-xs sm:text-sm mt-2 leading-relaxed">
+              <p class="text-zinc-400 text-xs sm:text-sm mt-1.5 sm:mt-2 leading-relaxed">
                 Hissedilmeyen nano bağlantı kapsülleri ile %100 doğal saç uzatma ve hacim kazandırma sanatı.
               </p>
             </div>
-            <a href="https://wa.me/905526856907?text=Merhaba,%20Mikro%20Kaynak%20ve%20Yo%C4%9Funla%C5%9Ft%C4%B1rma%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" class="mt-5 sm:mt-6 pt-3 sm:pt-4 border-t border-white/[0.08] text-xs font-bold text-brand-champagne hover:text-white flex items-center justify-between transition-colors">
+            <a href="https://wa.me/905526856907?text=Merhaba,%20Mikro%20Kaynak%20ve%20Yo%C4%9Funla%C5%9Ft%C4%B1rma%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" class="mt-4 sm:mt-6 pt-3 sm:pt-4 border-t border-white/[0.08] text-xs font-bold text-brand-champagne hover:text-white flex items-center justify-between min-h-[40px] transition-colors">
               <span>Fiyat & Randevu Sor</span>
               <span>→</span>
             </a>
@@ -715,15 +857,26 @@
         </article>
 
       </div>
+
+      <!-- Mobile Horizontal Scroll Indicator Prompt -->
+      <div class="sm:hidden flex items-center justify-between pt-2 px-1 text-[11px] text-brand-champagne/80 font-medium">
+        <span class="flex items-center gap-1.5">
+          <span>👈</span>
+          <span>Sağa / sola kaydırın (4 Hizmet)</span>
+          <span>👉</span>
+        </span>
+        <span class="text-[10px] text-zinc-500 font-mono tracking-wider">KAYDIRILABİLİR</span>
+      </div>
+
     </section>
 
     <!-- ========================================================================= -->
-    <!-- 4. INSTAGRAM TARZI ÇALIŞMA GALERİSİ (6-PHOTO AESTHETIC GRID)              -->
+    <!-- 4. INSTAGRAM TARZI ÇALIŞMA GALERİSİ (2-COLUMN AESTHETIC GRID ON MOBILE)   -->
     <!-- ========================================================================= -->
-    <section id="portfolyo" class="py-16 sm:py-20 bg-[#141417] border-t border-b border-white/[0.06] relative">
+    <section id="portfolyo" class="py-12 sm:py-20 bg-[#141417] border-t border-b border-white/[0.06] relative">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 sm:mb-12 gap-3 reveal-on-scroll">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-6 sm:mb-12 gap-2 sm:gap-3 reveal-on-scroll">
           <div>
             <span class="text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] text-brand-champagne">Görsel Günlük</span>
             <h2 class="text-2xl sm:text-4xl font-bold font-serif-luxury text-white mt-1 sm:mt-2">
@@ -736,7 +889,7 @@
           </a>
         </div>
 
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-6">
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-2.5 sm:gap-6">
           
           <!-- Photo 1: Hacimli Fön & Şekillendirme -->
           <div class="relative aspect-square rounded-xl sm:rounded-2xl overflow-hidden group luxury-card p-1 reveal-on-scroll">
@@ -848,26 +1001,26 @@
     <!-- ========================================================================= -->
     <!-- 5. NEDEN THREEBROTHERS? (3 COMPACT TRUST CARDS)                           -->
     <!-- ========================================================================= -->
-    <section id="neden-biz" class="py-16 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="neden-biz" class="py-12 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <div class="text-center max-w-xl mx-auto mb-10 sm:mb-14 reveal-on-scroll">
+      <div class="text-center max-w-xl mx-auto mb-8 sm:mb-14 reveal-on-scroll">
         <span class="text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] text-brand-champagne">Ayrıcalıklarımız</span>
         <h2 class="text-2xl sm:text-4xl font-bold font-serif-luxury text-white mt-1 sm:mt-2">
           Neden ThreeBrothers?
         </h2>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
         
         <!-- Trust 1 -->
-        <div class="luxury-card rounded-2xl sm:rounded-3xl p-6 sm:p-8 flex flex-col justify-between reveal-on-scroll">
-          <div class="w-10 sm:w-12 h-10 sm:h-12 rounded-xl sm:rounded-2xl bg-brand-gold/10 border border-brand-gold/20 flex items-center justify-center text-brand-champagne mb-5 sm:mb-6">
+        <div class="luxury-card rounded-2xl sm:rounded-3xl p-5 sm:p-8 flex flex-col justify-between reveal-on-scroll">
+          <div class="w-10 sm:w-12 h-10 sm:h-12 rounded-xl sm:rounded-2xl bg-brand-gold/10 border border-brand-gold/20 flex items-center justify-center text-brand-champagne mb-4 sm:mb-6">
             <svg class="w-5 sm:w-6 h-5 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
           </div>
           <div>
-            <h3 class="text-base sm:text-lg font-bold font-serif-luxury text-white mb-2">Tam Vaktinde Randevu</h3>
+            <h3 class="text-base sm:text-lg font-bold font-serif-luxury text-white mb-1.5 sm:mb-2">Tam Vaktinde Randevu</h3>
             <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">
               Misafirlerimize uyguladığımız sıfır bekleme ve ayrılmış özel koltuk protokolü ile zamanınıza saygı duyuyoruz.
             </p>
@@ -875,14 +1028,14 @@
         </div>
 
         <!-- Trust 2 -->
-        <div class="luxury-card rounded-2xl sm:rounded-3xl p-6 sm:p-8 flex flex-col justify-between reveal-on-scroll">
-          <div class="w-10 sm:w-12 h-10 sm:h-12 rounded-xl sm:rounded-2xl bg-brand-gold/10 border border-brand-gold/20 flex items-center justify-center text-brand-champagne mb-5 sm:mb-6">
+        <div class="luxury-card rounded-2xl sm:rounded-3xl p-5 sm:p-8 flex flex-col justify-between reveal-on-scroll">
+          <div class="w-10 sm:w-12 h-10 sm:h-12 rounded-xl sm:rounded-2xl bg-brand-gold/10 border border-brand-gold/20 flex items-center justify-center text-brand-champagne mb-4 sm:mb-6">
             <svg class="w-5 sm:w-6 h-5 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
             </svg>
           </div>
           <div>
-            <h3 class="text-base sm:text-lg font-bold font-serif-luxury text-white mb-2">Kişiye Özel Renk Analizi</h3>
+            <h3 class="text-base sm:text-lg font-bold font-serif-luxury text-white mb-1.5 sm:mb-2">Kişiye Özel Renk Analizi</h3>
             <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">
               Ten renginiz, göz renginiz ve saç geçmişiniz analiz edilerek size en yakışacak özel ton karışımı hazırlanır.
             </p>
@@ -890,14 +1043,14 @@
         </div>
 
         <!-- Trust 3 -->
-        <div class="luxury-card rounded-2xl sm:rounded-3xl p-6 sm:p-8 flex flex-col justify-between reveal-on-scroll">
-          <div class="w-10 sm:w-12 h-10 sm:h-12 rounded-xl sm:rounded-2xl bg-brand-gold/10 border border-brand-gold/20 flex items-center justify-center text-brand-champagne mb-5 sm:mb-6">
+        <div class="luxury-card rounded-2xl sm:rounded-3xl p-5 sm:p-8 flex flex-col justify-between reveal-on-scroll">
+          <div class="w-10 sm:w-12 h-10 sm:h-12 rounded-xl sm:rounded-2xl bg-brand-gold/10 border border-brand-gold/20 flex items-center justify-center text-brand-champagne mb-4 sm:mb-6">
             <svg class="w-5 sm:w-6 h-5 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
             </svg>
           </div>
           <div>
-            <h3 class="text-base sm:text-lg font-bold font-serif-luxury text-white mb-2">%100 Orijinal Premium Ürünler</h3>
+            <h3 class="text-base sm:text-lg font-bold font-serif-luxury text-white mb-1.5 sm:mb-2">%100 Orijinal Premium Ürünler</h3>
             <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">
               Saç bağlarını koruyan sertifikalı açıcılar ve dünyaca kabul görmüş profesyonel bakım serileri kullanılır.
             </p>
@@ -910,20 +1063,20 @@
     <!-- ========================================================================= -->
     <!-- 6. 7/24 ONLINE RANDEVU & ÖN DANIŞMANLIK FORMU                             -->
     <!-- ========================================================================= -->
-    <section id="randevu" class="py-16 sm:py-24 bg-gradient-to-b from-[#0F0F11] to-[#141417] border-t border-b border-white/[0.06] relative">
+    <section id="randevu" class="py-12 sm:py-24 bg-gradient-to-b from-[#0F0F11] to-[#141417] border-t border-b border-white/[0.06] relative">
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        <div class="text-center max-w-xl mx-auto mb-10 sm:mb-12 reveal-on-scroll">
+        <div class="text-center max-w-xl mx-auto mb-8 sm:mb-12 reveal-on-scroll">
           <span class="text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] text-brand-champagne">Hızlı & Kolay Randevu</span>
-          <h2 class="text-2xl sm:text-4xl font-bold font-serif-luxury text-white mt-1.5 sm:mt-2">
+          <h2 class="text-2xl sm:text-4xl font-bold font-serif-luxury text-white mt-1 sm:mt-2">
             7/24 Online Randevu Formu
           </h2>
-          <p class="text-zinc-400 text-xs sm:text-sm mt-2 sm:mt-3">
+          <p class="text-zinc-400 text-xs sm:text-sm mt-1.5 sm:mt-3">
             Bilgilerinizi doldurun, ekibimiz size özel randevu saatini anında WhatsApp üzerinden teyit etsin.
           </p>
         </div>
 
-        <div class="luxury-card rounded-2xl sm:rounded-3xl p-6 sm:p-10 border border-white/10 bg-[#121215]/90 shadow-2xl reveal-on-scroll">
+        <div class="luxury-card rounded-2xl sm:rounded-3xl p-5 sm:p-10 border border-white/10 bg-[#121215]/90 shadow-2xl reveal-on-scroll">
           <form id="onlineBookingForm" class="space-y-4 sm:space-y-6">
             
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
@@ -936,7 +1089,7 @@
                   name="name" 
                   required 
                   placeholder="Örn: Ayşe Yılmaz" 
-                  class="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white placeholder-zinc-500 text-xs sm:text-sm focus:outline-none focus:border-brand-gold transition-colors"
+                  class="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white placeholder-zinc-500 text-sm focus:outline-none focus:border-brand-gold transition-colors min-h-[46px]"
                 />
               </div>
 
@@ -949,7 +1102,7 @@
                   name="phone" 
                   required 
                   placeholder="Örn: 0552 685 69 07" 
-                  class="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white placeholder-zinc-500 text-xs sm:text-sm focus:outline-none focus:border-brand-gold transition-colors"
+                  class="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white placeholder-zinc-500 text-sm focus:outline-none focus:border-brand-gold transition-colors min-h-[46px]"
                 />
               </div>
             </div>
@@ -962,7 +1115,7 @@
                   id="bookService" 
                   name="service" 
                   required
-                  class="w-full px-4 py-3 rounded-xl bg-[#1a1a1e] border border-white/10 text-white text-xs sm:text-sm focus:outline-none focus:border-brand-gold transition-colors"
+                  class="w-full px-4 py-3 rounded-xl bg-[#1a1a1e] border border-white/10 text-white text-sm focus:outline-none focus:border-brand-gold transition-colors min-h-[46px]"
                 >
                   <option value="Ombre & Blonde Açma">Ombre & Blonde Açma</option>
                   <option value="Sombre / Balyaj">Sombre / Balyaj</option>
@@ -983,7 +1136,7 @@
                   id="bookDate" 
                   name="date" 
                   required 
-                  class="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white text-xs sm:text-sm focus:outline-none focus:border-brand-gold transition-colors"
+                  class="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white text-sm focus:outline-none focus:border-brand-gold transition-colors min-h-[46px]"
                 />
               </div>
 
@@ -994,7 +1147,7 @@
                   id="bookTime" 
                   name="time" 
                   required
-                  class="w-full px-4 py-3 rounded-xl bg-[#1a1a1e] border border-white/10 text-white text-xs sm:text-sm focus:outline-none focus:border-brand-gold transition-colors"
+                  class="w-full px-4 py-3 rounded-xl bg-[#1a1a1e] border border-white/10 text-white text-sm focus:outline-none focus:border-brand-gold transition-colors min-h-[46px]"
                 >
                   <option value="09:00 - 12:00 (Sabah)">09:00 - 12:00 (Sabah)</option>
                   <option value="12:00 - 15:00 (Öğle)">12:00 - 15:00 (Öğle)</option>
@@ -1012,14 +1165,14 @@
                 name="notes" 
                 rows="3" 
                 placeholder="Örn: Saçımda daha önce kına/boya var, platin sarı geçişi istiyorum..."
-                class="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white placeholder-zinc-500 text-xs sm:text-sm focus:outline-none focus:border-brand-gold transition-colors resize-none"
+                class="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white placeholder-zinc-500 text-sm focus:outline-none focus:border-brand-gold transition-colors resize-none"
               ></textarea>
             </div>
 
             <!-- Submit Button -->
             <button 
               type="submit" 
-              class="w-full py-4 rounded-full btn-gold-glow text-black font-bold text-sm sm:text-base flex items-center justify-center gap-2 shadow-xl hover:scale-[1.01] active:scale-[0.99] transition-all"
+              class="w-full py-4 min-h-[48px] rounded-full btn-gold-glow text-black font-bold text-sm sm:text-base flex items-center justify-center gap-2 shadow-xl hover:scale-[1.01] active:scale-[0.99] transition-all"
             >
               <span>✨ Randevu Talebini WhatsApp ile İlet</span>
               <span>→</span>
@@ -1038,31 +1191,31 @@
     <!-- ========================================================================= -->
     <!-- 7. GOOGLE YORUMLAR WIDGET'I (BADGE + SLIDER / CAROUSEL)                   -->
     <!-- ========================================================================= -->
-    <section id="yorumlar" class="py-16 sm:py-24 bg-[#141417] border-t border-b border-white/[0.06] relative overflow-hidden">
+    <section id="yorumlar" class="py-12 sm:py-24 bg-[#141417] border-t border-b border-white/[0.06] relative overflow-hidden">
       
       <!-- Subtle ambient glow in background -->
-      <div class="glow-sphere w-[400px] sm:w-[600px] h-[400px] sm:h-[600px] bg-brand-gold/10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+      <div class="glow-sphere w-[350px] sm:w-[600px] h-[350px] sm:h-[600px] bg-brand-gold/10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
 
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         <!-- Section Title -->
-        <div class="text-center max-w-xl mx-auto mb-10 sm:mb-14 reveal-on-scroll">
+        <div class="text-center max-w-xl mx-auto mb-8 sm:mb-14 reveal-on-scroll">
           <span class="text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] text-brand-champagne">Misafir Deneyimleri</span>
-          <h2 class="text-2xl sm:text-4xl font-bold font-serif-luxury text-white mt-1.5 sm:mt-2">
+          <h2 class="text-2xl sm:text-4xl font-bold font-serif-luxury text-white mt-1 sm:mt-2">
             Doğrulanmış Google Yorumları
           </h2>
         </div>
 
         <!-- Main Widget Container: Grid on Desktop (Left Badge 35%, Right Slider 65%) -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-stretch reveal-on-scroll">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-8 items-stretch reveal-on-scroll">
           
           <!-- 1. SOL ROZET KARTI (lg:col-span-4) -->
-          <div class="lg:col-span-4 luxury-card rounded-2xl sm:rounded-3xl p-6 sm:p-8 flex flex-col justify-between border border-white/10 bg-[#121215]/95 shadow-[0_15px_40px_rgba(0,0,0,0.5)]">
+          <div class="lg:col-span-4 luxury-card rounded-2xl sm:rounded-3xl p-5 sm:p-8 flex flex-col justify-between border border-white/10 bg-[#121215]/95 shadow-[0_15px_40px_rgba(0,0,0,0.5)]">
             
             <div>
               <!-- Top Row: Store Icon + Title -->
-              <div class="flex items-center gap-3.5 mb-5">
-                <div class="w-12 h-12 rounded-2xl bg-[#1a73e8] flex items-center justify-center text-white shadow-lg shadow-blue-500/25 shrink-0">
+              <div class="flex items-center gap-3.5 mb-4 sm:mb-5">
+                <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-[#1a73e8] flex items-center justify-center text-white shadow-lg shadow-blue-500/25 shrink-0">
                   <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
                     <path d="M20 4H4v2h16V4zm1 10v-2l-1-5H4l-1 5v2h1v6h10v-6h4v6h2v-6h1zm-9 4H6v-4h6v4z"/>
                   </svg>
@@ -1076,7 +1229,7 @@
               </div>
 
               <!-- Rating & Stars -->
-              <div class="flex items-baseline gap-3 mb-2">
+              <div class="flex items-baseline gap-3 mb-1.5 sm:mb-2">
                 <span class="text-3xl sm:text-4xl font-extrabold text-white font-mono">5.0</span>
                 <div class="flex items-center text-[#FBBC05] gap-1 text-lg sm:text-xl" aria-label="5 yıldız">
                   <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
@@ -1089,7 +1242,7 @@
               </p>
 
               <!-- Powered by Google Badge -->
-              <div class="flex items-center gap-1.5 text-[11px] text-zinc-500 mb-6">
+              <div class="flex items-center gap-1.5 text-[11px] text-zinc-500 mb-5 sm:mb-6">
                 <span>powered by</span>
                 <span class="font-semibold text-zinc-400 flex items-center gap-0.5">
                   <span class="text-[#4285F4]">G</span><span class="text-[#EA4335]">o</span><span class="text-[#FBBC05]">o</span><span class="text-[#4285F4]">g</span><span class="text-[#34A853]">l</span><span class="text-[#EA4335]">e</span>
@@ -1102,7 +1255,7 @@
               href="https://search.google.com/local/writereview?placeid=ChIJewW1RSBZwxQRng2U9jWTu-s" 
               target="_blank" 
               rel="noopener noreferrer" 
-              class="w-full py-3.5 px-4 rounded-xl bg-[#1a73e8] hover:bg-[#1557b0] text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2.5 shadow-lg shadow-blue-500/25 transition-all hover:scale-[1.02] active:scale-95 text-center"
+              class="w-full py-3.5 min-h-[46px] px-4 rounded-xl bg-[#1a73e8] hover:bg-[#1557b0] text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2.5 shadow-lg shadow-blue-500/25 transition-all hover:scale-[1.02] active:scale-95 text-center"
             >
               <svg class="w-4 h-4 shrink-0 bg-white rounded-full p-[1px]" viewBox="0 0 24 24">
                 <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/>
@@ -1116,11 +1269,11 @@
           </div>
 
           <!-- 2. SAĞDAKİ SLIDER / YORUM KARTLARI (lg:col-span-8) -->
-          <div class="lg:col-span-8 luxury-card rounded-2xl sm:rounded-3xl p-6 sm:p-8 flex flex-col justify-between border border-white/10 bg-[#121215]/95 shadow-[0_15px_40px_rgba(0,0,0,0.5)] relative overflow-hidden">
+          <div class="lg:col-span-8 luxury-card rounded-2xl sm:rounded-3xl p-5 sm:p-8 flex flex-col justify-between border border-white/10 bg-[#121215]/95 shadow-[0_15px_40px_rgba(0,0,0,0.5)] relative overflow-hidden">
             
             <!-- Large Decorative Quote in background -->
-            <div class="absolute top-6 right-6 sm:top-8 sm:right-8 text-brand-champagne/10 pointer-events-none select-none" aria-hidden="true">
-              <svg class="w-16 h-16 sm:w-20 sm:h-20 fill-current" viewBox="0 0 24 24">
+            <div class="absolute top-4 right-4 sm:top-8 sm:right-8 text-brand-champagne/10 pointer-events-none select-none" aria-hidden="true">
+              <svg class="w-14 h-14 sm:w-20 sm:h-20 fill-current" viewBox="0 0 24 24">
                 <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
               </svg>
             </div>
@@ -1130,11 +1283,11 @@
               <div id="reviews-track" class="flex transition-transform duration-500 ease-out will-change-transform" style="transform: translateX(0%);">
                 
                 <!-- Review 1: Başak -->
-                <div class="w-full shrink-0 flex flex-col justify-between min-h-[220px] sm:min-h-[200px] px-1 sm:px-2">
+                <div class="w-full shrink-0 flex flex-col justify-between min-h-[200px] px-1 sm:px-2">
                   <div>
-                    <div class="flex items-center justify-between mb-3.5">
+                    <div class="flex items-center justify-between mb-3">
                       <div class="flex items-center gap-3">
-                        <div class="w-10 sm:w-11 h-10 sm:h-11 rounded-full bg-gradient-to-br from-pink-500 to-rose-700 flex items-center justify-center font-bold text-xs sm:text-sm text-white shadow-md shrink-0">
+                        <div class="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-gradient-to-br from-pink-500 to-rose-700 flex items-center justify-center font-bold text-xs sm:text-sm text-white shadow-md shrink-0">
                           B
                         </div>
                         <div>
@@ -1147,7 +1300,7 @@
                               <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.26 6.58l4.02 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
                             </svg>
                           </div>
-                          <span class="text-[11px] text-zinc-400">3 yorum · 1 fotoğraf • bir ay önce</span>
+                          <span class="text-[10px] sm:text-[11px] text-zinc-400">3 yorum · 1 fotoğraf • bir ay önce</span>
                         </div>
                       </div>
                       <div class="flex items-center text-[#FBBC05] gap-0.5 text-xs sm:text-sm">
@@ -1155,23 +1308,23 @@
                       </div>
                     </div>
 
-                    <blockquote class="text-zinc-200 text-xs sm:text-sm leading-relaxed italic mb-3">
+                    <blockquote class="text-zinc-200 text-xs sm:text-sm leading-relaxed italic mb-2.5">
                       "Bugüne kadar gittiğim en iyi kuaför deneyimlerinden birini yaşadım. Salonun atmosferi çok sıcak ve samimi, tüm ekip son derece güler yüzlü, ilgili ve profesyonel. Özellikle Bilge Hanım’a ayrı bir teşekkür etmek istiyorum. İşini büyük bir özenle yapan harika bir uzman. Sonuç tam hayal ettiğim gibi oldu, gönül rahatlığıyla tavsiye ederim."
                     </blockquote>
 
                     <!-- Owner Response -->
-                    <div class="mt-2.5 p-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06] text-[11px] text-zinc-400">
+                    <div class="mt-2 p-2 sm:p-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06] text-[10px] sm:text-[11px] text-zinc-400">
                       <span class="font-bold text-brand-champagne">İşletme Sahibinin Yanıtı:</span> "Değerli yorumunuz ve bizi tercih ettiğiniz için çok teşekkür ederiz. Memnuniyetiniz bizim için en büyük motivasyon kaynağı. Sizleri tekrar ağırlamaktan mutluluk duyarız."
                     </div>
                   </div>
                 </div>
 
                 <!-- Review 2: Eda Erbey -->
-                <div class="w-full shrink-0 flex flex-col justify-between min-h-[220px] sm:min-h-[200px] px-1 sm:px-2">
+                <div class="w-full shrink-0 flex flex-col justify-between min-h-[200px] px-1 sm:px-2">
                   <div>
-                    <div class="flex items-center justify-between mb-3.5">
+                    <div class="flex items-center justify-between mb-3">
                       <div class="flex items-center gap-3">
-                        <div class="w-10 sm:w-11 h-10 sm:h-11 rounded-full bg-gradient-to-br from-amber-500 to-yellow-600 flex items-center justify-center font-bold text-xs sm:text-sm text-black shadow-md shrink-0">
+                        <div class="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-gradient-to-br from-amber-500 to-yellow-600 flex items-center justify-center font-bold text-xs sm:text-sm text-black shadow-md shrink-0">
                           EE
                         </div>
                         <div>
@@ -1184,7 +1337,7 @@
                               <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.26 6.58l4.02 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
                             </svg>
                           </div>
-                          <span class="text-[11px] text-zinc-400">3 yorum · 12 fotoğraf • 9 ay önce</span>
+                          <span class="text-[10px] sm:text-[11px] text-zinc-400">3 yorum · 12 fotoğraf • 9 ay önce</span>
                         </div>
                       </div>
                       <div class="flex items-center text-[#FBBC05] gap-0.5 text-xs sm:text-sm">
@@ -1192,23 +1345,23 @@
                       </div>
                     </div>
 
-                    <blockquote class="text-zinc-200 text-xs sm:text-sm leading-relaxed italic mb-3">
+                    <blockquote class="text-zinc-200 text-xs sm:text-sm leading-relaxed italic mb-2.5">
                       "Yaklaşık üç yıldır bu kuaföre gidiyorum ve başka bir yere gitmeyi hiç düşünmedim. Saç kesimi, boya, cila, balyaj gibi tüm işlemlerimi burada yaptırıyorum ve her seferinde sonuçtan çok memnun kalıyorum. Emre, İsa ve Hüseyin Bey güler yüzlü ve işlerini büyük bir özenle yapıyor. Gönül rahatlığıyla tavsiye ederim ✨🌸"
                     </blockquote>
 
                     <!-- Owner Response -->
-                    <div class="mt-2.5 p-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06] text-[11px] text-zinc-400">
+                    <div class="mt-2 p-2 sm:p-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06] text-[10px] sm:text-[11px] text-zinc-400">
                       <span class="font-bold text-brand-champagne">İşletme Sahibinin Yanıtı:</span> "Güzel geri bildiriminiz için teşekkür ederim, sizin gibi müşterilere sahip olmak büyük şans. ✨🙏😊"
                     </div>
                   </div>
                 </div>
 
                 <!-- Review 3: Saliha Bahar -->
-                <div class="w-full shrink-0 flex flex-col justify-between min-h-[220px] sm:min-h-[200px] px-1 sm:px-2">
+                <div class="w-full shrink-0 flex flex-col justify-between min-h-[200px] px-1 sm:px-2">
                   <div>
-                    <div class="flex items-center justify-between mb-3.5">
+                    <div class="flex items-center justify-between mb-3">
                       <div class="flex items-center gap-3">
-                        <div class="w-10 sm:w-11 h-10 sm:h-11 rounded-full bg-gradient-to-br from-purple-500 to-indigo-700 flex items-center justify-center font-bold text-xs sm:text-sm text-white shadow-md shrink-0">
+                        <div class="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-gradient-to-br from-purple-500 to-indigo-700 flex items-center justify-center font-bold text-xs sm:text-sm text-white shadow-md shrink-0">
                           SB
                         </div>
                         <div>
@@ -1221,7 +1374,7 @@
                               <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.26 6.58l4.02 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
                             </svg>
                           </div>
-                          <span class="text-[11px] text-zinc-400">1 yorum · 1 fotoğraf • 4 ay önce</span>
+                          <span class="text-[10px] sm:text-[11px] text-zinc-400">1 yorum · 1 fotoğraf • 4 ay önce</span>
                         </div>
                       </div>
                       <div class="flex items-center text-[#FBBC05] gap-0.5 text-xs sm:text-sm">
@@ -1229,23 +1382,23 @@
                       </div>
                     </div>
 
-                    <blockquote class="text-zinc-200 text-xs sm:text-sm leading-relaxed italic mb-3">
+                    <blockquote class="text-zinc-200 text-xs sm:text-sm leading-relaxed italic mb-2.5">
                       "Sürekli gittiğim ve çok memnun kaldığım bir kuaför.. İlgilerine çok ama çok teşekkür ederimm🫶🫶"
                     </blockquote>
 
                     <!-- Owner Response -->
-                    <div class="mt-2.5 p-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06] text-[11px] text-zinc-400">
+                    <div class="mt-2 p-2 sm:p-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06] text-[10px] sm:text-[11px] text-zinc-400">
                       <span class="font-bold text-brand-champagne">İşletme Sahibinin Yanıtı:</span> "Değerli yorumunuz ve bizi tercih ettiğiniz için çok teşekkür ederiz. Memnuniyetiniz bizim için en büyük motivasyon kaynağı."
                     </div>
                   </div>
                 </div>
 
                 <!-- Review 4: Bermal Kabamaklı -->
-                <div class="w-full shrink-0 flex flex-col justify-between min-h-[220px] sm:min-h-[200px] px-1 sm:px-2">
+                <div class="w-full shrink-0 flex flex-col justify-between min-h-[200px] px-1 sm:px-2">
                   <div>
-                    <div class="flex items-center justify-between mb-3.5">
+                    <div class="flex items-center justify-between mb-3">
                       <div class="flex items-center gap-3">
-                        <div class="w-10 sm:w-11 h-10 sm:h-11 rounded-full bg-gradient-to-br from-blue-500 to-cyan-700 flex items-center justify-center font-bold text-xs sm:text-sm text-white shadow-md shrink-0">
+                        <div class="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-gradient-to-br from-blue-500 to-cyan-700 flex items-center justify-center font-bold text-xs sm:text-sm text-white shadow-md shrink-0">
                           BK
                         </div>
                         <div>
@@ -1258,7 +1411,7 @@
                               <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.26 6.58l4.02 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
                             </svg>
                           </div>
-                          <span class="text-[11px] text-zinc-400">3 yorum • 2 ay önce</span>
+                          <span class="text-[10px] sm:text-[11px] text-zinc-400">3 yorum • 2 ay önce</span>
                         </div>
                       </div>
                       <div class="flex items-center text-[#FBBC05] gap-0.5 text-xs sm:text-sm">
@@ -1266,23 +1419,23 @@
                       </div>
                     </div>
 
-                    <blockquote class="text-zinc-200 text-xs sm:text-sm leading-relaxed italic mb-3">
+                    <blockquote class="text-zinc-200 text-xs sm:text-sm leading-relaxed italic mb-2.5">
                       "Buraya taşındığımdan bu yana denemediğim kuaför kalmamıştı sonunda burayı da denemeye karar verdim iyi ki gelmişim bir daha başka yerin camından bakmam. O kadar iyi bir kuaför ki tamamen saçın ihtiyacına göre hareket ediyorlar. Paketli saçımdan kızıla sonra tekrar platine sıfır kopmayla çevirdiler. Kesinlikle şiddetle tavsiye ederim 👊🏻❤️"
                     </blockquote>
 
                     <!-- Owner Response -->
-                    <div class="mt-2.5 p-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06] text-[11px] text-zinc-400">
+                    <div class="mt-2 p-2 sm:p-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06] text-[10px] sm:text-[11px] text-zinc-400">
                       <span class="font-bold text-brand-champagne">İşletme Sahibinin Yanıtı:</span> "Değerli yorumunuz ve bizi tercih ettiğiniz için çok teşekkür ederiz. Memnuniyetiniz bizim için en büyük motivasyon kaynağı."
                     </div>
                   </div>
                 </div>
 
                 <!-- Review 5: Hilal Doğan -->
-                <div class="w-full shrink-0 flex flex-col justify-between min-h-[220px] sm:min-h-[200px] px-1 sm:px-2">
+                <div class="w-full shrink-0 flex flex-col justify-between min-h-[200px] px-1 sm:px-2">
                   <div>
-                    <div class="flex items-center justify-between mb-3.5">
+                    <div class="flex items-center justify-between mb-3">
                       <div class="flex items-center gap-3">
-                        <div class="w-10 sm:w-11 h-10 sm:h-11 rounded-full bg-gradient-to-br from-emerald-500 to-teal-700 flex items-center justify-center font-bold text-xs sm:text-sm text-white shadow-md shrink-0">
+                        <div class="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-gradient-to-br from-emerald-500 to-teal-700 flex items-center justify-center font-bold text-xs sm:text-sm text-white shadow-md shrink-0">
                           HD
                         </div>
                         <div>
@@ -1295,7 +1448,7 @@
                               <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.26 6.58l4.02 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
                             </svg>
                           </div>
-                          <span class="text-[11px] text-zinc-400">5 yorum • bir ay önce</span>
+                          <span class="text-[10px] sm:text-[11px] text-zinc-400">5 yorum • bir ay önce</span>
                         </div>
                       </div>
                       <div class="flex items-center text-[#FBBC05] gap-0.5 text-xs sm:text-sm">
@@ -1303,23 +1456,23 @@
                       </div>
                     </div>
 
-                    <blockquote class="text-zinc-200 text-xs sm:text-sm leading-relaxed italic mb-3">
+                    <blockquote class="text-zinc-200 text-xs sm:text-sm leading-relaxed italic mb-2.5">
                       "Randevusuz gittim, ona rağmen kırmayıp aldılar. Yüz şeklime yakışan bir saç kesimi yaptılar. Profesyonel bir ekip olduğunu düşünüyorum. Tekrardan teşekkürler🌸"
                     </blockquote>
 
                     <!-- Owner Response -->
-                    <div class="mt-2.5 p-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06] text-[11px] text-zinc-400">
+                    <div class="mt-2 p-2 sm:p-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06] text-[10px] sm:text-[11px] text-zinc-400">
                       <span class="font-bold text-brand-champagne">İşletme Sahibinin Yanıtı:</span> "Değerli yorumunuz ve bizi tercih ettiğiniz için çok teşekkür ederiz. Memnuniyetiniz bizim için en büyük motivasyon kaynağı. ✨"
                     </div>
                   </div>
                 </div>
 
                 <!-- Review 6: Rümeysa Avcı -->
-                <div class="w-full shrink-0 flex flex-col justify-between min-h-[220px] sm:min-h-[200px] px-1 sm:px-2">
+                <div class="w-full shrink-0 flex flex-col justify-between min-h-[200px] px-1 sm:px-2">
                   <div>
-                    <div class="flex items-center justify-between mb-3.5">
+                    <div class="flex items-center justify-between mb-3">
                       <div class="flex items-center gap-3">
-                        <div class="w-10 sm:w-11 h-10 sm:h-11 rounded-full bg-gradient-to-br from-violet-500 to-purple-700 flex items-center justify-center font-bold text-xs sm:text-sm text-white shadow-md shrink-0">
+                        <div class="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-gradient-to-br from-violet-500 to-purple-700 flex items-center justify-center font-bold text-xs sm:text-sm text-white shadow-md shrink-0">
                           RA
                         </div>
                         <div>
@@ -1332,7 +1485,7 @@
                               <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.26 6.58l4.02 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
                             </svg>
                           </div>
-                          <span class="text-[11px] text-zinc-400">4 yorum • 2 ay önce</span>
+                          <span class="text-[10px] sm:text-[11px] text-zinc-400">4 yorum • 2 ay önce</span>
                         </div>
                       </div>
                       <div class="flex items-center text-[#FBBC05] gap-0.5 text-xs sm:text-sm">
@@ -1340,23 +1493,23 @@
                       </div>
                     </div>
 
-                    <blockquote class="text-zinc-200 text-xs sm:text-sm leading-relaxed italic mb-3">
+                    <blockquote class="text-zinc-200 text-xs sm:text-sm leading-relaxed italic mb-2.5">
                       "Her gittiğimde mutlulukla ayrıldığım kuaför :) Hepsi çok özenli, çok ilgili. Ve eklemek isterim Emre Beyin kestiği saç çok sağlıklı ve hızlı uzuyor :)"
                     </blockquote>
 
                     <!-- Owner Response -->
-                    <div class="mt-2.5 p-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06] text-[11px] text-zinc-400">
+                    <div class="mt-2 p-2 sm:p-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06] text-[10px] sm:text-[11px] text-zinc-400">
                       <span class="font-bold text-brand-champagne">İşletme Sahibinin Yanıtı:</span> "Teşekkür ederiz Rümeysa hanım güzel günlerde kullanın 🙏"
                     </div>
                   </div>
                 </div>
 
                 <!-- Review 7: Yağmur Evren -->
-                <div class="w-full shrink-0 flex flex-col justify-between min-h-[220px] sm:min-h-[200px] px-1 sm:px-2">
+                <div class="w-full shrink-0 flex flex-col justify-between min-h-[200px] px-1 sm:px-2">
                   <div>
-                    <div class="flex items-center justify-between mb-3.5">
+                    <div class="flex items-center justify-between mb-3">
                       <div class="flex items-center gap-3">
-                        <div class="w-10 sm:w-11 h-10 sm:h-11 rounded-full bg-gradient-to-br from-rose-500 to-amber-700 flex items-center justify-center font-bold text-xs sm:text-sm text-white shadow-md shrink-0">
+                        <div class="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-gradient-to-br from-rose-500 to-amber-700 flex items-center justify-center font-bold text-xs sm:text-sm text-white shadow-md shrink-0">
                           YE
                         </div>
                         <div>
@@ -1369,7 +1522,7 @@
                               <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.26 6.58l4.02 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
                             </svg>
                           </div>
-                          <span class="text-[11px] text-zinc-400">1 yorum • 2 ay önce</span>
+                          <span class="text-[10px] sm:text-[11px] text-zinc-400">1 yorum • 2 ay önce</span>
                         </div>
                       </div>
                       <div class="flex items-center text-[#FBBC05] gap-0.5 text-xs sm:text-sm">
@@ -1377,23 +1530,23 @@
                       </div>
                     </div>
 
-                    <blockquote class="text-zinc-200 text-xs sm:text-sm leading-relaxed italic mb-3">
+                    <blockquote class="text-zinc-200 text-xs sm:text-sm leading-relaxed italic mb-2.5">
                       "Saçlarım yanlış kuaför seçimi ile sap sarı ve aşırı yıpranmıştı saçlarımı o halden toparlayıp eskisi gibi sağlıklı ve parlak hale getirdiler bu yüzden aşırı memnunum saç kesimleride mükemmel Emre Bey ve Bilge hanımın ilgisine bayılıyorum ❤️❤️❤️"
                     </blockquote>
 
                     <!-- Owner Response -->
-                    <div class="mt-2.5 p-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06] text-[11px] text-zinc-400">
+                    <div class="mt-2 p-2 sm:p-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06] text-[10px] sm:text-[11px] text-zinc-400">
                       <span class="font-bold text-brand-champagne">İşletme Sahibinin Yanıtı:</span> "Değerli yorumunuz ve bizi tercih ettiğiniz için çok teşekkür ederiz. Memnuniyetiniz bizim için en büyük motivasyon kaynağı."
                     </div>
                   </div>
                 </div>
 
                 <!-- Review 8: Burcu Özen -->
-                <div class="w-full shrink-0 flex flex-col justify-between min-h-[220px] sm:min-h-[200px] px-1 sm:px-2">
+                <div class="w-full shrink-0 flex flex-col justify-between min-h-[200px] px-1 sm:px-2">
                   <div>
-                    <div class="flex items-center justify-between mb-3.5">
+                    <div class="flex items-center justify-between mb-3">
                       <div class="flex items-center gap-3">
-                        <div class="w-10 sm:w-11 h-10 sm:h-11 rounded-full bg-gradient-to-br from-amber-600 to-orange-700 flex items-center justify-center font-bold text-xs sm:text-sm text-white shadow-md shrink-0">
+                        <div class="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-gradient-to-br from-amber-600 to-orange-700 flex items-center justify-center font-bold text-xs sm:text-sm text-white shadow-md shrink-0">
                           BÖ
                         </div>
                         <div>
@@ -1406,7 +1559,7 @@
                               <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.26 6.58l4.02 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
                             </svg>
                           </div>
-                          <span class="text-[11px] text-zinc-400">2 yorum • 2 ay önce</span>
+                          <span class="text-[10px] sm:text-[11px] text-zinc-400">2 yorum • 2 ay önce</span>
                         </div>
                       </div>
                       <div class="flex items-center text-[#FBBC05] gap-0.5 text-xs sm:text-sm">
@@ -1414,23 +1567,23 @@
                       </div>
                     </div>
 
-                    <blockquote class="text-zinc-200 text-xs sm:text-sm leading-relaxed italic mb-3">
+                    <blockquote class="text-zinc-200 text-xs sm:text-sm leading-relaxed italic mb-2.5">
                       "Yaklaşık 3 yıldır aynı kuaföre gidiyorum yaptırdığım ombrelerin hepsi çok güzel oldu. Saç kesimleri de çok iyi kesimden sonra uzamayan saçım burada kestirdikten sonra uzamaya başladı."
                     </blockquote>
 
                     <!-- Owner Response -->
-                    <div class="mt-2.5 p-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06] text-[11px] text-zinc-400">
+                    <div class="mt-2 p-2 sm:p-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06] text-[10px] sm:text-[11px] text-zinc-400">
                       <span class="font-bold text-brand-champagne">İşletme Sahibinin Yanıtı:</span> "Teşekkür ederiz Burcu hanım güzel günlerde kullanın 🙏"
                     </div>
                   </div>
                 </div>
 
                 <!-- Review 9: Yıldız -->
-                <div class="w-full shrink-0 flex flex-col justify-between min-h-[220px] sm:min-h-[200px] px-1 sm:px-2">
+                <div class="w-full shrink-0 flex flex-col justify-between min-h-[200px] px-1 sm:px-2">
                   <div>
-                    <div class="flex items-center justify-between mb-3.5">
+                    <div class="flex items-center justify-between mb-3">
                       <div class="flex items-center gap-3">
-                        <div class="w-10 sm:w-11 h-10 sm:h-11 rounded-full bg-gradient-to-br from-teal-500 to-emerald-700 flex items-center justify-center font-bold text-xs sm:text-sm text-white shadow-md shrink-0">
+                        <div class="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-gradient-to-br from-teal-500 to-emerald-700 flex items-center justify-center font-bold text-xs sm:text-sm text-white shadow-md shrink-0">
                           Y
                         </div>
                         <div>
@@ -1443,7 +1596,7 @@
                               <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.26 6.58l4.02 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
                             </svg>
                           </div>
-                          <span class="text-[11px] text-zinc-400">2 yorum • bir ay önce</span>
+                          <span class="text-[10px] sm:text-[11px] text-zinc-400">2 yorum • bir ay önce</span>
                         </div>
                       </div>
                       <div class="flex items-center text-[#FBBC05] gap-0.5 text-xs sm:text-sm">
@@ -1451,23 +1604,23 @@
                       </div>
                     </div>
 
-                    <blockquote class="text-zinc-200 text-xs sm:text-sm leading-relaxed italic mb-3">
+                    <blockquote class="text-zinc-200 text-xs sm:text-sm leading-relaxed italic mb-2.5">
                       "İyi ki Hüseyin Bey’e saçımı emanet etmişim. Tam istediğim gibi oldu, hatta beklediğimden bile güzel. Hem çok ilgili hem de işini gerçekten severek yapıyor. Çok memnun kaldım, gönülden tavsiye ederim."
                     </blockquote>
 
                     <!-- Owner Response -->
-                    <div class="mt-2.5 p-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06] text-[11px] text-zinc-400">
+                    <div class="mt-2 p-2 sm:p-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06] text-[10px] sm:text-[11px] text-zinc-400">
                       <span class="font-bold text-brand-champagne">İşletme Sahibinin Yanıtı:</span> "Teşekkür ederiz Yıldız hanım güzel günlerde kullanmak dileğiyle 🙏"
                     </div>
                   </div>
                 </div>
 
                 <!-- Review 10: Suna Kaya -->
-                <div class="w-full shrink-0 flex flex-col justify-between min-h-[220px] sm:min-h-[200px] px-1 sm:px-2">
+                <div class="w-full shrink-0 flex flex-col justify-between min-h-[200px] px-1 sm:px-2">
                   <div>
-                    <div class="flex items-center justify-between mb-3.5">
+                    <div class="flex items-center justify-between mb-3">
                       <div class="flex items-center gap-3">
-                        <div class="w-10 sm:w-11 h-10 sm:h-11 rounded-full bg-gradient-to-br from-fuchsia-500 to-pink-700 flex items-center justify-center font-bold text-xs sm:text-sm text-white shadow-md shrink-0">
+                        <div class="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-gradient-to-br from-fuchsia-500 to-pink-700 flex items-center justify-center font-bold text-xs sm:text-sm text-white shadow-md shrink-0">
                           SK
                         </div>
                         <div>
@@ -1480,7 +1633,7 @@
                               <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.26 6.58l4.02 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
                             </svg>
                           </div>
-                          <span class="text-[11px] text-zinc-400">1 yorum · 2 fotoğraf • 3 ay önce</span>
+                          <span class="text-[10px] sm:text-[11px] text-zinc-400">1 yorum · 2 fotoğraf • 3 ay önce</span>
                         </div>
                       </div>
                       <div class="flex items-center text-[#FBBC05] gap-0.5 text-xs sm:text-sm">
@@ -1488,23 +1641,23 @@
                       </div>
                     </div>
 
-                    <blockquote class="text-zinc-200 text-xs sm:text-sm leading-relaxed italic mb-3">
+                    <blockquote class="text-zinc-200 text-xs sm:text-sm leading-relaxed italic mb-2.5">
                       "Bayıldımmm!! herkes çok ilgili ve güler yüzlüydü ne istediğinize önem veriyorlar hatta istediğinizden daha güzel sonuçlar alıyorsunuz. Saçım olaayyy💅🏻 tadını çıkarıyorum teşekkürler"
                     </blockquote>
 
                     <!-- Owner Response -->
-                    <div class="mt-2.5 p-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06] text-[11px] text-zinc-400">
+                    <div class="mt-2 p-2 sm:p-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06] text-[10px] sm:text-[11px] text-zinc-400">
                       <span class="font-bold text-brand-champagne">İşletme Sahibinin Yanıtı:</span> "Değerli yorumunuz ve bizi tercih ettiğiniz için çok teşekkür ederiz. Memnuniyetiniz bizim için en büyük motivasyon kaynağı."
                     </div>
                   </div>
                 </div>
 
                 <!-- Review 11: Neslihan Demirel -->
-                <div class="w-full shrink-0 flex flex-col justify-between min-h-[220px] sm:min-h-[200px] px-1 sm:px-2">
+                <div class="w-full shrink-0 flex flex-col justify-between min-h-[200px] px-1 sm:px-2">
                   <div>
-                    <div class="flex items-center justify-between mb-3.5">
+                    <div class="flex items-center justify-between mb-3">
                       <div class="flex items-center gap-3">
-                        <div class="w-10 sm:w-11 h-10 sm:h-11 rounded-full bg-gradient-to-br from-indigo-500 to-blue-700 flex items-center justify-center font-bold text-xs sm:text-sm text-white shadow-md shrink-0">
+                        <div class="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-gradient-to-br from-indigo-500 to-blue-700 flex items-center justify-center font-bold text-xs sm:text-sm text-white shadow-md shrink-0">
                           ND
                         </div>
                         <div>
@@ -1517,7 +1670,7 @@
                               <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.26 6.58l4.02 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
                             </svg>
                           </div>
-                          <span class="text-[11px] text-zinc-400">5 yorum • 3 ay önce</span>
+                          <span class="text-[10px] sm:text-[11px] text-zinc-400">5 yorum • 3 ay önce</span>
                         </div>
                       </div>
                       <div class="flex items-center text-[#FBBC05] gap-0.5 text-xs sm:text-sm">
@@ -1525,12 +1678,12 @@
                       </div>
                     </div>
 
-                    <blockquote class="text-zinc-200 text-xs sm:text-sm leading-relaxed italic mb-3">
+                    <blockquote class="text-zinc-200 text-xs sm:text-sm leading-relaxed italic mb-2.5">
                       "Selam, kesinlikle tavsiye edeceğim bir kuaför, işlerinde çok iyiler, kesim yaptırdım, bayıldımmm, çevremden de güzel yorumlar aldım. Çok güzel oldu. Bundan sonra tek adresim ☺️"
                     </blockquote>
 
                     <!-- Owner Response -->
-                    <div class="mt-2.5 p-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06] text-[11px] text-zinc-400">
+                    <div class="mt-2 p-2 sm:p-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06] text-[10px] sm:text-[11px] text-zinc-400">
                       <span class="font-bold text-brand-champagne">İşletme Sahibinin Yanıtı:</span> "Değerli yorumunuz ve bizi tercih ettiğiniz için çok teşekkür ederiz. Memnuniyetiniz bizim için en büyük motivasyon kaynağı."
                     </div>
                   </div>
@@ -1540,17 +1693,17 @@
             </div>
 
             <!-- Slider Controls: Prev/Next & Dots -->
-            <div class="flex items-center justify-between pt-4 mt-2 border-t border-white/[0.08]">
-              <button id="review-prev-btn" type="button" aria-label="Önceki yorum" class="w-9 h-9 sm:w-10 sm:h-10 rounded-full btn-outline-gold flex items-center justify-center text-brand-champagne hover:scale-105 active:scale-95 transition-all focus:outline-none cursor-pointer shrink-0">
+            <div class="flex items-center justify-between pt-3.5 mt-2 border-t border-white/[0.08]">
+              <button id="review-prev-btn" type="button" aria-label="Önceki yorum" class="w-10 h-10 min-h-[40px] rounded-full btn-outline-gold flex items-center justify-center text-brand-champagne hover:scale-105 active:scale-95 transition-all focus:outline-none cursor-pointer shrink-0">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7" />
                 </svg>
               </button>
 
-              <div class="flex items-center gap-1.5 sm:gap-2 px-2 overflow-x-auto max-w-[200px] sm:max-w-none justify-center scrollbar-none" id="review-dots-container"></div>
+              <div class="flex items-center gap-1.5 sm:gap-2 px-2 overflow-x-auto max-w-[160px] sm:max-w-none justify-center scrollbar-none" id="review-dots-container"></div>
 
-              <button id="review-next-btn" type="button" aria-label="Sonraki yorum" class="w-9 h-9 sm:w-10 sm:h-10 rounded-full btn-outline-gold flex items-center justify-center text-brand-champagne hover:scale-105 active:scale-95 transition-all focus:outline-none cursor-pointer shrink-0">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <button id="review-next-btn" type="button" aria-label="Sonraki yorum" class="w-10 h-10 min-h-[40px] rounded-full btn-outline-gold flex items-center justify-center text-brand-champagne hover:scale-105 active:scale-95 transition-all focus:outline-none cursor-pointer shrink-0">
+                <svg class="w-4 h-4 fill-none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
                 </svg>
               </button>
@@ -1561,12 +1714,12 @@
         </div>
 
         <!-- 4. ALT VURGU BAŞLIĞI -->
-        <div class="mt-8 sm:mt-10 text-center reveal-on-scroll">
+        <div class="mt-6 sm:mt-10 text-center reveal-on-scroll">
           <a 
             href="https://maps.google.com/?cid=16986332279537405342" 
             target="_blank" 
             rel="noopener noreferrer" 
-            class="inline-flex items-center gap-2.5 px-6 sm:px-8 py-3 rounded-full bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 hover:border-brand-gold/40 text-xs sm:text-sm font-semibold text-zinc-300 hover:text-white transition-all shadow-md group"
+            class="inline-flex items-center gap-2 px-5 sm:px-8 py-3 rounded-full bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 hover:border-brand-gold/40 text-xs sm:text-sm font-semibold text-zinc-300 hover:text-white transition-all shadow-md group"
           >
             <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24">
               <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/>
@@ -1585,21 +1738,21 @@
     <!-- ========================================================================= -->
     <!-- 8. KONUM, ÇALIŞMA SAATLERİ & HIZLI İLETİŞİM                                -->
     <!-- ========================================================================= -->
-    <section id="iletisim" class="py-16 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-safe-dock">
+    <section id="iletisim" class="py-12 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-safe-dock">
       
-      <div class="text-center max-w-xl mx-auto mb-10 sm:mb-14 reveal-on-scroll">
+      <div class="text-center max-w-xl mx-auto mb-8 sm:mb-14 reveal-on-scroll">
         <span class="text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] text-brand-champagne">Rezervasyon & Ulaşım</span>
         <h2 class="text-2xl sm:text-4xl font-bold font-serif-luxury text-white mt-1 sm:mt-2">
           Stüdyomuza Bekliyoruz
         </h2>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-stretch">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-8 items-stretch">
         
         <!-- Left Column: Details & Schedule (5 cols) -->
-        <div class="lg:col-span-5 flex flex-col justify-between gap-5 sm:gap-6 reveal-on-scroll">
+        <div class="lg:col-span-5 flex flex-col justify-between gap-4 sm:gap-6 reveal-on-scroll">
           
-          <div class="luxury-card rounded-2xl sm:rounded-3xl p-6 sm:p-7">
+          <div class="luxury-card rounded-2xl sm:rounded-3xl p-5 sm:p-7">
             <h3 class="text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] text-brand-champagne mb-2 sm:mb-3">Açık Adres</h3>
             <p class="text-zinc-200 text-xs sm:text-sm leading-relaxed font-semibold">
               Bahçelievler Mah. Demokrasi Blv. No: 8Z1
@@ -1607,20 +1760,20 @@
             <p class="text-zinc-400 text-xs mt-0.5">
               (No: 8 D:0) 07600 Manavgat / Antalya
             </p>
-            <p class="text-[11px] sm:text-xs text-brand-goldLight mt-3 flex items-center gap-1.5">
+            <p class="text-[11px] sm:text-xs text-brand-goldLight mt-2.5 sm:mt-3 flex items-center gap-1.5">
               <svg class="w-3.5 h-3.5 text-brand-gold shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
               <span>Demokrasi Bulvarı üzerinde, kolay ulaşılabilir cadde konumu.</span>
             </p>
           </div>
 
-          <div class="luxury-card rounded-2xl sm:rounded-3xl p-6 sm:p-7 flex-grow">
-            <h3 class="text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] text-brand-champagne mb-3 sm:mb-4">Çalışma Saatleri</h3>
-            <div class="space-y-2.5 sm:space-y-3 text-xs sm:text-sm">
-              <div class="flex justify-between py-1.5 sm:py-2 border-b border-white/[0.08] text-zinc-300">
+          <div class="luxury-card rounded-2xl sm:rounded-3xl p-5 sm:p-7 flex-grow">
+            <h3 class="text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] text-brand-champagne mb-2.5 sm:mb-4">Çalışma Saatleri</h3>
+            <div class="space-y-2 sm:space-y-3 text-xs sm:text-sm">
+              <div class="flex justify-between py-1 sm:py-2 border-b border-white/[0.08] text-zinc-300">
                 <span class="font-medium">Salı – Pazar</span>
                 <span class="font-bold text-brand-goldLight">08:30 – 20:30</span>
               </div>
-              <div class="flex justify-between py-1.5 sm:py-2 text-zinc-300">
+              <div class="flex justify-between py-1 sm:py-2 text-zinc-300">
                 <span class="font-medium">Pazartesi</span>
                 <span class="font-bold text-rose-400">Kapalı (Haftalık İzin)</span>
               </div>
@@ -1630,10 +1783,10 @@
         </div>
 
         <!-- Right Column: Map & Action Buttons (7 cols) -->
-        <div class="lg:col-span-7 luxury-card rounded-2xl sm:rounded-3xl p-4 sm:p-7 flex flex-col justify-between gap-5 sm:gap-6 reveal-on-scroll">
+        <div class="lg:col-span-7 luxury-card rounded-2xl sm:rounded-3xl p-4 sm:p-7 flex flex-col justify-between gap-4 sm:gap-6 reveal-on-scroll">
           
           <!-- Map Iframe with Tabindex=-1 to never steal focus on page load -->
-          <div class="rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 h-56 sm:h-72 relative bg-zinc-900 group">
+          <div class="rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 h-52 sm:h-72 relative bg-zinc-900 group">
             <iframe 
               title="ThreeBrothers Bayan Kuaförü Manavgat Harita Konumu" 
               src="https://maps.google.com/maps?q=ThreeBrothers+Bayan+kuaforu,+Demokrasi+Bulvar%C4%B1+Manavgat&t=&z=16&ie=UTF8&iwloc=&output=embed" 
@@ -1650,7 +1803,7 @@
               href="https://maps.google.com/?cid=16986332279537405342" 
               target="_blank" 
               rel="noopener noreferrer" 
-              class="google-maps-btn absolute bottom-3 right-3 px-3.5 py-2 rounded-xl bg-black/90 hover:bg-black backdrop-blur-md border border-brand-champagne/50 text-xs font-bold text-brand-goldLight hover:text-white transition-all flex items-center gap-1.5 shadow-xl hover:scale-105"
+              class="google-maps-btn absolute bottom-2.5 right-2.5 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl bg-black/90 hover:bg-black backdrop-blur-md border border-brand-champagne/50 text-[11px] sm:text-xs font-bold text-brand-goldLight hover:text-white transition-all flex items-center gap-1.5 shadow-xl hover:scale-105 min-h-[40px]"
             >
               <svg class="w-3.5 h-3.5 text-red-500 shrink-0" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
@@ -1662,12 +1815,12 @@
 
           <!-- Dual Conversion Buttons -->
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <a href="https://wa.me/905526856907?text=Merhaba,%20web%20sitenizden%20ula%C5%9F%C4%B1yorum.%20Randevu%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" class="whatsapp-main-btn w-full py-3.5 sm:py-4 rounded-xl sm:rounded-2xl bg-[#25D366] hover:bg-[#20ba59] text-black font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg transition-all active:scale-95">
+            <a href="https://wa.me/905526856907?text=Merhaba,%20web%20sitenizden%20ula%C5%9F%C4%B1yorum.%20Randevu%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" class="whatsapp-main-btn w-full py-3.5 sm:py-4 min-h-[48px] rounded-xl sm:rounded-2xl bg-[#25D366] hover:bg-[#20ba59] text-black font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg transition-all active:scale-95">
               <svg class="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.554 1.838.809 2.796.809 3.181 0 5.767-2.586 5.767-5.766.001-3.181-2.585-5.765-5.767-5.765zm0-2.172c4.378 0 7.931 3.553 7.931 7.938s-3.553 7.938-7.931 7.938c-1.34 0-2.604-.339-3.714-.932l-5.317 1.394 1.423-5.187c-.672-1.161-1.042-2.493-1.042-3.901 0-4.385 3.553-7.938 7.931-7.938zm3.896 11.233c-.229.645-1.119 1.189-1.543 1.229-.425.041-.852.193-2.825-.615-1.972-.808-3.237-2.793-3.336-2.924-.099-.131-.806-1.074-.806-2.049 0-.974.509-1.454.689-1.65.18-.197.393-.246.524-.246.131 0 .262.001.377.007.121.005.284-.046.444.339.164.393.557 1.359.606 1.458.049.098.082.213.016.344-.066.131-.098.213-.197.328-.098.115-.207.257-.295.344-.098.098-.201.205-.087.401.115.197.511.844 1.096 1.365.753.671 1.388.878 1.585.977.197.098.312.082.427-.049.115-.131.492-.573.623-.77.131-.197.262-.164.443-.098.18.066 1.147.541 1.344.639.197.098.328.147.377.23.049.082.049.475-.18 1.12z" /></svg>
               <span>WhatsApp Randevu</span>
             </a>
 
-            <a href="tel:+905526856907" class="w-full py-3.5 sm:py-4 rounded-xl sm:rounded-2xl btn-outline-gold font-bold text-xs sm:text-sm flex items-center justify-center gap-2 active:scale-95">
+            <a href="tel:+905526856907" class="w-full py-3.5 sm:py-4 min-h-[48px] rounded-xl sm:rounded-2xl btn-outline-gold font-bold text-xs sm:text-sm flex items-center justify-center gap-2 active:scale-95">
               <svg class="w-4 h-4 text-brand-champagne shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
               <span>Hemen Ara</span>
             </a>
@@ -1682,7 +1835,7 @@
   </main>
 
   <!-- ========================================================================= -->
-  <!-- MINIMAL FOOTER                                                           -->
+  <!-- MINIMAL LUXURY FOOTER                                                    -->
   <!-- ========================================================================= -->
   <footer class="border-t border-white/[0.08] py-8 text-center text-xs text-zinc-500 pb-28 md:pb-8">
     <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
@@ -1700,28 +1853,28 @@
   <!-- ========================================================================= -->
   <!-- 8. MOBILE FLOATING ACTION DOCK (VIEWPORTS < 768px)                       -->
   <!-- ========================================================================= -->
-  <div class="md:hidden fixed bottom-3 left-3 right-3 z-50 flex justify-center pointer-events-none">
-    <div class="pointer-events-auto w-full max-w-sm rounded-full p-1.5 border border-white/15 backdrop-blur-2xl bg-[#0F0F11]/90 shadow-[0_10px_35px_rgba(0,0,0,0.8)] grid grid-cols-2 gap-2">
+  <div class="md:hidden fixed left-3 right-3 z-50 flex justify-center pointer-events-none" style="bottom: calc(0.65rem + env(safe-area-inset-bottom, 0px));">
+    <div class="pointer-events-auto w-full max-w-md rounded-2xl p-1.5 border border-brand-gold/30 backdrop-blur-2xl bg-[#0F0F11]/95 shadow-[0_12px_40px_rgba(0,0,0,0.9),0_0_20px_rgba(212,175,55,0.15)] grid grid-cols-2 gap-2">
       
-      <a href="tel:+905526856907" class="h-11 min-h-[44px] rounded-full btn-outline-gold flex items-center justify-center gap-1.5 text-xs font-bold active:scale-95 transition-transform">
-        <svg class="w-3.5 h-3.5 text-brand-champagne shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+      <a href="tel:+905526856907" class="h-12 min-h-[48px] rounded-xl btn-outline-gold flex items-center justify-center gap-2 text-xs font-bold active:scale-95 transition-all shadow-md">
+        <svg class="w-4 h-4 text-brand-champagne shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
         </svg>
         <span>Hemen Ara</span>
       </a>
 
-      <a href="https://wa.me/905526856907?text=Merhaba,%20web%20sitenizden%20ula%C5%9F%C4%B1yorum.%20Randevu%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" class="h-11 min-h-[44px] rounded-full btn-gold-glow flex items-center justify-center gap-1.5 text-xs font-bold active:scale-95 transition-transform">
-        <svg class="w-3.5 h-3.5 fill-current shrink-0" viewBox="0 0 24 24">
+      <a href="https://wa.me/905526856907?text=Merhaba,%20web%20sitenizden%20ula%C5%9F%C4%B1yorum.%20Randevu%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" class="h-12 min-h-[48px] rounded-xl btn-gold-glow flex items-center justify-center gap-2 text-xs font-bold active:scale-95 transition-all shadow-lg text-black">
+        <svg class="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24">
           <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.554 1.838.809 2.796.809 3.181 0 5.767-2.586 5.767-5.766.001-3.181-2.585-5.765-5.767-5.765zm0-2.172c4.378 0 7.931 3.553 7.931 7.938s-3.553 7.938-7.931 7.938c-1.34 0-2.604-.339-3.714-.932l-5.317 1.394 1.423-5.187c-.672-1.161-1.042-2.493-1.042-3.901 0-4.385 3.553-7.938 7.931-7.938zm3.896 11.233c-.229.645-1.119 1.189-1.543 1.229-.425.041-.852.193-2.825-.615-1.972-.808-3.237-2.793-3.336-2.924-.099-.131-.806-1.074-.806-2.049 0-.974.509-1.454.689-1.65.18-.197.393-.246.524-.246.131 0 .262.001.377.007.121.005.284-.046.444.339.164.393.557 1.359.606 1.458.049.098.082.213.016.344-.066.131-.098.213-.197.328-.098.115-.207.257-.295.344-.098.098-.201.205-.087.401.115.197.511.844 1.096 1.365.753.671 1.388.878 1.585.977.197.098.312.082.427-.049.115-.131.492-.573.623-.77.131-.197.262-.164.443-.098.18.066 1.147.541 1.344.639.197.098.328.147.377.23.049.082.049.475-.18 1.12z" />
         </svg>
-        <span>WhatsApp</span>
+        <span>WhatsApp Randevu</span>
       </a>
 
     </div>
   </div>
 
   <!-- ========================================================================= -->
-  <!-- LIGHTWEIGHT JS CONTROLLER: SLIDER + SCROLL REVEAL                        -->
+  <!-- LIGHTWEIGHT JS CONTROLLER: SLIDER + SCROLL REVEAL + MOBILE NAV            -->
   <!-- ========================================================================= -->
   <script>
     // 1. Fully Mobile-Responsive & Touch-Friendly Before / After Slider
@@ -1790,7 +1943,7 @@
         const dot = document.createElement('button');
         dot.type = 'button';
         dot.setAttribute('aria-label', `Yorum ${i + 1}`);
-        dot.className = `h-2 transition-all duration-300 rounded-full focus:outline-none cursor-pointer ${i === 0 ? 'w-7 bg-brand-gold shadow-[0_0_10px_rgba(212,175,55,0.6)]' : 'w-2 bg-white/20 hover:bg-white/40'}`;
+        dot.className = `h-2 transition-all duration-300 rounded-full focus:outline-none cursor-pointer ${i === 0 ? 'w-6 bg-brand-gold shadow-[0_0_10px_rgba(212,175,55,0.6)]' : 'w-2 bg-white/20 hover:bg-white/40'}`;
         dot.addEventListener('click', () => {
           goToSlide(i);
           resetAutoplay();
@@ -1802,7 +1955,7 @@
         const dots = dotsContainer.children;
         for (let i = 0; i < dots.length; i++) {
           if (i === currentIndex) {
-            dots[i].className = 'h-2 transition-all duration-300 rounded-full focus:outline-none cursor-pointer w-7 bg-brand-gold shadow-[0_0_10px_rgba(212,175,55,0.6)]';
+            dots[i].className = 'h-2 transition-all duration-300 rounded-full focus:outline-none cursor-pointer w-6 bg-brand-gold shadow-[0_0_10px_rgba(212,175,55,0.6)]';
           } else {
             dots[i].className = 'h-2 transition-all duration-300 rounded-full focus:outline-none cursor-pointer w-2 bg-white/20 hover:bg-white/40';
           }
@@ -1933,6 +2086,41 @@
         const waUrl = `https://wa.me/905526856907?text=${encodedMsg}`;
 
         window.open(waUrl, '_blank');
+      });
+    })();
+
+    // 5. Mobile Navigation Drawer Controller
+    (function initMobileMenu() {
+      const menuBtn = document.getElementById('mobile-menu-btn');
+      const closeBtn = document.getElementById('closeMobileMenuBtn');
+      const drawer = document.getElementById('mobileMenuDrawer');
+      const backdrop = document.getElementById('mobileMenuBackdrop');
+      const links = document.querySelectorAll('.mobile-nav-link');
+
+      if (!menuBtn || !drawer || !backdrop) return;
+
+      function openMenu() {
+        drawer.classList.add('is-open');
+        backdrop.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeMenu() {
+        drawer.classList.remove('is-open');
+        backdrop.classList.remove('is-open');
+        document.body.style.overflow = '';
+      }
+
+      menuBtn.addEventListener('click', openMenu);
+      if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+      backdrop.addEventListener('click', closeMenu);
+
+      links.forEach(link => {
+        link.addEventListener('click', closeMenu);
+      });
+
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeMenu();
       });
     })();
   </script>
