@@ -92,12 +92,13 @@
       100% { transform: scale(1.1) translateY(-20px); opacity: 0.25; }
     }
 
-    /* Floating Glass Header */
+    /* Floating Glass Header with Deep Solid Protection */
     .glass-header {
-      background: rgba(15, 15, 17, 0.82);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(15, 15, 17, 0.98) !important;
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.85);
     }
 
     /* Editorial Glass Cards */
@@ -600,7 +601,7 @@
         
         <!-- Card 1: Sarı / Ombre / Balyaj -->
         <article class="luxury-card rounded-2xl sm:rounded-3xl overflow-hidden flex flex-col justify-between group reveal-card delay-100">
-          <div class="relative aspect-[4/3] overflow-hidden bg-zinc-900">
+          <div class="aspect-[4/3] overflow-hidden bg-zinc-900">
             <img 
               src="./images/service-ombre.jpg" 
               alt="ThreeBrothers Platin Sarı Ombre ve Balyaj Saç Tasarımı" 
@@ -609,12 +610,14 @@
               loading="lazy" 
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
-            <span class="absolute top-3 sm:top-4 left-3 sm:left-4 px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full bg-black/70 backdrop-blur-md text-[10px] sm:text-[11px] font-bold text-brand-goldLight border border-white/10">
-              Sarı / Ombre / Balyaj
-            </span>
           </div>
           <div class="p-5 sm:p-6 flex flex-col flex-grow justify-between">
             <div>
+              <div class="mb-2.5">
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-brand-champagne/10 border border-brand-champagne/25 text-[10px] sm:text-[11px] font-bold text-brand-champagne">
+                  Sarı / Ombre / Balyaj
+                </span>
+              </div>
               <h3 class="text-base sm:text-lg font-bold font-serif-luxury text-white group-hover:text-brand-champagne transition-colors">
                 Sarı / Ombre & Balyaj
               </h3>
@@ -631,7 +634,7 @@
 
         <!-- Card 2: Gelin Başı / Topuz -->
         <article class="luxury-card rounded-2xl sm:rounded-3xl overflow-hidden flex flex-col justify-between group reveal-card delay-200">
-          <div class="relative aspect-[4/3] overflow-hidden bg-zinc-900">
+          <div class="aspect-[4/3] overflow-hidden bg-zinc-900">
             <img 
               src="./images/service-gelin.jpg" 
               alt="ThreeBrothers Taçlı Lüks Gelin Başı ve Nişan Topuz Tasarımı" 
@@ -640,12 +643,14 @@
               loading="lazy" 
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
-            <span class="absolute top-3 sm:top-4 left-3 sm:left-4 px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full bg-black/70 backdrop-blur-md text-[10px] sm:text-[11px] font-bold text-brand-goldLight border border-white/10">
-              Gelin Başı / Topuz
-            </span>
           </div>
           <div class="p-5 sm:p-6 flex flex-col flex-grow justify-between">
             <div>
+              <div class="mb-2.5">
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-brand-champagne/10 border border-brand-champagne/25 text-[10px] sm:text-[11px] font-bold text-brand-champagne">
+                  Gelin Başı / Topuz
+                </span>
+              </div>
               <h3 class="text-base sm:text-lg font-bold font-serif-luxury text-white group-hover:text-brand-champagne transition-colors">
                 Gelin Başı & Özel Gün Topuzu
               </h3>
@@ -662,7 +667,7 @@
 
         <!-- Card 3: Keratin / Bakım (Düz & Parlak Saç) -->
         <article class="luxury-card rounded-2xl sm:rounded-3xl overflow-hidden flex flex-col justify-between group reveal-card delay-300">
-          <div class="relative aspect-[4/3] overflow-hidden bg-zinc-900">
+          <div class="aspect-[4/3] overflow-hidden bg-zinc-900">
             <img 
               src="./images/service-keratin.jpg" 
               alt="ThreeBrothers Keratin Botox Düz ve Parlak İpeksi Saç Bakımı" 
@@ -671,12 +676,14 @@
               loading="lazy" 
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
-            <span class="absolute top-3 sm:top-4 left-3 sm:left-4 px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full bg-black/70 backdrop-blur-md text-[10px] sm:text-[11px] font-bold text-brand-goldLight border border-white/10">
-              Düz & Parlak Saç
-            </span>
           </div>
           <div class="p-5 sm:p-6 flex flex-col flex-grow justify-between">
             <div>
+              <div class="mb-2.5">
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-brand-champagne/10 border border-brand-champagne/25 text-[10px] sm:text-[11px] font-bold text-brand-champagne">
+                  Düz & Parlak Saç
+                </span>
+              </div>
               <h3 class="text-base sm:text-lg font-bold font-serif-luxury text-white group-hover:text-brand-champagne transition-colors">
                 Keratin Botox & İpek Bakım
               </h3>
@@ -693,7 +700,7 @@
 
         <!-- Card 4: Kaynak / Kesim & Fön -->
         <article class="luxury-card rounded-2xl sm:rounded-3xl overflow-hidden flex flex-col justify-between group reveal-card delay-400">
-          <div class="relative aspect-[4/3] overflow-hidden bg-zinc-900">
+          <div class="aspect-[4/3] overflow-hidden bg-zinc-900">
             <img 
               src="./images/service-kaynak.jpg" 
               alt="ThreeBrothers Katlı Kesim, Hacimli Fön ve Saç Şekillendirme" 
@@ -702,12 +709,14 @@
               loading="lazy" 
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
-            <span class="absolute top-3 sm:top-4 left-3 sm:left-4 px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full bg-black/70 backdrop-blur-md text-[10px] sm:text-[11px] font-bold text-brand-goldLight border border-white/10">
-              Katlı Kesim & Hacimli Fön
-            </span>
           </div>
           <div class="p-5 sm:p-6 flex flex-col flex-grow justify-between">
             <div>
+              <div class="mb-2.5">
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-brand-champagne/10 border border-brand-champagne/25 text-[10px] sm:text-[11px] font-bold text-brand-champagne">
+                  Katlı Kesim & Hacimli Fön
+                </span>
+              </div>
               <h3 class="text-base sm:text-lg font-bold font-serif-luxury text-white group-hover:text-brand-champagne transition-colors">
                 Katlı Kesim & Havalı Fön
               </h3>
