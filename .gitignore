@@ -1,0 +1,9 @@
+# Environment and System
+node_modules/
+.agent/
+.agents/
+backups/
+*.log
+.DS_Store
+Thumbs.db
+.system_generated/

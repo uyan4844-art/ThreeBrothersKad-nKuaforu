@@ -1,0 +1,20 @@
+{
+  "name": "threebrothers-bayan-kuaforu",
+  "version": "1.0.0",
+  "description": "ThreeBrothers Bayan Kuaförü & Saç Tasarım Stüdyosu Web Sitesi",
+  "main": "index.html",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "kuaför",
+    "manavgat",
+    "bayan kuaförü",
+    "ombre",
+    "balyaj",
+    "keratin"
+  ],
+  "author": "ThreeBrothers",
+  "license": "ISC"
+}
