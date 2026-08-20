@@ -5,7 +5,10 @@
   "main": "index.html",
   "scripts": {
     "start": "node server.js",
-    "dev": "node server.js"
+    "dev": "node server.js",
+    "build:css": "node ./node_modules/@tailwindcss/cli/dist/index.mjs -i ./src/input.css -o ./css/style.css --minify && node -e \"const fs=require('fs'); fs.mkdirSync('./public/css', {recursive:true}); fs.copyFileSync('./css/style.css', './public/css/style.css');\"",
+    "optimize:images": "node scripts/optimize-images.js",
+    "build": "npm run build:css && npm run optimize:images"
   },
   "keywords": [
     "kuaför",
@@ -16,5 +19,10 @@
     "keratin"
   ],
   "author": "ThreeBrothers",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.3",
+    "sharp": "^0.35.3",
+    "tailwindcss": "^4.3.3"
+  }
 }

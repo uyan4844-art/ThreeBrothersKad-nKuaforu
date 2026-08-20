@@ -8,51 +8,26 @@
   <meta name="theme-color" content="#0F0F11" />
 
   <!-- Favicon -->
-  <link rel="icon" type="image/jpeg" href="./images/logo.jpg" />
+  <link rel="icon" type="image/webp" href="./images/logo.webp" />
+  <link rel="alternate icon" type="image/jpeg" href="./images/logo.jpg" />
   <link rel="apple-touch-icon" href="./images/logo.jpg" />
 
   <!-- Open Graph / Meta -->
   <meta property="og:type" content="business.business" />
   <meta property="og:title" content="ThreeBrothers Bayan Kuaförü | Manavgat" />
   <meta property="og:description" content="5.0 ★★★★★ 119 Doğrulanmış Google Yorumu. Manavgat'ta lüks saç tasarımı ve renklendirme stüdyosu." />
-  <meta property="og:image" content="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1200&q=80" />
+  <meta property="og:image" content="./images/hero-salon-desktop.jpg" />
   <meta property="og:locale" content="tr_TR" />
 
-  <!-- Preconnect Google Fonts -->
+  <!-- Preconnect & Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            brand: {
-              espresso: '#0F0F11',
-              charcoal: '#141417',
-              surface: '#18181C',
-              card: '#1F1F24',
-              gold: '#D4AF37',
-              champagne: '#C5A880',
-              goldLight: '#EFE2CE',
-              goldMuted: '#9E8057',
-              accent: '#E5C07B'
-            }
-          },
-          fontFamily: {
-            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
-            serif: ['"Playfair Display"', 'Georgia', 'serif']
-          }
-        }
-      }
-    };
-  </script>
+  <!-- Precompiled Minified Production CSS (Eliminates Tailwind runtime JIT CPU stall) -->
+  <link rel="stylesheet" href="./css/style.css" />
 
-  <!-- Inlined Luxury Styling, Animations & Mobile Tokens -->
+  <!-- Inlined Luxury Styling & GPU-Optimized Rendering Rules -->
   <style>
     :root {
       --bg-dark: #0F0F11;
@@ -77,23 +52,30 @@
       font-family: 'Playfair Display', Georgia, serif;
     }
 
-    /* Ambient Pulsing Glow - GPU Optimized */
+    /* Content Visibility for Instant Below-the-Fold Rendering */
+    .section-deferred {
+      content-visibility: auto;
+      contain-intrinsic-size: 1px 700px;
+    }
+
+    /* Ambient Pulsing Glow - GPU Hardware Accelerated */
     .glow-sphere {
       position: absolute;
       border-radius: 9999px;
       pointer-events: none;
       z-index: 0;
+      transform: translateZ(0);
     }
 
     @media (min-width: 769px) {
       .glow-sphere {
-        filter: blur(100px);
-        animation: floatGlow 8s ease-in-out infinite alternate;
-        will-change: transform, opacity;
+        filter: blur(80px);
+        animation: floatGlow 10s ease-in-out infinite alternate;
+        will-change: transform;
       }
     }
 
-    /* Mobile: Pure zero-cost CSS radial gradient instead of 100px GPU blur */
+    /* Mobile: Zero-cost pure CSS radial gradient instead of heavy GPU filter */
     @media (max-width: 768px) {
       .glow-sphere {
         filter: none !important;
@@ -104,20 +86,21 @@
     }
 
     @keyframes floatGlow {
-      0% { transform: scale(1) translate3d(0, 0, 0); opacity: 0.15; }
-      100% { transform: scale(1.1) translate3d(0, -20px, 0); opacity: 0.25; }
+      0% { transform: scale(1) translate3d(0, 0, 0); opacity: 0.18; }
+      100% { transform: scale(1.08) translate3d(0, -18px, 0); opacity: 0.28; }
     }
 
     /* Floating Glass Header */
     .glass-header {
-      background: rgba(15, 15, 17, 0.98) !important;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(15, 15, 17, 0.96) !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.85);
+      transform: translateZ(0);
     }
     @media (min-width: 769px) {
       .glass-header {
-        backdrop-filter: blur(24px);
-        -webkit-backdrop-filter: blur(24px);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
       }
     }
 
@@ -126,22 +109,23 @@
       border: 1px solid rgba(255, 255, 255, 0.08);
       transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
       contain: layout style;
+      transform: translateZ(0);
     }
 
     @media (min-width: 769px) {
       .luxury-card {
-        background: rgba(24, 24, 28, 0.75);
-        backdrop-filter: blur(14px);
-        -webkit-backdrop-filter: blur(14px);
+        background: rgba(24, 24, 28, 0.78);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
       }
       .luxury-card:hover {
-        border-color: rgba(197, 168, 128, 0.4);
+        border-color: rgba(197, 168, 128, 0.45);
         transform: translateY(-4px);
         box-shadow: 0 16px 35px -10px rgba(0, 0, 0, 0.7), 0 0 20px -5px rgba(197, 168, 128, 0.15);
       }
     }
 
-    /* Mobile: Solid dark surface for instant 60 FPS scrolling without GPU composite stall */
+    /* Mobile: Solid dark surface for instant 60/120 FPS scrolling without GPU composite stall */
     @media (max-width: 768px) {
       .luxury-card {
         background: #18181D !important;
@@ -168,6 +152,7 @@
       transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
       overflow: hidden;
       contain: paint;
+      transform: translateZ(0);
     }
     .btn-gold-glow::after {
       content: '';
@@ -178,7 +163,7 @@
       height: 200%;
       background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
       transform: rotate(30deg) translate3d(-250%, 0, 0);
-      animation: buttonShimmer 5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+      animation: buttonShimmer 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
       pointer-events: none;
       will-change: transform;
     }
@@ -202,6 +187,7 @@
       color: #EFE2CE;
       font-weight: 600;
       transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+      transform: translateZ(0);
     }
     .btn-outline-gold:hover {
       background: rgba(197, 168, 128, 0.12);
@@ -223,6 +209,7 @@
       touch-action: pan-y;
       cursor: default;
       contain: layout paint;
+      transform: translateZ(0);
     }
     .ba-slider-box img {
       width: 100%;
@@ -277,16 +264,14 @@
     }
     .ba-slider-button:active {
       cursor: grabbing;
-      transform: translate3d(-50%, -50%, 0) scale(1.1);
+      transform: translate3d(-50%, -50%, 0) scale(1.08);
     }
 
-    /* ========================================================================= */
-    /* LUXURY SCROLL REVEAL & TEXT SLIDE ANIMATIONS                              */
-    /* ========================================================================= */
+    /* Luxury Scroll Reveal & Animations */
     .reveal-on-scroll {
       opacity: 0;
-      transform: translate3d(0, 22px, 0);
-      transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: translate3d(0, 20px, 0);
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
       backface-visibility: hidden;
       contain: layout style;
     }
@@ -295,20 +280,19 @@
       transform: translate3d(0, 0, 0);
     }
 
-    /* Text Specific Reveal */
     .reveal-text {
       opacity: 0;
-      transform: translate3d(0, 20px, 0);
-      transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: translate3d(0, 18px, 0);
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
       backface-visibility: hidden;
       contain: layout style;
     }
     @media (min-width: 769px) {
       .reveal-text {
-        filter: blur(4px);
-        transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), 
-                    transform 0.75s cubic-bezier(0.16, 1, 0.3, 1),
-                    filter 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+        filter: blur(3px);
+        transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), 
+                    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                    filter 0.7s cubic-bezier(0.16, 1, 0.3, 1);
       }
       .reveal-text.is-visible {
         filter: blur(0);
@@ -319,12 +303,11 @@
       transform: translate3d(0, 0, 0);
     }
 
-    /* Card & Media Container Reveal */
     .reveal-card {
       opacity: 0;
-      transform: translate3d(0, 22px, 0) scale(0.985);
-      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), 
-                  transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: translate3d(0, 20px, 0) scale(0.985);
+      transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), 
+                  transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
       backface-visibility: hidden;
       contain: layout style;
     }
@@ -333,7 +316,7 @@
       transform: translate3d(0, 0, 0) scale(1);
     }
 
-    /* Stagger Delays for Hierarchical Reveal */
+    /* Stagger Delays */
     .delay-75  { transition-delay: 75ms !important; }
     .delay-100 { transition-delay: 100ms !important; }
     .delay-150 { transition-delay: 150ms !important; }
@@ -345,23 +328,19 @@
     .delay-500 { transition-delay: 500ms !important; }
     .delay-600 { transition-delay: 600ms !important; }
 
-    /* Safe Area Padding for Mobile Bottom Bar */
     .pb-safe-dock {
       padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 6.5rem);
     }
 
-    /* Accessibility Focus Ring */
     a:focus-visible, button:focus-visible {
       outline: 2px solid #D4AF37;
       outline-offset: 3px;
     }
 
-    /* Mobile Hero Zoom & Optimized Vertical Spacing (~15-20% reduced) */
     @media (max-width: 639px) {
       .hero-bg-img {
-        transform: scale(1.1);
+        transform: scale(1.05);
         transform-origin: center center;
-        transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
       }
       #hero {
         padding-top: 5rem !important;
@@ -369,7 +348,6 @@
       }
     }
 
-    /* Scroll Indicator Dot Animation */
     @keyframes scrollDotFloat {
       0% { transform: translate3d(0, 0, 0); opacity: 1; }
       50% { transform: translate3d(0, 8px, 0); opacity: 0.7; }
@@ -380,7 +358,6 @@
       will-change: transform, opacity;
     }
 
-    /* Top Page Scroll Progress Bar */
     #scroll-progress {
       position: fixed;
       top: 0;
@@ -391,12 +368,10 @@
       z-index: 100;
       pointer-events: none;
       box-shadow: 0 0 10px rgba(212, 175, 55, 0.7);
-      transition: width 0.05s linear;
       transform: translateZ(0);
       will-change: width;
     }
 
-    /* Floating Back-to-Top Button */
     .btn-scroll-top {
       opacity: 0;
       visibility: hidden;
@@ -426,7 +401,7 @@
     }
   </style>
 
-  <!-- Prevent Focus-Stealing & Ensure Top Page Load -->
+  <!-- Prevent Focus-Stealing & Business Configuration -->
   <script>
     if ('scrollRestoration' in history) {
       history.scrollRestoration = 'manual';
@@ -435,7 +410,6 @@
       window.scrollTo(0, 0);
     });
 
-    // Global Salon Business Configuration
     const SALON_CONFIG = {
       name: "ThreeBrothers Bayan Kuaförü",
       phone: "+90 552 685 69 07",
@@ -455,7 +429,7 @@
     "@context": "https://schema.org",
     "@type": "HairSalon",
     "name": "ThreeBrothers Bayan Kuaförü",
-    "image": "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1200&q=80",
+    "image": "./images/hero-salon-desktop.jpg",
     "telephone": "+905526856907",
     "hasMap": "https://maps.google.com/?cid=16986332279537405342",
     "priceRange": "₺₺",
@@ -503,13 +477,16 @@
       <!-- Brand Logo & Typography -->
       <a href="#hero" class="flex items-center gap-2.5 sm:gap-3.5 group focus:outline-none" aria-label="ThreeBrothers Bayan Kuaförü Ana Sayfa">
         <div class="relative w-10 h-10 sm:w-11 sm:h-11 rounded-full p-[2px] bg-gradient-to-tr from-brand-gold via-brand-champagne to-brand-goldLight shadow-lg shadow-brand-gold/20 transition-transform duration-300 group-hover:scale-105 shrink-0 overflow-hidden">
-          <img 
-            src="./images/logo.jpg" 
-            alt="ThreeBrothers TB Hair Design Studio Logo" 
-            width="88" 
-            height="88" 
-            class="w-full h-full object-cover rounded-full"
-          />
+          <picture>
+            <source type="image/webp" srcset="./images/logo.webp" />
+            <img 
+              src="./images/logo.jpg" 
+              alt="ThreeBrothers TB Hair Design Studio Logo" 
+              width="44" 
+              height="44" 
+              class="w-full h-full object-cover rounded-full"
+            />
+          </picture>
         </div>
         <div class="flex flex-col">
           <span class="font-serif-luxury text-base sm:text-xl font-bold tracking-tight text-white group-hover:text-brand-champagne transition-colors leading-tight">
@@ -559,13 +536,16 @@
       <div class="glow-sphere w-[300px] sm:w-[550px] h-[300px] sm:h-[550px] bg-brand-gold/15 top-[-50px] sm:top-[-100px] right-[-50px] sm:right-[-100px]"></div>
       <div class="glow-sphere w-[350px] sm:w-[600px] h-[350px] sm:h-[600px] bg-amber-950/20 bottom-[-50px] sm:bottom-[-100px] left-[-80px] sm:left-[-150px]" style="animation-delay: -4s;"></div>
 
-      <!-- Hero Background Image with Editorial Warm Grading -->
+      <!-- Hero Background Image with Responsive WebP Picture -->
       <div class="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         <picture class="w-full h-full block">
-          <source media="(max-width: 640px)" srcset="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=720&q=75" />
-          <source media="(min-width: 641px)" srcset="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=1920&q=80" />
+          <source type="image/webp" media="(max-width: 640px)" srcset="./images/hero-salon-mobile.webp 640w" sizes="100vw" />
+          <source type="image/webp" media="(max-width: 1080px)" srcset="./images/hero-salon-tablet.webp 1080w" sizes="100vw" />
+          <source type="image/webp" srcset="./images/hero-salon-desktop.webp 1920w" sizes="100vw" />
+          <source media="(max-width: 640px)" srcset="./images/hero-salon-mobile.jpg 640w" sizes="100vw" />
+          <source media="(max-width: 1080px)" srcset="./images/hero-salon-tablet.jpg 1080w" sizes="100vw" />
           <img 
-            src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=1920&q=80" 
+            src="./images/hero-salon-desktop.jpg" 
             alt="ThreeBrothers Lüks Kuaför Salonu İç Mekan Manavgat" 
             width="1920" 
             height="1080" 
@@ -580,19 +560,22 @@
         <div class="absolute inset-0 bg-gradient-to-r from-[#0F0F11]/80 via-transparent to-[#0F0F11]/80"></div>
       </div>
 
-      <!-- Hero Content (Centered, with closely grouped elements in mobile) -->
+      <!-- Hero Content -->
       <div class="flex-1 w-full max-w-lg sm:max-w-4xl mx-auto flex flex-col justify-center sm:justify-around items-center text-center py-2 sm:py-4 gap-3.5 sm:gap-0 relative z-10 my-auto">
         
         <!-- Brand Emblem & Identity -->
         <div class="flex flex-col items-center justify-center gap-1.5 sm:gap-2.5 reveal-text delay-75 group mb-1 sm:mb-2">
           <div class="relative w-14 h-14 sm:w-20 sm:h-20 rounded-full p-[2px] bg-gradient-to-tr from-brand-gold via-brand-champagne to-brand-goldLight shadow-[0_0_30px_rgba(212,175,55,0.4)] transition-transform duration-300 group-hover:scale-105 overflow-hidden">
-            <img 
-              src="./images/logo.jpg" 
-              alt="ThreeBrothers Bayan Kuaförü Resmi Logosu" 
-              width="80" 
-              height="80" 
-              class="w-full h-full object-cover rounded-full"
-            />
+            <picture>
+              <source type="image/webp" srcset="./images/logo.webp" />
+              <img 
+                src="./images/logo.jpg" 
+                alt="ThreeBrothers Bayan Kuaförü Resmi Logosu" 
+                width="80" 
+                height="80" 
+                class="w-full h-full object-cover rounded-full"
+              />
+            </picture>
           </div>
           <div class="flex flex-col items-center">
             <span class="font-serif-luxury text-base sm:text-2xl font-bold tracking-tight text-white group-hover:text-brand-champagne transition-colors">
@@ -651,7 +634,7 @@
     <!-- ========================================================================= -->
     <!-- INTERACTIVE BEFORE / AFTER TRANSFORMATION SLIDER                          -->
     <!-- ========================================================================= -->
-    <section id="donusum" class="py-16 sm:py-20 bg-[#141417] border-t border-b border-white/[0.06] relative">
+    <section id="donusum" class="py-16 sm:py-20 bg-[#141417] border-t border-b border-white/[0.06] relative section-deferred">
       <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div class="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
@@ -669,28 +652,38 @@
           <div id="ba-slider" class="ba-slider-box rounded-xl sm:rounded-2xl aspect-[4/3] sm:aspect-[16/9]">
             
             <!-- Before Image (Base Layer: Left Side) -->
-            <img 
-              src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=800&q=75" 
-              alt="İşlem Öncesi Yıpranmış Saç Görünümü" 
-              width="800" 
-              height="600" 
-              loading="lazy" 
-              decoding="async"
-            />
+            <picture class="w-full h-full block">
+              <source type="image/webp" media="(max-width: 640px)" srcset="./images/before-hair-mobile.webp 480w" sizes="(max-width: 640px) 100vw, 800px" />
+              <source type="image/webp" srcset="./images/before-hair-desktop.webp 800w" sizes="(max-width: 640px) 100vw, 800px" />
+              <source media="(max-width: 640px)" srcset="./images/before-hair-mobile.jpg 480w" sizes="(max-width: 640px) 100vw, 800px" />
+              <img 
+                src="./images/before-hair-desktop.jpg" 
+                alt="İşlem Öncesi Yıpranmış Saç Görünümü" 
+                width="800" 
+                height="600" 
+                loading="lazy" 
+                decoding="async"
+              />
+            </picture>
             <span class="absolute bottom-3 left-3 z-0 px-2.5 sm:px-3 py-1 rounded-full bg-black/80 backdrop-blur-md text-[10px] sm:text-xs font-bold text-zinc-300 border border-white/10">
               İŞLEM ÖNCESİ
             </span>
 
             <!-- After Image (Overlay: Right Side clipped) -->
             <div id="ba-after-layer" class="ba-after-layer">
-              <img 
-                src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=75" 
-                alt="İşlem Sonrası Işıltılı Sarı Ombre" 
-                width="800" 
-                height="600" 
-                loading="lazy" 
-                decoding="async"
-              />
+              <picture class="w-full h-full block">
+                <source type="image/webp" media="(max-width: 640px)" srcset="./images/after-hair-mobile.webp 480w" sizes="(max-width: 640px) 100vw, 800px" />
+                <source type="image/webp" srcset="./images/after-hair-desktop.webp 800w" sizes="(max-width: 640px) 100vw, 800px" />
+                <source media="(max-width: 640px)" srcset="./images/after-hair-mobile.jpg 480w" sizes="(max-width: 640px) 100vw, 800px" />
+                <img 
+                  src="./images/after-hair-desktop.jpg" 
+                  alt="İşlem Sonrası Işıltılı Sarı Ombre" 
+                  width="800" 
+                  height="600" 
+                  loading="lazy" 
+                  decoding="async"
+                />
+              </picture>
               <span class="absolute bottom-3 right-3 z-10 px-2.5 sm:px-3 py-1 rounded-full bg-gradient-to-r from-brand-gold to-brand-champagne text-black text-[10px] sm:text-xs font-extrabold shadow-md">
                 İŞLEM SONRASI
               </span>
@@ -719,7 +712,7 @@
     <!-- ========================================================================= -->
     <!-- 3. İŞLEM & HİZMET VİTRİNİ (4 FEATURED HIGH-END CARDS)                    -->
     <!-- ========================================================================= -->
-    <section class="py-16 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="hizmetler" class="py-16 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 section-deferred">
       
       <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
         <span class="text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] text-brand-champagne reveal-text">İmza Hizmetlerimiz</span>
@@ -736,15 +729,19 @@
         <!-- Card 1: Sarı / Ombre / Balyaj -->
         <article class="luxury-card rounded-2xl sm:rounded-3xl overflow-hidden flex flex-col justify-between group reveal-card delay-100">
           <div class="aspect-[4/3] overflow-hidden bg-zinc-900">
-            <img 
-              src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=700&q=75" 
-              alt="ThreeBrothers Platin Sarı Ombre ve Balyaj Saç Tasarımı" 
-              width="700" 
-              height="525" 
-              loading="lazy" 
-              decoding="async"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-            />
+            <picture class="w-full h-full block">
+              <source type="image/webp" media="(max-width: 640px)" srcset="./images/service-ombre-sm.webp 400w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 300px" />
+              <source type="image/webp" srcset="./images/service-ombre-md.webp 700w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 300px" />
+              <img 
+                src="./images/service-ombre-md.jpg" 
+                alt="ThreeBrothers Platin Sarı Ombre ve Balyaj Saç Tasarımı" 
+                width="700" 
+                height="525" 
+                loading="lazy" 
+                decoding="async"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+            </picture>
           </div>
           <div class="p-5 sm:p-6 flex flex-col flex-grow justify-between">
             <div>
@@ -770,15 +767,19 @@
         <!-- Card 2: Gelin Başı / Topuz -->
         <article class="luxury-card rounded-2xl sm:rounded-3xl overflow-hidden flex flex-col justify-between group reveal-card delay-200">
           <div class="aspect-[4/3] overflow-hidden bg-zinc-900">
-            <img 
-              src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=700&q=75" 
-              alt="ThreeBrothers Taçlı Lüks Gelin Başı ve Nişan Topuz Tasarımı" 
-              width="700" 
-              height="525" 
-              loading="lazy" 
-              decoding="async"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-            />
+            <picture class="w-full h-full block">
+              <source type="image/webp" media="(max-width: 640px)" srcset="./images/service-gelin-sm.webp 400w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 300px" />
+              <source type="image/webp" srcset="./images/service-gelin-md.webp 700w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 300px" />
+              <img 
+                src="./images/service-gelin-md.jpg" 
+                alt="ThreeBrothers Taçlı Lüks Gelin Başı ve Nişan Topuz Tasarımı" 
+                width="700" 
+                height="525" 
+                loading="lazy" 
+                decoding="async"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+            </picture>
           </div>
           <div class="p-5 sm:p-6 flex flex-col flex-grow justify-between">
             <div>
@@ -801,18 +802,22 @@
           </div>
         </article>
 
-        <!-- Card 3: Keratin / Bakım (Düz & Parlak Saç) -->
+        <!-- Card 3: Keratin / Bakım -->
         <article class="luxury-card rounded-2xl sm:rounded-3xl overflow-hidden flex flex-col justify-between group reveal-card delay-300">
           <div class="aspect-[4/3] overflow-hidden bg-zinc-900">
-            <img 
-              src="https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?auto=format&fit=crop&w=700&q=75" 
-              alt="ThreeBrothers Keratin Botox Düz ve Parlak İpeksi Saç Bakımı" 
-              width="700" 
-              height="525" 
-              loading="lazy" 
-              decoding="async"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-            />
+            <picture class="w-full h-full block">
+              <source type="image/webp" media="(max-width: 640px)" srcset="./images/service-keratin-sm.webp 400w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 300px" />
+              <source type="image/webp" srcset="./images/service-keratin-md.webp 700w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 300px" />
+              <img 
+                src="./images/service-keratin-md.jpg" 
+                alt="ThreeBrothers Keratin Botox Düz ve Parlak İpeksi Saç Bakımı" 
+                width="700" 
+                height="525" 
+                loading="lazy" 
+                decoding="async"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+            </picture>
           </div>
           <div class="p-5 sm:p-6 flex flex-col flex-grow justify-between">
             <div>
@@ -838,15 +843,19 @@
         <!-- Card 4: Kaynak / Kesim & Fön -->
         <article class="luxury-card rounded-2xl sm:rounded-3xl overflow-hidden flex flex-col justify-between group reveal-card delay-400">
           <div class="aspect-[4/3] overflow-hidden bg-zinc-900">
-            <img 
-              src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=700&q=75" 
-              alt="ThreeBrothers Katlı Kesim, Hacimli Fön ve Saç Şekillendirme" 
-              width="700" 
-              height="525" 
-              loading="lazy" 
-              decoding="async"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-            />
+            <picture class="w-full h-full block">
+              <source type="image/webp" media="(max-width: 640px)" srcset="./images/service-kaynak-sm.webp 400w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 300px" />
+              <source type="image/webp" srcset="./images/service-kaynak-md.webp 700w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 300px" />
+              <img 
+                src="./images/service-kaynak-md.jpg" 
+                alt="ThreeBrothers Katlı Kesim, Hacimli Fön ve Saç Şekillendirme" 
+                width="700" 
+                height="525" 
+                loading="lazy" 
+                decoding="async"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+            </picture>
           </div>
           <div class="p-5 sm:p-6 flex flex-col flex-grow justify-between">
             <div>
@@ -875,7 +884,7 @@
     <!-- ========================================================================= -->
     <!-- 4. INSTAGRAM TARZI ÇALIŞMA GALERİSİ (6-PHOTO AESTHETIC GRID)              -->
     <!-- ========================================================================= -->
-    <section class="py-16 sm:py-20 bg-[#141417] border-t border-b border-white/[0.06] relative">
+    <section id="galeri" class="py-16 sm:py-20 bg-[#141417] border-t border-b border-white/[0.06] relative section-deferred">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 sm:mb-12 gap-3">
@@ -893,17 +902,21 @@
 
         <div class="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-6">
           
-          <!-- Photo 1: Hacimli Fön & Şekillendirme -->
+          <!-- Photo 1 -->
           <div class="relative aspect-square rounded-xl sm:rounded-2xl overflow-hidden group luxury-card p-1 reveal-card delay-75">
-            <img 
-              src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=600&q=75" 
-              alt="Hacimli fön ve saç şekillendirme anı - ThreeBrothers Bayan Kuaförü" 
-              width="600" 
-              height="600" 
-              loading="lazy" 
-              decoding="async"
-              class="w-full h-full object-cover rounded-lg sm:rounded-xl group-hover:scale-105 transition-transform duration-500"
-            />
+            <picture class="w-full h-full block">
+              <source type="image/webp" media="(max-width: 640px)" srcset="./images/gallery-1-fon-sm.webp 360w" sizes="(max-width: 640px) 50vw, 360px" />
+              <source type="image/webp" srcset="./images/gallery-1-fon-md.webp 600w" sizes="(max-width: 640px) 50vw, 360px" />
+              <img 
+                src="./images/gallery-1-fon-md.jpg" 
+                alt="Hacimli fön ve saç şekillendirme anı - ThreeBrothers Bayan Kuaförü" 
+                width="600" 
+                height="600" 
+                loading="lazy" 
+                decoding="async"
+                class="w-full h-full object-cover rounded-lg sm:rounded-xl group-hover:scale-105 transition-transform duration-500"
+              />
+            </picture>
             <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-2 text-center rounded-xl">
               <span class="text-[11px] sm:text-xs font-bold text-brand-goldLight">
                 📸 @threebrotherrrs
@@ -911,17 +924,21 @@
             </div>
           </div>
 
-          <!-- Photo 2: Makyaj Aynası & Bakım İstasyonu -->
+          <!-- Photo 2 -->
           <div class="relative aspect-square rounded-xl sm:rounded-2xl overflow-hidden group luxury-card p-1 reveal-card delay-150">
-            <img 
-              src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=600&q=75" 
-              alt="Işıklı makyaj aynası ve profesyonel kozmetik istasyonu - ThreeBrothers" 
-              width="600" 
-              height="600" 
-              loading="lazy" 
-              decoding="async"
-              class="w-full h-full object-cover rounded-lg sm:rounded-xl group-hover:scale-105 transition-transform duration-500"
-            />
+            <picture class="w-full h-full block">
+              <source type="image/webp" media="(max-width: 640px)" srcset="./images/gallery-2-makyaj-sm.webp 360w" sizes="(max-width: 640px) 50vw, 360px" />
+              <source type="image/webp" srcset="./images/gallery-2-makyaj-md.webp 600w" sizes="(max-width: 640px) 50vw, 360px" />
+              <img 
+                src="./images/gallery-2-makyaj-md.jpg" 
+                alt="Işıklı makyaj aynası ve profesyonel kozmetik istasyonu - ThreeBrothers" 
+                width="600" 
+                height="600" 
+                loading="lazy" 
+                decoding="async"
+                class="w-full h-full object-cover rounded-lg sm:rounded-xl group-hover:scale-105 transition-transform duration-500"
+              />
+            </picture>
             <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-2 text-center rounded-xl">
               <span class="text-[11px] sm:text-xs font-bold text-brand-goldLight">
                 📸 @threebrotherrrs
@@ -929,17 +946,21 @@
             </div>
           </div>
 
-          <!-- Photo 3: Lüks Kuaför Salonu Atmosferi -->
+          <!-- Photo 3 -->
           <div class="relative aspect-square rounded-xl sm:rounded-2xl overflow-hidden group luxury-card p-1 reveal-card delay-200">
-            <img 
-              src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=600&q=75" 
-              alt="ThreeBrothers Lüks Kuaför Salonu İç Mekan Manavgat" 
-              width="600" 
-              height="600" 
-              loading="lazy" 
-              decoding="async"
-              class="w-full h-full object-cover rounded-lg sm:rounded-xl group-hover:scale-105 transition-transform duration-500"
-            />
+            <picture class="w-full h-full block">
+              <source type="image/webp" media="(max-width: 640px)" srcset="./images/gallery-3-spa-sm.webp 360w" sizes="(max-width: 640px) 50vw, 360px" />
+              <source type="image/webp" srcset="./images/gallery-3-spa-md.webp 600w" sizes="(max-width: 640px) 50vw, 360px" />
+              <img 
+                src="./images/gallery-3-spa-md.jpg" 
+                alt="ThreeBrothers Lüks Kuaför Salonu İç Mekan Manavgat" 
+                width="600" 
+                height="600" 
+                loading="lazy" 
+                decoding="async"
+                class="w-full h-full object-cover rounded-lg sm:rounded-xl group-hover:scale-105 transition-transform duration-500"
+              />
+            </picture>
             <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-2 text-center rounded-xl">
               <span class="text-[11px] sm:text-xs font-bold text-brand-goldLight">
                 📸 @threebrotherrrs
@@ -947,17 +968,21 @@
             </div>
           </div>
 
-          <!-- Photo 4: Ayna Yansıması & Hazırlık Dokunuşu -->
+          <!-- Photo 4 -->
           <div class="relative aspect-square rounded-xl sm:rounded-2xl overflow-hidden group luxury-card p-1 reveal-card delay-250">
-            <img 
-              src="https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?auto=format&fit=crop&w=600&q=75" 
-              alt="Işıklı kemerli aynada saç hazırlığı ve son dokunuşlar - ThreeBrothers" 
-              width="600" 
-              height="600" 
-              loading="lazy" 
-              decoding="async"
-              class="w-full h-full object-cover rounded-lg sm:rounded-xl group-hover:scale-105 transition-transform duration-500"
-            />
+            <picture class="w-full h-full block">
+              <source type="image/webp" media="(max-width: 640px)" srcset="./images/gallery-4-hazirlik-sm.webp 360w" sizes="(max-width: 640px) 50vw, 360px" />
+              <source type="image/webp" srcset="./images/gallery-4-hazirlik-md.webp 600w" sizes="(max-width: 640px) 50vw, 360px" />
+              <img 
+                src="./images/gallery-4-hazirlik-md.jpg" 
+                alt="Işıklı kemerli aynada saç hazırlığı ve son dokunuşlar - ThreeBrothers" 
+                width="600" 
+                height="600" 
+                loading="lazy" 
+                decoding="async"
+                class="w-full h-full object-cover rounded-lg sm:rounded-xl group-hover:scale-105 transition-transform duration-500"
+              />
+            </picture>
             <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-2 text-center rounded-xl">
               <span class="text-[11px] sm:text-xs font-bold text-brand-goldLight">
                 📸 @threebrotherrrs
@@ -965,17 +990,21 @@
             </div>
           </div>
 
-          <!-- Photo 5: Modern Saç Tasarım ve Şekillendirme -->
+          <!-- Photo 5 -->
           <div class="relative aspect-square rounded-xl sm:rounded-2xl overflow-hidden group luxury-card p-1 reveal-card delay-300">
-            <img 
-              src="https://images.unsplash.com/photo-1582095133179-bfd08e2fc6b3?auto=format&fit=crop&w=600&q=75" 
-              alt="Sıcak karamel ve bal ışıltılı dalgalı saç renklendirme - ThreeBrothers" 
-              width="600" 
-              height="600" 
-              loading="lazy" 
-              decoding="async"
-              class="w-full h-full object-cover rounded-lg sm:rounded-xl group-hover:scale-105 transition-transform duration-500"
-            />
+            <picture class="w-full h-full block">
+              <source type="image/webp" media="(max-width: 640px)" srcset="./images/gallery-5-renk-sm.webp 360w" sizes="(max-width: 640px) 50vw, 360px" />
+              <source type="image/webp" srcset="./images/gallery-5-renk-md.webp 600w" sizes="(max-width: 640px) 50vw, 360px" />
+              <img 
+                src="./images/gallery-5-renk-md.jpg" 
+                alt="Sıcak karamel ve bal ışıltılı dalgalı saç renklendirme - ThreeBrothers" 
+                width="600" 
+                height="600" 
+                loading="lazy" 
+                decoding="async"
+                class="w-full h-full object-cover rounded-lg sm:rounded-xl group-hover:scale-105 transition-transform duration-500"
+              />
+            </picture>
             <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-2 text-center rounded-xl">
               <span class="text-[11px] sm:text-xs font-bold text-brand-goldLight">
                 📸 @threebrotherrrs
@@ -983,17 +1012,21 @@
             </div>
           </div>
 
-          <!-- Photo 6: Profesyonel Kuaför İstasyonu -->
+          <!-- Photo 6 -->
           <div class="relative aspect-square rounded-xl sm:rounded-2xl overflow-hidden group luxury-card p-1 reveal-card delay-350">
-            <img 
-              src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=600&q=75" 
-              alt="ThreeBrothers modern butik bayan kuaförü salon içi görünümü" 
-              width="600" 
-              height="600" 
-              loading="lazy" 
-              decoding="async"
-              class="w-full h-full object-cover rounded-lg sm:rounded-xl group-hover:scale-105 transition-transform duration-500"
-            />
+            <picture class="w-full h-full block">
+              <source type="image/webp" media="(max-width: 640px)" srcset="./images/gallery-6-salon-sm.webp 360w" sizes="(max-width: 640px) 50vw, 360px" />
+              <source type="image/webp" srcset="./images/gallery-6-salon-md.webp 600w" sizes="(max-width: 640px) 50vw, 360px" />
+              <img 
+                src="./images/gallery-6-salon-md.jpg" 
+                alt="ThreeBrothers modern butik bayan kuaförü salon içi görünümü" 
+                width="600" 
+                height="600" 
+                loading="lazy" 
+                decoding="async"
+                class="w-full h-full object-cover rounded-lg sm:rounded-xl group-hover:scale-105 transition-transform duration-500"
+              />
+            </picture>
             <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-2 text-center rounded-xl">
               <span class="text-[11px] sm:text-xs font-bold text-brand-goldLight">
                 📸 @threebrotherrrs
@@ -1009,7 +1042,7 @@
     <!-- ========================================================================= -->
     <!-- 5. NEDEN THREEBROTHERS? (3 COMPACT TRUST CARDS)                           -->
     <!-- ========================================================================= -->
-    <section class="py-16 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="neden-biz" class="py-16 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 section-deferred">
       
       <div class="text-center max-w-xl mx-auto mb-10 sm:mb-14">
         <span class="text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] text-brand-champagne reveal-text">Ayrıcalıklarımız</span>
@@ -1071,7 +1104,7 @@
     <!-- ========================================================================= -->
     <!-- 6. GOOGLE YORUMLAR WIDGET'I (BADGE + SLIDER / CAROUSEL)                   -->
     <!-- ========================================================================= -->
-    <section class="py-16 sm:py-24 bg-[#141417] border-t border-b border-white/[0.06] relative overflow-hidden">
+    <section id="yorumlar" class="py-16 sm:py-24 bg-[#141417] border-t border-b border-white/[0.06] relative overflow-hidden section-deferred">
       
       <!-- Subtle ambient glow in background -->
       <div class="glow-sphere w-[400px] sm:w-[600px] h-[400px] sm:h-[600px] bg-brand-gold/10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
@@ -1086,7 +1119,7 @@
           </h2>
         </div>
 
-        <!-- Main Widget Container: Grid on Desktop (Left Badge 35%, Right Slider 65%) -->
+        <!-- Main Widget Container: Grid on Desktop -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-stretch">
           
           <!-- 1. SOL ROZET KARTI (lg:col-span-4) -->
@@ -1130,7 +1163,7 @@
               </div>
             </div>
 
-            <!-- Mavi Buton: Siz de yorum yazın (Yanında renkli Google 'G' logosu) -->
+            <!-- Mavi Buton -->
             <a 
               href="https://search.google.com/local/writereview?placeid=ChIJewW1RSBZwxQRng2U9jWTu-s" 
               target="_blank" 
@@ -1151,7 +1184,7 @@
           <!-- 2. SAĞDAKİ SLIDER / YORUM KARTLARI (lg:col-span-8) -->
           <div class="lg:col-span-8 luxury-card rounded-2xl sm:rounded-3xl p-6 sm:p-8 flex flex-col justify-between border border-white/10 bg-[#121215]/95 shadow-[0_15px_40px_rgba(0,0,0,0.5)] relative overflow-hidden reveal-card delay-250">
             
-            <!-- Large Decorative Quote in background -->
+            <!-- Large Decorative Quote -->
             <div class="absolute top-6 right-6 sm:top-8 sm:right-8 text-brand-champagne/10 pointer-events-none select-none" aria-hidden="true">
               <svg class="w-16 h-16 sm:w-20 sm:h-20 fill-current" viewBox="0 0 24 24">
                 <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
@@ -1618,7 +1651,7 @@
     <!-- ========================================================================= -->
     <!-- 7. KONUM, ÇALIŞMA SAATLERİ & HIZLI İLETİŞİM                                -->
     <!-- ========================================================================= -->
-    <section class="py-16 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-safe-dock">
+    <section id="iletisim" class="py-16 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-safe-dock section-deferred">
       
       <div class="text-center max-w-xl mx-auto mb-10 sm:mb-14">
         <span class="text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] text-brand-champagne reveal-text">Rezervasyon & Ulaşım</span>
@@ -1665,11 +1698,12 @@
         <!-- Right Column: Map & Action Buttons (7 cols) -->
         <div class="lg:col-span-7 luxury-card rounded-2xl sm:rounded-3xl p-4 sm:p-7 flex flex-col justify-between gap-5 sm:gap-6 reveal-card delay-250">
           
-          <!-- Map Iframe with Tabindex=-1 to never steal focus on page load -->
+          <!-- Map Iframe with Tabindex=-1 and IntersectionObserver lazy loading -->
           <div class="rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 h-56 sm:h-72 relative bg-zinc-900 group">
             <iframe 
+              id="google-maps-iframe"
               title="ThreeBrothers Bayan Kuaförü Manavgat Harita Konumu" 
-              src="https://maps.google.com/maps?q=ThreeBrothers+Bayan+kuaforu,+Demokrasi+Bulvar%C4%B1+Manavgat&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+              data-src="https://maps.google.com/maps?q=ThreeBrothers+Bayan+kuaforu,+Demokrasi+Bulvar%C4%B1+Manavgat&t=&z=16&ie=UTF8&iwloc=&output=embed" 
               width="100%" 
               height="100%" 
               style="border:0;" 
@@ -1717,16 +1751,19 @@
   <!-- ========================================================================= -->
   <!-- MINIMAL FOOTER                                                           -->
   <!-- ========================================================================= -->
-  <footer class="border-t border-white/[0.08] py-8 text-center text-xs text-zinc-500 pb-28 md:pb-8">
+  <footer class="border-t border-white/[0.08] py-8 text-center text-xs text-zinc-500 pb-28 md:pb-8 section-deferred">
     <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4 reveal-text delay-100">
       <div class="flex items-center gap-3">
-        <img 
-          src="./images/logo.jpg" 
-          alt="ThreeBrothers Logo" 
-          width="32" 
-          height="32" 
-          class="w-8 h-8 rounded-full border border-brand-champagne/40 object-cover shrink-0"
-        />
+        <picture>
+          <source type="image/webp" srcset="./images/logo-sm.webp" />
+          <img 
+            src="./images/logo-sm.jpg" 
+            alt="ThreeBrothers Logo" 
+            width="32" 
+            height="32" 
+            class="w-8 h-8 rounded-full border border-brand-champagne/40 object-cover shrink-0"
+          />
+        </picture>
         <p class="font-medium text-left">© 2026 ThreeBrothers Bayan Kuaförü & Saç Tasarım Stüdyosu. Tüm hakları saklıdır. Manavgat / Antalya.</p>
       </div>
       <div class="flex items-center gap-3 sm:gap-4 text-xs font-semibold text-zinc-400">
@@ -1763,7 +1800,7 @@
   </div>
 
   <script>
-    // 1. Fully Mobile-Responsive & Touch-Friendly Before / After Slider (Drag Only on Center Handle)
+    // 1. Mobile-Responsive & Touch-Friendly Before / After Slider
     (function initBeforeAfter() {
       const container = document.getElementById('ba-slider');
       const handle = document.getElementById('ba-handle');
@@ -1824,7 +1861,6 @@
         isDragging = false;
       }
 
-      // Dragging ONLY initiates when the center handle button is grabbed
       handleButton.addEventListener('mousedown', onStart);
       window.addEventListener('mousemove', onMove, { passive: true });
       window.addEventListener('mouseup', onEnd);
@@ -1851,7 +1887,6 @@
       let currentIndex = 0;
       let autoplayTimer = null;
 
-      // Build pagination dot indicators
       dotsContainer.innerHTML = '';
       for (let i = 0; i < totalSlides; i++) {
         const dot = document.createElement('button');
@@ -1913,7 +1948,6 @@
         startAutoplay();
       }
 
-      // Touch / Mobile Swipe Support
       let touchStartX = 0;
       let touchEndX = 0;
 
@@ -1941,7 +1975,7 @@
       startAutoplay();
     })();
 
-    // 3. Ultra-Smooth Hardware-Accelerated Scroll Reveal with IntersectionObserver
+    // 3. Hardware-Accelerated Scroll Reveal with IntersectionObserver
     (function initScrollReveal() {
       const revealElements = document.querySelectorAll('.reveal-on-scroll, .reveal-text, .reveal-card');
       
@@ -1950,7 +1984,6 @@
         return;
       }
 
-      // IntersectionObserver tuned for 60 FPS mobile touch scrolling
       const observer = new IntersectionObserver((entries, obs) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -1960,13 +1993,12 @@
         });
       }, {
         root: null,
-        rootMargin: '0px 0px 60px 0px',
-        threshold: 0.05
+        rootMargin: '0px 0px 80px 0px',
+        threshold: 0.02
       });
 
       revealElements.forEach(el => observer.observe(el));
 
-      // Immediate check on load for elements already in initial viewport
       const checkInitialView = () => {
         const winHeight = window.innerHeight;
         revealElements.forEach(el => {
@@ -1983,10 +2015,10 @@
       } else {
         checkInitialView();
       }
-      setTimeout(checkInitialView, 120);
+      setTimeout(checkInitialView, 100);
     })();
 
-    // 4. Smooth Scroll Dynamics: Top Progress Bar + Hero Indicator Fade + Back-to-Top Button
+    // 4. Smooth Scroll Dynamics: Progress Bar + Hero Indicator + Back-to-Top
     (function initScrollAnimations() {
       const progressBar = document.getElementById('scroll-progress');
       const heroIndicator = document.getElementById('hero-scroll-indicator');
@@ -2040,9 +2072,37 @@
         });
       }
     })();
+
+    // 5. Lazy-Load Google Maps Iframe via IntersectionObserver
+    (function initLazyMaps() {
+      const mapIframe = document.getElementById('google-maps-iframe');
+      if (!mapIframe) return;
+
+      if (!('IntersectionObserver' in window)) {
+        if (mapIframe.dataset.src) mapIframe.src = mapIframe.dataset.src;
+        return;
+      }
+
+      const mapObserver = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const iframe = entry.target;
+            if (iframe.dataset.src) {
+              iframe.src = iframe.dataset.src;
+              iframe.removeAttribute('data-src');
+            }
+            obs.unobserve(iframe);
+          }
+        });
+      }, {
+        rootMargin: '200px 0px'
+      });
+
+      mapObserver.observe(mapIframe);
+    })();
   </script>
 
-  <!-- Floating Back to Top Button with Gold Shimmer -->
+  <!-- Floating Back to Top Button -->
   <button id="scroll-top-btn" type="button" aria-label="Yukarı Çık" class="btn-scroll-top fixed bottom-20 md:bottom-6 right-4 md:right-6 z-40 w-10 h-10 sm:w-11 sm:h-11 rounded-full btn-outline-gold flex items-center justify-center text-brand-champagne bg-[#0F0F11]/90 backdrop-blur-md shadow-2xl hover:scale-110 active:scale-95 cursor-pointer">
     <svg class="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
