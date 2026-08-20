@@ -310,17 +310,68 @@
       outline-offset: 3px;
     }
 
+    /* Mobile Hero Zoom & Optimized Vertical Spacing (~15-20% reduced) */
+    @media (max-width: 639px) {
+      .hero-bg-img {
+        transform: scale(1.1);
+        transform-origin: center center;
+        transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      #hero {
+        padding-top: 5rem !important; /* 80px: ~17% reduction from 96px */
+        padding-bottom: 5.75rem !important; /* 92px: ~18% reduction from 112px */
+      }
+    }
+
+    /* Scroll Indicator Dot Animation */
+    @keyframes scrollDotFloat {
+      0% { transform: translateY(0); opacity: 1; }
+      50% { transform: translateY(8px); opacity: 0.7; }
+      100% { transform: translateY(14px); opacity: 0; }
+    }
+    .animate-scroll-dot {
+      animation: scrollDotFloat 1.8s ease-in-out infinite;
+    }
+
+    /* Top Page Scroll Progress Bar */
+    #scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 3px;
+      background: linear-gradient(90deg, #D4AF37, #EFE2CE, #C5A880, #D4AF37);
+      z-index: 100;
+      pointer-events: none;
+      box-shadow: 0 0 12px rgba(212, 175, 55, 0.8);
+      transition: width 0.05s linear;
+    }
+
+    /* Floating Back-to-Top Button */
+    .btn-scroll-top {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(14px) scale(0.9);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .btn-scroll-top.is-visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0) scale(1);
+    }
+
     @media (prefers-reduced-motion: reduce) {
       *, ::before, ::after {
         animation-duration: 0.01ms !important;
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
       }
-      .reveal-on-scroll, .reveal-text, .reveal-card {
+      .reveal-on-scroll, .reveal-text, .reveal-card, .hero-bg-img, .animate-scroll-dot {
         opacity: 1 !important;
         transform: none !important;
         filter: none !important;
         transition: none !important;
+        animation: none !important;
       }
     }
   </style>
@@ -390,6 +441,9 @@
 </head>
 <body class="bg-[#0F0F11] text-zinc-100 flex flex-col min-h-screen selection:bg-brand-gold selection:text-black">
 
+  <!-- Dynamic Scroll Progress Indicator at Top Edge -->
+  <div id="scroll-progress" aria-hidden="true"></div>
+
   <!-- ========================================================================= -->
   <!-- 1. FLOATING GLASS HEADER                                                  -->
   <!-- ========================================================================= -->
@@ -449,34 +503,34 @@
     <!-- ========================================================================= -->
     <!-- 2. IMMERSIVE ATMOSPHERIC HERO                                             -->
     <!-- ========================================================================= -->
-    <section id="hero" class="relative w-full min-h-[100dvh] flex flex-col justify-between pt-24 pb-28 px-4 sm:pt-28 sm:pb-24 sm:px-6 lg:px-8 overflow-hidden isolate">
+    <section id="hero" class="relative w-full min-h-[100dvh] flex flex-col justify-between pt-20 pb-24 px-4 sm:pt-28 sm:pb-24 sm:px-6 lg:px-8 overflow-hidden isolate">
       
       <!-- Warm Ambient Glow Sprites -->
       <div class="glow-sphere w-[300px] sm:w-[550px] h-[300px] sm:h-[550px] bg-brand-gold/15 top-[-50px] sm:top-[-100px] right-[-50px] sm:right-[-100px]"></div>
       <div class="glow-sphere w-[350px] sm:w-[600px] h-[350px] sm:h-[600px] bg-amber-950/20 bottom-[-50px] sm:bottom-[-100px] left-[-80px] sm:left-[-150px]" style="animation-delay: -4s;"></div>
 
       <!-- Hero Background Image with Editorial Warm Grading -->
-      <div class="absolute inset-0 z-0 pointer-events-none">
+      <div class="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         <img 
-          src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1920&q=80" 
+          src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=1920&q=80" 
           alt="ThreeBrothers Lüks Kuaför Salonu İç Mekan Manavgat" 
           width="1920" 
           height="1080" 
           fetchpriority="high"
           loading="eager"
-          class="w-full h-full object-cover object-center opacity-40 sm:opacity-45 filter contrast-125 brightness-100"
+          class="hero-bg-img w-full h-full object-cover object-center opacity-40 sm:opacity-45 filter contrast-125 brightness-100"
         />
-        <div class="absolute inset-0 bg-black/60"></div>
+        <div class="absolute inset-0 bg-black/65"></div>
         <div class="absolute inset-0 bg-gradient-to-t from-[#0F0F11] via-[#0F0F11]/80 to-[#0F0F11]/40"></div>
         <div class="absolute inset-0 bg-gradient-to-r from-[#0F0F11]/80 via-transparent to-[#0F0F11]/80"></div>
       </div>
 
-      <!-- Hero Content -->
-      <div class="flex-1 w-full max-w-lg sm:max-w-4xl mx-auto flex flex-col justify-around items-center text-center py-4 relative z-10">
+      <!-- Hero Content (Centered, with closely grouped elements in mobile) -->
+      <div class="flex-1 w-full max-w-lg sm:max-w-4xl mx-auto flex flex-col justify-center sm:justify-around items-center text-center py-2 sm:py-4 gap-3.5 sm:gap-0 relative z-10 my-auto">
         
         <!-- Brand Emblem & Identity -->
-        <div class="flex flex-col items-center justify-center gap-2 sm:gap-2.5 reveal-text delay-75 group mb-2">
-          <div class="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full p-[2px] bg-gradient-to-tr from-brand-gold via-brand-champagne to-brand-goldLight shadow-[0_0_30px_rgba(212,175,55,0.4)] transition-transform duration-300 group-hover:scale-105 overflow-hidden">
+        <div class="flex flex-col items-center justify-center gap-1.5 sm:gap-2.5 reveal-text delay-75 group mb-1 sm:mb-2">
+          <div class="relative w-14 h-14 sm:w-20 sm:h-20 rounded-full p-[2px] bg-gradient-to-tr from-brand-gold via-brand-champagne to-brand-goldLight shadow-[0_0_30px_rgba(212,175,55,0.4)] transition-transform duration-300 group-hover:scale-105 overflow-hidden">
             <img 
               src="./images/logo.jpg" 
               alt="ThreeBrothers Bayan Kuaförü Resmi Logosu" 
@@ -486,28 +540,28 @@
             />
           </div>
           <div class="flex flex-col items-center">
-            <span class="font-serif-luxury text-lg sm:text-2xl font-bold tracking-tight text-white group-hover:text-brand-champagne transition-colors">
+            <span class="font-serif-luxury text-base sm:text-2xl font-bold tracking-tight text-white group-hover:text-brand-champagne transition-colors">
               ThreeBrothers
             </span>
-            <span class="text-[9px] sm:text-[11px] tracking-[0.25em] uppercase font-semibold text-brand-champagne font-sans mt-0.5">
+            <span class="text-[8.5px] sm:text-[11px] tracking-[0.22em] sm:tracking-[0.25em] uppercase font-semibold text-brand-champagne font-sans mt-0.5">
               Bayan Kuaförü • Manavgat
             </span>
           </div>
         </div>
 
         <!-- Hero Headline -->
-        <h1 class="text-2xl sm:text-5xl lg:text-6xl font-bold tracking-tight font-serif-luxury leading-[1.2] text-white text-balance reveal-text delay-150">
+        <h1 class="text-[1.35rem] sm:text-5xl lg:text-6xl font-bold tracking-tight font-serif-luxury leading-[1.25] sm:leading-[1.2] text-white text-balance reveal-text delay-150 my-1 sm:my-0">
           Manavgat'ın Seçkin <br class="hidden sm:inline" />
           <span class="gold-gradient-text">Saç Tasarım & Renklendirme</span> Stüdyosu
         </h1>
 
         <!-- Hero Subtitle -->
-        <p class="text-xs sm:text-base lg:text-lg text-zinc-300 max-w-2xl mx-auto leading-relaxed text-pretty font-normal px-2 reveal-text delay-250">
+        <p class="text-[11.5px] sm:text-base lg:text-lg text-zinc-300 max-w-2xl mx-auto leading-relaxed text-pretty font-normal px-2 reveal-text delay-250 my-1 sm:my-0">
           Kişiye özel tonlama formülleri, yıpranma karşıtı profesyonel açma teknikleri ve kusursuz gelin tasarımlarıyla saçınızın eşsiz ışıltısını ortaya çıkarıyoruz.
         </p>
 
         <!-- Dual Action CTAs -->
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 max-w-sm sm:max-w-none mx-auto w-full px-2 sm:px-0 reveal-text delay-350">
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-2.5 sm:gap-4 max-w-sm sm:max-w-none mx-auto w-full px-2 sm:px-0 reveal-text delay-350 mt-1 sm:mt-0">
           
           <a href="https://wa.me/905526856907?text=Merhaba,%20web%20sitenizden%20ula%C5%9F%C4%B1yorum.%20Randevu%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 rounded-full btn-gold-glow text-xs sm:text-base font-bold flex items-center justify-center gap-2.5 sm:gap-3">
             <svg class="w-4 sm:w-5 h-4 sm:h-5 fill-current shrink-0" viewBox="0 0 24 24">
@@ -526,6 +580,17 @@
         </div>
 
       </div>
+
+      <!-- Luxury Scroll Down Indicator Animation -->
+      <div class="relative z-10 flex justify-center pb-2 pt-1">
+        <a href="#donusum" id="hero-scroll-indicator" class="flex flex-col items-center gap-1.5 text-zinc-400 hover:text-brand-champagne transition-all duration-300 group cursor-pointer focus:outline-none" aria-label="Aşağı Kaydır">
+          <span class="text-[9.5px] sm:text-[10px] tracking-[0.25em] uppercase font-semibold text-brand-champagne/80 group-hover:text-brand-champagne transition-colors">Keşfet</span>
+          <div class="w-5 h-8 sm:w-6 sm:h-9 rounded-full border border-brand-champagne/40 flex items-start justify-center p-1 bg-black/40 backdrop-blur-sm group-hover:border-brand-champagne transition-colors shadow-[0_0_10px_rgba(212,175,55,0.2)]">
+            <div class="w-1.5 h-2 rounded-full bg-gradient-to-b from-brand-gold to-brand-champagne animate-scroll-dot"></div>
+          </div>
+        </a>
+      </div>
+
     </section>
 
     <!-- ========================================================================= -->
@@ -1835,7 +1900,58 @@
       }
       setTimeout(checkInitialView, 100);
     })();
+
+    // 4. Smooth Scroll Dynamics: Top Progress Bar + Hero Indicator Fade + Back-to-Top Button
+    (function initScrollAnimations() {
+      const progressBar = document.getElementById('scroll-progress');
+      const heroIndicator = document.getElementById('hero-scroll-indicator');
+      const scrollTopBtn = document.getElementById('scroll-top-btn');
+
+      function onScroll() {
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+        
+        if (progressBar && scrollHeight > 0) {
+          const progress = Math.min(100, Math.max(0, (scrollTop / scrollHeight) * 100));
+          progressBar.style.width = progress + '%';
+        }
+
+        if (heroIndicator) {
+          if (scrollTop > 60) {
+            heroIndicator.style.opacity = '0';
+            heroIndicator.style.pointerEvents = 'none';
+          } else {
+            heroIndicator.style.opacity = '1';
+            heroIndicator.style.pointerEvents = 'auto';
+          }
+        }
+
+        if (scrollTopBtn) {
+          if (scrollTop > 450) {
+            scrollTopBtn.classList.add('is-visible');
+          } else {
+            scrollTopBtn.classList.remove('is-visible');
+          }
+        }
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      if (scrollTopBtn) {
+        scrollTopBtn.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+    })();
   </script>
+
+  <!-- Floating Back to Top Button with Gold Shimmer -->
+  <button id="scroll-top-btn" type="button" aria-label="Yukarı Çık" class="btn-scroll-top fixed bottom-20 md:bottom-6 right-4 md:right-6 z-40 w-10 h-10 sm:w-11 sm:h-11 rounded-full btn-outline-gold flex items-center justify-center text-brand-champagne bg-[#0F0F11]/90 backdrop-blur-md shadow-2xl hover:scale-110 active:scale-95 cursor-pointer">
+    <svg class="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+    </svg>
+  </button>
 
 </body>
 </html>
