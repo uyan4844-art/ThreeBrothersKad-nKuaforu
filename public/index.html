@@ -236,17 +236,63 @@
       transform: translate(-50%, -50%) scale(1.1);
     }
 
-    /* Scroll Reveal Animation */
+    /* ========================================================================= */
+    /* LUXURY SCROLL REVEAL & TEXT SLIDE ANIMATIONS                              */
+    /* ========================================================================= */
     .reveal-on-scroll {
       opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: translateY(28px);
+      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
       will-change: opacity, transform;
+      backface-visibility: hidden;
     }
     .reveal-on-scroll.is-visible {
       opacity: 1;
       transform: translateY(0);
     }
+
+    /* Text Specific Reveal (with subtle elegant blur-in & smooth slide up) */
+    .reveal-text {
+      opacity: 0;
+      transform: translateY(24px);
+      filter: blur(4px);
+      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), 
+                  transform 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+                  filter 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform, filter;
+      backface-visibility: hidden;
+    }
+    .reveal-text.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+
+    /* Card & Media Container Reveal (with subtle scale up) */
+    .reveal-card {
+      opacity: 0;
+      transform: translateY(28px) scale(0.98);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+                  transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+      backface-visibility: hidden;
+    }
+    .reveal-card.is-visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    /* Stagger Delays for Hierarchical Reveal */
+    .delay-75  { transition-delay: 75ms !important; }
+    .delay-100 { transition-delay: 100ms !important; }
+    .delay-150 { transition-delay: 150ms !important; }
+    .delay-200 { transition-delay: 200ms !important; }
+    .delay-250 { transition-delay: 250ms !important; }
+    .delay-300 { transition-delay: 300ms !important; }
+    .delay-350 { transition-delay: 350ms !important; }
+    .delay-400 { transition-delay: 400ms !important; }
+    .delay-500 { transition-delay: 500ms !important; }
+    .delay-600 { transition-delay: 600ms !important; }
 
     /* Safe Area Padding for Mobile Bottom Bar */
     .pb-safe-dock {
@@ -265,9 +311,11 @@
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
       }
-      .reveal-on-scroll {
+      .reveal-on-scroll, .reveal-text, .reveal-card {
         opacity: 1 !important;
         transform: none !important;
+        filter: none !important;
+        transition: none !important;
       }
     }
   </style>
@@ -414,10 +462,10 @@
       </div>
 
       <!-- Hero Content -->
-      <div class="flex-1 w-full max-w-lg sm:max-w-4xl mx-auto flex flex-col justify-around items-center text-center py-4 relative z-10 reveal-on-scroll">
+      <div class="flex-1 w-full max-w-lg sm:max-w-4xl mx-auto flex flex-col justify-around items-center text-center py-4 relative z-10">
         
         <!-- Social Proof Google Badge (Direct Link to Write Review / 5 Stars) -->
-        <a href="https://search.google.com/local/writereview?placeid=ChIJewW1RSBZwxQRng2U9jWTu-s" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white/[0.04] border border-brand-champagne/30 text-[11px] sm:text-sm font-semibold text-brand-goldLight backdrop-blur-md shadow-xl transition-transform hover:scale-105" title="Google'da 5 Yıldız Verin & Yorum Yazın">
+        <a href="https://search.google.com/local/writereview?placeid=ChIJewW1RSBZwxQRng2U9jWTu-s" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white/[0.04] border border-brand-champagne/30 text-[11px] sm:text-sm font-semibold text-brand-goldLight backdrop-blur-md shadow-xl transition-transform hover:scale-105 reveal-text delay-75" title="Google'da 5 Yıldız Verin & Yorum Yazın">
           <div class="flex items-center text-amber-400 gap-0.5 text-xs sm:text-sm" aria-hidden="true">
             <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
           </div>
@@ -427,18 +475,18 @@
         </a>
 
         <!-- Hero Headline -->
-        <h1 class="text-2xl sm:text-5xl lg:text-6xl font-bold tracking-tight font-serif-luxury leading-[1.2] text-white text-balance">
+        <h1 class="text-2xl sm:text-5xl lg:text-6xl font-bold tracking-tight font-serif-luxury leading-[1.2] text-white text-balance reveal-text delay-150">
           Manavgat'ın Seçkin <br class="hidden sm:inline" />
           <span class="gold-gradient-text">Saç Tasarım & Renklendirme</span> Stüdyosu
         </h1>
 
         <!-- Hero Subtitle -->
-        <p class="text-xs sm:text-base lg:text-lg text-zinc-300 max-w-2xl mx-auto leading-relaxed text-pretty font-normal px-2">
+        <p class="text-xs sm:text-base lg:text-lg text-zinc-300 max-w-2xl mx-auto leading-relaxed text-pretty font-normal px-2 reveal-text delay-250">
           Kişiye özel tonlama formülleri, yıpranma karşıtı profesyonel açma teknikleri ve kusursuz gelin tasarımlarıyla saçınızın eşsiz ışıltısını ortaya çıkarıyoruz.
         </p>
 
         <!-- Dual Action CTAs -->
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 max-w-sm sm:max-w-none mx-auto w-full px-2 sm:px-0">
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 max-w-sm sm:max-w-none mx-auto w-full px-2 sm:px-0 reveal-text delay-350">
           
           <a href="https://wa.me/905526856907?text=Merhaba,%20web%20sitenizden%20ula%C5%9F%C4%B1yorum.%20Randevu%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 rounded-full btn-gold-glow text-xs sm:text-base font-bold flex items-center justify-center gap-2.5 sm:gap-3">
             <svg class="w-4 sm:w-5 h-4 sm:h-5 fill-current shrink-0" viewBox="0 0 24 24">
@@ -465,17 +513,17 @@
     <section id="donusum" class="py-16 sm:py-20 bg-[#141417] border-t border-b border-white/[0.06] relative">
       <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div class="text-center max-w-2xl mx-auto mb-8 sm:mb-12 reveal-on-scroll">
-          <span class="text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] text-brand-champagne">Dönüşüm Vitrini</span>
-          <h2 class="text-2xl sm:text-4xl font-bold font-serif-luxury text-white mt-1.5 sm:mt-2">
+        <div class="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
+          <span class="text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] text-brand-champagne reveal-text">Dönüşüm Vitrini</span>
+          <h2 class="text-2xl sm:text-4xl font-bold font-serif-luxury text-white mt-1.5 sm:mt-2 reveal-text delay-100">
             Öncesi & Sonrası Dönüşümü
           </h2>
-          <p class="text-zinc-400 text-xs sm:text-sm mt-2 sm:mt-3 px-2">
+          <p class="text-zinc-400 text-xs sm:text-sm mt-2 sm:mt-3 px-2 reveal-text delay-200">
             Aşağıdaki altın ayracı sağa-sola sürükleyerek renklendirme ve keratin botoks sonucunu canlı kıyaslayın.
           </p>
         </div>
 
-        <div class="max-w-3xl mx-auto rounded-2xl sm:rounded-3xl overflow-hidden luxury-card p-2 sm:p-3 shadow-2xl reveal-on-scroll">
+        <div class="max-w-3xl mx-auto rounded-2xl sm:rounded-3xl overflow-hidden luxury-card p-2 sm:p-3 shadow-2xl reveal-card delay-150">
           
           <div id="ba-slider" class="ba-slider-box rounded-xl sm:rounded-2xl aspect-[4/3] sm:aspect-[16/9]">
             
@@ -514,7 +562,7 @@
 
           </div>
 
-          <div class="pt-3 pb-1 text-center text-[11px] sm:text-xs text-brand-goldLight flex items-center justify-center gap-1.5 sm:gap-2">
+          <div class="pt-3 pb-1 text-center text-[11px] sm:text-xs text-brand-goldLight flex items-center justify-center gap-1.5 sm:gap-2 reveal-text delay-200">
             <span>👈</span>
             <span>Ayracı kaydırarak renk açma ve bakım sonucunu karşılaştırın</span>
             <span>👉</span>
@@ -530,12 +578,12 @@
     <!-- ========================================================================= -->
     <section class="py-16 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16 reveal-on-scroll">
-        <span class="text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] text-brand-champagne">İmza Hizmetlerimiz</span>
-        <h2 class="text-2xl sm:text-4xl font-bold font-serif-luxury text-white mt-1.5 sm:mt-3">
+      <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+        <span class="text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] text-brand-champagne reveal-text">İmza Hizmetlerimiz</span>
+        <h2 class="text-2xl sm:text-4xl font-bold font-serif-luxury text-white mt-1.5 sm:mt-3 reveal-text delay-100">
           Özel Saç Tasarım Koleksiyonu
         </h2>
-        <p class="text-zinc-400 text-xs sm:text-sm mt-2 sm:mt-3 leading-relaxed">
+        <p class="text-zinc-400 text-xs sm:text-sm mt-2 sm:mt-3 leading-relaxed reveal-text delay-200">
           Saç bütünlüğünü koruyan açıcılar, kişiye özel tonlama formülleri ve kalıcı onarım terapileri.
         </p>
       </div>
@@ -543,7 +591,7 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
         
         <!-- Card 1: Ombre & Blonde Açma -->
-        <article class="luxury-card rounded-2xl sm:rounded-3xl overflow-hidden flex flex-col justify-between group reveal-on-scroll">
+        <article class="luxury-card rounded-2xl sm:rounded-3xl overflow-hidden flex flex-col justify-between group reveal-card delay-100">
           <div class="relative aspect-[4/3] overflow-hidden bg-zinc-900">
             <img 
               src="./images/service-ombre.jpg" 
@@ -574,7 +622,7 @@
         </article>
 
         <!-- Card 2: Gelin Başı & Özel Gün -->
-        <article class="luxury-card rounded-2xl sm:rounded-3xl overflow-hidden flex flex-col justify-between group reveal-on-scroll">
+        <article class="luxury-card rounded-2xl sm:rounded-3xl overflow-hidden flex flex-col justify-between group reveal-card delay-200">
           <div class="relative aspect-[4/3] overflow-hidden bg-zinc-900">
             <img 
               src="./images/service-gelin.jpg" 
@@ -605,7 +653,7 @@
         </article>
 
         <!-- Card 3: Keratin Botox & İpek Bakım -->
-        <article class="luxury-card rounded-2xl sm:rounded-3xl overflow-hidden flex flex-col justify-between group reveal-on-scroll">
+        <article class="luxury-card rounded-2xl sm:rounded-3xl overflow-hidden flex flex-col justify-between group reveal-card delay-300">
           <div class="relative aspect-[4/3] overflow-hidden bg-zinc-900">
             <img 
               src="./images/service-keratin.jpg" 
@@ -636,7 +684,7 @@
         </article>
 
         <!-- Card 4: Mikro Kaynak & Yoğunlaştırma -->
-        <article class="luxury-card rounded-2xl sm:rounded-3xl overflow-hidden flex flex-col justify-between group reveal-on-scroll">
+        <article class="luxury-card rounded-2xl sm:rounded-3xl overflow-hidden flex flex-col justify-between group reveal-card delay-400">
           <div class="relative aspect-[4/3] overflow-hidden bg-zinc-900">
             <img 
               src="./images/service-kaynak.jpg" 
@@ -675,14 +723,14 @@
     <section class="py-16 sm:py-20 bg-[#141417] border-t border-b border-white/[0.06] relative">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 sm:mb-12 gap-3 reveal-on-scroll">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 sm:mb-12 gap-3">
           <div>
-            <span class="text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] text-brand-champagne">Görsel Günlük</span>
-            <h2 class="text-2xl sm:text-4xl font-bold font-serif-luxury text-white mt-1 sm:mt-2">
+            <span class="text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] text-brand-champagne reveal-text">Görsel Günlük</span>
+            <h2 class="text-2xl sm:text-4xl font-bold font-serif-luxury text-white mt-1 sm:mt-2 reveal-text delay-100">
               Stüdyomuzdan Canlı Kareler
             </h2>
           </div>
-          <a href="https://www.instagram.com/threebrotherrrs/" target="_blank" rel="noopener noreferrer" class="instagram-link inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-brand-champagne hover:text-white transition-colors">
+          <a href="https://www.instagram.com/threebrotherrrs/" target="_blank" rel="noopener noreferrer" class="instagram-link inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-brand-champagne hover:text-white transition-colors reveal-text delay-200">
             <span>@threebrotherrrs Instagram Hesabını Takip Et</span>
             <span>→</span>
           </a>
@@ -691,7 +739,7 @@
         <div class="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-6">
           
           <!-- Photo 1: Hacimli Fön & Şekillendirme -->
-          <div class="relative aspect-square rounded-xl sm:rounded-2xl overflow-hidden group luxury-card p-1 reveal-on-scroll">
+          <div class="relative aspect-square rounded-xl sm:rounded-2xl overflow-hidden group luxury-card p-1 reveal-card delay-75">
             <img 
               src="./images/gallery-1-fon.jpg" 
               alt="Hacimli fön ve saç şekillendirme anı - ThreeBrothers Bayan Kuaförü" 
@@ -708,7 +756,7 @@
           </div>
 
           <!-- Photo 2: Makyaj Aynası & Bakım İstasyonu -->
-          <div class="relative aspect-square rounded-xl sm:rounded-2xl overflow-hidden group luxury-card p-1 reveal-on-scroll">
+          <div class="relative aspect-square rounded-xl sm:rounded-2xl overflow-hidden group luxury-card p-1 reveal-card delay-150">
             <img 
               src="./images/gallery-2-makyaj.jpg" 
               alt="Işıklı makyaj aynası ve profesyonel kozmetik istasyonu - ThreeBrothers" 
@@ -725,7 +773,7 @@
           </div>
 
           <!-- Photo 3: Saç Spa & Yıkama Masajı -->
-          <div class="relative aspect-square rounded-xl sm:rounded-2xl overflow-hidden group luxury-card p-1 reveal-on-scroll">
+          <div class="relative aspect-square rounded-xl sm:rounded-2xl overflow-hidden group luxury-card p-1 reveal-card delay-200">
             <img 
               src="./images/gallery-3-spa.jpg" 
               alt="Köpüklü saç spa ve kafa derisi masajı yıkama anı - ThreeBrothers" 
@@ -742,7 +790,7 @@
           </div>
 
           <!-- Photo 4: Ayna Yansıması & Hazırlık Dokunuşu -->
-          <div class="relative aspect-square rounded-xl sm:rounded-2xl overflow-hidden group luxury-card p-1 reveal-on-scroll">
+          <div class="relative aspect-square rounded-xl sm:rounded-2xl overflow-hidden group luxury-card p-1 reveal-card delay-250">
             <img 
               src="./images/gallery-4-hazirlik.jpg" 
               alt="Işıklı kemerli aynada saç hazırlığı ve son dokunuşlar - ThreeBrothers" 
@@ -759,7 +807,7 @@
           </div>
 
           <!-- Photo 5: Karamel & Bal Işıltılı Renk -->
-          <div class="relative aspect-square rounded-xl sm:rounded-2xl overflow-hidden group luxury-card p-1 reveal-on-scroll">
+          <div class="relative aspect-square rounded-xl sm:rounded-2xl overflow-hidden group luxury-card p-1 reveal-card delay-300">
             <img 
               src="./images/gallery-5-renk.jpg" 
               alt="Sıcak karamel ve bal ışıltılı dalgalı saç renklendirme - ThreeBrothers" 
@@ -776,7 +824,7 @@
           </div>
 
           <!-- Photo 6: Lüks Butik Kuaför Salonu İçi -->
-          <div class="relative aspect-square rounded-xl sm:rounded-2xl overflow-hidden group luxury-card p-1 reveal-on-scroll">
+          <div class="relative aspect-square rounded-xl sm:rounded-2xl overflow-hidden group luxury-card p-1 reveal-card delay-350">
             <img 
               src="./images/gallery-6-salon.jpg" 
               alt="ThreeBrothers modern butik bayan kuaförü salon içi görünümü" 
@@ -794,8 +842,6 @@
 
         </div>
 
-        </div>
-
       </div>
     </section>
 
@@ -804,9 +850,9 @@
     <!-- ========================================================================= -->
     <section class="py-16 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <div class="text-center max-w-xl mx-auto mb-10 sm:mb-14 reveal-on-scroll">
-        <span class="text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] text-brand-champagne">Ayrıcalıklarımız</span>
-        <h2 class="text-2xl sm:text-4xl font-bold font-serif-luxury text-white mt-1 sm:mt-2">
+      <div class="text-center max-w-xl mx-auto mb-10 sm:mb-14">
+        <span class="text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] text-brand-champagne reveal-text">Ayrıcalıklarımız</span>
+        <h2 class="text-2xl sm:text-4xl font-bold font-serif-luxury text-white mt-1 sm:mt-2 reveal-text delay-100">
           Neden ThreeBrothers?
         </h2>
       </div>
@@ -814,7 +860,7 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
         
         <!-- Trust 1 -->
-        <div class="luxury-card rounded-2xl sm:rounded-3xl p-6 sm:p-8 flex flex-col justify-between reveal-on-scroll">
+        <div class="luxury-card rounded-2xl sm:rounded-3xl p-6 sm:p-8 flex flex-col justify-between reveal-card delay-100">
           <div class="w-10 sm:w-12 h-10 sm:h-12 rounded-xl sm:rounded-2xl bg-brand-gold/10 border border-brand-gold/20 flex items-center justify-center text-brand-champagne mb-5 sm:mb-6">
             <svg class="w-5 sm:w-6 h-5 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -829,7 +875,7 @@
         </div>
 
         <!-- Trust 2 -->
-        <div class="luxury-card rounded-2xl sm:rounded-3xl p-6 sm:p-8 flex flex-col justify-between reveal-on-scroll">
+        <div class="luxury-card rounded-2xl sm:rounded-3xl p-6 sm:p-8 flex flex-col justify-between reveal-card delay-200">
           <div class="w-10 sm:w-12 h-10 sm:h-12 rounded-xl sm:rounded-2xl bg-brand-gold/10 border border-brand-gold/20 flex items-center justify-center text-brand-champagne mb-5 sm:mb-6">
             <svg class="w-5 sm:w-6 h-5 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
@@ -844,7 +890,7 @@
         </div>
 
         <!-- Trust 3 -->
-        <div class="luxury-card rounded-2xl sm:rounded-3xl p-6 sm:p-8 flex flex-col justify-between reveal-on-scroll">
+        <div class="luxury-card rounded-2xl sm:rounded-3xl p-6 sm:p-8 flex flex-col justify-between reveal-card delay-300">
           <div class="w-10 sm:w-12 h-10 sm:h-12 rounded-xl sm:rounded-2xl bg-brand-gold/10 border border-brand-gold/20 flex items-center justify-center text-brand-champagne mb-5 sm:mb-6">
             <svg class="w-5 sm:w-6 h-5 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
@@ -872,18 +918,18 @@
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         <!-- Section Title -->
-        <div class="text-center max-w-xl mx-auto mb-10 sm:mb-14 reveal-on-scroll">
-          <span class="text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] text-brand-champagne">Misafir Deneyimleri</span>
-          <h2 class="text-2xl sm:text-4xl font-bold font-serif-luxury text-white mt-1.5 sm:mt-2">
+        <div class="text-center max-w-xl mx-auto mb-10 sm:mb-14">
+          <span class="text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] text-brand-champagne reveal-text">Misafir Deneyimleri</span>
+          <h2 class="text-2xl sm:text-4xl font-bold font-serif-luxury text-white mt-1.5 sm:mt-2 reveal-text delay-100">
             Doğrulanmış Google Yorumları
           </h2>
         </div>
 
         <!-- Main Widget Container: Grid on Desktop (Left Badge 35%, Right Slider 65%) -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-stretch reveal-on-scroll">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-stretch">
           
           <!-- 1. SOL ROZET KARTI (lg:col-span-4) -->
-          <div class="lg:col-span-4 luxury-card rounded-2xl sm:rounded-3xl p-6 sm:p-8 flex flex-col justify-between border border-white/10 bg-[#121215]/95 shadow-[0_15px_40px_rgba(0,0,0,0.5)]">
+          <div class="lg:col-span-4 luxury-card rounded-2xl sm:rounded-3xl p-6 sm:p-8 flex flex-col justify-between border border-white/10 bg-[#121215]/95 shadow-[0_15px_40px_rgba(0,0,0,0.5)] reveal-card delay-150">
             
             <div>
               <!-- Top Row: Store Icon + Title -->
@@ -942,7 +988,7 @@
           </div>
 
           <!-- 2. SAĞDAKİ SLIDER / YORUM KARTLARI (lg:col-span-8) -->
-          <div class="lg:col-span-8 luxury-card rounded-2xl sm:rounded-3xl p-6 sm:p-8 flex flex-col justify-between border border-white/10 bg-[#121215]/95 shadow-[0_15px_40px_rgba(0,0,0,0.5)] relative overflow-hidden">
+          <div class="lg:col-span-8 luxury-card rounded-2xl sm:rounded-3xl p-6 sm:p-8 flex flex-col justify-between border border-white/10 bg-[#121215]/95 shadow-[0_15px_40px_rgba(0,0,0,0.5)] relative overflow-hidden reveal-card delay-250">
             
             <!-- Large Decorative Quote in background -->
             <div class="absolute top-6 right-6 sm:top-8 sm:right-8 text-brand-champagne/10 pointer-events-none select-none" aria-hidden="true">
@@ -1387,12 +1433,12 @@
         </div>
 
         <!-- 4. ALT VURGU BAŞLIĞI -->
-        <div class="mt-8 sm:mt-10 text-center reveal-on-scroll">
+        <div class="mt-8 sm:mt-10 text-center">
           <a 
             href="https://maps.google.com/?cid=16986332279537405342" 
             target="_blank" 
             rel="noopener noreferrer" 
-            class="inline-flex items-center gap-2.5 px-6 sm:px-8 py-3 rounded-full bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 hover:border-brand-gold/40 text-xs sm:text-sm font-semibold text-zinc-300 hover:text-white transition-all shadow-md group"
+            class="inline-flex items-center gap-2.5 px-6 sm:px-8 py-3 rounded-full bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 hover:border-brand-gold/40 text-xs sm:text-sm font-semibold text-zinc-300 hover:text-white transition-all shadow-md group reveal-text delay-200"
           >
             <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24">
               <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/>
@@ -1413,9 +1459,9 @@
     <!-- ========================================================================= -->
     <section class="py-16 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-safe-dock">
       
-      <div class="text-center max-w-xl mx-auto mb-10 sm:mb-14 reveal-on-scroll">
-        <span class="text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] text-brand-champagne">Rezervasyon & Ulaşım</span>
-        <h2 class="text-2xl sm:text-4xl font-bold font-serif-luxury text-white mt-1 sm:mt-2">
+      <div class="text-center max-w-xl mx-auto mb-10 sm:mb-14">
+        <span class="text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] text-brand-champagne reveal-text">Rezervasyon & Ulaşım</span>
+        <h2 class="text-2xl sm:text-4xl font-bold font-serif-luxury text-white mt-1 sm:mt-2 reveal-text delay-100">
           Stüdyomuza Bekliyoruz
         </h2>
       </div>
@@ -1423,9 +1469,9 @@
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-stretch">
         
         <!-- Left Column: Details & Schedule (5 cols) -->
-        <div class="lg:col-span-5 flex flex-col justify-between gap-5 sm:gap-6 reveal-on-scroll">
+        <div class="lg:col-span-5 flex flex-col justify-between gap-5 sm:gap-6">
           
-          <div class="luxury-card rounded-2xl sm:rounded-3xl p-6 sm:p-7">
+          <div class="luxury-card rounded-2xl sm:rounded-3xl p-6 sm:p-7 reveal-card delay-100">
             <h3 class="text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] text-brand-champagne mb-2 sm:mb-3">Açık Adres</h3>
             <p class="text-zinc-200 text-xs sm:text-sm leading-relaxed font-semibold">
               Bahçelievler Mah. Demokrasi Blv. No: 8Z1
@@ -1439,7 +1485,7 @@
             </p>
           </div>
 
-          <div class="luxury-card rounded-2xl sm:rounded-3xl p-6 sm:p-7 flex-grow">
+          <div class="luxury-card rounded-2xl sm:rounded-3xl p-6 sm:p-7 flex-grow reveal-card delay-200">
             <h3 class="text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] text-brand-champagne mb-3 sm:mb-4">Çalışma Saatleri</h3>
             <div class="space-y-2.5 sm:space-y-3 text-xs sm:text-sm">
               <div class="flex justify-between py-1.5 sm:py-2 border-b border-white/[0.08] text-zinc-300">
@@ -1456,7 +1502,7 @@
         </div>
 
         <!-- Right Column: Map & Action Buttons (7 cols) -->
-        <div class="lg:col-span-7 luxury-card rounded-2xl sm:rounded-3xl p-4 sm:p-7 flex flex-col justify-between gap-5 sm:gap-6 reveal-on-scroll">
+        <div class="lg:col-span-7 luxury-card rounded-2xl sm:rounded-3xl p-4 sm:p-7 flex flex-col justify-between gap-5 sm:gap-6 reveal-card delay-250">
           
           <!-- Map Iframe with Tabindex=-1 to never steal focus on page load -->
           <div class="rounded-xl sm:rounded-2xl overflow-hidden border border-white/10 h-56 sm:h-72 relative bg-zinc-900 group">
@@ -1511,7 +1557,7 @@
   <!-- MINIMAL FOOTER                                                           -->
   <!-- ========================================================================= -->
   <footer class="border-t border-white/[0.08] py-8 text-center text-xs text-zinc-500 pb-28 md:pb-8">
-    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4 reveal-text delay-100">
       <p class="font-medium">© 2026 ThreeBrothers Bayan Kuaförü & Saç Tasarım Stüdyosu. Tüm hakları saklıdır. Manavgat / Antalya.</p>
       <div class="flex items-center gap-3 sm:gap-4 text-xs font-semibold text-zinc-400">
         <a href="tel:+905526856907" class="hover:text-brand-champagne transition-colors">0552 685 69 07</a>
@@ -1709,14 +1755,16 @@
       startAutoplay();
     })();
 
-    // 3. Smooth Scroll Reveal with IntersectionObserver
+    // 3. Ultra-Smooth Hardware-Accelerated Scroll Reveal with IntersectionObserver
     (function initScrollReveal() {
-      const reveals = document.querySelectorAll('.reveal-on-scroll');
+      const revealElements = document.querySelectorAll('.reveal-on-scroll, .reveal-text, .reveal-card');
+      
       if (!('IntersectionObserver' in window)) {
-        reveals.forEach(el => el.classList.add('is-visible'));
+        revealElements.forEach(el => el.classList.add('is-visible'));
         return;
       }
 
+      // IntersectionObserver tuned for mobile touch and fast scroll response
       const observer = new IntersectionObserver((entries, obs) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -1725,11 +1773,29 @@
           }
         });
       }, {
-        rootMargin: '0px 0px -30px 0px',
-        threshold: 0.05
+        root: null,
+        rootMargin: '0px 0px -40px 0px',
+        threshold: 0.08
       });
 
-      reveals.forEach(el => observer.observe(el));
+      revealElements.forEach(el => observer.observe(el));
+
+      // Immediate check on load for elements already in initial viewport
+      const checkInitialView = () => {
+        revealElements.forEach(el => {
+          const rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight && rect.bottom > 0) {
+            el.classList.add('is-visible');
+          }
+        });
+      };
+
+      if (document.readyState === 'loading') {
+        window.addEventListener('DOMContentLoaded', checkInitialView);
+      } else {
+        checkInitialView();
+      }
+      setTimeout(checkInitialView, 100);
     })();
   </script>
 
