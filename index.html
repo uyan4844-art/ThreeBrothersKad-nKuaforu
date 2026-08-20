@@ -337,42 +337,12 @@
 <body class="bg-[#0F0F11] text-zinc-100 flex flex-col min-h-screen selection:bg-brand-gold selection:text-black">
 
   <!-- ========================================================================= -->
-  <!-- 1. MULTILINGUAL TOP BAR & FLOATING GLASS HEADER                            -->
+  <!-- 1. FLOATING GLASS HEADER                                                  -->
   <!-- ========================================================================= -->
   <header class="fixed top-0 left-0 right-0 z-40 glass-header transition-all duration-300">
-    
-    <!-- Multilingual Top Bar -->
-    <div class="border-b border-white/[0.08] bg-[#0A0A0C]/90 py-1.5 px-4 sm:px-6 lg:px-8">
-      <div class="max-w-7xl mx-auto flex items-center justify-between text-[11px] sm:text-xs">
-        
-        <!-- Language Switcher -->
-        <div class="flex items-center gap-2 text-zinc-400 font-semibold">
-          <span class="text-brand-gold">TR</span>
-          <span>|</span>
-          <a href="#hero" class="hover:text-white transition-colors" title="English">EN</a>
-          <span>|</span>
-          <a href="#hero" class="hover:text-white transition-colors" title="Deutsch">DE</a>
-        </div>
-
-        <!-- Center Status Info -->
-        <div class="hidden md:flex items-center gap-2 text-zinc-400">
-          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-          <span>Salı – Pazar: 08:30 – 20:30 (Pazartesi Kapalı)</span>
-        </div>
-
-        <!-- Right Quick Call Support -->
-        <div class="flex items-center gap-3">
-          <a href="tel:+905526856907" class="font-bold text-brand-goldLight hover:text-white flex items-center gap-1 transition-colors">
-            <span>📞</span>
-            <span>+90 552 685 69 07</span>
-          </a>
-        </div>
-
-      </div>
-    </div>
 
     <!-- Main Navigation Bar -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-18 flex items-center justify-between">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
       
       <!-- Brand Typographic Logo -->
       <a href="#hero" class="flex items-center gap-2.5 sm:gap-3 group focus:outline-none" aria-label="ThreeBrothers Bayan Kuaförü Ana Sayfa">
@@ -410,18 +380,18 @@
           <span>Instagram</span>
         </a>
 
-        <a href="#randevu" class="inline-flex items-center gap-1.5 sm:gap-2 px-4 sm:px-5 py-1.5 sm:py-2 rounded-full btn-gold-glow text-xs sm:text-sm font-bold shadow-md">
+        <a href="https://wa.me/905526856907?text=Merhaba,%20web%20sitenizden%20ula%C5%9F%C4%B1yorum.%20Randevu%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 sm:gap-2 px-4 sm:px-5 py-1.5 sm:py-2 rounded-full btn-gold-glow text-xs sm:text-sm font-bold shadow-md">
           <svg class="w-3.5 h-3.5 fill-current shrink-0" viewBox="0 0 24 24">
             <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 002 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z" />
           </svg>
-          <span>7/24 Randevu Al</span>
+          <span>Randevu Al</span>
         </a>
       </div>
 
     </div>
   </header>
 
-  <main class="flex-grow pt-24 sm:pt-28">
+  <main class="flex-grow pt-16 sm:pt-20">
 
     <!-- ========================================================================= -->
     <!-- 2. IMMERSIVE ATMOSPHERIC HERO                                             -->
@@ -472,11 +442,11 @@
         <!-- Dual Action CTAs -->
         <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 max-w-sm sm:max-w-none mx-auto w-full px-2 sm:px-0">
           
-          <a href="#randevu" class="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 rounded-full btn-gold-glow text-xs sm:text-base font-bold flex items-center justify-center gap-2.5 sm:gap-3">
+          <a href="https://wa.me/905526856907?text=Merhaba,%20web%20sitenizden%20ula%C5%9F%C4%B1yorum.%20Randevu%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 rounded-full btn-gold-glow text-xs sm:text-base font-bold flex items-center justify-center gap-2.5 sm:gap-3">
             <svg class="w-4 sm:w-5 h-4 sm:h-5 fill-current shrink-0" viewBox="0 0 24 24">
               <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 002 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z" />
             </svg>
-            <span>7/24 Online Randevu Al</span>
+            <span>Hızlı Randevu Al</span>
           </a>
 
           <a href="https://wa.me/905526856907?text=Merhaba,%20sa%C3%A7%20foto%C4%9Fraf%C4%B1m%C4%B1%20g%C3%B6nderip%20%C3%B6n%20analiz%20ve%20fiyat%20bilgisi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-6 sm:px-7 py-3.5 sm:py-4 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-black text-xs sm:text-base font-bold flex items-center justify-center gap-2 shadow-lg transition-all active:scale-95">
@@ -908,135 +878,7 @@
     </section>
 
     <!-- ========================================================================= -->
-    <!-- 6. 7/24 ONLINE RANDEVU & ÖN DANIŞMANLIK FORMU                             -->
-    <!-- ========================================================================= -->
-    <section id="randevu" class="py-16 sm:py-24 bg-gradient-to-b from-[#0F0F11] to-[#141417] border-t border-b border-white/[0.06] relative">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
-        <div class="text-center max-w-xl mx-auto mb-10 sm:mb-12 reveal-on-scroll">
-          <span class="text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] text-brand-champagne">Hızlı & Kolay Randevu</span>
-          <h2 class="text-2xl sm:text-4xl font-bold font-serif-luxury text-white mt-1.5 sm:mt-2">
-            7/24 Online Randevu Formu
-          </h2>
-          <p class="text-zinc-400 text-xs sm:text-sm mt-2 sm:mt-3">
-            Bilgilerinizi doldurun, ekibimiz size özel randevu saatini anında WhatsApp üzerinden teyit etsin.
-          </p>
-        </div>
-
-        <div class="luxury-card rounded-2xl sm:rounded-3xl p-6 sm:p-10 border border-white/10 bg-[#121215]/90 shadow-2xl reveal-on-scroll">
-          <form id="onlineBookingForm" class="space-y-4 sm:space-y-6">
-            
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-              <!-- Name -->
-              <div>
-                <label for="bookName" class="block text-xs font-semibold text-zinc-300 mb-1.5">Adınız Soyadınız *</label>
-                <input 
-                  type="text" 
-                  id="bookName" 
-                  name="name" 
-                  required 
-                  placeholder="Örn: Ayşe Yılmaz" 
-                  class="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white placeholder-zinc-500 text-xs sm:text-sm focus:outline-none focus:border-brand-gold transition-colors"
-                />
-              </div>
-
-              <!-- Phone -->
-              <div>
-                <label for="bookPhone" class="block text-xs font-semibold text-zinc-300 mb-1.5">Telefon Numaranız *</label>
-                <input 
-                  type="tel" 
-                  id="bookPhone" 
-                  name="phone" 
-                  required 
-                  placeholder="Örn: 0552 685 69 07" 
-                  class="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white placeholder-zinc-500 text-xs sm:text-sm focus:outline-none focus:border-brand-gold transition-colors"
-                />
-              </div>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
-              <!-- Service Selection -->
-              <div>
-                <label for="bookService" class="block text-xs font-semibold text-zinc-300 mb-1.5">İşlem Tercihi *</label>
-                <select 
-                  id="bookService" 
-                  name="service" 
-                  required
-                  class="w-full px-4 py-3 rounded-xl bg-[#1a1a1e] border border-white/10 text-white text-xs sm:text-sm focus:outline-none focus:border-brand-gold transition-colors"
-                >
-                  <option value="Ombre & Blonde Açma">Ombre & Blonde Açma</option>
-                  <option value="Sombre / Balyaj">Sombre / Balyaj</option>
-                  <option value="Platin & Küllü Sarı">Platin & Küllü Sarı</option>
-                  <option value="Gelin Başı & Özel Gün">Gelin Başı & Özel Gün</option>
-                  <option value="Keratin Botox & Bakım">Keratin Botox & Bakım</option>
-                  <option value="Mikro Kapsül Kaynak">Mikro Kapsül Kaynak</option>
-                  <option value="Kesim & Tasarım Fön">Kesim & Tasarım Fön</option>
-                  <option value="Ön Danışmanlık & Saç Analizi">Ön Danışmanlık & Saç Analizi</option>
-                </select>
-              </div>
-
-              <!-- Date -->
-              <div>
-                <label for="bookDate" class="block text-xs font-semibold text-zinc-300 mb-1.5">Tercih Edilen Tarih *</label>
-                <input 
-                  type="date" 
-                  id="bookDate" 
-                  name="date" 
-                  required 
-                  class="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white text-xs sm:text-sm focus:outline-none focus:border-brand-gold transition-colors"
-                />
-              </div>
-
-              <!-- Time Slot -->
-              <div>
-                <label for="bookTime" class="block text-xs font-semibold text-zinc-300 mb-1.5">Saat Aralığı *</label>
-                <select 
-                  id="bookTime" 
-                  name="time" 
-                  required
-                  class="w-full px-4 py-3 rounded-xl bg-[#1a1a1e] border border-white/10 text-white text-xs sm:text-sm focus:outline-none focus:border-brand-gold transition-colors"
-                >
-                  <option value="09:00 - 12:00 (Sabah)">09:00 - 12:00 (Sabah)</option>
-                  <option value="12:00 - 15:00 (Öğle)">12:00 - 15:00 (Öğle)</option>
-                  <option value="15:00 - 18:00 (Öğleden Sonra)">15:00 - 18:00 (Öğleden Sonra)</option>
-                  <option value="18:00 - 20:30 (Akşam)">18:00 - 20:30 (Akşam)</option>
-                </select>
-              </div>
-            </div>
-
-            <!-- Notes -->
-            <div>
-              <label for="bookNotes" class="block text-xs font-semibold text-zinc-300 mb-1.5">Saç Durumunuz veya Ek Notunuz (İsteğe Bağlı)</label>
-              <textarea 
-                id="bookNotes" 
-                name="notes" 
-                rows="3" 
-                placeholder="Örn: Saçımda daha önce kına/boya var, platin sarı geçişi istiyorum..."
-                class="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white placeholder-zinc-500 text-xs sm:text-sm focus:outline-none focus:border-brand-gold transition-colors resize-none"
-              ></textarea>
-            </div>
-
-            <!-- Submit Button -->
-            <button 
-              type="submit" 
-              class="w-full py-4 rounded-full btn-gold-glow text-black font-bold text-sm sm:text-base flex items-center justify-center gap-2 shadow-xl hover:scale-[1.01] active:scale-[0.99] transition-all"
-            >
-              <span>✨ Randevu Talebini WhatsApp ile İlet</span>
-              <span>→</span>
-            </button>
-
-            <p class="text-center text-[11px] text-zinc-400 mt-2">
-              🔒 Bilgileriniz yalnızca randevu teyidi ve saç analizi için kullanılır.
-            </p>
-
-          </form>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ========================================================================= -->
-    <!-- 7. GOOGLE YORUMLAR WIDGET'I (BADGE + SLIDER / CAROUSEL)                   -->
+    <!-- 6. GOOGLE YORUMLAR WIDGET'I (BADGE + SLIDER / CAROUSEL)                   -->
     <!-- ========================================================================= -->
     <section id="yorumlar" class="py-16 sm:py-24 bg-[#141417] border-t border-b border-white/[0.06] relative overflow-hidden">
       
@@ -1895,45 +1737,6 @@
       });
 
       reveals.forEach(el => observer.observe(el));
-    })();
-
-    // 4. Online Booking Form WhatsApp Dispatcher
-    (function initBookingForm() {
-      const form = document.getElementById('onlineBookingForm');
-      const dateInput = document.getElementById('bookDate');
-      if (!form) return;
-
-      // Set min date to today
-      if (dateInput) {
-        const today = new Date().toISOString().split('T')[0];
-        dateInput.min = today;
-        if (!dateInput.value) {
-          dateInput.value = today;
-        }
-      }
-
-      form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const name = document.getElementById('bookName')?.value?.trim() || '';
-        const phone = document.getElementById('bookPhone')?.value?.trim() || '';
-        const service = document.getElementById('bookService')?.value || '';
-        const date = document.getElementById('bookDate')?.value || '';
-        const time = document.getElementById('bookTime')?.value || '';
-        const notes = document.getElementById('bookNotes')?.value?.trim() || 'Belirtilmedi';
-
-        if (!name || !phone) {
-          alert('Lütfen adınızı ve telefon numaranızı giriniz.');
-          return;
-        }
-
-        const message = `Merhaba ThreeBrothers Ekibi, web sitenizden 7/24 randevu talebi iletiyorum:\n\n👤 Danışan: ${name}\n📞 İletişim: ${phone}\n💇‍♀️ Tercih Edilen İşlem: ${service}\n📅 Tarih: ${date}\n⏰ Saat: ${time}\n📝 Özel Not/Saç Durumu: ${notes}\n\nRandevu uygunluğunu teyit edebilir misiniz?`;
-
-        const encodedMsg = encodeURIComponent(message);
-        const waUrl = `https://wa.me/905526856907?text=${encodedMsg}`;
-
-        window.open(waUrl, '_blank');
-      });
     })();
   </script>
 
