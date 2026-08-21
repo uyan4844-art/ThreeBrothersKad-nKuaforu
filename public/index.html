@@ -55,10 +55,12 @@
       font-family: 'Playfair Display', Georgia, serif;
     }
 
-    /* Content Visibility for Instant Below-the-Fold Rendering */
-    .section-deferred {
-      content-visibility: auto;
-      contain-intrinsic-size: 1px 700px;
+    /* Content Visibility for Instant Below-the-Fold Rendering (Desktop only, visible on mobile to prevent jump/clipping) */
+    @media (min-width: 769px) {
+      .section-deferred {
+        content-visibility: auto;
+        contain-intrinsic-size: 1px 700px;
+      }
     }
 
     /* Ambient Pulsing Glow - GPU Hardware Accelerated */
@@ -210,7 +212,7 @@
       user-select: none;
       -webkit-user-select: none;
       touch-action: pan-y;
-      cursor: default;
+      cursor: ew-resize;
       contain: layout paint;
       transform: translateZ(0);
     }
@@ -478,31 +480,31 @@
     <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-2">
       
       <!-- Brand Logo & Typography -->
-      <a href="#hero" class="flex items-center gap-2 sm:gap-3.5 group focus:outline-none shrink-0" aria-label="ThreeBrothers Bayan Kuaförü Ana Sayfa">
-        <div class="relative w-9 h-9 sm:w-11 sm:h-11 rounded-full p-[2px] bg-gradient-to-tr from-brand-gold via-brand-champagne to-brand-goldLight shadow-lg shadow-brand-gold/20 transition-transform duration-300 group-hover:scale-105 shrink-0 overflow-hidden">
+      <a href="#hero" class="flex items-center gap-2 sm:gap-3 group focus:outline-none shrink-0" aria-label="ThreeBrothers Bayan Kuaförü Ana Sayfa">
+        <div class="relative w-8 h-8 sm:w-10 sm:h-10 rounded-full p-[1.5px] bg-gradient-to-tr from-brand-gold via-brand-champagne to-brand-goldLight shadow-md shadow-brand-gold/20 transition-transform duration-300 group-hover:scale-105 shrink-0 overflow-hidden">
           <picture>
             <source type="image/webp" srcset="./images/logo.webp" />
             <img 
               src="./images/logo.jpg" 
               alt="ThreeBrothers TB Hair Design Studio Logo" 
-              width="44" 
-              height="44" 
+              width="40" 
+              height="40" 
               class="w-full h-full object-cover rounded-full"
             />
           </picture>
         </div>
-        <div class="flex flex-col">
-          <span class="font-serif-luxury text-sm sm:text-xl font-bold tracking-tight text-white group-hover:text-brand-champagne transition-colors leading-tight">
+        <div class="flex flex-col justify-center">
+          <span class="font-serif-luxury text-[15px] sm:text-lg font-bold tracking-tight text-white group-hover:text-brand-champagne transition-colors leading-tight whitespace-nowrap">
             ThreeBrothers
           </span>
-          <span class="text-[8px] sm:text-[10px] tracking-[0.18em] sm:tracking-[0.25em] uppercase font-semibold text-brand-champagne font-sans" data-i18n="brand_sub">
+          <span class="text-[8px] sm:text-[9.5px] tracking-wider uppercase font-semibold text-brand-champagne font-sans mt-0.5 leading-tight whitespace-nowrap" data-i18n="brand_sub">
             Bayan Kuaförü • Manavgat
           </span>
         </div>
       </a>
 
       <!-- Quick Action Buttons & Language Switcher -->
-      <div class="flex items-center gap-1.5 sm:gap-3 shrink-0">
+      <div class="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
         
         <!-- Luxury Language Selector Dropdown -->
         <div class="relative inline-block text-left" id="lang-dropdown-wrapper">
@@ -512,11 +514,13 @@
             aria-haspopup="true" 
             aria-expanded="false" 
             aria-label="Dil Seçimi / Language Selection"
-            class="inline-flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-full btn-outline-gold text-xs font-bold border border-brand-champagne/35 text-white hover:border-brand-champagne cursor-pointer transition-all active:scale-95 shadow-sm"
+            class="inline-flex items-center gap-1 px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-full btn-outline-gold text-xs font-bold border border-brand-champagne/35 text-white hover:border-brand-champagne cursor-pointer transition-all active:scale-95 shadow-sm"
           >
-            <span id="current-lang-flag" class="text-sm leading-none">🇹🇷</span>
-            <span id="current-lang-code" class="text-[11px] sm:text-xs tracking-wider font-bold">TR</span>
-            <svg class="w-3 h-3 text-brand-champagne transition-transform duration-200" id="lang-dropdown-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-3 h-3 text-brand-champagne shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+            </svg>
+            <span id="current-lang-code" class="text-[10px] sm:text-xs tracking-wider font-bold">TR</span>
+            <svg class="w-2 h-2 text-brand-champagne transition-transform duration-200" id="lang-dropdown-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
             </svg>
           </button>
@@ -538,18 +542,18 @@
           <span class="hidden sm:inline" data-i18n="nav_instagram">Instagram</span>
         </a>
 
-        <a href="tel:+905526856907" class="inline-flex items-center gap-1.5 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full btn-outline-gold text-xs font-semibold" aria-label="Telefonla ara: 0552 685 69 07">
+        <a href="tel:+905526856907" class="hidden md:inline-flex items-center gap-1.5 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full btn-outline-gold text-xs font-semibold" aria-label="Telefonla ara: 0552 685 69 07">
           <svg class="w-3.5 h-3.5 text-brand-champagne shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
           </svg>
-          <span class="hidden xs:inline" data-i18n="nav_call">Ara</span>
+          <span data-i18n="nav_call">Ara</span>
         </a>
 
-        <a href="https://wa.me/905526856907?text=Merhaba,%20web%20sitenizden%20ula%C5%9F%C4%B1yorum.%20Randevu%20almak%20istiyorum." data-wa-type="wa-general" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-5 py-1.5 sm:py-2 rounded-full btn-gold-glow text-xs sm:text-sm font-bold shadow-md">
-          <svg class="w-3.5 h-3.5 fill-current shrink-0" viewBox="0 0 24 24">
+        <a href="https://wa.me/905526856907?text=Merhaba,%20web%20sitenizden%20ula%C5%9F%C4%B1yorum.%20Randevu%20almak%20istiyorum." data-wa-type="wa-general" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-2.5 sm:px-4 py-1 sm:py-1.5 rounded-full btn-gold-glow text-[11px] sm:text-xs font-bold shadow-md whitespace-nowrap shrink-0">
+          <svg class="w-3 h-3 fill-current shrink-0" viewBox="0 0 24 24">
             <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 002 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z" />
           </svg>
-          <span data-i18n="nav_appointment">Randevu Al</span>
+          <span data-i18n="nav_appointment">Randevu</span>
         </a>
       </div>
 
@@ -561,7 +565,7 @@
     <!-- ========================================================================= -->
     <!-- 2. IMMERSIVE ATMOSPHERIC HERO                                             -->
     <!-- ========================================================================= -->
-    <section id="hero" class="relative w-full min-h-[100dvh] flex flex-col justify-between pt-20 pb-24 px-4 sm:pt-28 sm:pb-24 sm:px-6 lg:px-8 overflow-hidden isolate">
+    <section id="hero" class="relative w-full min-h-[100dvh] flex flex-col justify-between pt-20 pb-28 px-4 sm:pt-28 sm:pb-20 sm:px-6 lg:px-8 overflow-hidden isolate">
       
       <!-- Warm Ambient Glow Sprites -->
       <div class="glow-sphere w-[300px] sm:w-[550px] h-[300px] sm:h-[550px] bg-brand-gold/15 top-[-50px] sm:top-[-100px] right-[-50px] sm:right-[-100px]"></div>
@@ -592,7 +596,7 @@
       </div>
 
       <!-- Hero Content -->
-      <div class="flex-1 w-full max-w-lg sm:max-w-4xl mx-auto flex flex-col justify-center sm:justify-around items-center text-center py-2 sm:py-4 gap-3.5 sm:gap-0 relative z-10 my-auto">
+      <div class="flex-1 w-full max-w-lg sm:max-w-4xl mx-auto flex flex-col justify-center sm:justify-around items-center text-center py-2 sm:py-4 gap-3 sm:gap-0 relative z-10 my-auto">
         
         <!-- Brand Emblem & Identity -->
         <div class="flex flex-col items-center justify-center gap-1.5 sm:gap-2.5 reveal-text delay-75 group mb-1 sm:mb-2">
@@ -634,7 +638,7 @@
           
           <a href="https://wa.me/905526856907?text=Merhaba,%20web%20sitenizden%20ula%C5%9F%C4%B1yorum.%20Randevu%20almak%20istiyorum." data-wa-type="wa-general" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 rounded-full btn-gold-glow text-xs sm:text-base font-bold flex items-center justify-center gap-2.5 sm:gap-3">
             <svg class="w-4 sm:w-5 h-4 sm:h-5 fill-current shrink-0" viewBox="0 0 24 24">
-              <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.554 1.838.809 2.796.809 3.181 0 5.767-2.586 5.767-5.766.001-3.181-2.585-5.765-5.767-5.765zm0-2.172c4.378 0 7.931 3.553 7.931 7.938s-3.553 7.938-7.931 7.938c-1.34 0-2.604-.339-3.714-.932l-5.317 1.394 1.423-5.187c-.672-1.161-1.042-2.493-1.042-3.901 0-4.385 3.553-7.938 7.931-7.938zm3.896 11.233c-.229.645-1.119 1.189-1.543 1.229-.425.041-.852.193-2.825-.615-1.972-.808-3.237-2.793-3.336-2.924-.099-.131-.806-1.074-.806-2.049 0-.974.509-1.454.689-1.65.18-.197.393-.246.524-.246.131 0 .262.001.377.007.121.005.284-.046.444.339.164.393.557 1.359.606 1.458.049.098.082.213.016.344-.066.131-.098.213-.197.328-.098.115-.207.257-.295.344-.098.098-.201.205-.087.401.115.197.511.844 1.096 1.365.753.671 1.388.878 1.585.977.197.098.328.147.377.23.049.082.049.475-.18 1.12z" />
+              <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.554 1.838.809 2.796.809 3.181 0 5.767-2.586 5.767-5.766.001-3.181-2.585-5.765-5.767-5.765zm0-2.172c4.378 0 7.931 3.553 7.931 7.938s-3.553 7.938-7.931 7.938c-1.34 0-2.604-.339-3.714-.932l-5.317 1.394 1.423-5.187c-.672-1.161-1.042-2.493-1.042-3.901 0-4.385 3.553-7.938 7.931-7.938zm3.896 11.233c-.229.645-1.119 1.189-1.543 1.229-.425.041-.852.193-2.825-.615-1.972-.808-3.237-2.793-3.336-2.924-.099-.131-.806-1.074-.806-2.049 0-.974.509-1.454.689-1.65.18-.197.393-.246.524-.246.131 0 .262.001.377.007.121.005.284-.046.444.339.164.393.557 1.359.606 1.458.049.098.082.213.016.344-.066.131-.098.213-.197.328-.098.115-.207.257-.295.344-.098.098-.201.205-.087.401.115.197.511.844 1.096 1.365.753.671 1.388.878 1.585.977.197.098.312.082.427-.049.115-.131.492-.573.623-.77.131-.197.262-.164.443-.098.18.066 1.147.541 1.344.639.197.098.328.147.377.23.049.082.049.475-.18 1.12z" />
             </svg>
             <span data-i18n="hero_cta_wa">WhatsApp'tan Hızlı Randevu</span>
           </a>
@@ -652,7 +656,7 @@
 
       <!-- Luxury Scroll Down Indicator Animation -->
       <div class="relative z-10 flex justify-center pb-2 pt-1">
-        <a href="#donusum" id="hero-scroll-indicator" class="flex flex-col items-center gap-1.5 text-zinc-400 hover:text-brand-champagne transition-all duration-300 group cursor-pointer focus:outline-none" aria-label="Aşağı Kaydır">
+        <a href="#donusum" id="hero-scroll-indicator" class="flex flex-col items-center gap-1.5 text-zinc-400 hover:text-brand-champagne transition-all duration-300 group cursor-pointer focus:outline-none mb-2 sm:mb-0" aria-label="Aşağı Kaydır">
           <span class="text-[9.5px] sm:text-[10px] tracking-[0.25em] uppercase font-semibold text-brand-champagne/80 group-hover:text-brand-champagne transition-colors" data-i18n="hero_scroll">Keşfet</span>
           <div class="w-5 h-8 sm:w-6 sm:h-9 rounded-full border border-brand-champagne/40 flex items-start justify-center p-1 bg-black/40 backdrop-blur-sm group-hover:border-brand-champagne transition-colors shadow-[0_0_10px_rgba(212,175,55,0.2)]">
             <div class="w-1.5 h-2 rounded-full bg-gradient-to-b from-brand-gold to-brand-champagne animate-scroll-dot"></div>
@@ -665,7 +669,7 @@
     <!-- ========================================================================= -->
     <!-- INTERACTIVE BEFORE / AFTER TRANSFORMATION SLIDER                          -->
     <!-- ========================================================================= -->
-    <section id="donusum" class="py-16 sm:py-20 bg-[#141417] border-t border-b border-white/[0.06] relative section-deferred">
+    <section id="donusum" class="py-16 sm:py-20 bg-[#141417] border-t border-b border-white/[0.06] relative section-deferred scroll-mt-16 sm:scroll-mt-20">
       <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div class="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
@@ -678,20 +682,20 @@
           </p>
         </div>
 
-        <div class="max-w-3xl mx-auto rounded-2xl sm:rounded-3xl overflow-hidden luxury-card p-2 sm:p-3 shadow-2xl reveal-card delay-150">
+        <div class="max-w-lg sm:max-w-xl mx-auto rounded-2xl sm:rounded-3xl overflow-hidden luxury-card p-2 sm:p-3 shadow-2xl reveal-card delay-150">
           
-          <div id="ba-slider" class="ba-slider-box rounded-xl sm:rounded-2xl aspect-[4/3] sm:aspect-[16/9]">
+          <div id="ba-slider" class="ba-slider-box rounded-xl sm:rounded-2xl aspect-[8/9] max-h-[580px]">
             
             <!-- Before Image (Base Layer: Left Side) -->
             <picture class="w-full h-full block">
-              <source type="image/webp" media="(max-width: 640px)" srcset="./images/before-hair-mobile.webp 480w" sizes="(max-width: 640px) 100vw, 800px" />
-              <source type="image/webp" srcset="./images/before-hair-desktop.webp 800w" sizes="(max-width: 640px) 100vw, 800px" />
-              <source media="(max-width: 640px)" srcset="./images/before-hair-mobile.jpg 480w" sizes="(max-width: 640px) 100vw, 800px" />
+              <source type="image/webp" media="(max-width: 640px)" srcset="./images/before-hair-mobile.webp?v=12 480w" sizes="(max-width: 640px) 100vw, 550px" />
+              <source type="image/webp" srcset="./images/before-hair-desktop.webp?v=12 800w" sizes="(max-width: 640px) 100vw, 550px" />
+              <source media="(max-width: 640px)" srcset="./images/before-hair-mobile.jpg?v=12 480w" sizes="(max-width: 640px) 100vw, 550px" />
               <img 
-                src="./images/before-hair-desktop.jpg" 
-                alt="İşlem Öncesi Yıpranmış Saç Görünümü" 
+                src="./images/before-hair-desktop.jpg?v=12" 
+                alt="İşlem Öncesi Yıpranmış ve Mat Saç Görünümü" 
                 width="800" 
-                height="600" 
+                height="900" 
                 loading="lazy" 
                 decoding="async"
               />
@@ -703,14 +707,14 @@
             <!-- After Image (Overlay: Right Side clipped) -->
             <div id="ba-after-layer" class="ba-after-layer">
               <picture class="w-full h-full block">
-                <source type="image/webp" media="(max-width: 640px)" srcset="./images/after-hair-mobile.webp 480w" sizes="(max-width: 640px) 100vw, 800px" />
-                <source type="image/webp" srcset="./images/after-hair-desktop.webp 800w" sizes="(max-width: 640px) 100vw, 800px" />
-                <source media="(max-width: 640px)" srcset="./images/after-hair-mobile.jpg 480w" sizes="(max-width: 640px) 100vw, 800px" />
+                <source type="image/webp" media="(max-width: 640px)" srcset="./images/after-hair-mobile.webp?v=12 480w" sizes="(max-width: 640px) 100vw, 550px" />
+                <source type="image/webp" srcset="./images/after-hair-desktop.webp?v=12 800w" sizes="(max-width: 640px) 100vw, 550px" />
+                <source media="(max-width: 640px)" srcset="./images/after-hair-mobile.jpg?v=12 480w" sizes="(max-width: 640px) 100vw, 550px" />
                 <img 
-                  src="./images/after-hair-desktop.jpg" 
-                  alt="İşlem Sonrası Işıltılı Sarı Ombre" 
+                  src="./images/after-hair-desktop.jpg?v=12" 
+                  alt="İşlem Sonrası Işıltılı Sarı Balyaj ve Hacimli Kesim" 
                   width="800" 
-                  height="600" 
+                  height="900" 
                   loading="lazy" 
                   decoding="async"
                 />
@@ -743,9 +747,9 @@
     <!-- ========================================================================= -->
     <!-- 3. İŞLEM & HİZMET VİTRİNİ (4 FEATURED HIGH-END CARDS)                    -->
     <!-- ========================================================================= -->
-    <section id="hizmetler" class="py-16 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 section-deferred">
+    <section id="hizmetler" class="py-16 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 section-deferred scroll-mt-16 sm:scroll-mt-20">
       
-      <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+      <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-16">
         <span class="text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] text-brand-champagne reveal-text" data-i18n="services_badge">İmza Hizmetlerimiz</span>
         <h2 class="text-2xl sm:text-4xl font-bold font-serif-luxury text-white mt-1.5 sm:mt-3 reveal-text delay-100" data-i18n="services_title">
           Özel Saç Tasarım Koleksiyonu
@@ -755,40 +759,40 @@
         </p>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         
         <!-- Card 1: Sarı / Ombre / Balyaj -->
-        <article class="luxury-card rounded-2xl sm:rounded-3xl overflow-hidden flex flex-col justify-between group reveal-card delay-100">
-          <div class="aspect-[4/3] overflow-hidden bg-zinc-900">
+        <article class="luxury-card rounded-2xl sm:rounded-3xl overflow-hidden flex flex-col justify-between group reveal-card delay-100 max-w-[340px] sm:max-w-none mx-auto w-full">
+          <div class="aspect-[4/5] overflow-hidden bg-zinc-900">
             <picture class="w-full h-full block">
-              <source type="image/webp" media="(max-width: 640px)" srcset="./images/service-ombre-sm.webp 400w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 300px" />
-              <source type="image/webp" srcset="./images/service-ombre-md.webp 700w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 300px" />
+              <source type="image/webp" media="(max-width: 640px)" srcset="./images/service-ombre-sm.webp?v=8 400w" sizes="(max-width: 640px) 100vw, 300px" />
+              <source type="image/webp" srcset="./images/service-ombre-md.webp?v=8 600w" sizes="(max-width: 640px) 100vw, 300px" />
               <img 
-                src="./images/service-ombre-md.jpg" 
+                src="./images/service-ombre-md.jpg?v=8" 
                 alt="ThreeBrothers Platin Sarı Ombre ve Balyaj Saç Tasarımı" 
-                width="700" 
-                height="525" 
+                width="600" 
+                height="750" 
                 loading="lazy" 
                 decoding="async"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
               />
             </picture>
           </div>
-          <div class="p-5 sm:p-6 flex flex-col flex-grow justify-between">
+          <div class="p-4 sm:p-6 flex flex-col flex-grow justify-between">
             <div>
-              <div class="mb-2.5">
+              <div class="mb-2">
                 <span class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-brand-champagne/10 border border-brand-champagne/25 text-[10px] sm:text-[11px] font-bold text-brand-champagne" data-i18n="s1_tag">
                   Sarı / Ombre / Balyaj
                 </span>
               </div>
-              <h3 class="text-base sm:text-lg font-bold font-serif-luxury text-white group-hover:text-brand-champagne transition-colors" data-i18n="s1_title">
+              <h3 class="text-base sm:text-lg font-bold font-serif-luxury text-white group-hover:text-brand-champagne transition-colors leading-snug" data-i18n="s1_title">
                 Sarı / Ombre & Balyaj
               </h3>
-              <p class="text-zinc-400 text-xs sm:text-sm mt-2 leading-relaxed" data-i18n="s1_desc">
+              <p class="text-zinc-400 text-xs sm:text-sm mt-1.5 leading-relaxed" data-i18n="s1_desc">
                 Platin, küllü sarı, bebek sarısı ve sıcak balyaj geçişleriyle saç yıpranmadan ulaşılan kusursuz ışıltılı tonlar.
               </p>
             </div>
-            <a href="https://wa.me/905526856907?text=Merhaba,%20Sar%C4%B1%20/%20Ombre%20&%20Balyaj%20renklendirme%20hakk%C4%B1nda%20fiyat%20ve%20randevu%20bilgisi%20almak%20istiyorum." data-wa-type="wa-ombre" target="_blank" rel="noopener noreferrer" class="mt-5 sm:mt-6 pt-3 sm:pt-4 border-t border-white/[0.08] text-xs font-bold text-brand-champagne hover:text-white flex items-center justify-between transition-colors">
+            <a href="https://wa.me/905526856907?text=Merhaba,%20Sar%C4%B1%20/%20Ombre%20&%20Balyaj%20renklendirme%20hakk%C4%B1nda%20fiyat%20ve%20randevu%20bilgisi%20almak%20istiyorum." data-wa-type="wa-ombre" target="_blank" rel="noopener noreferrer" class="mt-4 sm:mt-6 pt-3 sm:pt-4 border-t border-white/[0.08] text-xs font-bold text-brand-champagne hover:text-white flex items-center justify-between transition-colors">
               <span data-i18n="services_cta">Fiyat & Randevu Sor</span>
               <span>→</span>
             </a>
@@ -796,113 +800,113 @@
         </article>
 
         <!-- Card 2: Gelin Başı / Topuz -->
-        <article class="luxury-card rounded-2xl sm:rounded-3xl overflow-hidden flex flex-col justify-between group reveal-card delay-200">
-          <div class="aspect-[4/3] overflow-hidden bg-zinc-900">
+        <article class="luxury-card rounded-2xl sm:rounded-3xl overflow-hidden flex flex-col justify-between group reveal-card delay-200 max-w-[340px] sm:max-w-none mx-auto w-full">
+          <div class="aspect-[4/5] overflow-hidden bg-zinc-900">
             <picture class="w-full h-full block">
-              <source type="image/webp" media="(max-width: 640px)" srcset="./images/service-gelin-sm.webp 400w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 300px" />
-              <source type="image/webp" srcset="./images/service-gelin-md.webp 700w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 300px" />
+              <source type="image/webp" media="(max-width: 640px)" srcset="./images/service-gelin-sm.webp?v=8 400w" sizes="(max-width: 640px) 100vw, 300px" />
+              <source type="image/webp" srcset="./images/service-gelin-md.webp?v=8 600w" sizes="(max-width: 640px) 100vw, 300px" />
               <img 
-                src="./images/service-gelin-md.jpg" 
+                src="./images/service-gelin-md.jpg?v=8" 
                 alt="ThreeBrothers Taçlı Lüks Gelin Başı ve Nişan Topuz Tasarımı" 
-                width="700" 
-                height="525" 
+                width="600" 
+                height="750" 
                 loading="lazy" 
                 decoding="async"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
               />
             </picture>
           </div>
-          <div class="p-5 sm:p-6 flex flex-col flex-grow justify-between">
+          <div class="p-4 sm:p-6 flex flex-col flex-grow justify-between">
             <div>
-              <div class="mb-2.5">
+              <div class="mb-2">
                 <span class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-brand-champagne/10 border border-brand-champagne/25 text-[10px] sm:text-[11px] font-bold text-brand-champagne" data-i18n="s2_tag">
                   Gelin Başı / Topuz
                 </span>
               </div>
-              <h3 class="text-base sm:text-lg font-bold font-serif-luxury text-white group-hover:text-brand-champagne transition-colors" data-i18n="s2_title">
+              <h3 class="text-base sm:text-lg font-bold font-serif-luxury text-white group-hover:text-brand-champagne transition-colors leading-snug" data-i18n="s2_title">
                 Gelin Başı & Özel Gün Topuzu
               </h3>
-              <p class="text-zinc-400 text-xs sm:text-sm mt-2 leading-relaxed" data-i18n="s2_desc">
+              <p class="text-zinc-400 text-xs sm:text-sm mt-1.5 leading-relaxed" data-i18n="s2_desc">
                 Düğün ve nişan günleriniz için aksesuarlı, prova destekli ve gece boyunca bozulmayan heykelsi zarif topuz tasarımı.
               </p>
             </div>
-            <a href="https://wa.me/905526856907?text=Merhaba,%20Gelin%20Ba%C5%9F%C4%B1%20ve%20%C3%96zel%20G%C3%BCn%20Topuzu%20hakk%C4%B1nda%20bilgi%20ve%20randevu%20almak%20istiyorum." data-wa-type="wa-gelin" target="_blank" rel="noopener noreferrer" class="mt-5 sm:mt-6 pt-3 sm:pt-4 border-t border-white/[0.08] text-xs font-bold text-brand-champagne hover:text-white flex items-center justify-between transition-colors">
+            <a href="https://wa.me/905526856907?text=Merhaba,%20Gelin%20Ba%C5%9F%C4%B1%20ve%20%C3%96zel%20G%C3%BCn%20Topuzu%20hakk%C4%B1nda%20bilgi%20ve%20randevu%20almak%20istiyorum." data-wa-type="wa-gelin" target="_blank" rel="noopener noreferrer" class="mt-4 sm:mt-6 pt-3 sm:pt-4 border-t border-white/[0.08] text-xs font-bold text-brand-champagne hover:text-white flex items-center justify-between transition-colors">
               <span data-i18n="services_cta">Fiyat & Randevu Sor</span>
               <span>→</span>
             </a>
           </div>
         </article>
 
-        <!-- Card 3: Keratin / Bakım -->
-        <article class="luxury-card rounded-2xl sm:rounded-3xl overflow-hidden flex flex-col justify-between group reveal-card delay-300">
-          <div class="aspect-[4/3] overflow-hidden bg-zinc-900">
+        <!-- Card 3: Mikro Kaynak & Saç Yoğunlaştırma -->
+        <article class="luxury-card rounded-2xl sm:rounded-3xl overflow-hidden flex flex-col justify-between group reveal-card delay-300 max-w-[340px] sm:max-w-none mx-auto w-full">
+          <div class="aspect-[4/5] overflow-hidden bg-zinc-900">
             <picture class="w-full h-full block">
-              <source type="image/webp" media="(max-width: 640px)" srcset="./images/service-keratin-sm.webp 400w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 300px" />
-              <source type="image/webp" srcset="./images/service-keratin-md.webp 700w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 300px" />
+              <source type="image/webp" media="(max-width: 640px)" srcset="./images/service-kaynak-sm.webp?v=6 400w" sizes="(max-width: 640px) 100vw, 300px" />
+              <source type="image/webp" srcset="./images/service-kaynak-md.webp?v=6 600w" sizes="(max-width: 640px) 100vw, 300px" />
               <img 
-                src="./images/service-keratin-md.jpg" 
-                alt="ThreeBrothers Keratin Botox Düz ve Parlak İpeksi Saç Bakımı" 
-                width="700" 
-                height="525" 
+                src="./images/service-kaynak-md.jpg?v=6" 
+                alt="ThreeBrothers Görünmez Mikro & Jel Saç Kaynak Uygulaması" 
+                width="600" 
+                height="750" 
                 loading="lazy" 
                 decoding="async"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
               />
             </picture>
           </div>
-          <div class="p-5 sm:p-6 flex flex-col flex-grow justify-between">
+          <div class="p-4 sm:p-6 flex flex-col flex-grow justify-between">
             <div>
-              <div class="mb-2.5">
+              <div class="mb-2">
                 <span class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-brand-champagne/10 border border-brand-champagne/25 text-[10px] sm:text-[11px] font-bold text-brand-champagne" data-i18n="s3_tag">
-                  Düz & Parlak Saç
+                  Mikro & Görünmez Kaynak
                 </span>
               </div>
-              <h3 class="text-base sm:text-lg font-bold font-serif-luxury text-white group-hover:text-brand-champagne transition-colors" data-i18n="s3_title">
-                Keratin Botox & İpek Bakım
+              <h3 class="text-base sm:text-lg font-bold font-serif-luxury text-white group-hover:text-brand-champagne transition-colors leading-snug" data-i18n="s3_title">
+                Mikro Kaynak & Saç Yoğunlaştırma
               </h3>
-              <p class="text-zinc-400 text-xs sm:text-sm mt-2 leading-relaxed" data-i18n="s3_desc">
-                Yıpranmış saç liflerini onaran, elektriklenme karşıtı, aylarca kalıcı ayna parlaklığı ve pürüzsüz düzlük sağlayan terapi.
+              <p class="text-zinc-400 text-xs sm:text-sm mt-1.5 leading-relaxed" data-i18n="s3_desc">
+                Kendi saçınızla kusursuz bütünleşen, ağırlık yapmayan ve dipten belli olmayan medikal mikro kaynak uygulamaları.
               </p>
             </div>
-            <a href="https://wa.me/905526856907?text=Merhaba,%20Keratin%20Botox%20ve%20%C4%B0pek%20Bak%C4%B1m%20hakk%C4%B1nda%20fiyat%20ve%20randevu%20bilgisi%20almak%20istiyorum." data-wa-type="wa-keratin" target="_blank" rel="noopener noreferrer" class="mt-5 sm:mt-6 pt-3 sm:pt-4 border-t border-white/[0.08] text-xs font-bold text-brand-champagne hover:text-white flex items-center justify-between transition-colors">
+            <a href="https://wa.me/905526856907?text=Merhaba,%20Mikro%20Kaynak%20ve%20Sa%C3%A7%20Yo%C4%9Funla%C5%9Ft%C4%B1rma%20hakk%C4%B1nda%20fiyat%20ve%20randevu%20bilgisi%20almak%20istiyorum." data-wa-type="wa-kaynak" target="_blank" rel="noopener noreferrer" class="mt-4 sm:mt-6 pt-3 sm:pt-4 border-t border-white/[0.08] text-xs font-bold text-brand-champagne hover:text-white flex items-center justify-between transition-colors">
               <span data-i18n="services_cta">Fiyat & Randevu Sor</span>
               <span>→</span>
             </a>
           </div>
         </article>
 
-        <!-- Card 4: Kaynak / Kesim & Fön -->
-        <article class="luxury-card rounded-2xl sm:rounded-3xl overflow-hidden flex flex-col justify-between group reveal-card delay-400">
-          <div class="aspect-[4/3] overflow-hidden bg-zinc-900">
+        <!-- Card 4: Katlı Kesim & Hacimli Fön -->
+        <article class="luxury-card rounded-2xl sm:rounded-3xl overflow-hidden flex flex-col justify-between group reveal-card delay-400 max-w-[340px] sm:max-w-none mx-auto w-full">
+          <div class="aspect-[4/5] overflow-hidden bg-zinc-900">
             <picture class="w-full h-full block">
-              <source type="image/webp" media="(max-width: 640px)" srcset="./images/service-kaynak-sm.webp 400w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 300px" />
-              <source type="image/webp" srcset="./images/service-kaynak-md.webp 700w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 300px" />
+              <source type="image/webp" media="(max-width: 640px)" srcset="./images/service-kesim-sm.webp?v=8 400w" sizes="(max-width: 640px) 100vw, 300px" />
+              <source type="image/webp" srcset="./images/service-kesim-md.webp?v=8 600w" sizes="(max-width: 640px) 100vw, 300px" />
               <img 
-                src="./images/service-kaynak-md.jpg" 
+                src="./images/service-kesim-md.jpg?v=8" 
                 alt="ThreeBrothers Katlı Kesim, Hacimli Fön ve Saç Şekillendirme" 
-                width="700" 
-                height="525" 
+                width="600" 
+                height="750" 
                 loading="lazy" 
                 decoding="async"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
               />
             </picture>
           </div>
-          <div class="p-5 sm:p-6 flex flex-col flex-grow justify-between">
+          <div class="p-4 sm:p-6 flex flex-col flex-grow justify-between">
             <div>
-              <div class="mb-2.5">
+              <div class="mb-2">
                 <span class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-brand-champagne/10 border border-brand-champagne/25 text-[10px] sm:text-[11px] font-bold text-brand-champagne" data-i18n="s4_tag">
                   Katlı Kesim & Hacimli Fön
                 </span>
               </div>
-              <h3 class="text-base sm:text-lg font-bold font-serif-luxury text-white group-hover:text-brand-champagne transition-colors" data-i18n="s4_title">
+              <h3 class="text-base sm:text-lg font-bold font-serif-luxury text-white group-hover:text-brand-champagne transition-colors leading-snug" data-i18n="s4_title">
                 Katlı Kesim & Havalı Fön
               </h3>
-              <p class="text-zinc-400 text-xs sm:text-sm mt-2 leading-relaxed" data-i18n="s4_desc">
+              <p class="text-zinc-400 text-xs sm:text-sm mt-1.5 leading-relaxed" data-i18n="s4_desc">
                 Yüz hatlarınıza özel katlı kesim mimarisi, hacimli fön ve profesyonel şekillendirme ile saçlarınıza dolgunluk kazandırın.
               </p>
             </div>
-            <a href="https://wa.me/905526856907?text=Merhaba,%20Katl%C4%B1%20Kesim%20ve%20F%C3%B6n%20hizmeti%20hakk%C4%B1nda%20randevu%20almak%20istiyorum." data-wa-type="wa-kesim" target="_blank" rel="noopener noreferrer" class="mt-5 sm:mt-6 pt-3 sm:pt-4 border-t border-white/[0.08] text-xs font-bold text-brand-champagne hover:text-white flex items-center justify-between transition-colors">
+            <a href="https://wa.me/905526856907?text=Merhaba,%20Katl%C4%B1%20Kesim%20ve%20F%C3%B6n%20hizmeti%20hakk%C4%B1nda%20randevu%20almak%20istiyorum." data-wa-type="wa-kesim" target="_blank" rel="noopener noreferrer" class="mt-4 sm:mt-6 pt-3 sm:pt-4 border-t border-white/[0.08] text-xs font-bold text-brand-champagne hover:text-white flex items-center justify-between transition-colors">
               <span data-i18n="services_cta">Fiyat & Randevu Sor</span>
               <span>→</span>
             </a>
@@ -915,7 +919,7 @@
     <!-- ========================================================================= -->
     <!-- 4. INSTAGRAM TARZI ÇALIŞMA GALERİSİ (6-PHOTO AESTHETIC GRID)              -->
     <!-- ========================================================================= -->
-    <section id="galeri" class="py-16 sm:py-20 bg-[#141417] border-t border-b border-white/[0.06] relative section-deferred">
+    <section id="galeri" class="py-16 sm:py-20 bg-[#141417] border-t border-b border-white/[0.06] relative section-deferred scroll-mt-16 sm:scroll-mt-20">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 sm:mb-12 gap-3">
@@ -936,11 +940,11 @@
           <!-- Photo 1 -->
           <div class="relative aspect-square rounded-xl sm:rounded-2xl overflow-hidden group luxury-card p-1 reveal-card delay-75">
             <picture class="w-full h-full block">
-              <source type="image/webp" media="(max-width: 640px)" srcset="./images/gallery-fon-new-sm.webp 360w" sizes="(max-width: 640px) 50vw, 360px" />
-              <source type="image/webp" srcset="./images/gallery-fon-new-md.webp 600w" sizes="(max-width: 640px) 50vw, 360px" />
+              <source type="image/webp" media="(max-width: 640px)" srcset="./images/gallery-fon-new-sm.webp?v=13 360w" sizes="(max-width: 640px) 50vw, 360px" />
+              <source type="image/webp" srcset="./images/gallery-fon-new-md.webp?v=13 600w" sizes="(max-width: 640px) 50vw, 360px" />
               <img 
-                src="./images/gallery-fon-new-md.jpg" 
-                alt="Hacimli fön ve profesyonel saç şekillendirme - ThreeBrothers Bayan Kuaförü" 
+                src="./images/gallery-fon-new-md.jpg?v=13" 
+                alt="Bakır kumral hacimli kesim ve havalı fön - ThreeBrothers Bayan Kuaförü" 
                 width="600" 
                 height="600" 
                 loading="lazy" 
@@ -958,11 +962,11 @@
           <!-- Photo 2 -->
           <div class="relative aspect-square rounded-xl sm:rounded-2xl overflow-hidden group luxury-card p-1 reveal-card delay-150">
             <picture class="w-full h-full block">
-              <source type="image/webp" media="(max-width: 640px)" srcset="./images/gallery-ayna-new-sm.webp 360w" sizes="(max-width: 640px) 50vw, 360px" />
-              <source type="image/webp" srcset="./images/gallery-ayna-new-md.webp 600w" sizes="(max-width: 640px) 50vw, 360px" />
+              <source type="image/webp" media="(max-width: 640px)" srcset="./images/gallery-ayna-new-sm.webp?v=13 360w" sizes="(max-width: 640px) 50vw, 360px" />
+              <source type="image/webp" srcset="./images/gallery-ayna-new-md.webp?v=13 600w" sizes="(max-width: 640px) 50vw, 360px" />
               <img 
-                src="./images/gallery-ayna-new-md.jpg" 
-                alt="Işıklı kemerli boy aynaları ve lüks salon istasyonları - ThreeBrothers" 
+                src="./images/gallery-ayna-new-md.jpg?v=13" 
+                alt="Işıltılı bebek sarısı ve dalgalı saç şekillendirme - ThreeBrothers" 
                 width="600" 
                 height="600" 
                 loading="lazy" 
@@ -980,11 +984,11 @@
           <!-- Photo 3 -->
           <div class="relative aspect-square rounded-xl sm:rounded-2xl overflow-hidden group luxury-card p-1 reveal-card delay-200">
             <picture class="w-full h-full block">
-              <source type="image/webp" media="(max-width: 640px)" srcset="./images/gallery-spa-new-sm.webp 360w" sizes="(max-width: 640px) 50vw, 360px" />
-              <source type="image/webp" srcset="./images/gallery-spa-new-md.webp 600w" sizes="(max-width: 640px) 50vw, 360px" />
+              <source type="image/webp" media="(max-width: 640px)" srcset="./images/gallery-spa-new-sm.webp?v=13 360w" sizes="(max-width: 640px) 50vw, 360px" />
+              <source type="image/webp" srcset="./images/gallery-spa-new-md.webp?v=13 600w" sizes="(max-width: 640px) 50vw, 360px" />
               <img 
-                src="./images/gallery-spa-new-md.jpg" 
-                alt="Saç yıkama, arındırma ve keratin saç bakım terapisi - ThreeBrothers" 
+                src="./images/gallery-spa-new-md.jpg?v=13" 
+                alt="Doğal karamel balyaj ve soft dalgalar - ThreeBrothers" 
                 width="600" 
                 height="600" 
                 loading="lazy" 
@@ -1002,11 +1006,11 @@
           <!-- Photo 4 -->
           <div class="relative aspect-square rounded-xl sm:rounded-2xl overflow-hidden group luxury-card p-1 reveal-card delay-250">
             <picture class="w-full h-full block">
-              <source type="image/webp" media="(max-width: 640px)" srcset="./images/gallery-salon-new-sm.webp 360w" sizes="(max-width: 640px) 50vw, 360px" />
-              <source type="image/webp" srcset="./images/gallery-salon-new-md.webp 600w" sizes="(max-width: 640px) 50vw, 360px" />
+              <source type="image/webp" media="(max-width: 640px)" srcset="./images/gallery-salon-new-sm.webp?v=13 360w" sizes="(max-width: 640px) 50vw, 360px" />
+              <source type="image/webp" srcset="./images/gallery-salon-new-md.webp?v=13 600w" sizes="(max-width: 640px) 50vw, 360px" />
               <img 
-                src="./images/gallery-salon-new-md.jpg" 
-                alt="Modern butik salon mimarisi ve yuvarlak arkadan aydınlatmalı aynalar - ThreeBrothers" 
+                src="./images/gallery-salon-new-md.jpg?v=13" 
+                alt="Koyu kumral katlı kesim ve perde kakül tasarımı - ThreeBrothers" 
                 width="600" 
                 height="600" 
                 loading="lazy" 
@@ -1024,11 +1028,11 @@
           <!-- Photo 5 -->
           <div class="relative aspect-square rounded-xl sm:rounded-2xl overflow-hidden group luxury-card p-1 reveal-card delay-300">
             <picture class="w-full h-full block">
-              <source type="image/webp" media="(max-width: 640px)" srcset="./images/gallery-balyaj-new-sm.webp 360w" sizes="(max-width: 640px) 50vw, 360px" />
-              <source type="image/webp" srcset="./images/gallery-balyaj-new-md.webp 600w" sizes="(max-width: 640px) 50vw, 360px" />
+              <source type="image/webp" media="(max-width: 640px)" srcset="./images/gallery-balyaj-new-sm.webp?v=13 360w" sizes="(max-width: 640px) 50vw, 360px" />
+              <source type="image/webp" srcset="./images/gallery-balyaj-new-md.webp?v=13 600w" sizes="(max-width: 640px) 50vw, 360px" />
               <img 
-                src="./images/gallery-balyaj-new-md.jpg" 
-                alt="Doğal sıcak balyaj ve ışıltılı dalgalı saç tasarımı - ThreeBrothers" 
+                src="./images/gallery-balyaj-new-md.jpg?v=13" 
+                alt="Lüks tüllü gelin saçı ve özel gün tasarımı - ThreeBrothers" 
                 width="600" 
                 height="600" 
                 loading="lazy" 
@@ -1046,11 +1050,11 @@
           <!-- Photo 6 -->
           <div class="relative aspect-square rounded-xl sm:rounded-2xl overflow-hidden group luxury-card p-1 reveal-card delay-350">
             <picture class="w-full h-full block">
-              <source type="image/webp" media="(max-width: 640px)" srcset="./images/gallery-karamel-new-sm.webp 360w" sizes="(max-width: 640px) 50vw, 360px" />
-              <source type="image/webp" srcset="./images/gallery-karamel-new-md.webp 600w" sizes="(max-width: 640px) 50vw, 360px" />
+              <source type="image/webp" media="(max-width: 640px)" srcset="./images/gallery-karamel-new-sm.webp?v=13 360w" sizes="(max-width: 640px) 50vw, 360px" />
+              <source type="image/webp" srcset="./images/gallery-karamel-new-md.webp?v=13 600w" sizes="(max-width: 640px) 50vw, 360px" />
               <img 
-                src="./images/gallery-karamel-new-md.jpg" 
-                alt="Kişiye özel kumral karamel ışıltılı renklendirme ve hacimli fön - ThreeBrothers" 
+                src="./images/gallery-karamel-new-md.jpg?v=13" 
+                alt="Çiçekli taçlı zarif nişan ve gelin başı tasarımı - ThreeBrothers" 
                 width="600" 
                 height="600" 
                 loading="lazy" 
@@ -1073,7 +1077,7 @@
     <!-- ========================================================================= -->
     <!-- 5. NEDEN THREEBROTHERS? (3 COMPACT TRUST CARDS)                           -->
     <!-- ========================================================================= -->
-    <section id="neden-biz" class="py-16 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 section-deferred">
+    <section id="neden-biz" class="py-16 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 section-deferred scroll-mt-16 sm:scroll-mt-20">
       
       <div class="text-center max-w-xl mx-auto mb-10 sm:mb-14">
         <span class="text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] text-brand-champagne reveal-text" data-i18n="trust_badge">Ayrıcalıklarımız</span>
@@ -1135,13 +1139,14 @@
     <!-- ========================================================================= -->
     <!-- 6. GOOGLE YORUMLAR WIDGET'I (BADGE + SLIDER / CAROUSEL)                   -->
     <!-- ========================================================================= -->
-    <section id="yorumlar" class="py-16 sm:py-24 bg-[#141417] border-t border-b border-white/[0.06] relative overflow-hidden section-deferred">
+    <section id="yorumlar" class="py-16 sm:py-24 bg-[#141417] border-t border-b border-white/[0.06] relative overflow-hidden section-deferred scroll-mt-16 sm:scroll-mt-20">
       
       <!-- Subtle ambient glow in background -->
       <div class="glow-sphere w-[400px] sm:w-[600px] h-[400px] sm:h-[600px] bg-brand-gold/10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
 
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
+        <!-- Section Title -->
         <!-- Section Title -->
         <div class="text-center max-w-xl mx-auto mb-10 sm:mb-14">
           <span class="text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] text-brand-champagne reveal-text" data-i18n="reviews_badge">Misafir Deneyimleri</span>
@@ -1153,14 +1158,14 @@
         <!-- Main Widget Container: Grid on Desktop -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-stretch">
           
-          <!-- 1. SOL ROZET KARTI (lg:col-span-4) -->
-          <div class="lg:col-span-4 luxury-card rounded-2xl sm:rounded-3xl p-6 sm:p-8 flex flex-col justify-between border border-white/10 bg-[#121215]/95 shadow-[0_15px_40px_rgba(0,0,0,0.5)] reveal-card delay-150">
+          <!-- 1. SOL ROZET KARTI (lg:col-span-4) - LÜKS KOYU CAM TEMA -->
+          <div class="lg:col-span-4 luxury-card rounded-2xl sm:rounded-3xl p-6 sm:p-8 flex flex-col justify-between reveal-card delay-150">
             
             <div>
               <!-- Top Row: Store Icon + Title -->
-              <div class="flex items-center gap-3.5 mb-5">
-                <div class="w-12 h-12 rounded-2xl bg-[#1a73e8] flex items-center justify-center text-white shadow-lg shadow-blue-500/25 shrink-0">
-                  <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+              <div class="flex items-center gap-3.5 mb-5 sm:mb-6">
+                <div class="w-12 h-12 rounded-2xl bg-white/[0.06] border border-white/10 flex items-center justify-center text-brand-champagne shadow-lg shrink-0">
+                  <svg class="w-6 h-6 fill-current text-[#1a73e8]" viewBox="0 0 24 24">
                     <path d="M20 4H4v2h16V4zm1 10v-2l-1-5H4l-1 5v2h1v6h10v-6h4v6h2v-6h1zm-9 4H6v-4h6v4z"/>
                   </svg>
                 </div>
@@ -1173,22 +1178,22 @@
               </div>
 
               <!-- Rating & Stars -->
-              <div class="flex items-baseline gap-3 mb-2">
+              <div class="flex items-baseline gap-3 mb-2.5">
                 <span class="text-3xl sm:text-4xl font-extrabold text-white font-mono">5.0</span>
-                <div class="flex items-center text-[#FBBC05] gap-1 text-lg sm:text-xl" aria-label="5 yıldız">
+                <div class="flex items-center text-[#FBBC05] gap-1 text-lg sm:text-xl drop-shadow-[0_0_8px_rgba(251,188,5,0.35)]" aria-label="5 yıldız">
                   <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
                 </div>
               </div>
 
               <!-- Reviews Count -->
-              <p class="text-xs sm:text-sm text-zinc-300 font-medium mb-1" data-i18n="reviews_count_text">
-                119 adet Google yorumu
+              <p class="text-xs sm:text-sm text-zinc-400 font-medium mb-1.5" data-i18n="reviews_count_text">
+                119 adet doğrulanmış Google yorumu
               </p>
 
               <!-- Powered by Google Badge -->
               <div class="flex items-center gap-1.5 text-[11px] text-zinc-500 mb-6">
                 <span>powered by</span>
-                <span class="font-semibold text-zinc-400 flex items-center gap-0.5">
+                <span class="font-semibold text-zinc-300 flex items-center gap-0.5">
                   <span class="text-[#4285F4]">G</span><span class="text-[#EA4335]">o</span><span class="text-[#FBBC05]">o</span><span class="text-[#4285F4]">g</span><span class="text-[#34A853]">l</span><span class="text-[#EA4335]">e</span>
                 </span>
               </div>
@@ -1199,7 +1204,7 @@
               href="https://search.google.com/local/writereview?placeid=ChIJewW1RSBZwxQRng2U9jWTu-s" 
               target="_blank" 
               rel="noopener noreferrer" 
-              class="w-full py-3.5 px-4 rounded-xl bg-[#1a73e8] hover:bg-[#1557b0] text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2.5 shadow-lg shadow-blue-500/25 transition-all hover:scale-[1.02] active:scale-95 text-center"
+              class="w-full py-3.5 px-4 rounded-xl bg-[#1a73e8] hover:bg-[#1557b0] text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2.5 shadow-lg shadow-blue-500/20 transition-all hover:scale-[1.02] active:scale-95 text-center"
             >
               <svg class="w-4 h-4 shrink-0 bg-white rounded-full p-[1px]" viewBox="0 0 24 24">
                 <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/>
@@ -1212,12 +1217,12 @@
 
           </div>
 
-          <!-- 2. SAĞDAKİ SLIDER / YORUM KARTLARI (lg:col-span-8) -->
-          <div class="lg:col-span-8 luxury-card rounded-2xl sm:rounded-3xl p-6 sm:p-8 flex flex-col justify-between border border-white/10 bg-[#121215]/95 shadow-[0_15px_40px_rgba(0,0,0,0.5)] relative overflow-hidden reveal-card delay-250">
+          <!-- 2. SAĞDAKİ SLIDER / YORUM KARTLARI (lg:col-span-8) - LÜKS KOYU CAM TEMA -->
+          <div class="lg:col-span-8 luxury-card rounded-2xl sm:rounded-3xl p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden reveal-card delay-250">
             
-            <!-- Large Decorative Quote -->
-            <div class="absolute top-6 right-6 sm:top-8 sm:right-8 text-brand-champagne/10 pointer-events-none select-none" aria-hidden="true">
-              <svg class="w-16 h-16 sm:w-20 sm:h-20 fill-current" viewBox="0 0 24 24">
+            <!-- Subtle Decorative Watermark (Bottom right so it never overlaps text or stars) -->
+            <div class="absolute -bottom-4 right-4 text-white/[0.02] pointer-events-none select-none" aria-hidden="true">
+              <svg class="w-32 h-32 fill-current" viewBox="0 0 24 24">
                 <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
               </svg>
             </div>
@@ -1231,7 +1236,7 @@
                   <div>
                     <div class="flex items-center justify-between mb-3.5">
                       <div class="flex items-center gap-3">
-                        <div class="w-10 sm:w-11 h-10 sm:h-11 rounded-full bg-gradient-to-br from-pink-500 to-rose-700 flex items-center justify-center font-bold text-xs sm:text-sm text-white shadow-md shrink-0">
+                        <div class="w-10 sm:w-11 h-10 sm:h-11 rounded-full bg-gradient-to-br from-pink-500/20 to-rose-700/30 border border-pink-500/30 flex items-center justify-center font-bold text-xs sm:text-sm text-pink-300 shadow-md shrink-0">
                           B
                         </div>
                         <div>
@@ -1252,13 +1257,13 @@
                       </div>
                     </div>
 
-                    <blockquote class="text-zinc-200 text-xs sm:text-sm leading-relaxed italic mb-3" data-i18n="r1_text">
-                      "Bugüne kadar gittiğim en iyi kuaför deneyimlerinden birini yaşadım. Salonun atmosferi çok sıcak ve samimi, tüm ekip son derece güler yüzlü, ilgili ve profesyonel. Özellikle Bilge Hanım’a ayrı bir teşekkür etmek istiyorum. İşini büyük bir özenle yapan harika bir uzman. Sonuç tam hayal ettiğim gibi oldu, gönül rahatlığıyla tavsiye ederim."
-                    </blockquote>
+                    <p class="text-zinc-200 text-xs sm:text-sm leading-relaxed mb-3 font-normal" data-i18n="r1_text">
+                      Bugüne kadar gittiğim en iyi kuaför deneyimlerinden birini yaşadım. Salonun atmosferi çok sıcak ve samimi, tüm ekip son derece güler yüzlü, ilgili ve profesyonel. Özellikle Bilge Hanım’a ayrı bir teşekkür etmek istiyorum. İşini büyük bir özenle yapan harika bir uzman. Sonuç tam hayal ettiğim gibi oldu, gönül rahatlığıyla tavsiye ederim.
+                    </p>
 
                     <!-- Owner Response -->
-                    <div class="mt-2.5 p-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06] text-[11px] text-zinc-400">
-                      <span class="font-bold text-brand-champagne" data-i18n="reviews_owner_response_label">İşletme Sahibinin Yanıtı:</span> <span data-i18n="r1_reply">"Değerli yorumunuz ve bizi tercih ettiğiniz için çok teşekkür ederiz. Memnuniyetiniz bizim için en büyük motivasyon kaynağı. Sizleri tekrar ağırlamaktan mutluluk duyarız."</span>
+                    <div class="mt-2.5 p-3 rounded-xl bg-white/[0.03] border-l-2 border-brand-gold border-t border-r border-b border-white/[0.05] text-[11px] sm:text-xs text-zinc-400">
+                      <span class="font-bold text-brand-champagne" data-i18n="reviews_owner_response_label">İşletme Sahibinin Yanıtı:</span> <span class="text-zinc-300" data-i18n="r1_reply">Değerli yorumunuz ve bizi tercih ettiğiniz için çok teşekkür ederiz. Memnuniyetiniz bizim için en büyük motivasyon kaynağı. Sizleri tekrar ağırlamaktan mutluluk duyarız.</span>
                     </div>
                   </div>
                 </div>
@@ -1268,7 +1273,7 @@
                   <div>
                     <div class="flex items-center justify-between mb-3.5">
                       <div class="flex items-center gap-3">
-                        <div class="w-10 sm:w-11 h-10 sm:h-11 rounded-full bg-gradient-to-br from-amber-500 to-yellow-600 flex items-center justify-center font-bold text-xs sm:text-sm text-black shadow-md shrink-0">
+                        <div class="w-10 sm:w-11 h-10 sm:h-11 rounded-full bg-gradient-to-br from-amber-500/20 to-brand-gold/30 border border-brand-gold/30 flex items-center justify-center font-bold text-xs sm:text-sm text-brand-goldLight shadow-md shrink-0">
                           EE
                         </div>
                         <div>
@@ -1289,13 +1294,13 @@
                       </div>
                     </div>
 
-                    <blockquote class="text-zinc-200 text-xs sm:text-sm leading-relaxed italic mb-3" data-i18n="r2_text">
-                      "Yaklaşık üç yıldır bu kuaföre gidiyorum ve başka bir yere gitmeyi hiç düşünmedim. Saç kesimi, boya, cila, balyaj gibi tüm işlemlerimi burada yaptırıyorum ve her seferinde sonuçtan çok memnun kalıyorum. Emre, İsa ve Hüseyin Bey güler yüzlü ve işlerini büyük bir özenle yapıyor. Gönül rahatlığıyla tavsiye ederim ✨🌸"
-                    </blockquote>
+                    <p class="text-zinc-200 text-xs sm:text-sm leading-relaxed mb-3 font-normal" data-i18n="r2_text">
+                      Yaklaşık üç yıldır bu kuaföre gidiyorum ve başka bir yere gitmeyi hiç düşünmedim. Saç kesimi, boya, cila, balyaj gibi tüm işlemlerimi burada yaptırıyorum ve her seferinde sonuçtan çok memnun kalıyorum. Emre, İsa ve Hüseyin Bey güler yüzlü ve işlerini büyük bir özenle yapıyor. Gönül rahatlığıyla tavsiye ederim ✨🌸
+                    </p>
 
                     <!-- Owner Response -->
-                    <div class="mt-2.5 p-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06] text-[11px] text-zinc-400">
-                      <span class="font-bold text-brand-champagne" data-i18n="reviews_owner_response_label">İşletme Sahibinin Yanıtı:</span> <span data-i18n="r2_reply">"Güzel geri bildiriminiz için teşekkür ederim, sizin gibi müşterilere sahip olmak büyük şans. ✨🙏😊"</span>
+                    <div class="mt-2.5 p-3 rounded-xl bg-white/[0.03] border-l-2 border-brand-gold border-t border-r border-b border-white/[0.05] text-[11px] sm:text-xs text-zinc-400">
+                      <span class="font-bold text-brand-champagne" data-i18n="reviews_owner_response_label">İşletme Sahibinin Yanıtı:</span> <span class="text-zinc-300" data-i18n="r2_reply">Güzel geri bildiriminiz için teşekkür ederim, sizin gibi müşterilere sahip olmak büyük şans. ✨🙏😊</span>
                     </div>
                   </div>
                 </div>
@@ -1305,7 +1310,7 @@
                   <div>
                     <div class="flex items-center justify-between mb-3.5">
                       <div class="flex items-center gap-3">
-                        <div class="w-10 sm:w-11 h-10 sm:h-11 rounded-full bg-gradient-to-br from-purple-500 to-indigo-700 flex items-center justify-center font-bold text-xs sm:text-sm text-white shadow-md shrink-0">
+                        <div class="w-10 sm:w-11 h-10 sm:h-11 rounded-full bg-gradient-to-br from-purple-500/20 to-indigo-700/30 border border-purple-500/30 flex items-center justify-center font-bold text-xs sm:text-sm text-purple-300 shadow-md shrink-0">
                           SB
                         </div>
                         <div>
@@ -1326,13 +1331,13 @@
                       </div>
                     </div>
 
-                    <blockquote class="text-zinc-200 text-xs sm:text-sm leading-relaxed italic mb-3" data-i18n="r3_text">
-                      "Sürekli gittiğim ve çok memnun kaldığım bir kuaför.. İlgilerine çok ama çok teşekkür ederimm🫶🫶"
-                    </blockquote>
+                    <p class="text-zinc-200 text-xs sm:text-sm leading-relaxed mb-3 font-normal" data-i18n="r3_text">
+                      Sürekli gittiğim ve çok memnun kaldığım bir kuaför.. İlgilerine çok ama çok teşekkür ederimm🫶🫶
+                    </p>
 
                     <!-- Owner Response -->
-                    <div class="mt-2.5 p-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06] text-[11px] text-zinc-400">
-                      <span class="font-bold text-brand-champagne" data-i18n="reviews_owner_response_label">İşletme Sahibinin Yanıtı:</span> <span data-i18n="r3_reply">"Değerli yorumunuz ve bizi tercih ettiğiniz için çok teşekkür ederiz. Memnuniyetiniz bizim için en büyük motivasyon kaynağı."</span>
+                    <div class="mt-2.5 p-3 rounded-xl bg-white/[0.03] border-l-2 border-brand-gold border-t border-r border-b border-white/[0.05] text-[11px] sm:text-xs text-zinc-400">
+                      <span class="font-bold text-brand-champagne" data-i18n="reviews_owner_response_label">İşletme Sahibinin Yanıtı:</span> <span class="text-zinc-300" data-i18n="r3_reply">Değerli yorumunuz ve bizi tercih ettiğiniz için çok teşekkür ederiz. Memnuniyetiniz bizim için en büyük motivasyon kaynağı.</span>
                     </div>
                   </div>
                 </div>
@@ -1342,7 +1347,7 @@
                   <div>
                     <div class="flex items-center justify-between mb-3.5">
                       <div class="flex items-center gap-3">
-                        <div class="w-10 sm:w-11 h-10 sm:h-11 rounded-full bg-gradient-to-br from-blue-500 to-cyan-700 flex items-center justify-center font-bold text-xs sm:text-sm text-white shadow-md shrink-0">
+                        <div class="w-10 sm:w-11 h-10 sm:h-11 rounded-full bg-gradient-to-br from-blue-500/20 to-cyan-700/30 border border-blue-500/30 flex items-center justify-center font-bold text-xs sm:text-sm text-blue-300 shadow-md shrink-0">
                           BK
                         </div>
                         <div>
@@ -1363,13 +1368,13 @@
                       </div>
                     </div>
 
-                    <blockquote class="text-zinc-200 text-xs sm:text-sm leading-relaxed italic mb-3" data-i18n="r4_text">
-                      "Buraya taşındığımdan bu yana denemediğim kuaför kalmamıştı sonunda burayı da denemeye karar verdim iyi ki gelmişim bir daha başka yerin camından bakmam. O kadar iyi bir kuaför ki tamamen saçın ihtiyacına göre hareket ediyorlar. Paketli saçımdan kızıla sonra tekrar platine sıfır kopmayla çevirdiler. Kesinlikle şiddetle tavsiye ederim 👊🏻❤️"
-                    </blockquote>
+                    <p class="text-zinc-200 text-xs sm:text-sm leading-relaxed mb-3 font-normal" data-i18n="r4_text">
+                      Buraya taşındığımdan bu yana denemediğim kuaför kalmamıştı sonunda burayı da denemeye karar verdim iyi ki gelmişim bir daha başka yerin camından bakmam. O kadar iyi bir kuaför ki tamamen saçın ihtiyacına göre hareket ediyorlar. Paketli saçımdan kızıla sonra tekrar platine sıfır kopmayla çevirdiler. Kesinlikle şiddetle tavsiye ederim 👊🏻❤️
+                    </p>
 
                     <!-- Owner Response -->
-                    <div class="mt-2.5 p-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06] text-[11px] text-zinc-400">
-                      <span class="font-bold text-brand-champagne" data-i18n="reviews_owner_response_label">İşletme Sahibinin Yanıtı:</span> <span data-i18n="r4_reply">"Değerli yorumunuz ve bizi tercih ettiğiniz için çok teşekkür ederiz. Memnuniyetiniz bizim için en büyük motivasyon kaynağı."</span>
+                    <div class="mt-2.5 p-3 rounded-xl bg-white/[0.03] border-l-2 border-brand-gold border-t border-r border-b border-white/[0.05] text-[11px] sm:text-xs text-zinc-400">
+                      <span class="font-bold text-brand-champagne" data-i18n="reviews_owner_response_label">İşletme Sahibinin Yanıtı:</span> <span class="text-zinc-300" data-i18n="r4_reply">Değerli yorumunuz ve bizi tercih ettiğiniz için çok teşekkür ederiz. Memnuniyetiniz bizim için en büyük motivasyon kaynağı.</span>
                     </div>
                   </div>
                 </div>
@@ -1379,7 +1384,7 @@
                   <div>
                     <div class="flex items-center justify-between mb-3.5">
                       <div class="flex items-center gap-3">
-                        <div class="w-10 sm:w-11 h-10 sm:h-11 rounded-full bg-gradient-to-br from-emerald-500 to-teal-700 flex items-center justify-center font-bold text-xs sm:text-sm text-white shadow-md shrink-0">
+                        <div class="w-10 sm:w-11 h-10 sm:h-11 rounded-full bg-gradient-to-br from-emerald-500/20 to-teal-700/30 border border-emerald-500/30 flex items-center justify-center font-bold text-xs sm:text-sm text-emerald-300 shadow-md shrink-0">
                           HD
                         </div>
                         <div>
@@ -1400,13 +1405,13 @@
                       </div>
                     </div>
 
-                    <blockquote class="text-zinc-200 text-xs sm:text-sm leading-relaxed italic mb-3" data-i18n="r5_text">
-                      "Randevusuz gittim, ona rağmen kırmayıp aldılar. Yüz şeklime yakışan bir saç kesimi yaptılar. Profesyonel bir ekip olduğunu düşünüyorum. Tekrardan teşekkürler🌸"
-                    </blockquote>
+                    <p class="text-zinc-200 text-xs sm:text-sm leading-relaxed mb-3 font-normal" data-i18n="r5_text">
+                      Randevusuz gittim, ona rağmen kırmayıp aldılar. Yüz şeklime yakışan bir saç kesimi yaptılar. Profesyonel bir ekip olduğunu düşünüyorum. Tekrardan teşekkürler🌸
+                    </p>
 
                     <!-- Owner Response -->
-                    <div class="mt-2.5 p-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06] text-[11px] text-zinc-400">
-                      <span class="font-bold text-brand-champagne" data-i18n="reviews_owner_response_label">İşletme Sahibinin Yanıtı:</span> <span data-i18n="r5_reply">"Değerli yorumunuz ve bizi tercih ettiğiniz için çok teşekkür ederiz. Memnuniyetiniz bizim için en büyük motivasyon kaynağı. ✨"</span>
+                    <div class="mt-2.5 p-3 rounded-xl bg-white/[0.03] border-l-2 border-brand-gold border-t border-r border-b border-white/[0.05] text-[11px] sm:text-xs text-zinc-400">
+                      <span class="font-bold text-brand-champagne" data-i18n="reviews_owner_response_label">İşletme Sahibinin Yanıtı:</span> <span class="text-zinc-300" data-i18n="r5_reply">Değerli yorumunuz ve bizi tercih ettiğiniz için çok teşekkür ederiz. Memnuniyetiniz bizim için en büyük motivasyon kaynağı. ✨</span>
                     </div>
                   </div>
                 </div>
@@ -1416,7 +1421,7 @@
                   <div>
                     <div class="flex items-center justify-between mb-3.5">
                       <div class="flex items-center gap-3">
-                        <div class="w-10 sm:w-11 h-10 sm:h-11 rounded-full bg-gradient-to-br from-violet-500 to-purple-700 flex items-center justify-center font-bold text-xs sm:text-sm text-white shadow-md shrink-0">
+                        <div class="w-10 sm:w-11 h-10 sm:h-11 rounded-full bg-gradient-to-br from-violet-500/20 to-purple-700/30 border border-violet-500/30 flex items-center justify-center font-bold text-xs sm:text-sm text-violet-300 shadow-md shrink-0">
                           RA
                         </div>
                         <div>
@@ -1437,13 +1442,13 @@
                       </div>
                     </div>
 
-                    <blockquote class="text-zinc-200 text-xs sm:text-sm leading-relaxed italic mb-3" data-i18n="r6_text">
-                      "Her gittiğimde mutlulukla ayrıldığım kuaför :) Hepsi çok özenli, çok ilgili. Ve eklemek isterim Emre Beyin kestiği saç çok sağlıklı ve hızlı uzuyor :)"
-                    </blockquote>
+                    <p class="text-zinc-200 text-xs sm:text-sm leading-relaxed mb-3 font-normal" data-i18n="r6_text">
+                      Her gittiğimde mutlulukla ayrıldığım kuaför :) Hepsi çok özenli, çok ilgili. Ve eklemek isterim Emre Beyin kestiği saç çok sağlıklı ve hızlı uzuyor :)
+                    </p>
 
                     <!-- Owner Response -->
-                    <div class="mt-2.5 p-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06] text-[11px] text-zinc-400">
-                      <span class="font-bold text-brand-champagne" data-i18n="reviews_owner_response_label">İşletme Sahibinin Yanıtı:</span> <span data-i18n="r6_reply">"Teşekkür ederiz Rümeysa hanım güzel günlerde kullanın 🙏"</span>
+                    <div class="mt-2.5 p-3 rounded-xl bg-white/[0.03] border-l-2 border-brand-gold border-t border-r border-b border-white/[0.05] text-[11px] sm:text-xs text-zinc-400">
+                      <span class="font-bold text-brand-champagne" data-i18n="reviews_owner_response_label">İşletme Sahibinin Yanıtı:</span> <span class="text-zinc-300" data-i18n="r6_reply">Teşekkür ederiz Rümeysa hanım güzel günlerde kullanın 🙏</span>
                     </div>
                   </div>
                 </div>
@@ -1453,7 +1458,7 @@
                   <div>
                     <div class="flex items-center justify-between mb-3.5">
                       <div class="flex items-center gap-3">
-                        <div class="w-10 sm:w-11 h-10 sm:h-11 rounded-full bg-gradient-to-br from-rose-500 to-amber-700 flex items-center justify-center font-bold text-xs sm:text-sm text-white shadow-md shrink-0">
+                        <div class="w-10 sm:w-11 h-10 sm:h-11 rounded-full bg-gradient-to-br from-rose-500/20 to-amber-700/30 border border-rose-500/30 flex items-center justify-center font-bold text-xs sm:text-sm text-rose-300 shadow-md shrink-0">
                           YE
                         </div>
                         <div>
@@ -1474,13 +1479,13 @@
                       </div>
                     </div>
 
-                    <blockquote class="text-zinc-200 text-xs sm:text-sm leading-relaxed italic mb-3" data-i18n="r7_text">
-                      "Saçlarım yanlış kuaför seçimi ile sap sarı ve aşırı yıpranmıştı saçlarımı o halden toparlayıp eskisi gibi sağlıklı ve parlak hale getirdiler bu yüzden aşırı memnunum saç kesimleride mükemmel Emre Bey ve Bilge hanımın ilgisine bayılıyorum ❤️❤️❤️"
-                    </blockquote>
+                    <p class="text-zinc-200 text-xs sm:text-sm leading-relaxed mb-3 font-normal" data-i18n="r7_text">
+                      Saçlarım yanlış kuaför seçimi ile sap sarı ve aşırı yıpranmıştı saçlarımı o halden toparlayıp eskisi gibi sağlıklı ve parlak hale getirdiler bu yüzden aşırı memnunum saç kesimleride mükemmel Emre Bey ve Bilge hanımın ilgisine bayılıyorum ❤️❤️❤️
+                    </p>
 
                     <!-- Owner Response -->
-                    <div class="mt-2.5 p-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06] text-[11px] text-zinc-400">
-                      <span class="font-bold text-brand-champagne" data-i18n="reviews_owner_response_label">İşletme Sahibinin Yanıtı:</span> <span data-i18n="r7_reply">"Değerli yorumunuz ve bizi tercih ettiğiniz için çok teşekkür ederiz. Memnuniyetiniz bizim için en büyük motivasyon kaynağı."</span>
+                    <div class="mt-2.5 p-3 rounded-xl bg-white/[0.03] border-l-2 border-brand-gold border-t border-r border-b border-white/[0.05] text-[11px] sm:text-xs text-zinc-400">
+                      <span class="font-bold text-brand-champagne" data-i18n="reviews_owner_response_label">İşletme Sahibinin Yanıtı:</span> <span class="text-zinc-300" data-i18n="r7_reply">Değerli yorumunuz ve bizi tercih ettiğiniz için çok teşekkür ederiz. Memnuniyetiniz bizim için en büyük motivasyon kaynağı.</span>
                     </div>
                   </div>
                 </div>
@@ -1490,7 +1495,7 @@
                   <div>
                     <div class="flex items-center justify-between mb-3.5">
                       <div class="flex items-center gap-3">
-                        <div class="w-10 sm:w-11 h-10 sm:h-11 rounded-full bg-gradient-to-br from-amber-600 to-orange-700 flex items-center justify-center font-bold text-xs sm:text-sm text-white shadow-md shrink-0">
+                        <div class="w-10 sm:w-11 h-10 sm:h-11 rounded-full bg-gradient-to-br from-amber-500/20 to-orange-700/30 border border-amber-500/30 flex items-center justify-center font-bold text-xs sm:text-sm text-amber-300 shadow-md shrink-0">
                           BÖ
                         </div>
                         <div>
@@ -1511,13 +1516,13 @@
                       </div>
                     </div>
 
-                    <blockquote class="text-zinc-200 text-xs sm:text-sm leading-relaxed italic mb-3" data-i18n="r8_text">
-                      "Yaklaşık 3 yıldır aynı kuaföre gidiyorum yaptırdığım ombrelerin hepsi çok güzel oldu. Saç kesimleri de çok iyi kesimden sonra uzamayan saçım burada kestirdikten sonra uzamaya başladı."
-                    </blockquote>
+                    <p class="text-zinc-200 text-xs sm:text-sm leading-relaxed mb-3 font-normal" data-i18n="r8_text">
+                      Yaklaşık 3 yıldır aynı kuaföre gidiyorum yaptırdığım ombrelerin hepsi çok güzel oldu. Saç kesimleri de çok iyi kesimden sonra uzamayan saçım burada kestirdikten sonra uzamaya başladı.
+                    </p>
 
                     <!-- Owner Response -->
-                    <div class="mt-2.5 p-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06] text-[11px] text-zinc-400">
-                      <span class="font-bold text-brand-champagne" data-i18n="reviews_owner_response_label">İşletme Sahibinin Yanıtı:</span> <span data-i18n="r8_reply">"Teşekkür ederiz Burcu hanım güzel günlerde kullanın 🙏"</span>
+                    <div class="mt-2.5 p-3 rounded-xl bg-white/[0.03] border-l-2 border-brand-gold border-t border-r border-b border-white/[0.05] text-[11px] sm:text-xs text-zinc-400">
+                      <span class="font-bold text-brand-champagne" data-i18n="reviews_owner_response_label">İşletme Sahibinin Yanıtı:</span> <span class="text-zinc-300" data-i18n="r8_reply">Teşekkür ederiz Burcu hanım güzel günlerde kullanın 🙏</span>
                     </div>
                   </div>
                 </div>
@@ -1527,7 +1532,7 @@
                   <div>
                     <div class="flex items-center justify-between mb-3.5">
                       <div class="flex items-center gap-3">
-                        <div class="w-10 sm:w-11 h-10 sm:h-11 rounded-full bg-gradient-to-br from-teal-500 to-emerald-700 flex items-center justify-center font-bold text-xs sm:text-sm text-white shadow-md shrink-0">
+                        <div class="w-10 sm:w-11 h-10 sm:h-11 rounded-full bg-gradient-to-br from-teal-500/20 to-emerald-700/30 border border-teal-500/30 flex items-center justify-center font-bold text-xs sm:text-sm text-teal-300 shadow-md shrink-0">
                           Y
                         </div>
                         <div>
@@ -1548,13 +1553,13 @@
                       </div>
                     </div>
 
-                    <blockquote class="text-zinc-200 text-xs sm:text-sm leading-relaxed italic mb-3" data-i18n="r9_text">
-                      "İyi ki Hüseyin Bey’e saçımı emanet etmişim. Tam istediğim gibi oldu, hatta beklediğimden bile güzel. Hem çok ilgili hem de işini gerçekten severek yapıyor. Çok memnun kaldım, gönülden tavsiye ederim."
-                    </blockquote>
+                    <p class="text-zinc-200 text-xs sm:text-sm leading-relaxed mb-3 font-normal" data-i18n="r9_text">
+                      İyi ki Hüseyin Bey’e saçımı emanet etmişim. Tam istediğim gibi oldu, hatta beklediğimden bile güzel. Hem çok ilgili hem de işini gerçekten severek yapıyor. Çok memnun kaldım, gönülden tavsiye ederim.
+                    </p>
 
                     <!-- Owner Response -->
-                    <div class="mt-2.5 p-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06] text-[11px] text-zinc-400">
-                      <span class="font-bold text-brand-champagne" data-i18n="reviews_owner_response_label">İşletme Sahibinin Yanıtı:</span> <span data-i18n="r9_reply">"Teşekkür ederiz Yıldız hanım güzel günlerde kullanmak dileğiyle 🙏"</span>
+                    <div class="mt-2.5 p-3 rounded-xl bg-white/[0.03] border-l-2 border-brand-gold border-t border-r border-b border-white/[0.05] text-[11px] sm:text-xs text-zinc-400">
+                      <span class="font-bold text-brand-champagne" data-i18n="reviews_owner_response_label">İşletme Sahibinin Yanıtı:</span> <span class="text-zinc-300" data-i18n="r9_reply">Teşekkür ederiz Yıldız hanım güzel günlerde kullanmak dileğiyle 🙏</span>
                     </div>
                   </div>
                 </div>
@@ -1564,7 +1569,7 @@
                   <div>
                     <div class="flex items-center justify-between mb-3.5">
                       <div class="flex items-center gap-3">
-                        <div class="w-10 sm:w-11 h-10 sm:h-11 rounded-full bg-gradient-to-br from-fuchsia-500 to-pink-700 flex items-center justify-center font-bold text-xs sm:text-sm text-white shadow-md shrink-0">
+                        <div class="w-10 sm:w-11 h-10 sm:h-11 rounded-full bg-gradient-to-br from-fuchsia-500/20 to-pink-700/30 border border-fuchsia-500/30 flex items-center justify-center font-bold text-xs sm:text-sm text-fuchsia-300 shadow-md shrink-0">
                           SK
                         </div>
                         <div>
@@ -1585,13 +1590,13 @@
                       </div>
                     </div>
 
-                    <blockquote class="text-zinc-200 text-xs sm:text-sm leading-relaxed italic mb-3" data-i18n="r10_text">
-                      "Bayıldımmm!! herkes çok ilgili ve güler yüzlüydü ne istediğinize önem veriyorlar hatta istediğinizden daha güzel sonuçlar alıyorsunuz. Saçım olaayyy💅🏻 tadını çıkarıyorum teşekkürler"
-                    </blockquote>
+                    <p class="text-zinc-200 text-xs sm:text-sm leading-relaxed mb-3 font-normal" data-i18n="r10_text">
+                      Bayıldımmm!! herkes çok ilgili ve güler yüzlüydü ne istediğinize önem veriyorlar hatta istediğinizden daha güzel sonuçlar alıyorsunuz. Saçım olaayyy💅🏻 tadını çıkarıyorum teşekkürler
+                    </p>
 
                     <!-- Owner Response -->
-                    <div class="mt-2.5 p-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06] text-[11px] text-zinc-400">
-                      <span class="font-bold text-brand-champagne" data-i18n="reviews_owner_response_label">İşletme Sahibinin Yanıtı:</span> <span data-i18n="r10_reply">"Değerli yorumunuz ve bizi tercih ettiğiniz için çok teşekkür ederiz. Memnuniyetiniz bizim için en büyük motivasyon kaynağı."</span>
+                    <div class="mt-2.5 p-3 rounded-xl bg-white/[0.03] border-l-2 border-brand-gold border-t border-r border-b border-white/[0.05] text-[11px] sm:text-xs text-zinc-400">
+                      <span class="font-bold text-brand-champagne" data-i18n="reviews_owner_response_label">İşletme Sahibinin Yanıtı:</span> <span class="text-zinc-300" data-i18n="r10_reply">Değerli yorumunuz ve bizi tercih ettiğiniz için çok teşekkür ederiz. Memnuniyetiniz bizim için en büyük motivasyon kaynağı.</span>
                     </div>
                   </div>
                 </div>
@@ -1601,7 +1606,7 @@
                   <div>
                     <div class="flex items-center justify-between mb-3.5">
                       <div class="flex items-center gap-3">
-                        <div class="w-10 sm:w-11 h-10 sm:h-11 rounded-full bg-gradient-to-br from-indigo-500 to-blue-700 flex items-center justify-center font-bold text-xs sm:text-sm text-white shadow-md shrink-0">
+                        <div class="w-10 sm:w-11 h-10 sm:h-11 rounded-full bg-gradient-to-br from-indigo-500/20 to-blue-700/30 border border-indigo-500/30 flex items-center justify-center font-bold text-xs sm:text-sm text-indigo-300 shadow-md shrink-0">
                           ND
                         </div>
                         <div>
@@ -1622,13 +1627,13 @@
                       </div>
                     </div>
 
-                    <blockquote class="text-zinc-200 text-xs sm:text-sm leading-relaxed italic mb-3" data-i18n="r11_text">
-                      "Selam, kesinlikle tavsiye edeceğim bir kuaför, işlerinde çok iyiler, kesim yaptırdım, bayıldımmm, çevremden de güzel yorumlar aldım. Çok güzel oldu. Bundan sonra tek adresim ☺️"
-                    </blockquote>
+                    <p class="text-zinc-200 text-xs sm:text-sm leading-relaxed mb-3 font-normal" data-i18n="r11_text">
+                      Selam, kesinlikle tavsiye edeceğim bir kuaför, işlerinde çok iyiler, kesim yaptırdım, bayıldımmm, çevremden de güzel yorumlar aldım. Çok güzel oldu. Bundan sonra tek adresim ☺️
+                    </p>
 
                     <!-- Owner Response -->
-                    <div class="mt-2.5 p-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06] text-[11px] text-zinc-400">
-                      <span class="font-bold text-brand-champagne" data-i18n="reviews_owner_response_label">İşletme Sahibinin Yanıtı:</span> <span data-i18n="r11_reply">"Değerli yorumunuz ve bizi tercih ettiğiniz için çok teşekkür ederiz. Memnuniyetiniz bizim için en büyük motivasyon kaynağı."</span>
+                    <div class="mt-2.5 p-3 rounded-xl bg-white/[0.03] border-l-2 border-brand-gold border-t border-r border-b border-white/[0.05] text-[11px] sm:text-xs text-zinc-400">
+                      <span class="font-bold text-brand-champagne" data-i18n="reviews_owner_response_label">İşletme Sahibinin Yanıtı:</span> <span class="text-zinc-300" data-i18n="r11_reply">Değerli yorumunuz ve bizi tercih ettiğiniz için çok teşekkür ederiz. Memnuniyetiniz bizim için en büyük motivasyon kaynağı.</span>
                     </div>
                   </div>
                 </div>
@@ -1637,8 +1642,8 @@
             </div>
 
             <!-- Slider Controls: Prev/Next & Dots -->
-            <div class="flex items-center justify-between pt-4 mt-2 border-t border-white/[0.08]">
-              <button id="review-prev-btn" type="button" aria-label="Önceki yorum" class="w-9 h-9 sm:w-10 sm:h-10 rounded-full btn-outline-gold flex items-center justify-center text-brand-champagne hover:scale-105 active:scale-95 transition-all focus:outline-none cursor-pointer shrink-0">
+            <div class="flex items-center justify-between pt-4 mt-3 border-t border-white/[0.08]">
+              <button id="review-prev-btn" type="button" aria-label="Önceki yorum" class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/[0.05] hover:bg-white/[0.12] border border-white/10 flex items-center justify-center text-zinc-300 hover:text-white hover:scale-105 active:scale-95 transition-all focus:outline-none cursor-pointer shrink-0">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7" />
                 </svg>
@@ -1646,7 +1651,7 @@
 
               <div class="flex items-center gap-1.5 sm:gap-2 px-2 overflow-x-auto max-w-[200px] sm:max-w-none justify-center scrollbar-none" id="review-dots-container"></div>
 
-              <button id="review-next-btn" type="button" aria-label="Sonraki yorum" class="w-9 h-9 sm:w-10 sm:h-10 rounded-full btn-outline-gold flex items-center justify-center text-brand-champagne hover:scale-105 active:scale-95 transition-all focus:outline-none cursor-pointer shrink-0">
+              <button id="review-next-btn" type="button" aria-label="Sonraki yorum" class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/[0.05] hover:bg-white/[0.12] border border-white/10 flex items-center justify-center text-zinc-300 hover:text-white hover:scale-105 active:scale-95 transition-all focus:outline-none cursor-pointer shrink-0">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
                 </svg>
@@ -1657,13 +1662,13 @@
 
         </div>
 
-        <!-- 4. ALT VURGU BAŞLIĞI -->
+        <!-- 3. ALT VURGU BUTONU (LÜKS KOYU CAM TEMA) -->
         <div class="mt-8 sm:mt-10 text-center">
           <a 
             href="https://maps.google.com/?cid=16986332279537405342" 
             target="_blank" 
             rel="noopener noreferrer" 
-            class="inline-flex items-center gap-2.5 px-6 sm:px-8 py-3 rounded-full bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 hover:border-brand-gold/40 text-xs sm:text-sm font-semibold text-zinc-300 hover:text-white transition-all shadow-md group reveal-text delay-200"
+            class="inline-flex items-center gap-2.5 px-6 sm:px-8 py-3.5 rounded-full bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 hover:border-brand-gold/40 text-xs sm:text-sm font-semibold text-zinc-200 hover:text-white transition-all shadow-lg group reveal-text delay-200"
           >
             <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24">
               <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/>
@@ -1672,7 +1677,7 @@
               <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.26 6.58l4.02 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
             </svg>
             <span data-i18n="reviews_view_all">100+ mutlu müşteri yorumları incele</span>
-            <span class="text-brand-champagne group-hover:translate-x-0.5 transition-transform">→</span>
+            <span class="text-brand-gold font-bold group-hover:translate-x-0.5 transition-transform">→</span>
           </a>
         </div>
 
@@ -1682,7 +1687,7 @@
     <!-- ========================================================================= -->
     <!-- 7. KONUM, ÇALIŞMA SAATLERİ & HIZLI İLETİŞİM                                -->
     <!-- ========================================================================= -->
-    <section id="iletisim" class="py-16 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-safe-dock section-deferred">
+    <section id="iletisim" class="py-16 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-32 sm:pb-24 section-deferred scroll-mt-16 sm:scroll-mt-20">
       
       <div class="text-center max-w-xl mx-auto mb-10 sm:mb-14">
         <span class="text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] text-brand-champagne reveal-text" data-i18n="contact_badge">Rezervasyon & Ulaşım</span>
@@ -1892,10 +1897,12 @@
         isDragging = false;
       }
 
+      container.addEventListener('mousedown', onStart);
       handleButton.addEventListener('mousedown', onStart);
       window.addEventListener('mousemove', onMove, { passive: true });
       window.addEventListener('mouseup', onEnd);
 
+      container.addEventListener('touchstart', onStart, { passive: true });
       handleButton.addEventListener('touchstart', onStart, { passive: true });
       window.addEventListener('touchmove', onMove, { passive: false });
       window.addEventListener('touchend', onEnd);
@@ -2000,8 +2007,37 @@
         startAutoplay();
       }, { passive: true });
 
-      viewport.addEventListener('mouseenter', stopAutoplay);
-      viewport.addEventListener('mouseleave', startAutoplay);
+      // Category filter chips binding
+      const filterChips = document.querySelectorAll('#review-filter-chips .review-chip');
+      filterChips.forEach(chip => {
+        chip.addEventListener('click', () => {
+          const targetIndex = parseInt(chip.getAttribute('data-slide-target') || '0', 10);
+          filterChips.forEach(c => {
+            c.classList.remove('bg-[#1a73e8]/20', 'border-[#1a73e8]/50', 'text-[#8ab4f8]', 'font-bold');
+            c.classList.add('bg-white/[0.04]', 'border-white/[0.08]', 'text-zinc-300');
+          });
+          chip.classList.add('bg-[#1a73e8]/20', 'border-[#1a73e8]/50', 'text-[#8ab4f8]', 'font-bold');
+          chip.classList.remove('bg-white/[0.04]', 'border-white/[0.08]', 'text-zinc-300');
+          goToSlide(targetIndex);
+          resetAutoplay();
+        });
+      });
+
+      // Helpful buttons interaction
+      document.querySelectorAll('#reviews-track .cursor-pointer').forEach(btn => {
+        btn.addEventListener('click', function() {
+          if (this.dataset.voted) return;
+          this.dataset.voted = 'true';
+          const match = this.textContent.match(/\d+/);
+          if (match) {
+            const count = parseInt(match[0], 10) + 1;
+            this.innerHTML = `
+              <svg class="w-3.5 h-3.5 text-[#1a73e8] fill-[#1a73e8]" viewBox="0 0 24 24"><path d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"/></svg>
+              <span class="text-[#8ab4f8] font-bold">Yararlı (${count})</span>
+            `;
+          }
+        });
+      });
 
       startAutoplay();
     })();

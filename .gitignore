@@ -4,6 +4,7 @@ node_modules/
 .agent/
 .agents/
 backups/
+threebrotherswebsitesiyedek/
 *.log
 .DS_Store
 Thumbs.db

@@ -55,7 +55,9 @@ const server = http.createServer((req, res) => {
 
     const headers = {
       'Content-Type': contentType,
-      'Cache-Control': isAsset ? 'public, max-age=31536000, immutable' : 'public, max-age=0, must-revalidate',
+      'Cache-Control': 'no-cache, no-store, must-revalidate',
+      'Pragma': 'no-cache',
+      'Expires': '0',
       'X-Content-Type-Options': 'nosniff'
     };
 

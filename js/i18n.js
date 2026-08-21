@@ -1,45 +1,46 @@
 /**
- * ThreeBrothers Bayan Kuaförü - Multi-Language i18n System
- * Supported Languages: TR (Turkish), EN (English), DE (German), RU (Russian), AR (Arabic)
+ * ThreeBrothers Bayan Kuaförü & Saç Tasarım Stüdyosu
+ * Multi-Language i18n Dictionary & Switcher
+ * Supported: TR (Turkish), EN (English), DE (German), RU (Russian), AR (Arabic)
  */
 
 const I18N_LANGUAGES = {
-  tr: { name: 'Türkçe', flag: '🇹🇷', code: 'TR', dir: 'ltr' },
-  en: { name: 'English', flag: '🇬🇧', code: 'EN', dir: 'ltr' },
-  de: { name: 'Deutsch', flag: '🇩🇪', code: 'DE', dir: 'ltr' },
-  ru: { name: 'Русский', flag: '🇷🇺', code: 'RU', dir: 'ltr' },
-  ar: { name: 'العربية', flag: '🇸🇦', code: 'AR', dir: 'rtl' }
+  tr: { name: 'Türkçe', code: 'TR', flag: '🇹🇷', dir: 'ltr' },
+  en: { name: 'English', code: 'EN', flag: '🇬🇧', dir: 'ltr' },
+  de: { name: 'Deutsch', code: 'DE', flag: '🇩🇪', dir: 'ltr' },
+  ru: { name: 'Русский', code: 'RU', flag: '🇷🇺', dir: 'ltr' },
+  ar: { name: 'العربية', code: 'AR', flag: '🇸🇦', dir: 'rtl' }
 };
 
 const I18N_TRANSLATIONS = {
   tr: {
     // Meta / SEO
-    page_title: "ThreeBrothers Bayan Kuaförü | Manavgat Seçkin Saç Tasarım & Renklendirme Stüdyosu",
-    meta_description: "Manavgat Bahçelievler Demokrasi Bulvarı'nda 5.0 Google puanlı lider bayan kuaförü ThreeBrothers. Ombre, balyaj, keratin botoks ve gelin saçı uzmanlığı.",
+    page_title: "ThreeBrothers Bayan Kuaförü | Manavgat Sarı & Ombre & Gelin Başı Uzmanı",
+    meta_description: "Manavgat Demokrasi Bulvarı'nda 5.0 Google puanlı kadın kuaförü ThreeBrothers. Sarı saç, ombre, balyaj, mikro kaynak ve gelin başı uzmanlığı. Hemen randevu alın.",
     og_title: "ThreeBrothers Bayan Kuaförü | Manavgat",
-    og_description: "5.0 ★★★★★ 119 Doğrulanmış Google Yorumu. Manavgat'ta lüks saç tasarımı ve renklendirme stüdyosu.",
+    og_description: "5.0 ★★★★★ 119 Doğrulanmış Google Yorumu. Manavgat'ın en çok tercih edilen sarı saç, ombre, mikro kaynak ve gelin başı tasarım stüdyosu.",
 
     // Header
     brand_sub: "Bayan Kuaförü • Manavgat",
     nav_instagram: "Instagram",
-    nav_call: "Ara",
+    nav_call: "Hemen Ara",
     nav_appointment: "Randevu Al",
 
     // Hero
     hero_brand_sub: "Bayan Kuaförü • Manavgat",
-    hero_title: `Manavgat'ın Seçkin <br class="hidden sm:inline" /><span class="gold-gradient-text">Saç Tasarım & Renklendirme</span> Stüdyosu`,
-    hero_desc: "Kişiye özel tonlama formülleri, yıpranma karşıtı profesyonel açma teknikleri ve kusursuz gelin tasarımlarıyla saçınızın eşsiz ışıltısını ortaya çıkarıyoruz.",
-    hero_cta_wa: "WhatsApp'tan Hızlı Randevu",
+    hero_title: `Manavgat'ın Öncü <br class="hidden sm:inline" /><span class="gold-gradient-text">Saç Tasarım & Renklendirme</span> Stüdyosu`,
+    hero_desc: "Kişiye özel tonlama formülleri, yıpratmayan profesyonel açma teknikleri ve kusursuz gelin tasarımlarıyla saçlarınızın ışıltısını ortaya çıkarıyoruz.",
+    hero_cta_wa: "WhatsApp Hızlı Randevu",
     hero_cta_ig: "Instagram'da İncele",
     hero_scroll: "Keşfet",
 
     // Before/After Slider
     ba_badge: "Dönüşüm Vitrini",
-    ba_title: "Öncesi & Sonrası Dönüşümü",
-    ba_desc: "Aşağıdaki altın ayracı sağa-sola sürükleyerek renklendirme ve keratin botoks sonucunu canlı kıyaslayın.",
-    ba_before: "İŞLEM ÖNCESİ",
-    ba_after: "İŞLEM SONRASI",
-    ba_hint: "Ayracı kaydırarak renk açma ve bakım sonucunu karşılaştırın",
+    ba_title: "Öncesi & Sonrası Dönüşüm",
+    ba_desc: "Renklendirme ve mikro kaynak sonuçlarını canlı karşılaştırmak için altın çizgiyi sağa sola kaydırın.",
+    ba_before: "ÖNCESİ",
+    ba_after: "SONRASI",
+    ba_hint: "Açma ve bakım sonucunu karşılaştırmak için çizgiyi kaydırın",
 
     // Services
     services_badge: "İmza Hizmetlerimiz",
@@ -55,9 +56,9 @@ const I18N_TRANSLATIONS = {
     s2_title: "Gelin Başı & Özel Gün Topuzu",
     s2_desc: "Düğün ve nişan günleriniz için aksesuarlı, prova destekli ve gece boyunca bozulmayan heykelsi zarif topuz tasarımı.",
 
-    s3_tag: "Düz & Parlak Saç",
-    s3_title: "Keratin Botox & İpek Bakım",
-    s3_desc: "Yıpranmış saç liflerini onaran, elektriklenme karşıtı, aylarca kalıcı ayna parlaklığı ve pürüzsüz düzlük sağlayan terapi.",
+    s3_tag: "Mikro & Görünmez Kaynak",
+    s3_title: "Mikro Kaynak & Saç Yoğunlaştırma",
+    s3_desc: "Kendi saçınızla kusursuz bütünleşen, ağırlık yapmayan ve dipten belli olmayan medikal mikro kaynak uygulamaları.",
 
     s4_tag: "Katlı Kesim & Hacimli Fön",
     s4_title: "Katlı Kesim & Havalı Fön",
@@ -161,25 +162,26 @@ const I18N_TRANSLATIONS = {
     wa_general: "Merhaba, web sitenizden ulaşıyorum. Randevu almak istiyorum.",
     wa_ombre: "Merhaba, Sarı / Ombre & Balyaj renklendirme hakkında fiyat ve randevu bilgisi almak istiyorum.",
     wa_gelin: "Merhaba, Gelin Başı ve Özel Gün Topuzu hakkında bilgi ve randevu almak istiyorum.",
-    wa_keratin: "Merhaba, Keratin Botox ve İpek Bakım hakkında fiyat ve randevu bilgisi almak istiyorum.",
+    wa_kaynak: "Merhaba, Mikro Kaynak ve Saç Yoğunlaştırma hakkında fiyat ve randevu bilgisi almak istiyorum.",
+    wa_keratin: "Merhaba, Mikro Kaynak ve Saç Yoğunlaştırma hakkında fiyat ve randevu bilgisi almak istiyorum.",
     wa_kesim: "Merhaba, Katlı Kesim ve Fön hizmeti hakkında randevu almak istiyorum."
   },
 
   en: {
     // Meta / SEO
-    page_title: "ThreeBrothers Women's Hair Salon | Manavgat Luxury Hair Design & Coloring Studio",
-    meta_description: "5.0 Google rated premier women's hair salon ThreeBrothers on Demokrasi Boulevard, Manavgat. Ombre, balayage, keratin botox & bridal hair expertise.",
-    og_title: "ThreeBrothers Women's Hair Salon | Manavgat",
+    page_title: "ThreeBrothers Bayan Kuaförü | Manavgat Luxury Hair Design & Coloring Studio",
+    meta_description: "5.0 Google rated premier women's hair salon ThreeBrothers on Demokrasi Boulevard, Manavgat. Ombre, balayage, micro extensions & bridal hair expertise.",
+    og_title: "ThreeBrothers Bayan Kuaförü | Manavgat",
     og_description: "5.0 ★★★★★ 119 Verified Google Reviews. Luxury hair design and coloring studio in Manavgat.",
 
     // Header
-    brand_sub: "Women's Salon • Manavgat",
+    brand_sub: "Bayan Kuaförü • Manavgat",
     nav_instagram: "Instagram",
     nav_call: "Call",
     nav_appointment: "Book Now",
 
     // Hero
-    hero_brand_sub: "Women's Salon • Manavgat",
+    hero_brand_sub: "Bayan Kuaförü • Manavgat",
     hero_title: `Manavgat's Premier <br class="hidden sm:inline" /><span class="gold-gradient-text">Hair Design & Coloring</span> Studio`,
     hero_desc: "We reveal your hair's unique radiance with custom toning formulas, anti-damage professional lightening techniques, and flawless bridal styling.",
     hero_cta_wa: "Quick WhatsApp Booking",
@@ -189,10 +191,10 @@ const I18N_TRANSLATIONS = {
     // Before/After Slider
     ba_badge: "Transformation Showcase",
     ba_title: "Before & After Transformation",
-    ba_desc: "Drag the golden divider left and right to compare live hair coloring and keratin botox results.",
+    ba_desc: "Drag the golden divider left and right to compare live hair coloring and extensions results.",
     ba_before: "BEFORE",
     ba_after: "AFTER",
-    ba_hint: "Slide the handle to compare lightening and hair care results",
+    ba_hint: "Slide the handle to compare lightening and extensions results",
 
     // Services
     services_badge: "Signature Services",
@@ -208,9 +210,9 @@ const I18N_TRANSLATIONS = {
     s2_title: "Bridal Hair & Special Occasion Updo",
     s2_desc: "Sculpted elegant updos with accessory placement and trial sessions that stay flawless all night for weddings and engagements.",
 
-    s3_tag: "Straight & Shiny Hair",
-    s3_title: "Keratin Botox & Silk Treatment",
-    s3_desc: "Anti-frizz therapy that repairs damaged hair fibers, delivering months-long mirror shine and silky smoothness.",
+    s3_tag: "Micro & Invisible Extensions",
+    s3_title: "Micro Ring & Invisible Hair Extensions",
+    s3_desc: "100% natural blend with your own hair, lightweight and invisible medical micro-extension techniques for instant length and volume.",
 
     s4_tag: "Layered Cut & Blowout",
     s4_title: "Layered Cut & Voluminous Blowout",
@@ -238,7 +240,7 @@ const I18N_TRANSLATIONS = {
     reviews_badge: "Guest Experiences",
     reviews_title: "Verified Google Reviews",
     reviews_salon_name: "THREEBROTHERS",
-    reviews_salon_type: "WOMEN'S HAIR SALON",
+    reviews_salon_type: "BAYAN KUAFÖRÜ",
     reviews_count_text: "119 Google reviews",
     reviews_write_btn: "Write a Review",
     reviews_owner_response_label: "Owner's Response:",
@@ -303,7 +305,7 @@ const I18N_TRANSLATIONS = {
     contact_call_btn: "Call Now",
 
     // Footer
-    footer_copyright: "© 2026 ThreeBrothers Women's Hair Salon & Design Studio. All rights reserved. Manavgat / Antalya.",
+    footer_copyright: "© 2026 ThreeBrothers Bayan Kuaförü & Saç Tasarım Stüdyosu. All rights reserved. Manavgat / Antalya.",
     footer_maps: "Google Maps",
 
     // Mobile Dock
@@ -314,25 +316,26 @@ const I18N_TRANSLATIONS = {
     wa_general: "Hello, I am contacting you from your website. I would like to book an appointment.",
     wa_ombre: "Hello, I would like to get information and book an appointment for Blonde / Ombre & Balayage coloring.",
     wa_gelin: "Hello, I would like to get information and book an appointment for Bridal Hair & Updo styling.",
-    wa_keratin: "Hello, I would like to get information and book an appointment for Keratin Botox & Silk Treatment.",
+    wa_kaynak: "Hello, I would like to get pricing and appointment info for Micro Hair Extensions.",
+    wa_keratin: "Hello, I would like to get pricing and appointment info for Micro Hair Extensions.",
     wa_kesim: "Hello, I would like to book an appointment for Layered Haircut & Blowout styling."
   },
 
   de: {
     // Meta / SEO
-    page_title: "ThreeBrothers Damenfriseur | Manavgat Exklusives Haarstyling & Colorationsstudio",
-    meta_description: "Mit 5.0 Google-Sternen bewerteter führender Damenfriseur ThreeBrothers am Demokrasi Boulevard, Manavgat. Experten für Ombré, Balayage, Keratin & Brautfrisuren.",
-    og_title: "ThreeBrothers Damenfriseur | Manavgat",
+    page_title: "ThreeBrothers Bayan Kuaförü | Manavgat Exklusives Haarstyling & Colorationsstudio",
+    meta_description: "Mit 5.0 Google-Sternen bewerteter führender Damenfriseur ThreeBrothers am Demokrasi Boulevard, Manavgat. Experten für Ombré, Balayage, Extensions & Brautfrisuren.",
+    og_title: "ThreeBrothers Bayan Kuaförü | Manavgat",
     og_description: "5.0 ★★★★★ 119 Verifizierte Google-Bewertungen. Luxus-Haardesign und Colorationsstudio in Manavgat.",
 
     // Header
-    brand_sub: "Damenfriseur • Manavgat",
+    brand_sub: "Bayan Kuaförü • Manavgat",
     nav_instagram: "Instagram",
     nav_call: "Anrufen",
     nav_appointment: "Termin Buchen",
 
     // Hero
-    hero_brand_sub: "Damenfriseur • Manavgat",
+    hero_brand_sub: "Bayan Kuaförü • Manavgat",
     hero_title: `Manavgats Exklusives <br class="hidden sm:inline" /><span class="gold-gradient-text">Haarstyling & Colorations</span> Studio`,
     hero_desc: "Wir bringen den einzigartigen Glanz Ihres Haares mit individuellen Tönungsformeln, schonenden Aufhellungstechniken und perfektem Brautstyling zur Geltung.",
     hero_cta_wa: "Schneller WhatsApp Termin",
@@ -342,7 +345,7 @@ const I18N_TRANSLATIONS = {
     // Before/After Slider
     ba_badge: "Vorher-Nachher Galerie",
     ba_title: "Vorher & Nachher Verwandlung",
-    ba_desc: "Ziehen Sie den goldenen Regler nach links und rechts, um Colorations- und Keratin-Ergebnisse direkt zu vergleichen.",
+    ba_desc: "Ziehen Sie den goldenen Regler nach links und rechts, um Colorations- und Extensions-Ergebnisse direkt zu vergleichen.",
     ba_before: "VORHER",
     ba_after: "NACHHER",
     ba_hint: "Schieben Sie den Regler, um Aufhellung und Pflegeergebnisse zu vergleichen",
@@ -361,9 +364,9 @@ const I18N_TRANSLATIONS = {
     s2_title: "Braut- & Festliche Hochsteckfrisuren",
     s2_desc: "Elegante Hochsteckfrisuren mit Accessoires und Probeterminen, die die ganze Nacht perfekt halten.",
 
-    s3_tag: "Glattes & Glänzendes Haar",
-    s3_title: "Keratin-Botox & Seidenpflege",
-    s3_desc: "Anti-Frizz-Therapie, die geschädigtes Haar repariert und monatelang spiegelnden Glanz und Geschmeidigkeit schenkt.",
+    s3_tag: "Mikro- & Unsichtbare Extensions",
+    s3_title: "Mikro-Extensions & Haarverdichtung",
+    s3_desc: "100% natürliche Anpassung an Ihr Eigenhaar, federleichte und unsichtbare Mikro-Haarverlängerung für sofortiges Volumen.",
 
     s4_tag: "Stufenschnitt & Föhnen",
     s4_title: "Stufenschnitt & Glamour-Föhnfrisur",
@@ -391,7 +394,7 @@ const I18N_TRANSLATIONS = {
     reviews_badge: "Gäste-Erfahrungen",
     reviews_title: "Verifizierte Google-Bewertungen",
     reviews_salon_name: "THREEBROTHERS",
-    reviews_salon_type: "DAMENFRISEUR",
+    reviews_salon_type: "BAYAN KUAFÖRÜ",
     reviews_count_text: "119 Google-Bewertungen",
     reviews_write_btn: "Bewertung schreiben",
     reviews_owner_response_label: "Antwort des Inhabers:",
@@ -456,7 +459,7 @@ const I18N_TRANSLATIONS = {
     contact_call_btn: "Jetzt anrufen",
 
     // Footer
-    footer_copyright: "© 2026 ThreeBrothers Damenfriseur & Haarstyling-Studio. Alle Rechte vorbehalten. Manavgat / Antalya.",
+    footer_copyright: "© 2026 ThreeBrothers Bayan Kuaförü & Saç Tasarım Stüdyosu. Alle Rechte vorbehalten. Manavgat / Antalya.",
     footer_maps: "Google Maps",
 
     // Mobile Dock
@@ -467,25 +470,26 @@ const I18N_TRANSLATIONS = {
     wa_general: "Hallo, ich kontaktiere Sie über Ihre Website. Ich möchte einen Termin vereinbaren.",
     wa_ombre: "Hallo, ich möchte mich über Blond / Ombré & Balayage Färbung informieren und einen Termin vereinbaren.",
     wa_gelin: "Hallo, ich möchte mich über Brautfrisuren & Hochsteckfrisuren informieren und einen Termin vereinbaren.",
-    wa_keratin: "Hallo, ich möchte mich über Keratin-Botox & Seidenpflege informieren und einen Termin vereinbaren.",
+    wa_kaynak: "Hallo, ich möchte mich über Mikro-Haarverlängerung (Extensions) und Termine informieren.",
+    wa_keratin: "Hallo, ich möchte mich über Mikro-Haarverlängerung (Extensions) und Termine informieren.",
     wa_kesim: "Hallo, ich möchte einen Termin für Stufenschnitt & Föhnen vereinbaren."
   },
 
   ru: {
     // Meta / SEO
-    page_title: "ThreeBrothers Женская парикмахерская | Манавгат Премиум Студия Дизайна и Окрашивания Волос",
-    meta_description: "Ведущая женская парикмахерская ThreeBrothers в Манавгате с рейтингом 5.0 Google. Эксперты по омбре, балаяж, кератиновому ботоксу и свадебным прическам.",
-    og_title: "ThreeBrothers Женская парикмахерская | Манавгат",
+    page_title: "ThreeBrothers Bayan Kuaförü | Манавгат Премиум Студия Дизайна и Окрашивания Волос",
+    meta_description: "Ведущая женская парикмахерская ThreeBrothers в Манавгате с рейтингом 5.0 Google. Эксперты по омбре, балаяж, микронаращиванию и свадебным прическам.",
+    og_title: "ThreeBrothers Bayan Kuaförü | Манавгат",
     og_description: "5.0 ★★★★★ 119 проверенных отзывов Google. Премиум студия дизайна и окрашивания волос в Манавгате.",
 
     // Header
-    brand_sub: "Женский салон • Манавгат",
+    brand_sub: "Bayan Kuaförü • Manavgat",
     nav_instagram: "Instagram",
     nav_call: "Позвонить",
     nav_appointment: "Записаться",
 
     // Hero
-    hero_brand_sub: "Женский салон • Манавгат",
+    hero_brand_sub: "Bayan Kuaförü • Manavgat",
     hero_title: `Премиальная студия <br class="hidden sm:inline" /><span class="gold-gradient-text">дизайна и окрашивания волос</span> в Манавгате`,
     hero_desc: "Мы раскрываем неповторимое сияние ваших волос с помощью индивидуальных формул тонирования, бережного осветления и безупречных свадебных образов.",
     hero_cta_wa: "Быстрая запись в WhatsApp",
@@ -495,10 +499,10 @@ const I18N_TRANSLATIONS = {
     // Before/After Slider
     ba_badge: "Витрина преображения",
     ba_title: "Преображение До и После",
-    ba_desc: "Передвигайте золотой разделитель влево и вправо для сравнения окрашивания и кератина.",
+    ba_desc: "Передвигайте золотой разделитель влево и вправо для сравнения окрашивания и наращивания волос.",
     ba_before: "ДО ПРОЦЕДУРЫ",
     ba_after: "ПОСЛЕ ПРОЦЕДУРЫ",
-    ba_hint: "Сдвиньте ползунок, чтобы сравнить результат осветления и ухода",
+    ba_hint: "Сдвиньте ползунок, чтобы сравнить результат осветления и наращивания",
 
     // Services
     services_badge: "Фирменные услуги",
@@ -514,9 +518,9 @@ const I18N_TRANSLATIONS = {
     s2_title: "Свадебные и вечерние прически",
     s2_desc: "Элегантные прически с аксессуарами и репетицией, стойкие на протяжении всего торжества.",
 
-    s3_tag: "Гладкие и блестящие волосы",
-    s3_title: "Кератиновый ботокс и шелковый уход",
-    s3_desc: "Антистатический уход, восстанавливающий структуру волос, обеспечивающий зеркальный блеск и гладкость на месяцы.",
+    s3_tag: "Микро и невидимое наращивание",
+    s3_title: "Микронаращивание и загущение волос",
+    s3_desc: "100% естественное слияние со своими волосами, невесомое и незаметное микронаращивание для мгновенной длины и объема.",
 
     s4_tag: "Каскадная стрижка и укладка",
     s4_title: "Каскадная стрижка и объемная укладка",
@@ -544,7 +548,7 @@ const I18N_TRANSLATIONS = {
     reviews_badge: "Отзывы клиентов",
     reviews_title: "Проверенные отзывы в Google",
     reviews_salon_name: "THREEBROTHERS",
-    reviews_salon_type: "ЖЕНСКИЙ САЛОН",
+    reviews_salon_type: "BAYAN KUAFÖRÜ",
     reviews_count_text: "119 отзывов в Google",
     reviews_write_btn: "Оставить отзыв",
     reviews_owner_response_label: "Ответ владельца:",
@@ -581,7 +585,7 @@ const I18N_TRANSLATIONS = {
 
     r8_meta: "2 отзыва • 2 месяца назад",
     r8_text: `"Посещаю этот салон 3 года. Все окрашивания омбре получались шикарными. Стрижки тоже на высоте."`,
-    r8_reply: `"Спасибо, Бурджу! Всегда рады вам 🙏"`,
+    r8_reply: `"Спасибо, Burcu! Всегда рады вам 🙏"`,
 
     r9_meta: "2 отзыва • месяц назад",
     r9_text: `"Доверила волосы Хюсейну и ни капли не пожалела. Получилось даже лучше, чем на картинке. Отличный мастер!"`,
@@ -609,7 +613,7 @@ const I18N_TRANSLATIONS = {
     contact_call_btn: "Позвонить",
 
     // Footer
-    footer_copyright: "© 2026 ThreeBrothers Женская парикмахерская и студия дизайна волос. Все права защищены. Манавгат / Анталья.",
+    footer_copyright: "© 2026 ThreeBrothers Bayan Kuaförü & Saç Tasarım Stüdyosu. Все права защищены. Манавгат / Анталья.",
     footer_maps: "Google Карты",
 
     // Mobile Dock
@@ -620,25 +624,26 @@ const I18N_TRANSLATIONS = {
     wa_general: "Здравствуйте! Пишу с вашего сайта. Хочу записаться на прием.",
     wa_ombre: "Здравствуйте! Хочу узнать стоимость и записаться на окрашивание Блонд / Омбре и Балаяж.",
     wa_gelin: "Здравствуйте! Хочу узнать информацию и записаться на Свадебную / Вечернюю прическу.",
-    wa_keratin: "Здравствуйте! Хочу узнать стоимость и записаться на Кератиновый ботокс и шелковый уход.",
+    wa_kaynak: "Здравствуйте! Хочу узнать стоимость и записаться на микронаращивание волос.",
+    wa_keratin: "Здравствуйте! Хочу узнать стоимость и записаться на микронаращивание волос.",
     wa_kesim: "Здравствуйте! Хочу записаться на каскадную стрижку и укладку волос."
   },
 
   ar: {
     // Meta / SEO
-    page_title: "ThreeBrothers صالون تصفيف شعر نسائي | استوديو راقي لتصميم وصبغ الشعر في مانافغات",
-    meta_description: "صالون النساء الرائد ThreeBrothers في مانافغات بتقييم 5.0 على Google. خبراء في الأومبري، البلياج، بوتوكس الكيراتين وتسريحات العرائس.",
-    og_title: "ThreeBrothers صالون تصفيف شعر نسائي | مانافغات",
+    page_title: "ThreeBrothers Bayan Kuaförü | استوديو راقي لتصميم وصبغ الشعر في مانافغات",
+    meta_description: "صالون النساء الرائد ThreeBrothers في مانافغات بتقييم 5.0 على Google. خبراء في الأومبري، البلياج، وصلات الشعر وتسريحات العرائس.",
+    og_title: "ThreeBrothers Bayan Kuaförü | مانافغات",
     og_description: "5.0 ★★★★★ 119 تقييماً موثقاً على Google. استوديو فاخر لتصميم وتلوين الشعر في مانافغات.",
 
     // Header
-    brand_sub: "صالون نسائي • مانافغات",
+    brand_sub: "Bayan Kuaförü • Manavgat",
     nav_instagram: "إنستغرام",
     nav_call: "اتصال",
     nav_appointment: "حجز موعد",
 
     // Hero
-    hero_brand_sub: "صالون نسائي • مانافغات",
+    hero_brand_sub: "Bayan Kuaförü • Manavgat",
     hero_title: `استوديو مانافغات الراقي <br class="hidden sm:inline" /><span class="gold-gradient-text">لتصميم وصبغ وتصفيف الشعر</span>`,
     hero_desc: "نبرز إشراقة شعركِ الفريدة بتركيبات تلوين مخصصة، وتقنيات تفتيح احترافية تحمي من التلف، وتصميمات عرائس مثالية.",
     hero_cta_wa: "حجز سريع عبر واتساب",
@@ -648,10 +653,10 @@ const I18N_TRANSLATIONS = {
     // Before/After Slider
     ba_badge: "معرض التحول",
     ba_title: "التحول قبل وبعد",
-    ba_desc: "اسحبي الفاصل الذهبي لليمين واليسار لمقارنة نتائج الصبغ وبوتوكس الكيراتين مباشرة.",
+    ba_desc: "اسحبي الفاصل الذهبي لليمين واليسار لمقارنة نتائج الصبغ ووصلات الشعر مباشرة.",
     ba_before: "قبل العملية",
     ba_after: "بعد العملية",
-    ba_hint: "حركي المؤشر لمقارنة نتيجة التفتيح والعناية بالشعر",
+    ba_hint: "حركي المؤشر لمقارنة نتيجة التفتيح ووصلات الشعر",
 
     // Services
     services_badge: "خدماتنا المميزة",
@@ -667,9 +672,9 @@ const I18N_TRANSLATIONS = {
     s2_title: "تسريحات العرائس والمناسبات الخاصة",
     s2_desc: "تصميم تسريحات أنيقة ومثبتة طوال السهرة مع الإكسسوارات وجلسة تجريبية لحفلات الزفاف والخطوبة.",
 
-    s3_tag: "شعر ناعم ولامع",
-    s3_title: "بوتوكس الكيراتين والعناية الحريرية",
-    s3_desc: "علاج مضاد للتطاير يرمم ألياف الشعر التالفة ويمنح لمعاناً فائقاً ونعومة حريرية تدوم لشهور.",
+    s3_tag: "وصلات شعر ميكرو غير مرئية",
+    s3_title: "وصلات شعر ميكرو وتكثيف الشعر",
+    s3_desc: "اندماج طبيعي 100% مع شعركِ، تقنيات ميكرو غير مرئية وخفيفة تمنحكِ طولاً وكثافة فورية.",
 
     s4_tag: "قص مدرج وسشوار كثيف",
     s4_title: "قص شعر طبقات وتصفيف بالفير/السشوار",
@@ -697,7 +702,7 @@ const I18N_TRANSLATIONS = {
     reviews_badge: "تجارب زوارنا",
     reviews_title: "تقييمات Google الموثقة",
     reviews_salon_name: "THREEBROTHERS",
-    reviews_salon_type: "صالون نسائي",
+    reviews_salon_type: "BAYAN KUAFÖRÜ",
     reviews_count_text: "119 تقييماً على Google",
     reviews_write_btn: "اكتب تقييمك الآن",
     reviews_owner_response_label: "رد إدارة الصالون:",
@@ -762,7 +767,7 @@ const I18N_TRANSLATIONS = {
     contact_call_btn: "اتصل الآن",
 
     // Footer
-    footer_copyright: "© 2026 ThreeBrothers صالون وتصميم شعر السيدات. جميع الحقوق محفوظة. مانافغات / أنطاليا.",
+    footer_copyright: "© 2026 ThreeBrothers Bayan Kuaförü & Saç Tasarım Stüdyosu. جميع الحقوق محفوظة. مانافغات / أنطاليا.",
     footer_maps: "خرائط Google",
 
     // Mobile Dock
@@ -773,7 +778,8 @@ const I18N_TRANSLATIONS = {
     wa_general: "مرحباً، أتواصل معكم عبر موقعكم الإلكتروني. أود حجز موعد.",
     wa_ombre: "مرحباً، أود الاستفسار عن الأسعار وحجز موعد لصبغ الشعر أشقر / أومبري وبلياج.",
     wa_gelin: "مرحباً، أود الاستفسار وحجز موعد لتسريحة عروس / مناسبة خاصة.",
-    wa_keratin: "مرحباً، أود الاستفسار عن الأسعار وحجز موعد لعلاج بوتوكس الكيراتين والعناية الحريرية.",
+    wa_kaynak: "مرحباً، أود الاستفسار عن الأسعار وحجز موعد لخدمة وصلات الشعر (الميكرو).",
+    wa_keratin: "مرحباً، أود الاستفسار عن الأسعار وحجز موعد لخدمة وصلات الشعر (الميكرو).",
     wa_kesim: "مرحباً، أود حجز موعد لقص الشعر طبقات وسشوار."
   }
 };
@@ -919,9 +925,7 @@ window.I18n = {
     if (ogDesc && dict.og_description) ogDesc.setAttribute('content', dict.og_description);
 
     // 4. Update Header Dropdown UI
-    const flagEl = document.getElementById('current-lang-flag');
     const codeEl = document.getElementById('current-lang-code');
-    if (flagEl) flagEl.textContent = langConfig.flag;
     if (codeEl) codeEl.textContent = langConfig.code;
     this.renderDropdown();
 
@@ -959,7 +963,8 @@ window.I18n = {
       'wa-general': dict.wa_general,
       'wa-ombre': dict.wa_ombre,
       'wa-gelin': dict.wa_gelin,
-      'wa-keratin': dict.wa_keratin,
+      'wa-kaynak': dict.wa_kaynak || dict.wa_keratin,
+      'wa-keratin': dict.wa_kaynak || dict.wa_keratin,
       'wa-kesim': dict.wa_kesim
     };
 
@@ -977,10 +982,3 @@ window.I18n = {
     });
   }
 };
-
-// Initialize i18n on DOMContentLoaded or immediately if already loaded
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => window.I18n.init());
-} else {
-  window.I18n.init();
-}
