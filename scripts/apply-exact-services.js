@@ -1,0 +1,68 @@
+const fs = require('fs');
+const path = require('path');
+const sharp = require('sharp');
+
+const uploadDir = 'C:\\Users\\pc\\.gemini\\antigravity-ide\\brain\\41794f0b-56fe-4e4f-9fb4-fd749059942e\\.user_uploaded';
+const imagesDir = path.join(__dirname, '..', 'images');
+const publicImagesDir = path.join(__dirname, '..', 'public', 'images');
+
+async function applyExactServices() {
+  console.log('--- Applying Exact Service Images ---');
+
+  const jobs = [
+    {
+      // 1. Sarı / Ombre & Balyaj (User Image 1)
+      input: path.join(uploadDir, 'media_1787355804605.jpg'),
+      baseName: 'service-ombre'
+    },
+    {
+      // 2. Gelin Başı & Özel Gün Topuzu (Bride with tiara)
+      input: path.join(uploadDir, 'media_1787354539749.jpg'),
+      baseName: 'service-gelin'
+    },
+    {
+      // 3. Mikro Kaynak & Saç Yoğunlaştırma (Micro extensions)
+      input: path.join(uploadDir, 'media_1787354762036.png'),
+      baseName: 'service-kaynak'
+    },
+    {
+      // 4. Katlı Kesim & Havalı Fön (User Image 2)
+      input: path.join(uploadDir, 'media_1787355809611.jpg'),
+      baseName: 'service-kesim'
+    }
+  ];
+
+  for (const job of jobs) {
+    if (!fs.existsSync(job.input)) {
+      console.error('File not found:', job.input);
+      continue;
+    }
+    const buf = fs.readFileSync(job.input);
+    const sizes = [
+      { suffix: '-sm', width: 400, height: 500, quality: 90 },
+      { suffix: '-md', width: 600, height: 750, quality: 92 }
+    ];
+
+    for (const s of sizes) {
+      const webp = await sharp(buf).resize(s.width, s.height, { fit: 'cover', position: 'top' }).webp({ quality: s.quality }).toBuffer();
+      const jpg = await sharp(buf).resize(s.width, s.height, { fit: 'cover', position: 'top' }).jpeg({ quality: s.quality, mozjpeg: true }).toBuffer();
+      
+      fs.writeFileSync(path.join(imagesDir, `${job.baseName}${s.suffix}.webp`), webp);
+      fs.writeFileSync(path.join(imagesDir, `${job.baseName}${s.suffix}.jpg`), jpg);
+      fs.writeFileSync(path.join(publicImagesDir, `${job.baseName}${s.suffix}.webp`), webp);
+      fs.writeFileSync(path.join(publicImagesDir, `${job.baseName}${s.suffix}.jpg`), jpg);
+    }
+    console.log('✓ Successfully processed service card:', job.baseName);
+  }
+
+  // Update cache bust query param in index.html & public/index.html to v=40
+  ['index.html', 'public/index.html'].forEach(f => {
+    const fullPath = path.join(__dirname, '..', f);
+    let html = fs.readFileSync(fullPath, 'utf8');
+    html = html.replace(/(service-[a-z]+-(?:sm|md)\.(?:webp|jpg))\?v=\d+/g, '$1?v=40');
+    fs.writeFileSync(fullPath, html, 'utf8');
+    console.log('✓ Bumped cache version to v=40 in', f);
+  });
+}
+
+applyExactServices().catch(console.error);
