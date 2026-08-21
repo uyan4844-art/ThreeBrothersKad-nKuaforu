@@ -22,7 +22,7 @@ while ((match = regex.exec(html)) !== null) {
 console.log('Checking ' + localPaths.size + ' local asset references...');
 let missing = 0;
 for (const ref of localPaths) {
-  const cleanPath = ref.replace(/^\.\//, '');
+  const cleanPath = ref.replace(/^\.\//, '').split('?')[0];
   if (!fs.existsSync(cleanPath)) {
     console.error('MISSING:', cleanPath);
     missing++;
