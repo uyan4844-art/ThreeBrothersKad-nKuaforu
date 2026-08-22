@@ -624,7 +624,7 @@
                 <span class="reel-music-title" data-i18n="insta_audio_name">♫ Orijinal Ses — Three Brothers Manavgat</span>
               </div>
             </div>
-            <a href="https://www.instagram.com/threebrotherss/" target="_blank" rel="noopener noreferrer" class="reel-view-profile-btn" data-i18n="insta_view_profile">Profili Gör</a>
+            <a href="https://www.instagram.com/reel/DYVBpEhsoFD/" target="_blank" rel="noopener noreferrer" class="reel-view-profile-btn" data-i18n="insta_view_profile">Profili Gör</a>
           </div>
 
           <!-- Video Media Area (Authentic Video Frame from Desktop Folder) -->
@@ -688,7 +688,7 @@
             <p class="reel-caption-text" data-i18n="reels2_desc">
               OMBRE ✨✨ Daha önce yaptığımız ışıltıları bu seansta bir adım daha ileri taşıdık… Müşterimizin memnuniyeti ve saçın sağlığı bizim için her şeyden önemli.
             </p>
-            <a href="https://www.instagram.com/threebrotherss/" target="_blank" rel="noopener noreferrer" class="reel-see-more-link" data-i18n="insta_see_more">
+            <a href="https://www.instagram.com/reel/DYVBpEhsoFD/" target="_blank" rel="noopener noreferrer" class="reel-see-more-link" data-i18n="insta_see_more">
               Instagram'da daha fazlasını gör &rarr;
             </a>
           </div>
@@ -1644,8 +1644,9 @@
         });
       });
 
-      // 6. Reels Video Playback & Sound Control
+      // 6. Reels Video Playback & Sound Control (Ultra-Reliable Cross-Browser Controller)
       const reelWrappers = document.querySelectorAll('[data-reel-wrapper]');
+      
       reelWrappers.forEach(wrapper => {
         const video = wrapper.querySelector('video');
         const soundBtn = wrapper.querySelector('[data-sound-btn]');
@@ -1654,8 +1655,15 @@
 
         if (!video) return;
 
+        // Ensure video is properly configured for instant touch/click playback
+        video.playsInline = true;
+        video.setAttribute('playsinline', '');
+        video.setAttribute('webkit-playsinline', '');
+
+        // Sound toggle
         if (soundBtn) {
           soundBtn.addEventListener('click', (e) => {
+            e.preventDefault();
             e.stopPropagation();
             video.muted = !video.muted;
             if (video.muted) {
@@ -1668,8 +1676,12 @@
           });
         }
 
-        wrapper.addEventListener('click', () => {
+        // Toggle Play/Pause on Click / Tap
+        async function togglePlay(e) {
+          if (e && e.target.closest('[data-sound-btn]')) return;
+          
           if (video.paused) {
+            // Pause any other active reel
             reelWrappers.forEach(otherWrap => {
               const otherVid = otherWrap.querySelector('video');
               if (otherVid && otherVid !== video && !otherVid.paused) {
@@ -1678,17 +1690,30 @@
               }
             });
 
-            video.play().then(() => {
+            try {
+              await video.play();
               wrapper.classList.add('is-playing');
-            }).catch(() => {});
+            } catch (err) {
+              // Retry with muted on browser policy restriction
+              video.muted = true;
+              try {
+                await video.play();
+                wrapper.classList.add('is-playing');
+              } catch (playErr) {
+                console.warn('Video playback error:', playErr);
+              }
+            }
           } else {
             video.pause();
             wrapper.classList.remove('is-playing');
           }
-        });
+        }
 
-        video.addEventListener('pause', () => wrapper.classList.remove('is-playing'));
+        wrapper.addEventListener('click', togglePlay);
+
+        // Sync visual state with actual video events
         video.addEventListener('play', () => wrapper.classList.add('is-playing'));
+        video.addEventListener('pause', () => wrapper.classList.remove('is-playing'));
         video.addEventListener('ended', () => wrapper.classList.remove('is-playing'));
       });
 
