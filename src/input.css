@@ -1212,3 +1212,217 @@ body {
       color: #FFFFFF;
       border-color: #1F1C19;
     }
+
+
+    /* === 4-STEP SALON PROCESS TIMELINE === */
+    .section-process {
+      background-color: #FAF7F2;
+      border-bottom: 1px solid rgba(194, 163, 121, 0.18);
+    }
+
+    .process-timeline-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 50px;
+      position: relative;
+    }
+
+    @media (max-width: 1024px) {
+      .process-timeline-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .process-timeline-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+    }
+
+    .process-step-card {
+      background: #FFFFFF;
+      border: 1px solid rgba(197, 168, 128, 0.25);
+      border-radius: 18px;
+      padding: 32px 24px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .process-step-card:hover {
+      transform: translateY(-5px);
+      border-color: #C5A880;
+      box-shadow: 0 16px 40px rgba(197, 168, 128, 0.15);
+    }
+
+    .process-step-badge {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(197, 168, 128, 0.12);
+      border: 1px solid rgba(197, 168, 128, 0.35);
+      color: #A48358;
+      font-family: var(--font-serif);
+      font-size: 18px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .process-step-title {
+      font-family: var(--font-serif);
+      font-size: 20px;
+      font-weight: 700;
+      color: #1F1C19;
+      margin-bottom: 12px;
+      line-height: 1.25;
+    }
+
+    .process-step-desc {
+      font-size: 13.5px;
+      color: #635E57;
+      line-height: 1.65;
+    }
+
+    /* === REPAIR & TRANSPARENT COLOR EDITORIAL CALLOUT === */
+    .repair-callout-box {
+      margin-top: 60px;
+      background: linear-gradient(135deg, #FAF7F2 0%, #F1ECE4 100%);
+      border: 1px solid rgba(197, 168, 128, 0.35);
+      border-radius: 20px;
+      padding: 40px 48px;
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      align-items: center;
+      gap: 36px;
+      box-shadow: 0 15px 40px rgba(116, 109, 101, 0.06);
+    }
+
+    @media (max-width: 900px) {
+      .repair-callout-box {
+        grid-template-columns: 1fr;
+        padding: 30px 24px;
+        gap: 24px;
+      }
+    }
+
+    .repair-badges-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .repair-badge-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #FFFFFF;
+      border: 1px solid rgba(197, 168, 128, 0.25);
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #1F1C19;
+    }
+
+    .repair-badge-item svg {
+      color: #A48358;
+      flex-shrink: 0;
+    }
+
+    /* === FAQ ACCORDION SYSTEM === */
+    .section-faq {
+      background-color: #FAF7F2;
+      border-bottom: 1px solid rgba(194, 163, 121, 0.18);
+    }
+
+    .faq-container-box {
+      max-width: 860px;
+      margin: 45px auto 0;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .faq-item {
+      background: #FFFFFF;
+      border: 1px solid rgba(197, 168, 128, 0.22);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .faq-item:hover,
+    .faq-item.active {
+      border-color: #C5A880;
+      box-shadow: 0 8px 24px rgba(197, 168, 128, 0.1);
+    }
+
+    .faq-question-btn {
+      width: 100%;
+      background: transparent;
+      border: none;
+      padding: 22px 26px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      text-align: left;
+      font-family: var(--font-serif);
+      font-size: 18px;
+      font-weight: 600;
+      color: #1F1C19;
+      gap: 16px;
+      transition: color 0.25s ease;
+    }
+
+    .faq-item.active .faq-question-btn {
+      color: #A48358;
+    }
+
+    .faq-chevron {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(197, 168, 128, 0.12);
+      color: #A48358;
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.25s ease;
+    }
+
+    .faq-item.active .faq-chevron {
+      transform: rotate(180deg);
+      background: #C5A880;
+      color: #FFFFFF;
+    }
+
+    .faq-answer-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), padding 0.3s ease;
+      padding: 0 26px;
+    }
+
+    .faq-item.active .faq-answer-body {
+      max-height: 300px;
+      padding-bottom: 24px;
+    }
+
+    .faq-answer-text {
+      font-size: 14.5px;
+      line-height: 1.7;
+      color: #635E57;
+      border-top: 1px solid rgba(197, 168, 128, 0.15);
+      padding-top: 16px;
+    }
+
