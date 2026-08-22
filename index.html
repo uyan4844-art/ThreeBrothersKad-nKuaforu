@@ -559,7 +559,7 @@
 
           <!-- Video Media Area (Authentic Video Frame from Desktop Folder) -->
           <div class="reel-media-wrapper" data-reel-wrapper>
-            <video class="reel-video-elem" src="./assets/videos/video-1.mp4" playsinline loop muted preload="auto"></video>
+            <video class="reel-video-elem" src="./assets/videos/video-1.mp4" playsinline loop muted autoplay preload="auto"></video></video>
             
             <!-- Central Clean Minimalist Play Button -->
             <div class="reel-play-btn-overlay">
@@ -640,7 +640,7 @@
 
           <!-- Video Media Area (Authentic Video Frame from Desktop Folder) -->
           <div class="reel-media-wrapper" data-reel-wrapper>
-            <video class="reel-video-elem" src="./assets/videos/video-2.mp4" playsinline loop muted preload="auto"></video>
+            <video class="reel-video-elem" src="./assets/videos/video-2.mp4" playsinline loop muted autoplay preload="auto"></video></video>
             
             <!-- Central Clean Minimalist Play Button -->
             <div class="reel-play-btn-overlay">
@@ -721,7 +721,7 @@
 
           <!-- Video Media Area (Authentic Video Frame from Desktop Folder) -->
           <div class="reel-media-wrapper" data-reel-wrapper>
-            <video class="reel-video-elem" src="./assets/videos/video-3.mp4" playsinline loop muted preload="auto"></video>
+            <video class="reel-video-elem" src="./assets/videos/video-3.mp4" playsinline loop muted autoplay preload="auto"></video></video>
             
             <!-- Central Clean Minimalist Play Button -->
             <div class="reel-play-btn-overlay">
@@ -1657,7 +1657,7 @@
         });
       });
 
-      // 6. Reels Video Playback & Sound Control (Ultra-Reliable Cross-Browser Controller)
+      // 6. Reels Video Playback & Sound Control (Instant Autoplay - Zero Black Screen)
       const reelWrappers = document.querySelectorAll('[data-reel-wrapper]');
       
       reelWrappers.forEach(wrapper => {
@@ -1668,10 +1668,28 @@
 
         if (!video) return;
 
-        // Ensure video is properly configured for instant touch/click playback
+        // Ensure video is properly configured for instant playback
+        video.muted = true;
         video.playsInline = true;
         video.setAttribute('playsinline', '');
         video.setAttribute('webkit-playsinline', '');
+
+        // Autoplay immediately so video never shows black screen
+        const startAutoplay = () => {
+          video.play().then(() => {
+            wrapper.classList.add('is-playing');
+          }).catch(() => {
+            // Fallback: If autoplay was blocked, seek slightly to render initial frame
+            video.currentTime = 0.001;
+          });
+        };
+
+        if (video.readyState >= 2) {
+          startAutoplay();
+        } else {
+          video.addEventListener('loadeddata', startAutoplay, { once: true });
+          video.addEventListener('canplay', startAutoplay, { once: true });
+        }
 
         // Sound toggle
         if (soundBtn) {
@@ -1694,20 +1712,10 @@
           if (e && e.target.closest('[data-sound-btn]')) return;
           
           if (video.paused) {
-            // Pause any other active reel
-            reelWrappers.forEach(otherWrap => {
-              const otherVid = otherWrap.querySelector('video');
-              if (otherVid && otherVid !== video && !otherVid.paused) {
-                otherVid.pause();
-                otherWrap.classList.remove('is-playing');
-              }
-            });
-
             try {
               await video.play();
               wrapper.classList.add('is-playing');
             } catch (err) {
-              // Retry with muted on browser policy restriction
               video.muted = true;
               try {
                 await video.play();
@@ -1730,14 +1738,20 @@
         video.addEventListener('ended', () => wrapper.classList.remove('is-playing'));
       });
 
-      // Auto-pause videos when scrolled away
+      // Viewport-aware playback: play when in view, pause when out of view
       if ('IntersectionObserver' in window) {
         const videoObserver = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
             const vid = entry.target.querySelector('video');
-            if (vid && !entry.isIntersecting && !vid.paused) {
-              vid.pause();
-              entry.target.classList.remove('is-playing');
+            if (vid) {
+              if (entry.isIntersecting) {
+                vid.play().then(() => {
+                  entry.target.classList.add('is-playing');
+                }).catch(() => {});
+              } else {
+                vid.pause();
+                entry.target.classList.remove('is-playing');
+              }
             }
           });
         }, { threshold: 0.15 });
