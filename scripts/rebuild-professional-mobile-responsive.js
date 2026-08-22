@@ -1,4 +1,12 @@
-@import "tailwindcss";
+const fs = require('fs');
+const path = require('path');
+
+const indexPath = path.join(__dirname, '../index.html');
+const publicIndexPath = path.join(__dirname, '../public/index.html');
+const inputCssPath = path.join(__dirname, '../src/input.css');
+
+// 1. Rebuild src/input.css cleanly with Tailwind v4, Desktop protection, and Professional Responsive System
+const cleanInputCss = `@import "tailwindcss";
 
 @theme {
   --color-brand-linen: #FAF7F2;
@@ -33,7 +41,7 @@
 }
 
 /* ==========================================================================
-   1. GLOBAL RESET & BASE RULES (ANTI-OVERFLOW)
+   1. RESET & GLOBAL BASE (ANTI-OVERFLOW & HIGH-DPI OPTIMIZED)
    ========================================================================== */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -44,17 +52,17 @@
 html {
   scroll-behavior: smooth;
   font-size: 100%;
-  max-width: 100vw;
+  max-width: 100%;
   overflow-x: hidden;
 }
 
 body {
   width: 100%;
-  max-width: 100vw;
+  max-width: 100%;
   min-height: 100%;
   background-color: var(--bg-linen);
   color: var(--text-dark);
-  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Montserrat', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -94,52 +102,11 @@ section[id] {
   -webkit-text-fill-color: transparent;
 }
 
-/* Visibility Guard */
+/* Visibility Guard: Ensure elements are immediately visible without script blocking */
 .reveal-up,
 .reveal-stagger-item {
   opacity: 1;
   transform: none;
-}
-
-/* Keyframes */
-@keyframes pulseDot {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(1.25); }
-}
-
-@keyframes shimmerSweep {
-  0%, 25% { left: -60%; }
-  65%, 100% { left: 160%; }
-}
-
-@keyframes heroSlideRight {
-  0% { opacity: 0; transform: translateX(-60px); }
-  100% { opacity: 1; transform: translateX(0); }
-}
-
-@keyframes heroKenBurns {
-  0% { transform: scale(1) translate(0, 0); }
-  100% { transform: scale(1.05) translate(-1%, -0.5%); }
-}
-
-@keyframes heroFadeDown {
-  0% { opacity: 0; transform: translateY(-16px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes heroFadeUp {
-  0% { opacity: 0; transform: translateY(24px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes storyRingPulse {
-  0% { transform: scale(1); filter: hue-rotate(0deg); }
-  100% { transform: scale(1.03); filter: hue-rotate(15deg); }
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
 }
 
 /* ==========================================================================
@@ -581,7 +548,7 @@ section[id] {
 }
 
 /* ==========================================================================
-   4. COMMON SECTION STRUCTURE & BUTTONS
+   4. COMMON SECTION STRUCTURE & HEADERS
    ========================================================================== */
 .boutique-section {
   width: 100%;
@@ -653,6 +620,30 @@ section[id] {
   border-color: #36312C;
   transform: translateY(-2px);
   box-shadow: 0 12px 28px rgba(31, 28, 25, 0.35);
+}
+
+.btn-outline-gold {
+  background: rgba(255, 255, 255, 0.9);
+  color: #1F1C19 !important;
+  border: 1px solid rgba(194, 163, 121, 0.4);
+  border-radius: 999px;
+  padding: 12px 24px;
+  display: inline-flex;
+  align-items: center;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-outline-gold:hover {
+  background: #1F1C19;
+  color: #FFFFFF !important;
+  border-color: #1F1C19;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(31, 28, 25, 0.15);
 }
 
 /* ==========================================================================
@@ -1434,6 +1425,11 @@ section[id] {
   display: block;
 }
 
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 .review-header-row {
   display: flex;
   align-items: center;
@@ -1928,10 +1924,10 @@ section[id] {
 }
 
 /* ==========================================================================
-   16. COMPLETE RESPONSIVE BREAKPOINT SUITE (TABLET & MOBILE)
+   16. PROFESSIONAL RESPONSIVE SYSTEM (TABLET & MOBILE BREAKPOINTS)
    ========================================================================== */
 
-/* Tablet & Smaller Screens (max-width: 1024px) */
+/* Tablet (max-width: 1024px) */
 @media (max-width: 1024px) {
   .nav-menu-desktop {
     display: none !important;
@@ -1971,7 +1967,7 @@ section[id] {
   }
 }
 
-/* Standard Mobile (max-width: 768px) */
+/* Mobile Devices (max-width: 768px) */
 @media (max-width: 768px) {
   body {
     padding-bottom: 60px !important;
@@ -2378,3 +2374,7 @@ section[id] {
     padding: 16px 14px !important;
   }
 }
+`;
+
+fs.writeFileSync(inputCssPath, cleanInputCss, 'utf8');
+console.log('src/input.css rebuilt with professional responsive system!');

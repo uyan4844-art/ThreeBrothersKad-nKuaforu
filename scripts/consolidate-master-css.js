@@ -1,4 +1,13 @@
-@import "tailwindcss";
+const fs = require('fs');
+const path = require('path');
+const { execSync } = require('child_process');
+
+const inputCssPath = path.join(__dirname, '../src/input.css');
+const indexPath = path.join(__dirname, '../index.html');
+const publicIndexPath = path.join(__dirname, '../public/index.html');
+
+// Complete, robust Master CSS for Three Brothers Salon
+const masterCssContent = `@import "tailwindcss";
 
 @theme {
   --color-brand-linen: #FAF7F2;
@@ -2378,3 +2387,21 @@ section[id] {
     padding: 16px 14px !important;
   }
 }
+`;
+
+fs.writeFileSync(inputCssPath, masterCssContent, 'utf8');
+console.log('src/input.css successfully updated with Master CSS!');
+
+// Clean up redundant huge <style> block from index.html and public/index.html
+let html = fs.readFileSync(indexPath, 'utf8');
+
+const styleStart = html.indexOf('<style>');
+const styleEnd = html.indexOf('</style>');
+
+if (styleStart !== -1 && styleEnd !== -1) {
+  html = html.slice(0, styleStart) + html.slice(styleEnd + 8);
+}
+
+fs.writeFileSync(indexPath, html, 'utf8');
+fs.writeFileSync(publicIndexPath, html, 'utf8');
+console.log('Cleaned redundant style block from index.html!');
