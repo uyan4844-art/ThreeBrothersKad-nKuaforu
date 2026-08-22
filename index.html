@@ -559,7 +559,7 @@
 
           <!-- Video Media Area (Authentic Video Frame from Desktop Folder) -->
           <div class="reel-media-wrapper" data-reel-wrapper>
-            <video class="reel-video-elem" src="./assets/videos/video-1.mp4" playsinline loop muted autoplay preload="auto"></video></video>
+            <video class="reel-video-elem" src="./assets/videos/video-1.mp4" playsinline loop muted autoplay preload="auto"></video>
             
             <!-- Central Clean Minimalist Play Button -->
             <div class="reel-play-btn-overlay">
@@ -640,7 +640,7 @@
 
           <!-- Video Media Area (Authentic Video Frame from Desktop Folder) -->
           <div class="reel-media-wrapper" data-reel-wrapper>
-            <video class="reel-video-elem" src="./assets/videos/video-2.mp4" playsinline loop muted autoplay preload="auto"></video></video>
+            <video class="reel-video-elem" src="./assets/videos/video-2.mp4" playsinline loop muted autoplay preload="auto"></video>
             
             <!-- Central Clean Minimalist Play Button -->
             <div class="reel-play-btn-overlay">
@@ -721,7 +721,7 @@
 
           <!-- Video Media Area (Authentic Video Frame from Desktop Folder) -->
           <div class="reel-media-wrapper" data-reel-wrapper>
-            <video class="reel-video-elem" src="./assets/videos/video-3.mp4" playsinline loop muted autoplay preload="auto"></video></video>
+            <video class="reel-video-elem" src="./assets/videos/video-3.mp4" playsinline loop muted autoplay preload="auto"></video>
             
             <!-- Central Clean Minimalist Play Button -->
             <div class="reel-play-btn-overlay">
@@ -1657,7 +1657,7 @@
         });
       });
 
-      // 6. Reels Video Playback & Sound Control (Instant Autoplay - Zero Black Screen)
+      // 6. Reels Video Interaction (Continuous Autoplay + Tap to Pause/Resume + Sound Toggle)
       const reelWrappers = document.querySelectorAll('[data-reel-wrapper]');
       
       reelWrappers.forEach(wrapper => {
@@ -1668,71 +1668,71 @@
 
         if (!video) return;
 
-        // Ensure video is properly configured for instant playback
         video.muted = true;
         video.playsInline = true;
         video.setAttribute('playsinline', '');
         video.setAttribute('webkit-playsinline', '');
 
-        // Autoplay immediately so video never shows black screen
-        const startAutoplay = () => {
+        // Safe continuous autoplay on load
+        const safePlay = () => {
           video.play().then(() => {
             wrapper.classList.add('is-playing');
           }).catch(() => {
-            // Fallback: If autoplay was blocked, seek slightly to render initial frame
             video.currentTime = 0.001;
           });
         };
 
         if (video.readyState >= 2) {
-          startAutoplay();
+          safePlay();
         } else {
-          video.addEventListener('loadeddata', startAutoplay, { once: true });
-          video.addEventListener('canplay', startAutoplay, { once: true });
+          video.addEventListener('loadeddata', safePlay, { once: true });
+          video.addEventListener('canplay', safePlay, { once: true });
         }
 
-        // Sound toggle
+        // Sound Toggle Handler (Clicking sound button does NOT pause/stop video)
         if (soundBtn) {
           soundBtn.addEventListener('click', (e) => {
             e.preventDefault();
             e.stopPropagation();
+            
             video.muted = !video.muted;
             if (video.muted) {
-              if (soundOff) soundOff.classList.remove('hidden');
-              if (soundOn) soundOn.classList.add('hidden');
+              soundBtn.classList.remove('is-unmuted');
+              if (soundOff) { soundOff.style.display = 'block'; soundOff.classList.remove('hidden'); }
+              if (soundOn) { soundOn.style.display = 'none'; soundOn.classList.add('hidden'); }
             } else {
-              if (soundOff) soundOff.classList.add('hidden');
-              if (soundOn) soundOn.classList.remove('hidden');
+              soundBtn.classList.add('is-unmuted');
+              if (soundOff) { soundOff.style.display = 'none'; soundOff.classList.add('hidden'); }
+              if (soundOn) { soundOn.style.display = 'block'; soundOn.classList.remove('hidden'); }
+              if (video.paused) {
+                video.play();
+                wrapper.classList.add('is-playing');
+              }
             }
           });
         }
 
-        // Toggle Play/Pause on Click / Tap
-        async function togglePlay(e) {
-          if (e && e.target.closest('[data-sound-btn]')) return;
+        // Tap / Click on Video -> Toggle Pause or Resume
+        wrapper.addEventListener('click', (e) => {
+          if (e.target.closest('[data-sound-btn]') || e.target.closest('.reel-view-profile-btn') || e.target.closest('a') || e.target.closest('button')) {
+            return;
+          }
           
           if (video.paused) {
-            try {
-              await video.play();
+            video.play().then(() => {
               wrapper.classList.add('is-playing');
-            } catch (err) {
+            }).catch(() => {
               video.muted = true;
-              try {
-                await video.play();
-                wrapper.classList.add('is-playing');
-              } catch (playErr) {
-                console.warn('Video playback error:', playErr);
-              }
-            }
+              video.play();
+              wrapper.classList.add('is-playing');
+            });
           } else {
             video.pause();
             wrapper.classList.remove('is-playing');
           }
-        }
+        });
 
-        wrapper.addEventListener('click', togglePlay);
-
-        // Sync visual state with actual video events
+        // Sync visual classes with actual media state
         video.addEventListener('play', () => wrapper.classList.add('is-playing'));
         video.addEventListener('pause', () => wrapper.classList.remove('is-playing'));
         video.addEventListener('ended', () => wrapper.classList.remove('is-playing'));
