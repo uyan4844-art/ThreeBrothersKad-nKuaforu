@@ -982,3 +982,13 @@ window.I18n = {
     });
   }
 };
+
+// Auto-initialize when DOM is ready or immediately if already loaded
+if (typeof document !== 'undefined') {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => window.I18n && window.I18n.init());
+  } else {
+    window.I18n && window.I18n.init();
+  }
+}
+
