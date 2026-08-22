@@ -1,0 +1,946 @@
+const fs = require('fs');
+const path = require('path');
+
+const servicesData = [
+  {
+    slug: 'balyaj',
+    file: 'balyaj.html',
+    title: 'Profesyonel Balyaj & Sarı Saç',
+    kicker: 'SARI SAÇ UZMANLIĞI',
+    image: './images/services/bento-5.webp',
+    alt: 'Profesyonel Balyaj ve Sarı Saç Tasarımı - Three Brothers',
+    intro: '2014’ten beri Manavgat’ta sarı saçın en doğal ve ışıltılı tonlarını doğru açma teknikleriyle saçınıza kazandırıyoruz.',
+    p1: 'Balyaj uygulamalarımızda saçı kökten uca tekdüze açmak yerine, ten renginiz ve yüz hatlarınıza uyum sağlayan yumuşak geçişler tasarlıyoruz. Açma işleminde saçın bağ dokusunu güçlendiren özel koruyucu formüller kullanarak yıpranma riskini sıfıra indiriyoruz.',
+    p2: 'Bebek sarısı, platin, sıcak bal tonları ve krem sarı gibi en zorlu tonlarda bile saçı yakmadan, elastikiyetini koruyarak hayal ettiğiniz sonucu elde ediyoruz.',
+    steps: [
+      { num: '01', title: 'Detaylı Saç Analizi', desc: 'Saçınızın mevcut yapısı, geçmiş işlemleri ve elastikiyeti test edilir; en uygun açma derecesi belirlenir.' },
+      { num: '02', title: 'Kontrollü & Hassas Açma', desc: 'Bağ koruyucu plex formülleriyle saça zarar vermeden aşama aşama renk açma işlemi gerçekleştirilir.' },
+      { num: '03', title: 'Tonlama & İpeksi Bakım', desc: 'İstenmeyen turunculukları nötralize eden özel tonlama ve saç pulcuklarını kapatan yoğun bakım kürü uygulanır.' }
+    ],
+    waText: 'Merhaba, Profesyonel Balyaj ve Sarı Saç hizmetiniz için randevu ve bilgi almak istiyorum.'
+  },
+  {
+    slug: 'blonde',
+    file: 'blonde.html',
+    title: 'Blonde & İpeksi Renk Tasarımı',
+    kicker: 'ÖZEL BLONDE KOLEKSİYONU',
+    image: './images/services/bento-2.webp',
+    alt: 'Blonde ve İpeksi Renk Tasarımı - Three Brothers',
+    intro: 'Kusursuz bir sarışınlık; doğru ton analizi, pürüzsüz renk geçişi ve parlaklığını kaybetmeyen saç telleriyle mümkündür.',
+    p1: 'Three Brothers olarak her misafirimize özel bir "Blonde Reçetesi" hazırlıyoruz. İster soğuk küllü sarı, ister sıcak inci sarısı olsun; saçınızın sağlığını ön planda tutarak parlak ve ipeksi bir doku oluşturuyoruz.',
+    p2: 'Dip geçişlerinin doğal bırakıldığı ya da mikro dokunuşlarla harmanlandığı tasarımlarımız sayesinde saçınız uzadığında bile dip çizgisi belirginleşmez, aylar boyu şıklığını korur.',
+    steps: [
+      { num: '01', title: 'Ten & Göz Tonu Uyumu', desc: 'Yüzünüzün alt tonuna (sıcak, soğuk, nötr) göre en asil sarı tonu seçilir.' },
+      { num: '02', title: 'Mikro Işıltı Dokunuşları', desc: 'Saçın doğal hareketine göre ultra ince tutamlarla ışık yansımaları yerleştirilir.' },
+      { num: '03', title: 'Parlaklık ve Mühürleme', desc: 'Rengin uzun süre akmasını ve matlaşmasını önleyen gloss cila bakımı uygulanır.' }
+    ],
+    waText: 'Merhaba, Blonde ve İpeksi Renk Tasarımı hizmetiniz için randevu ve bilgi almak istiyorum.'
+  },
+  {
+    slug: 'kaynak',
+    file: 'kaynak.html',
+    title: 'Mikro Kapsül Kaynak',
+    kicker: 'YOĞUNLUK & UZUNLUK SANATI',
+    image: './images/services/bento-6.webp',
+    alt: 'Mikro Kapsül Kaynak Uygulaması - Three Brothers',
+    intro: 'Dışarıdan kesinlikle fark edilmeyen, saç derisinde ağırlık yapmayan %100 doğal mikro kapsül kaynak teknolojisi.',
+    p1: 'Saçlarına dolgunluk veya ekstra uzunluk kazandırmak isteyen misafirlerimiz için en kaliteli, taranabilir ve boyanabilir %100 gerçek insan saçları kullanıyoruz. Mikro kapsül uçlar sayesinde saçınızı dilediğiniz gibi toplayabilir, fön çekebilir ve yıkayabilirsiniz.',
+    p2: 'Uygulama esnasında kendi saç tellerinize hiçbir zarar gelmez; söküm esnasında da özel solüsyonlarla saçınızdan sıfır kayıpla ayrılır.',
+    steps: [
+      { num: '01', title: 'Gramaj & Renk Eşleme', desc: 'Saçınızın rengi, dalgası ve yoğunluğuna birebir uyan saç tutamları seçilir.' },
+      { num: '02', title: 'Mikro Noktasal Montaj', desc: 'Görünmez ince mikro kapsüllerle saç derisine baskı yapmadan özenle tutturulur.' },
+      { num: '03', title: 'Geçiş Kesimi & Şekillendirme', desc: 'Kendi saçınızla kaynak saçların bütünleşmesi için editoryal kat kesimi ve fön uygulanır.' }
+    ],
+    waText: 'Merhaba, Mikro Kapsül Kaynak hizmetiniz hakkında bilgi ve randevu almak istiyorum.'
+  },
+  {
+    slug: 'ombre',
+    file: 'ombre.html',
+    title: 'Ombre & Sombre Geçişleri',
+    kicker: 'DOĞAL IŞILTI & DERİNLİK',
+    image: './images/services/bento-4.webp',
+    alt: 'Ombre ve Sombre Geçişleri - Three Brothers',
+    intro: 'Kendi doğal saç renginizden uçlara doğru yumuşakça akan, zahmetsiz ve modern renk geçişleri.',
+    p1: 'Sürekli dip boyası yaptırma zorunluluğunu ortadan kaldıran Sombre ve Ombre uygulamalarımız, saçınıza derinlik ve zengin bir hacim kazandırır. Geçiş çizgisi oluşturmadan fırça teknikleriyle harmanlanan tonlar güneşten açılmış gibi doğal durur.',
+    p2: 'Karamel, fındık kabuğu, bal köpüğü ve soğuk kum beji geçişlerle her mevsim trend ve taze bir görünüm elde edebilirsiniz.',
+    steps: [
+      { num: '01', title: 'Geçiş Noktası Tasarımı', desc: 'Saç uzunluğunuz ve kullanım tarzınıza göre rengin başlayacağı doğal seviye belirlenir.' },
+      { num: '02', title: 'Serbest El Degradeli Açma', desc: 'Fırça süpürme (balayage ombre) tekniğiyle çizgisiz, yumuşak geçişler oluşturulur.' },
+      { num: '03', title: 'Nötralize Tonlama', desc: 'İstenilen sıcaklık veya soğuklukta tonlama yapılarak parlaklık kazandırılır.' }
+    ],
+    waText: 'Merhaba, Ombre ve Sombre Geçişleri hizmetiniz için randevu ve bilgi almak istiyorum.'
+  },
+  {
+    slug: 'renklendirme',
+    file: 'renklendirme.html',
+    title: 'Kişiye Özel Renklendirme & Tonlama',
+    kicker: 'PROFESYONEL RENK KOLEKSİYONU',
+    image: './images/services/bento-1.webp',
+    alt: 'Kişiye Özel Renklendirme ve Tonlama - Three Brothers',
+    intro: 'Canlılığını yitirmiş, matlaşmış veya renk hataları bulunan saçlara parlaklık, ton eşitliği ve derinlik kazandırma sanatı.',
+    p1: 'Her saçın kimyasal geçmişi ve pigment yapısı farklıdır. Three Brothers olarak hatalı boyaları düzeltme (Color Correction), matlaşan tonları parlatan Gloss Cila ve dip-boya renk dengeleme işlemlerinde zengin pigment teknolojisi kullanıyoruz.',
+    p2: 'Saç telini besleyen yağ bazlı profesyonel boyalarımız sayesinde işlem sonrasında saçınız hem göz alıcı bir renge hem de kadifemsi bir yumuşaklığa kavuşur.',
+    steps: [
+      { num: '01', title: 'Pigment & Hasar Teşhisi', desc: 'Saçtaki eski boya katmanları ve istenmeyen yansımalar incelenir.' },
+      { num: '02', title: 'Formülasyon & Uygulama', desc: 'Saçın ihtiyaç duyduğu özel pigment karışımı hazırlanarak eşit biçimde uygulanır.' },
+      { num: '03', title: 'Renk Sabitleme & Nem Maskesi', desc: 'Rengin ömrünü uzatan asidik sabitleyici ve yoğun nem terapisi uygulanır.' }
+    ],
+    waText: 'Merhaba, Kişiye Özel Renklendirme ve Tonlama hizmetiniz için randevu almak istiyorum.'
+  }
+];
+
+function generateServiceHTML(srv) {
+  return `<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>${srv.title} | Three Brothers Bayan Kuaförü Manavgat</title>
+  <meta name="description" content="${srv.intro}" />
+  
+  <link rel="icon" type="image/webp" href="./images/logo.webp">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-cream: #FAF7F2;
+      --bg-linen: #F0EAE1;
+      --text-espresso: #1F1C19;
+      --text-muted: #5A554E;
+      --gold-primary: #C5A880;
+      --gold-dark: #A48358;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans: 'Montserrat', sans-serif;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #FAF7F2;
+      color: #1F1C19;
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      overflow-x: hidden;
+      width: 100%;
+    }
+
+    /* Off-Canvas Navigation Drawer */
+    .menu-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(31, 28, 25, 0.48);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 10000;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.35s ease, visibility 0.35s ease;
+    }
+
+    .menu-backdrop.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .side-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      max-width: 440px;
+      background: #FAF7F2;
+      border-left: 1px solid rgba(194, 163, 121, 0.25);
+      box-shadow: -15px 0 45px rgba(0, 0, 0, 0.12);
+      z-index: 10001;
+      transform: translateX(100%);
+      transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      padding: 32px 34px;
+      overflow-y: auto;
+      box-sizing: border-box;
+    }
+
+    .side-drawer.active {
+      transform: translateX(0);
+    }
+
+    .drawer-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(194, 163, 121, 0.2);
+      margin-bottom: 26px;
+    }
+
+    .drawer-brand h3 {
+      font-family: var(--font-serif);
+      font-size: 24px;
+      font-weight: 700;
+      color: #1F1C19;
+      margin: 0;
+      line-height: 1.1;
+      letter-spacing: 1.5px;
+    }
+
+    .drawer-brand span {
+      font-family: var(--font-sans);
+      font-size: 8px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      margin-top: 4px;
+      display: block;
+    }
+
+    .drawer-close-btn {
+      background: transparent;
+      border: 1px solid rgba(31, 28, 25, 0.2);
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      color: #1F1C19;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .drawer-close-btn:hover {
+      background: #1F1C19;
+      color: #FFFFFF;
+      transform: rotate(90deg);
+    }
+
+    .drawer-main-links {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 28px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .drawer-main-links li a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: var(--font-serif);
+      font-size: 22px;
+      font-weight: 600;
+      color: #1F1C19;
+      text-decoration: none;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(194, 163, 121, 0.12);
+      transition: all 0.25s ease;
+    }
+
+    .drawer-main-links li a:hover {
+      color: var(--gold-dark);
+      padding-left: 6px;
+      border-bottom-color: var(--gold-primary);
+    }
+
+    .drawer-main-links li a .arrow {
+      font-family: var(--font-sans);
+      font-size: 16px;
+      color: var(--gold-primary);
+      transition: transform 0.25s ease;
+    }
+
+    .drawer-main-links li a:hover .arrow {
+      transform: translateX(6px);
+    }
+
+    .drawer-section-tag {
+      display: block;
+      font-family: var(--font-sans);
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      margin-bottom: 12px;
+    }
+
+    .drawer-pills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .drawer-pill {
+      background: #FFFFFF;
+      border: 1px solid rgba(194, 163, 121, 0.25);
+      padding: 7px 14px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 500;
+      color: #1F1C19;
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+
+    .drawer-pill:hover, .drawer-pill.active {
+      background: var(--gold-primary);
+      color: #FFFFFF;
+      border-color: var(--gold-primary);
+      transform: translateY(-1px);
+    }
+
+    .drawer-footer-info {
+      margin-top: auto;
+      padding-top: 22px;
+      border-top: 1px solid rgba(194, 163, 121, 0.2);
+    }
+
+    .drawer-contact-line {
+      font-size: 15px;
+      font-weight: 700;
+      color: #1F1C19;
+      margin-bottom: 4px;
+    }
+
+    .drawer-hours-line {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      line-height: 1.4;
+    }
+
+    .drawer-action-btns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .drawer-btn-outline {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid rgba(31, 28, 25, 0.25);
+      color: #1F1C19;
+      background: #FFFFFF;
+      transition: all 0.25s ease;
+    }
+
+    .drawer-btn-outline:hover {
+      background: #1F1C19;
+      color: #FFFFFF;
+      border-color: #1F1C19;
+    }
+
+    /* Service Page Layout */
+    .service-main-container {
+      padding: 130px 6% 90px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .breadcrumb-nav {
+      margin-bottom: 24px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .breadcrumb-nav a {
+      color: var(--gold-dark);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .service-grid-2 {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    @media (max-width: 991px) {
+      .service-grid-2 {
+        grid-template-columns: 1fr;
+        gap: 45px;
+      }
+      .service-main-container {
+        padding: 110px 5% 70px;
+      }
+    }
+
+    .service-image-card {
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(194, 163, 121, 0.25);
+      position: sticky;
+      top: 100px;
+      background: #1B1816;
+    }
+
+    .service-image-card img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 4 / 5;
+      display: block;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .service-image-card:hover img {
+      transform: scale(1.03);
+    }
+
+    .service-kicker {
+      color: #A48358;
+      font-size: 0.78rem;
+      letter-spacing: 3px;
+      font-weight: 700;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .service-headline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 3.8vw, 2.9rem);
+      line-height: 1.15;
+      margin: 12px 0 20px;
+      color: #1F1C19;
+    }
+
+    .service-lead {
+      font-size: 1.05rem;
+      color: #1F1C19;
+      font-weight: 500;
+      line-height: 1.7;
+      margin-bottom: 18px;
+    }
+
+    .service-paragraph {
+      color: #5A554E;
+      line-height: 1.8;
+      margin-bottom: 16px;
+      font-size: 0.95rem;
+    }
+
+    /* Process Steps */
+    .service-process-section {
+      margin: 28px 0 32px;
+      padding: 24px;
+      background: #FFFFFF;
+      border-radius: 14px;
+      border: 1px solid rgba(194, 163, 121, 0.2);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.03);
+    }
+
+    .process-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #1F1C19;
+      margin-bottom: 16px;
+      border-bottom: 1px solid rgba(194, 163, 121, 0.15);
+      padding-bottom: 8px;
+    }
+
+    .process-step-item {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .process-step-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .process-step-badge {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #FAF7F2;
+      border: 1px solid var(--gold-primary);
+      color: var(--gold-dark);
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .process-step-info h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #1F1C19;
+      margin-bottom: 4px;
+    }
+
+    .process-step-info p {
+      font-size: 0.85rem;
+      color: #746D65;
+      line-height: 1.5;
+    }
+
+    .btn-espresso-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #1F1C19;
+      color: #FFFFFF !important;
+      padding: 14px 34px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.88rem;
+      letter-spacing: 0.03em;
+      box-shadow: 0 8px 24px rgba(31, 28, 25, 0.25);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .btn-espresso-cta:hover {
+      background: #36312C;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(31, 28, 25, 0.35);
+    }
+
+    /* Footer CSS */
+    .boutique-footer {
+      background-color: #1A1715 !important;
+      color: #EBE0D2;
+      padding: 90px 24px 36px;
+      border-top: 1px solid rgba(194, 163, 121, 0.2);
+    }
+
+    .footer-container {
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+
+    .footer-grid-4 {
+      display: grid;
+      grid-template-columns: 1.4fr 0.9fr 1fr 1.3fr;
+      gap: 50px;
+      margin-bottom: 60px;
+    }
+
+    @media (max-width: 991px) {
+      .footer-grid-4 {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .footer-grid-4 {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+    }
+
+    .footer-brand-title {
+      font-family: var(--font-serif);
+      font-size: 26px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 2px;
+    }
+
+    .footer-brand-sub {
+      font-family: var(--font-sans);
+      font-size: 8.5px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold-primary);
+      margin-top: 4px;
+      display: block;
+    }
+
+    .footer-about-text {
+      font-size: 13.5px;
+      line-height: 1.75;
+      color: rgba(235, 224, 210, 0.7);
+      margin: 16px 0 20px;
+    }
+
+    .footer-social-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #FFFFFF;
+      text-decoration: none;
+      font-size: 13px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(197, 168, 128, 0.25);
+      transition: all 0.3s ease;
+    }
+
+    .footer-social-btn:hover {
+      background: var(--gold-primary);
+      color: #1A1715;
+      border-color: var(--gold-primary);
+    }
+
+    .footer-col-title {
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #FFFFFF;
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .footer-col-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 24px;
+      height: 1.5px;
+      background: var(--gold-primary);
+    }
+
+    .footer-links-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-links-list a {
+      color: rgba(235, 224, 210, 0.75);
+      text-decoration: none;
+      font-size: 13.5px;
+      transition: all 0.2s ease;
+      display: inline-block;
+    }
+
+    .footer-links-list a:hover {
+      color: var(--gold-primary);
+      transform: translateX(4px);
+    }
+
+    .footer-contact-info {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .footer-contact-info li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 13px;
+      line-height: 1.6;
+      color: rgba(235, 224, 210, 0.75);
+    }
+
+    .footer-bottom-row {
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 12.5px;
+      color: rgba(235, 224, 210, 0.5);
+    }
+
+    .footer-back-to-top {
+      color: var(--gold-primary);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    .footer-back-to-top:hover {
+      color: #FFFFFF;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ==========================================
+       1. ÜST HEADER (MINIMALIST 3 PARÇALI)
+  =========================================== -->
+  <header style="position: absolute; top: 0; left: 0; width: 100%; padding: 22px 5%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; box-sizing: border-box; background: rgba(248, 245, 240, 0.6); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid rgba(194, 163, 121, 0.15);">
+    
+    <!-- Sol: Instagram İkonu -->
+    <div style="flex: 1; display: flex; align-items: center; justify-content: flex-start;">
+      <a href="https://instagram.com/threebrotherss" target="_blank" rel="noopener noreferrer" style="color: #1F1C19; display: inline-flex; align-items: center; text-decoration: none; transition: opacity 0.3s;" aria-label="Instagram">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+        </svg>
+      </a>
+    </div>
+
+    <!-- Orta: Logo & Marka İsmi -->
+    <div style="flex: 2; text-align: center;">
+      <a href="index.html" style="text-decoration: none; display: inline-flex; flex-direction: column; align-items: center;">
+        <span style="font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 600; color: #1F1C19; letter-spacing: 2px; line-height: 1.1;" data-i18n="brand_name">Three Brothers</span>
+        <span style="font-family: 'Montserrat', sans-serif; font-size: 0.62rem; color: #A48358; letter-spacing: 3.5px; font-weight: 600; margin-top: 4px; text-transform: uppercase;" data-i18n="brand_tagline">BAYAN KUAFÖRÜ &bull; MANAVGAT</span>
+      </a>
+    </div>
+
+    <!-- Sağ: Minimalist Menü -->
+    <div style="flex: 1; display: flex; align-items: center; justify-content: flex-end;">
+      <button id="openMobileMenuBtn" onclick="toggleMenu()" type="button" aria-label="Menüyü Aç" style="background: transparent; border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; color: #1F1C19; font-family: 'Montserrat', sans-serif; font-size: 0.78rem; font-weight: 600; letter-spacing: 2px; padding: 0;">
+        <span>MENU</span>
+        <span style="display: inline-block; width: 20px; height: 1.5px; background-color: #1F1C19;"></span>
+      </button>
+    </div>
+
+  </header>
+
+  <!-- Menü Arka Plan Karartması (Backdrop) -->
+  <div id="menu-backdrop" class="menu-backdrop" onclick="toggleMenu()"></div>
+
+  <!-- Sağdan Açılan Lüks Menü Çekmecesi -->
+  <aside id="side-drawer" class="side-drawer" aria-label="Gezinme Menüsü">
+    <div class="drawer-header">
+      <div class="drawer-brand">
+        <h3 data-i18n="brand_name">Three Brothers</h3>
+        <span data-i18n="brand_tagline">BAYAN KUAFÖRÜ · MANAVGAT</span>
+      </div>
+      <button class="drawer-close-btn" onclick="toggleMenu()" aria-label="Menüyü Kapat">
+        ✕
+      </button>
+    </div>
+
+    <nav class="drawer-nav">
+      <!-- Ana Navigasyon Linkleri -->
+      <ul class="drawer-main-links">
+        <li><a href="index.html" onclick="toggleMenu()"><span data-i18n="nav_home">Ana Sayfa</span> <span class="arrow">&rarr;</span></a></li>
+        <li><a href="hakkimizda.html" onclick="toggleMenu()"><span data-i18n="nav_story">Hakkımızda</span> <span class="arrow">&rarr;</span></a></li>
+        <li><a href="index.html#hizmetler" onclick="toggleMenu()"><span data-i18n="nav_services">Hizmetlerimiz</span> <span class="arrow">&rarr;</span></a></li>
+        <li><a href="index.html#donusum" onclick="toggleMenu()"><span data-i18n="nav_transformation">Dönüşüm</span> <span class="arrow">&rarr;</span></a></li>
+        <li><a href="index.html#galeri" onclick="toggleMenu()"><span data-i18n="nav_gallery">Galeri</span> <span class="arrow">&rarr;</span></a></li>
+        <li><a href="index.html#iletisim" onclick="toggleMenu()"><span data-i18n="nav_contact">İletişim</span> <span class="arrow">&rarr;</span></a></li>
+      </ul>
+
+      <!-- Hizmetler Hap Butonları (Pill Buttons) -->
+      <div class="drawer-services-section">
+        <span class="drawer-section-tag">ÖZEL HİZMETLERİMİZ</span>
+        <div class="drawer-pills-grid">
+          <a href="balyaj.html" class="drawer-pill ${srv.slug === 'balyaj' ? 'active' : ''}">Profesyonel Balyaj</a>
+          <a href="blonde.html" class="drawer-pill ${srv.slug === 'blonde' ? 'active' : ''}">Blonde & Sarı Saç</a>
+          <a href="kaynak.html" class="drawer-pill ${srv.slug === 'kaynak' ? 'active' : ''}">Mikro Kaynak</a>
+          <a href="ombre.html" class="drawer-pill ${srv.slug === 'ombre' ? 'active' : ''}">Ombre & Sombre</a>
+          <a href="renklendirme.html" class="drawer-pill ${srv.slug === 'renklendirme' ? 'active' : ''}">Kişiye Özel Renklendirme</a>
+        </div>
+      </div>
+
+      <!-- Alt İletişim & Aksiyon Bilgisi -->
+      <div class="drawer-footer-info">
+        <div class="drawer-contact-line">+90 552 685 69 07</div>
+        <div class="drawer-hours-line">Salı – Pazar | 08:30 – 20:30 (Pazartesi Kapalı)</div>
+        
+        <div class="drawer-action-btns">
+          <a href="tel:+905526856907" class="drawer-btn-outline">Hemen Ara</a>
+          <a href="https://maps.google.com/?cid=16986332279537405342" target="_blank" rel="noopener noreferrer" class="drawer-btn-outline">Konum & Yol Tarifi</a>
+        </div>
+      </div>
+    </nav>
+  </aside>
+
+  <!-- ==========================================
+       2. HİZMET DETAY GÖVDE BÖLÜMÜ (2 KOLONLU EDİTORYAL)
+  =========================================== -->
+  <main class="service-main-container">
+    
+    <div class="breadcrumb-nav">
+      <a href="index.html">Ana Sayfa</a> &nbsp;/&nbsp; <a href="index.html#hizmetler">Hizmetlerimiz</a> &nbsp;/&nbsp; <span>${srv.title}</span>
+    </div>
+
+    <div class="service-grid-2">
+      
+      <!-- Sol: Hizmet Görseli -->
+      <div class="service-image-card">
+        <img src="${srv.image}" alt="${srv.alt}" loading="eager" />
+      </div>
+
+      <!-- Sağ: Hizmet Başlığı, Açıklama, Aşamalar & CTA -->
+      <div>
+        <span class="service-kicker">${srv.kicker}</span>
+        <h1 class="service-headline">${srv.title}</h1>
+
+        <p class="service-lead">${srv.intro}</p>
+
+        <p class="service-paragraph">${srv.p1}</p>
+        <p class="service-paragraph">${srv.p2}</p>
+
+        <!-- İşlem Aşamaları Kutusu -->
+        <div class="service-process-section">
+          <h3 class="process-title">Uygulama Aşamalarımız</h3>
+          
+          ${srv.steps.map(s => `
+          <div class="process-step-item">
+            <div class="process-step-badge">${s.num}</div>
+            <div class="process-step-info">
+              <h4>${s.title}</h4>
+              <p>${s.desc}</p>
+            </div>
+          </div>
+          `).join('')}
+        </div>
+
+        <a href="https://wa.me/905526856907?text=${encodeURIComponent(srv.waText)}" target="_blank" rel="noopener noreferrer" class="btn-espresso-cta">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#25D366">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
+          </svg>
+          <span>WhatsApp ile Randevu Al</span>
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ==========================================
+       3. BOUTIQUE 4-COLUMN RICH FOOTER
+  =========================================== -->
+  <footer class="boutique-footer">
+    <div class="footer-container">
+
+      <!-- 4 Columns Grid -->
+      <div class="footer-grid-4">
+
+        <!-- 1. Kolon: Marka & Felsefe -->
+        <div class="footer-col footer-col-brand">
+          <div class="footer-brand-header">
+            <span class="footer-brand-title">Three Brothers</span>
+            <span class="footer-brand-sub">BAYAN KUAFÖRÜ &bull; MANAVGAT</span>
+          </div>
+          <p class="footer-about-text">
+            2014'ten beri Manavgat'ta sarı saç, renk uzmanlığı ve kadın kuaförlüğünde zarafetin adresi.
+          </p>
+          <div class="footer-social-links">
+            <a href="https://www.instagram.com/threebrotherss/" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+              <span>@threebrotherss</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 2. Kolon: Hızlı Menü -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Hızlı Menü</h4>
+          <ul class="footer-links-list">
+            <li><a href="index.html#hero">Ana Sayfa</a></li>
+            <li><a href="hakkimizda.html">Hakkımızda</a></li>
+            <li><a href="index.html#hizmetler">Hizmetlerimiz</a></li>
+            <li><a href="index.html#donusum">Dönüşümler</a></li>
+            <li><a href="index.html#galeri">Galeri</a></li>
+            <li><a href="index.html#iletisim">İletişim</a></li>
+          </ul>
+        </div>
+
+        <!-- 3. Kolon: Uzmanlıklarımız -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">Uzmanlıklarımız</h4>
+          <ul class="footer-links-list">
+            <li><a href="balyaj.html">Profesyonel Balyaj</a></li>
+            <li><a href="blonde.html">Blonde & Renk Tasarımı</a></li>
+            <li><a href="kaynak.html">Mikro Kapsül Kaynak</a></li>
+            <li><a href="ombre.html">Ombre & Sombre</a></li>
+            <li><a href="renklendirme.html">Kişiye Özel Tonlama</a></li>
+          </ul>
+        </div>
+
+        <!-- 4. Kolon: İletişim & Lokasyon -->
+        <div class="footer-col">
+          <h4 class="footer-col-title">İletişim & Lokasyon</h4>
+          <ul class="footer-contact-info">
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C5A880" stroke-width="2">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+              <a href="tel:+905526856907" style="color: inherit; text-decoration: none;">+90 552 685 69 07</a>
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C5A880" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              <span>Salı – Pazar: 08:30 – 20:30</span>
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C5A880" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              <span>Bahçelievler Mah. Demokrasi Blv. No: 8Z1, Manavgat / Antalya</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="footer-bottom-row">
+        <span>© 2014 – 2026 Three Brothers Bayan Kuaförü. Tüm Hakları Saklıdır.</span>
+        <a href="#" class="footer-back-to-top">Yukarı Çık &uarr;</a>
+      </div>
+
+    </div>
+  </footer>
+
+  <script>
+    // Global Drawer Toggle
+    function toggleMenu() {
+      const drawer = document.getElementById('side-drawer');
+      const backdrop = document.getElementById('menu-backdrop');
+      if (drawer && backdrop) {
+        drawer.classList.toggle('active');
+        backdrop.classList.toggle('active');
+        document.body.classList.toggle('menu-open');
+      }
+    }
+    window.toggleMenu = toggleMenu;
+  </script>
+</body>
+</html>`;
+}
+
+// Re-generate all 5 service pages
+servicesData.forEach(srv => {
+  const content = generateServiceHTML(srv);
+  fs.writeFileSync(srv.file, content, 'utf8');
+  fs.writeFileSync(path.join('public', srv.file), content, 'utf8');
+  console.log(`Updated ${srv.file} without spec boxes and copied to public/`);
+});

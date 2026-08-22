@@ -12,7 +12,7 @@ while ((match = imgRegex.exec(indexHtml)) !== null) {
   const raw = match[1];
   const parts = raw.split(',').map(s => s.trim().split(' ')[0]);
   for (const part of parts) {
-    if (part.startsWith('http') || part.startsWith('data:')) continue;
+    if (part.startsWith('http') || part.startsWith('data:') || part.startsWith('//')) continue;
     const cleanPath = part.split('?')[0].replace(/^\.\//, '');
     const fullPath = path.join(__dirname, '..', cleanPath);
     if (!fs.existsSync(fullPath)) {
