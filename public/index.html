@@ -212,7 +212,7 @@
       user-select: none;
       -webkit-user-select: none;
       touch-action: pan-y;
-      cursor: ew-resize;
+      cursor: default;
       contain: layout paint;
       transform: translateZ(0);
     }
@@ -726,7 +726,7 @@
 
             <!-- Draggable Divider Handle -->
             <div id="ba-handle" class="ba-slider-handle">
-              <div class="ba-slider-button" aria-label="Kaydırıcı Tutamacı">
+              <div class="ba-slider-button" role="slider" tabindex="0" aria-label="Kaydırıcı Tutamacı" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
                 <svg class="w-4 sm:w-5 h-4 sm:h-5 fill-current" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"/></svg>
               </div>
             </div>
@@ -1836,7 +1836,7 @@
   </div>
 
   <script>
-    // 1. Mobile-Responsive & Touch-Friendly Before / After Slider
+    // 1. Mobile-Responsive & Touch-Friendly Before / After Slider (Ortadaki simgeye tıklandığında kaydırılabilir)
     (function initBeforeAfter() {
       const container = document.getElementById('ba-slider');
       const handle = document.getElementById('ba-handle');
@@ -1857,6 +1857,7 @@
         handle.style.left = targetPct + '%';
         afterLayer.style.clipPath = `inset(0 0 0 ${targetPct}%)`;
         afterLayer.style.webkitClipPath = `inset(0 0 0 ${targetPct}%)`;
+        handleButton.setAttribute('aria-valuenow', Math.round(targetPct));
         rafId = null;
       }
 
@@ -1879,8 +1880,8 @@
         updateRect();
         const clientX = e.touches ? e.touches[0].clientX : e.clientX;
         requestSliderUpdate(clientX);
-        if (e.type === 'touchstart') {
-          e.stopPropagation();
+        if (e.type === 'touchstart' && e.cancelable) {
+          e.preventDefault();
         }
       }
 
@@ -1897,13 +1898,34 @@
         isDragging = false;
       }
 
-      container.addEventListener('mousedown', onStart);
+      // Sadece ortadaki simgeye (handleButton) tıklandığında veya dokunulduğunda kaydırmayı başlat
       handleButton.addEventListener('mousedown', onStart);
+      handleButton.addEventListener('touchstart', onStart, { passive: false });
+
+      // Klavye ile erişilebilirlik desteği
+      handleButton.addEventListener('keydown', (e) => {
+        let step = 0;
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') step = -5;
+        else if (e.key === 'ArrowRight' || e.key === 'ArrowUp') step = 5;
+        else if (e.key === 'PageDown') step = -15;
+        else if (e.key === 'PageUp') step = 15;
+        else if (e.key === 'Home') { targetPct = 0; step = null; }
+        else if (e.key === 'End') { targetPct = 100; step = null; }
+
+        if (step !== 0) {
+          e.preventDefault();
+          if (step !== null) {
+            targetPct = Math.max(0, Math.min(100, targetPct + step));
+          }
+          if (!rafId) {
+            rafId = requestAnimationFrame(renderSlider);
+          }
+        }
+      });
+
       window.addEventListener('mousemove', onMove, { passive: true });
       window.addEventListener('mouseup', onEnd);
 
-      container.addEventListener('touchstart', onStart, { passive: true });
-      handleButton.addEventListener('touchstart', onStart, { passive: true });
       window.addEventListener('touchmove', onMove, { passive: false });
       window.addEventListener('touchend', onEnd);
       window.addEventListener('touchcancel', onEnd);
