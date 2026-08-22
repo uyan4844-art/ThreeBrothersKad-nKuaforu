@@ -1041,11 +1041,13 @@
       const revealTargets = document.querySelectorAll('.reveal-on-scroll, .reveal-stagger-parent');
 
       if ('IntersectionObserver' in window) {
-        const revealObserver = new IntersectionObserver((entries, observer) => {
+        const revealObserver = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
             if (entry.isIntersecting) {
               entry.target.classList.add('is-revealed');
-              observer.unobserve(entry.target);
+            } else {
+              // Repeat animation on every scroll in & out
+              entry.target.classList.remove('is-revealed');
             }
           });
         }, observerOptions);
