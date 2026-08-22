@@ -901,12 +901,12 @@
         </p>
 
         <!-- İstatistik Kutuları -->
-        <div class="about-stats-grid">
-          <div class="about-stat-card">
+        <div class="about-stats-grid reveal-stagger-parent">
+          <div class="about-stat-card reveal-stagger-item">
             <div class="about-stat-num">2014</div>
             <div class="about-stat-label" data-i18n="about_stat1_label">Yılından bu yana profesyonel deneyim</div>
           </div>
-          <div class="about-stat-card">
+          <div class="about-stat-card reveal-stagger-item">
             <div class="about-stat-num" data-i18n="about_stat2_title">Sağlık</div>
             <div class="about-stat-label" data-i18n="about_stat2_label">Saç dokusunu koruyan sıfır yıpranma yaklaşımı</div>
           </div>
@@ -930,10 +930,10 @@
     <div class="footer-container">
 
       <!-- 4 Columns Grid -->
-      <div class="footer-grid-4">
+      <div class="footer-grid-4 reveal-stagger-parent">
 
         <!-- 1. Kolon: Marka & Felsefe -->
-        <div class="footer-col footer-col-brand">
+        <div class="footer-col reveal-stagger-item">
           <div class="footer-brand-header">
             <span class="footer-brand-title notranslate" translate="no" data-i18n="brand_name">Three Brothers</span>
             <span class="footer-brand-sub" data-i18n="brand_tagline">BAYAN KUAFÖRÜ &bull; MANAVGAT</span>
@@ -954,7 +954,7 @@
         </div>
 
         <!-- 2. Kolon: Hızlı Menü -->
-        <div class="footer-col">
+        <div class="footer-col reveal-stagger-item">
           <h4 class="footer-col-title" data-i18n="footer_nav_title">Hızlı Menü</h4>
           <ul class="footer-links-list">
             <li><a href="index.html#hero" data-i18n="nav_home">Ana Sayfa</a></li>
@@ -966,7 +966,7 @@
         </div>
 
         <!-- 3. Kolon: Uzmanlıklarımız -->
-        <div class="footer-col">
+        <div class="footer-col reveal-stagger-item">
           <h4 class="footer-col-title" data-i18n="footer_spec_title">Uzmanlıklarımız</h4>
           <ul class="footer-links-list">
             <li><a href="index.html#hizmetler" data-i18n="srv1_title">Profesyonel Balyaj</a></li>
@@ -978,7 +978,7 @@
         </div>
 
         <!-- 4. Kolon: İletişim & Lokasyon -->
-        <div class="footer-col">
+        <div class="footer-col reveal-stagger-item">
           <h4 class="footer-col-title" data-i18n="footer_contact_title">İletişim & Lokasyon</h4>
           <ul class="footer-contact-info">
             <li>
@@ -1016,6 +1016,8 @@
   </footer>
 
   <script src="./js/i18n.js"></script>
+  
+  <script src="./js/i18n.js"></script>
   <script>
     // Global Drawer Toggle
     function toggleMenu() {
@@ -1028,6 +1030,45 @@
       }
     }
     window.toggleMenu = toggleMenu;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. High-Performance IntersectionObserver for Scroll Reveals
+      const observerOptions = {
+        threshold: 0.12,
+        rootMargin: '0px 0px -40px 0px'
+      };
+
+      const revealTargets = document.querySelectorAll('.reveal-on-scroll, .reveal-stagger-parent');
+
+      if ('IntersectionObserver' in window) {
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-revealed');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, observerOptions);
+
+        revealTargets.forEach(el => revealObserver.observe(el));
+      } else {
+        revealTargets.forEach(el => el.classList.add('is-revealed'));
+      }
+
+      // 2. Drawer Links Auto Close
+      const drawerLinks = document.querySelectorAll('.side-drawer a');
+      drawerLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          const drawer = document.getElementById('side-drawer');
+          const backdrop = document.getElementById('menu-backdrop');
+          if (drawer && drawer.classList.contains('active')) {
+            drawer.classList.remove('active');
+            if (backdrop) backdrop.classList.remove('active');
+            document.body.classList.remove('menu-open');
+          }
+        });
+      });
+    });
   </script>
 
 </body>
