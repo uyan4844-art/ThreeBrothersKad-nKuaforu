@@ -1,4 +1,13 @@
-@import "tailwindcss";
+const fs = require('fs');
+const path = require('path');
+const { execSync } = require('child_process');
+
+const indexPath = path.join(__dirname, '../index.html');
+const publicIndexPath = path.join(__dirname, '../public/index.html');
+const inputCssPath = path.join(__dirname, '../src/input.css');
+
+// 1. Master CSS with Complete Premium Motion Design System
+const masterMotionCss = `@import "tailwindcss";
 
 @theme {
   --color-brand-linen: #FAF7F2;
@@ -2548,3 +2557,357 @@ section[id] {
     animation: none !important;
   }
 }
+`;
+
+fs.writeFileSync(inputCssPath, masterMotionCss, 'utf8');
+console.log('src/input.css updated with Master Motion CSS!');
+
+// 2. Add classes to index.html and embed lightweight, high-performance JS controller
+let htmlContent = fs.readFileSync(indexPath, 'utf8');
+
+// Ensure section headers have .reveal-on-scroll and grids have .reveal-stagger-parent
+const sectionReplacements = [
+  { from: '<div class="services-header reveal-up">', to: '<div class="services-header reveal-on-scroll">' },
+  { from: '<div class="bento-mosaic" id="servicesBentoMosaic">', to: '<div class="bento-mosaic reveal-stagger-parent" id="servicesBentoMosaic">' },
+  { from: '<div class="tech-grid-merged reveal-up">', to: '<div class="tech-grid-merged reveal-stagger-parent">' },
+  { from: '<div class="felsefe-grid reveal-up">', to: '<div class="felsefe-grid reveal-on-scroll">' },
+  { from: '<div class="trust-grid-merged reveal-up">', to: '<div class="trust-grid-merged reveal-stagger-parent">' },
+  { from: '<div class="section-header-center reveal-up">', to: '<div class="section-header-center reveal-on-scroll">' },
+  { from: '<div class="process-timeline-grid">', to: '<div class="process-timeline-grid reveal-stagger-parent">' },
+  { from: '<div class="repair-callout-box reveal-up">', to: '<div class="repair-callout-box reveal-on-scroll">' },
+  { from: '<div class="insta-profile-card reveal-up">', to: '<div class="insta-profile-card reveal-on-scroll">' },
+  { from: '<div class="insta-reels-grid">', to: '<div class="insta-reels-grid reveal-stagger-parent">' },
+  { from: '<div class="single-reviews-stage reveal-up">', to: '<div class="single-reviews-stage reveal-on-scroll">' },
+  { from: '<div class="boutique-gallery-grid">', to: '<div class="boutique-gallery-grid reveal-stagger-parent">' },
+  { from: '<div class="faq-container-box reveal-up">', to: '<div class="faq-container-box reveal-stagger-parent">' },
+  { from: '<div class="contact-card-box reveal-up">', to: '<div class="contact-card-box reveal-on-scroll">' }
+];
+
+sectionReplacements.forEach(({ from, to }) => {
+  if (htmlContent.includes(from)) {
+    htmlContent = htmlContent.replaceAll(from, to);
+  }
+});
+
+// Update the motion script in index.html
+const motionScript = `
+  <!-- ==========================================
+       PREMIUM CINEMATIC MOTION & INTERACTIVITY ENGINE
+  =========================================== -->
+  <script>
+    // Global Drawer Toggle
+    function toggleMenu() {
+      const drawer = document.getElementById('side-drawer');
+      const backdrop = document.getElementById('menu-backdrop');
+      if (drawer && backdrop) {
+        drawer.classList.toggle('active');
+        backdrop.classList.toggle('active');
+        document.body.classList.toggle('menu-open');
+      }
+    }
+    window.toggleMenu = toggleMenu;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. High-Performance IntersectionObserver for Scroll Reveals
+      const observerOptions = {
+        threshold: 0.12,
+        rootMargin: '0px 0px -40px 0px'
+      };
+
+      const revealTargets = document.querySelectorAll('.reveal-on-scroll, .reveal-stagger-parent');
+
+      if ('IntersectionObserver' in window) {
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-revealed');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, observerOptions);
+
+        revealTargets.forEach(el => revealObserver.observe(el));
+      } else {
+        revealTargets.forEach(el => el.classList.add('is-revealed'));
+      }
+
+      // 2. Count-Up Metric Animation for 2014 and 100%
+      const metricCards = document.querySelectorAll('.trust-metric-card');
+      if ('IntersectionObserver' in window && metricCards.length > 0) {
+        let metricsAnimated = false;
+        const metricsObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting && !metricsAnimated) {
+              metricsAnimated = true;
+              animateCountUp('2014', 0, 2014, 1600);
+              animateCountUp('%100', 0, 100, 1400, '%');
+            }
+          });
+        }, { threshold: 0.2 });
+
+        const trustSection = document.getElementById('neden-biz');
+        if (trustSection) metricsObserver.observe(trustSection);
+      }
+
+      function animateCountUp(targetIdText, start, end, duration, prefix = '') {
+        const elements = document.querySelectorAll('.trust-card-top-val');
+        elements.forEach(el => {
+          if (el.textContent.trim().includes('2014') && end === 2014) {
+            runCounter(el, start, end, duration, '');
+          } else if (el.textContent.trim().includes('100') && end === 100) {
+            runCounter(el, start, end, duration, '%');
+          }
+        });
+      }
+
+      function runCounter(el, start, end, duration, symbol) {
+        const startTime = performance.now();
+        function update(now) {
+          const progress = Math.min((now - startTime) / duration, 1);
+          // Ease Out Expo: 1 - Math.pow(2, -10 * progress)
+          const easeProgress = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+          const currentVal = Math.floor(start + (end - start) * easeProgress);
+          el.textContent = symbol === '%' ? '%' + currentVal : currentVal;
+          if (progress < 1) {
+            requestAnimationFrame(update);
+          } else {
+            el.textContent = symbol === '%' ? '%100' : '2014';
+          }
+        }
+        requestAnimationFrame(update);
+      }
+
+      // 3. Cinematic Hero Background Parallax (Desktop Only & Reduced-Motion Aware)
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const heroBgLayer = document.querySelector('.hero-bg-layer');
+
+      if (!prefersReducedMotion && heroBgLayer && window.innerWidth > 768) {
+        let lastScrollY = 0;
+        let ticking = false;
+
+        window.addEventListener('scroll', () => {
+          lastScrollY = window.scrollY;
+          if (!ticking) {
+            window.requestAnimationFrame(() => {
+              if (lastScrollY < window.innerHeight * 1.2) {
+                const translateY = (lastScrollY * 0.14).toFixed(2);
+                heroBgLayer.style.transform = 'translate3d(0, ' + translateY + 'px, 0)';
+              }
+              ticking = false;
+            });
+            ticking = true;
+          }
+        }, { passive: true });
+      }
+
+      // 4. Header Shrink on Scroll
+      const header = document.querySelector('.boutique-header, .luxury-header');
+      function updateHeader() {
+        if (!header) return;
+        if (window.scrollY > 25) {
+          header.classList.add('is-scrolled');
+        } else {
+          header.classList.remove('is-scrolled');
+        }
+      }
+      window.addEventListener('scroll', updateHeader, { passive: true });
+      updateHeader();
+
+      // 5. Drawer Link Click Auto-Close
+      const drawerLinks = document.querySelectorAll('.side-drawer a');
+      drawerLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          const drawer = document.getElementById('side-drawer');
+          const backdrop = document.getElementById('menu-backdrop');
+          if (drawer && drawer.classList.contains('active')) {
+            drawer.classList.remove('active');
+            if (backdrop) backdrop.classList.remove('active');
+            document.body.classList.remove('menu-open');
+          }
+        });
+      });
+
+      // 6. Reels Video Playback & Sound Control
+      const reelWrappers = document.querySelectorAll('[data-reel-wrapper]');
+      reelWrappers.forEach(wrapper => {
+        const video = wrapper.querySelector('video');
+        const soundBtn = wrapper.querySelector('[data-sound-btn]');
+        const soundOff = soundBtn ? soundBtn.querySelector('.sound-off-icon') : null;
+        const soundOn = soundBtn ? soundBtn.querySelector('.sound-on-icon') : null;
+
+        if (!video) return;
+
+        if (soundBtn) {
+          soundBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            video.muted = !video.muted;
+            if (video.muted) {
+              if (soundOff) soundOff.classList.remove('hidden');
+              if (soundOn) soundOn.classList.add('hidden');
+            } else {
+              if (soundOff) soundOff.classList.add('hidden');
+              if (soundOn) soundOn.classList.remove('hidden');
+            }
+          });
+        }
+
+        wrapper.addEventListener('click', () => {
+          if (video.paused) {
+            reelWrappers.forEach(otherWrap => {
+              const otherVid = otherWrap.querySelector('video');
+              if (otherVid && otherVid !== video && !otherVid.paused) {
+                otherVid.pause();
+                otherWrap.classList.remove('is-playing');
+              }
+            });
+
+            video.play().then(() => {
+              wrapper.classList.add('is-playing');
+            }).catch(() => {});
+          } else {
+            video.pause();
+            wrapper.classList.remove('is-playing');
+          }
+        });
+
+        video.addEventListener('pause', () => wrapper.classList.remove('is-playing'));
+        video.addEventListener('play', () => wrapper.classList.add('is-playing'));
+        video.addEventListener('ended', () => wrapper.classList.remove('is-playing'));
+      });
+
+      // Auto-pause videos when scrolled away
+      if ('IntersectionObserver' in window) {
+        const videoObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            const vid = entry.target.querySelector('video');
+            if (vid && !entry.isIntersecting && !vid.paused) {
+              vid.pause();
+              entry.target.classList.remove('is-playing');
+            }
+          });
+        }, { threshold: 0.15 });
+
+        reelWrappers.forEach(w => videoObserver.observe(w));
+      }
+
+      // 7. Interactive Likes
+      const likeBtns = document.querySelectorAll('[data-like-btn]');
+      likeBtns.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          this.classList.toggle('liked');
+        });
+      });
+
+      // 8. FAQ Accordion
+      const faqItems = document.querySelectorAll('.faq-item');
+      faqItems.forEach(item => {
+        const btn = item.querySelector('.faq-question-btn');
+        if (!btn) return;
+        btn.addEventListener('click', () => {
+          const isActive = item.classList.contains('active');
+          faqItems.forEach(otherItem => {
+            otherItem.classList.remove('active');
+            const otherBtn = otherItem.querySelector('.faq-question-btn');
+            if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
+          });
+
+          if (!isActive) {
+            item.classList.add('active');
+            btn.setAttribute('aria-expanded', 'true');
+          }
+        });
+      });
+
+      // 9. Single-Review Carousel Controller
+      (function() {
+        const track = document.getElementById('singleReviewsTrack');
+        const prevBtn = document.getElementById('reviewPrevBtn');
+        const nextBtn = document.getElementById('reviewNextBtn');
+        const dotsContainer = document.getElementById('reviewDotsContainer');
+        if (!track || !dotsContainer) return;
+
+        const dots = dotsContainer.querySelectorAll('.review-dot');
+        const cards = track.querySelectorAll('.single-review-card');
+        const totalCards = cards.length;
+        let currentIndex = 0;
+        let autoPlayInterval = null;
+
+        function updateActiveCard(index) {
+          if (index < 0) index = totalCards - 1;
+          if (index >= totalCards) index = 0;
+          currentIndex = index;
+
+          cards.forEach((card, i) => {
+            if (i === currentIndex) {
+              card.classList.add('active');
+            } else {
+              card.classList.remove('active');
+            }
+          });
+
+          dots.forEach((dot, i) => {
+            if (i === currentIndex) dot.classList.add('active');
+            else dot.classList.remove('active');
+          });
+        }
+
+        if (prevBtn) {
+          prevBtn.addEventListener('click', () => {
+            updateActiveCard(currentIndex - 1);
+            resetAutoPlay();
+          });
+        }
+
+        if (nextBtn) {
+          nextBtn.addEventListener('click', () => {
+            updateActiveCard(currentIndex + 1);
+            resetAutoPlay();
+          });
+        }
+
+        dots.forEach((dot, i) => {
+          dot.addEventListener('click', () => {
+            updateActiveCard(i);
+            resetAutoPlay();
+          });
+        });
+
+        function startAutoPlay() {
+          autoPlayInterval = setInterval(() => {
+            updateActiveCard(currentIndex + 1);
+          }, 6500);
+        }
+
+        function resetAutoPlay() {
+          clearInterval(autoPlayInterval);
+          startAutoPlay();
+        }
+
+        track.addEventListener('mouseenter', () => clearInterval(autoPlayInterval));
+        track.addEventListener('mouseleave', () => startAutoPlay());
+        track.addEventListener('touchstart', () => clearInterval(autoPlayInterval), { passive: true });
+
+        startAutoPlay();
+      })();
+    });
+  </script>
+`;
+
+// Replace script block at bottom of index.html
+const scriptStartPos = htmlContent.indexOf('<script>\n    // Global Drawer Toggle');
+if (scriptStartPos !== -1) {
+  const bodyClosePos = htmlContent.indexOf('</body>');
+  htmlContent = htmlContent.slice(0, scriptStartPos) + motionScript + '\n' + htmlContent.slice(bodyClosePos);
+} else {
+  // Replace from last <script> before </body>
+  const lastScriptIdx = htmlContent.lastIndexOf('<script');
+  const bodyClosePos = htmlContent.indexOf('</body>');
+  if (lastScriptIdx !== -1 && bodyClosePos !== -1) {
+    htmlContent = htmlContent.slice(0, lastScriptIdx) + motionScript + '\n' + htmlContent.slice(bodyClosePos);
+  }
+}
+
+fs.writeFileSync(indexPath, htmlContent, 'utf8');
+fs.writeFileSync(publicIndexPath, htmlContent, 'utf8');
+console.log('HTML files successfully upgraded with Premium Motion Design Engine!');
