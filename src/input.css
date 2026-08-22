@@ -1051,6 +1051,47 @@ section[id] {
   margin-bottom: 18px;
 }
 
+
+.felsefe-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 26px;
+}
+
+.btn-felsefe-about {
+  background: #C5A880;
+  color: #141210 !important;
+  font-weight: 700;
+  font-size: 13.5px;
+  letter-spacing: 0.03em;
+  padding: 12px 24px;
+  border-radius: 999px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 8px 24px rgba(197, 168, 128, 0.25);
+  transition: all 0.35s var(--ease-expo);
+  cursor: pointer;
+}
+
+.btn-felsefe-about:hover {
+  background: #EBE0D2;
+  color: #141210 !important;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(197, 168, 128, 0.4);
+}
+
+.btn-felsefe-about svg {
+  transition: transform 0.25s var(--ease-expo);
+}
+
+.btn-felsefe-about:hover svg {
+  transform: translateX(4px);
+}
+
 .felsefe-link {
   display: inline-flex;
   align-items: center;

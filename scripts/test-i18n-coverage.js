@@ -5,7 +5,17 @@ const html = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
 const js = fs.readFileSync(path.join(__dirname, '..', 'js', 'i18n.js'), 'utf8');
 
 global.window = global;
-global.document = { querySelectorAll: () => [], getElementById: () => null, documentElement: { setAttribute: () => {} } };
+global.document = {
+  querySelectorAll: () => [],
+  getElementById: () => null,
+  documentElement: {
+    setAttribute: () => {},
+    classList: {
+      add: () => {},
+      remove: () => {}
+    }
+  }
+};
 global.localStorage = { getItem: () => null, setItem: () => null };
 global.navigator = { language: 'tr' };
 
