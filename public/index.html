@@ -2525,20 +2525,23 @@
     }
 
   
-    /* === SHINE HAIR BENCHMARK EDITORIAL SECTIONS STYLING === */
     
-    /* 1. Profesyonel Teknikler Section (#teknikler) */
+    /* === REFACTORED SECTIONS STYLING (THREE BROTHERS LUXURY DESIGN) === */
+
+    /* 1. Transparan Renklendirme ve Bağ Koruma (#teknikler) */
     .section-teknikler {
       background-color: #FAF7F2;
       border-bottom: 1px solid rgba(197, 168, 128, 0.22);
-      padding: 90px 24px;
+      padding: 95px 24px;
     }
 
-    .tech-grid {
+    .tech-grid-merged {
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
+      grid-template-columns: 1.05fr 0.95fr;
       gap: 60px;
       align-items: center;
+      max-width: 1240px;
+      margin: 0 auto;
     }
 
     .tech-content-box {
@@ -2557,45 +2560,58 @@
 
     .tech-title {
       font-family: var(--font-serif);
-      font-size: clamp(2.4rem, 4.2vw, 3.4rem);
+      font-size: clamp(2.4rem, 4vw, 3.4rem);
       font-weight: 800;
       color: #1F1C19;
       line-height: 1.15;
       letter-spacing: -0.02em;
-      margin-bottom: 24px;
+      margin-bottom: 22px;
     }
 
     .tech-desc {
       font-size: 1.05rem;
-      line-height: 1.8;
+      line-height: 1.75;
       color: #5A554E;
-      margin-bottom: 18px;
+      margin-bottom: 28px;
     }
 
-    .tech-visual-frame {
-      border-radius: 18px;
-      overflow: hidden;
-      box-shadow: 0 20px 45px rgba(116, 109, 101, 0.12);
+    .tech-feature-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .tech-feature-card {
+      background: #FFFFFF;
       border: 1px solid rgba(197, 168, 128, 0.35);
-      aspect-ratio: 4 / 3;
-      background: #EFE8DF;
-      position: relative;
+      border-radius: 16px;
+      padding: 24px 26px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .tech-visual-frame img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 20%;
-      display: block;
-      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    .tech-feature-card:hover {
+      border-color: #C5A880;
+      transform: translateY(-3px);
+      box-shadow: 0 14px 35px rgba(197, 168, 128, 0.16);
     }
 
-    .tech-visual-frame:hover img {
-      transform: scale(1.03);
+    .tech-feature-card h4 {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #1F1C19;
+      margin-bottom: 6px;
     }
 
-    /* 2. Önce Sağlık, Sonra Güzellik (Dark Section - #felsefe) */
+    .tech-feature-card p {
+      font-size: 0.92rem;
+      line-height: 1.6;
+      color: #635E57;
+      margin: 0;
+    }
+
+    /* 2. Önce Sağlık, Sonra Güzellik (#felsefe) - Dark Contrast */
     .section-felsefe {
       background-color: #141210 !important;
       color: #FAF7F2;
@@ -2609,13 +2625,15 @@
       grid-template-columns: 0.9fr 1.1fr;
       gap: 60px;
       align-items: center;
+      max-width: 1240px;
+      margin: 0 auto;
     }
 
     .felsefe-visual-frame {
       border-radius: 18px;
       overflow: hidden;
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
-      border: 1px solid rgba(197, 168, 128, 0.3);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(197, 168, 128, 0.35);
       aspect-ratio: 4 / 3;
       background: #1F1C19;
       position: relative;
@@ -2645,12 +2663,12 @@
 
     .felsefe-title {
       font-family: var(--font-serif);
-      font-size: clamp(2.4rem, 4.2vw, 3.4rem);
+      font-size: clamp(2.4rem, 4vw, 3.4rem);
       font-weight: 800;
       color: #FFFFFF;
       line-height: 1.15;
       letter-spacing: -0.02em;
-      margin-bottom: 24px;
+      margin-bottom: 22px;
     }
 
     .felsefe-desc {
@@ -2679,173 +2697,27 @@
       gap: 12px;
     }
 
-    /* 3. Manavgat Eskihisar'da Profesyonel Dokunuş (#eskihisar) */
-    .section-eskihisar {
-      background-color: #FAF7F2;
-      border-bottom: 1px solid rgba(197, 168, 128, 0.22);
-      padding: 95px 24px;
-    }
-
-    .eskihisar-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 60px;
-      align-items: center;
-    }
-
-    .eskihisar-kicker {
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: #A48358;
-      display: block;
-      margin-bottom: 14px;
-    }
-
-    .eskihisar-title {
-      font-family: var(--font-serif);
-      font-size: clamp(2.4rem, 4.2vw, 3.4rem);
-      font-weight: 800;
-      color: #1F1C19;
-      line-height: 1.15;
-      letter-spacing: -0.02em;
-      margin-bottom: 24px;
-    }
-
-    .eskihisar-desc {
-      font-size: 1.05rem;
-      line-height: 1.8;
-      color: #5A554E;
-    }
-
-    .eskihisar-cards-list {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .eskihisar-feature-card {
-      background: #FFFFFF;
-      border: 1px solid rgba(197, 168, 128, 0.35);
-      border-radius: 14px;
-      padding: 24px 28px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.03);
-      transition: all 0.3s ease;
-    }
-
-    .eskihisar-feature-card:hover {
-      border-color: #C5A880;
-      transform: translateY(-3px);
-      box-shadow: 0 14px 32px rgba(197, 168, 128, 0.15);
-    }
-
-    .eskihisar-feature-card h4 {
-      font-family: var(--font-serif);
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: #1F1C19;
-      margin-bottom: 6px;
-    }
-
-    .eskihisar-feature-card p {
-      font-size: 0.92rem;
-      line-height: 1.6;
-      color: #635E57;
-      margin: 0;
-    }
-
-    /* 4. Kişiye Özel Stil Danışmanlığı (#danismanlik) */
-    .section-danismanlik {
-      background-color: #F8F5F0;
-      border-bottom: 1px solid rgba(197, 168, 128, 0.22);
-      padding: 95px 24px;
-    }
-
-    .consult-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 60px;
-      align-items: center;
-    }
-
-    .consult-kicker {
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: #A48358;
-      display: block;
-      margin-bottom: 14px;
-    }
-
-    .consult-title {
-      font-family: var(--font-serif);
-      font-size: clamp(2.4rem, 4.2vw, 3.4rem);
-      font-weight: 800;
-      color: #1F1C19;
-      line-height: 1.15;
-      letter-spacing: -0.02em;
-      margin-bottom: 24px;
-    }
-
-    .consult-desc {
-      font-size: 1.05rem;
-      line-height: 1.8;
-      color: #5A554E;
-    }
-
-    .consult-stat-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-
-    .consult-stat-card {
-      background: #FFFFFF;
-      border: 1px solid rgba(197, 168, 128, 0.35);
-      border-radius: 16px;
-      padding: 28px 24px;
-      text-align: left;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.03);
-      transition: all 0.3s ease;
-    }
-
-    .consult-stat-card:hover {
-      border-color: #C5A880;
-      transform: translateY(-3px);
-      box-shadow: 0 14px 32px rgba(197, 168, 128, 0.15);
-    }
-
-    .consult-stat-val {
-      font-family: var(--font-serif);
-      font-size: 2.2rem;
-      font-weight: 800;
-      color: #1F1C19;
-      line-height: 1.1;
-      margin-bottom: 8px;
-    }
-
-    .consult-stat-label {
-      font-size: 0.88rem;
-      line-height: 1.5;
-      color: #635E57;
-    }
-
-    /* 5. Neden Biz? (#neden-biz) */
+    /* 3. Güven & Kalite Standartlarımız (Neden Three Brothers? - #neden-biz) */
     .section-neden-biz {
       background-color: #FAF7F2;
       border-bottom: 1px solid rgba(197, 168, 128, 0.22);
       padding: 100px 24px;
     }
 
-    .why-header {
-      text-align: center;
-      max-width: 800px;
-      margin: 0 auto 56px;
+    .trust-grid-merged {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      max-width: 1240px;
+      margin: 0 auto;
     }
 
-    .why-kicker {
+    .trust-content-box {
+      text-align: left;
+    }
+
+    .trust-kicker {
       font-size: 0.8rem;
       font-weight: 700;
       letter-spacing: 3px;
@@ -2855,107 +2727,107 @@
       margin-bottom: 14px;
     }
 
-    .why-title {
+    .trust-title {
       font-family: var(--font-serif);
-      font-size: clamp(2.4rem, 4.2vw, 3.4rem);
+      font-size: clamp(2.4rem, 4vw, 3.4rem);
       font-weight: 800;
       color: #1F1C19;
       line-height: 1.15;
       letter-spacing: -0.02em;
+      margin-bottom: 22px;
     }
 
-    .why-cards-grid {
+    .trust-desc {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: #5A554E;
+      margin-bottom: 28px;
+    }
+
+    .trust-cards-2x2 {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      max-width: 1200px;
-      margin: 0 auto;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
     }
 
-    .why-card {
+    .trust-metric-card {
       background: #FFFFFF;
       border: 1px solid rgba(197, 168, 128, 0.35);
-      border-radius: 18px;
-      padding: 36px 30px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+      border-radius: 16px;
+      padding: 26px 22px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       display: flex;
       flex-direction: column;
-      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .why-card:hover {
+    .trust-metric-card:hover {
       border-color: #C5A880;
-      transform: translateY(-5px);
-      box-shadow: 0 18px 45px rgba(197, 168, 128, 0.18);
+      transform: translateY(-3px);
+      box-shadow: 0 16px 40px rgba(197, 168, 128, 0.16);
     }
 
-    .why-card-num {
+    .trust-card-top-val {
       font-family: var(--font-serif);
-      font-size: 1rem;
-      font-weight: 700;
-      letter-spacing: 2px;
+      font-size: 1.85rem;
+      font-weight: 800;
       color: #A48358;
-      margin-bottom: 20px;
-      display: block;
+      line-height: 1.1;
+      margin-bottom: 8px;
     }
 
-    .why-card-title {
+    .trust-card-title {
       font-family: var(--font-serif);
-      font-size: 1.45rem;
+      font-size: 1.15rem;
       font-weight: 700;
       color: #1F1C19;
-      margin-bottom: 12px;
+      margin-bottom: 6px;
+      line-height: 1.25;
     }
 
-    .why-card-desc {
-      font-size: 0.95rem;
-      line-height: 1.7;
+    .trust-card-desc {
+      font-size: 0.88rem;
+      line-height: 1.55;
       color: #635E57;
       margin: 0;
     }
 
-    /* Mobile Adaptations for New Editorial Sections */
+    /* Responsive Adaptations */
     @media (max-width: 1024px) {
-      .tech-grid,
+      .tech-grid-merged,
       .felsefe-grid,
-      .eskihisar-grid,
-      .consult-grid {
+      .trust-grid-merged {
         grid-template-columns: 1fr !important;
-        gap: 36px !important;
-      }
-
-      .why-cards-grid {
-        grid-template-columns: 1fr !important;
-        gap: 18px !important;
+        gap: 40px !important;
       }
     }
 
     @media (max-width: 768px) {
       .section-teknikler,
       .section-felsefe,
-      .section-eskihisar,
-      .section-danismanlik,
       .section-neden-biz {
-        padding: 50px 16px !important;
+        padding: 55px 16px !important;
       }
 
-      .tech-visual-frame,
+      .tech-title,
+      .felsefe-title,
+      .trust-title {
+        font-size: clamp(26px, 6.8vw, 36px) !important;
+        line-height: 1.18 !important;
+      }
+
       .felsefe-visual-frame {
         aspect-ratio: 4 / 3 !important;
         width: 100% !important;
       }
 
-      .consult-stat-grid {
+      .trust-cards-2x2 {
         grid-template-columns: 1fr !important;
         gap: 12px !important;
       }
 
-      .consult-stat-card {
-        padding: 20px 18px !important;
-      }
-
-      .why-card {
-        padding: 26px 20px !important;
+      .trust-metric-card {
+        padding: 22px 18px !important;
       }
     }
 
@@ -3154,7 +3026,7 @@
       <!-- 3 Sütunlu Asimetrik Bento Grid -->
       <div class="bento-mosaic" id="servicesBentoMosaic">
 
-        <!-- 1. Sol Büyük Kart (Tall - Row Span 2) - 5.jpeg -->
+        <!-- 1. Sol Büyük Kart (Tall - Row Span 2) -->
         <a href="balyaj.html" class="bento-item tall reveal-stagger-item">
           <img src="./images/services/bento-5.webp" alt="Profesyonel Balyaj & Sarı Saç" />
           <div class="bento-overlay">
@@ -3162,7 +3034,7 @@
           </div>
         </a>
 
-        <!-- 2. Sağ Üst 1. Kart - 2.jpeg -->
+        <!-- 2. Sağ Üst 1. Kart -->
         <a href="blonde.html" class="bento-item reveal-stagger-item">
           <img src="./images/services/bento-2.webp" alt="Blonde & İpeksi Renk Tasarımı" />
           <div class="bento-overlay">
@@ -3170,7 +3042,7 @@
           </div>
         </a>
 
-        <!-- 3. Sağ Üst 2. Kart - 6.jpeg -->
+        <!-- 3. Sağ Üst 2. Kart -->
         <a href="kaynak.html" class="bento-item reveal-stagger-item">
           <img src="./images/services/bento-6.webp" alt="Mikro Kapsül Kaynak" />
           <div class="bento-overlay">
@@ -3178,7 +3050,7 @@
           </div>
         </a>
 
-        <!-- 4. Sağ Alt 1. Kart - 4.jpeg -->
+        <!-- 4. Sağ Alt 1. Kart -->
         <a href="ombre.html" class="bento-item reveal-stagger-item">
           <img src="./images/services/bento-4.webp" alt="Ombre & Sombre Geçişleri" />
           <div class="bento-overlay">
@@ -3186,7 +3058,7 @@
           </div>
         </a>
 
-        <!-- 5. Sağ Alt 2. Kart - 1.jpeg -->
+        <!-- 5. Sağ Alt 2. Kart -->
         <a href="renklendirme.html" class="bento-item reveal-stagger-item">
           <img src="./images/services/bento-1.webp" alt="Kişiye Özel Renklendirme & Tonlama" />
           <div class="bento-overlay">
@@ -3200,31 +3072,48 @@
   </section>
 
   <!-- ==========================================
-       2. PROFESYONEL RENKLENDİRME TEKNİKLERİ
+       2. TRANSPARAN RENKLENDİRME & BAĞ KORUMA (BİRLEŞTİRİLMİŞ EDİTORYAL BÖLÜM)
   =========================================== -->
   <section id="teknikler" class="boutique-section section-teknikler">
     <div class="section-container">
-      <div class="tech-grid reveal-up">
+      <div class="tech-grid-merged reveal-up">
 
-        <!-- Sol: Metin & Editoryal Tipografi -->
+        <!-- Sol: Başlık, Açıklama ve WhatsApp Aksiyonu -->
         <div class="tech-content-box">
-          <span class="tech-kicker" data-i18n="tech_kicker">PROFESYONEL RENKLENDİRME TEKNİKLERİ</span>
+          <span class="tech-kicker" data-i18n="tech_kicker">PROFESYONEL RENKLENDİRME & BAĞ KORUMA</span>
           <h2 class="tech-title" data-i18n="tech_title">
-            Ombre, Sombre ve Balyaj ile Saçlarınızda Doğal Işıltı
+            Transparan Renklendirme ve Kişiye Özel Doğal Işıltı
           </h2>
-          <p class="tech-desc" data-i18n="tech_p1">
-            Manavgat’ta doğal geçişler ve göz alıcı parlaklık arıyorsanız doğru yerdesiniz. Three Brothers olarak Ombre, Sombre, Balyaj ve Blonde uygulamalarında saç sağlığınızı koruyan profesyonel ürünler ve modern teknikler kullanıyoruz.
+          <p class="tech-desc" data-i18n="tech_desc">
+            Manavgat Eskihisar’daki salonumuzda; Ombre, Sombre ve Balyaj uygulamalarını saçın bağ dokusunu koruyan transparan tekniklerle gerçekleştiriyoruz. Saç yapınızı yıpratmadan, yüz hatlarınıza ve ten renginize en çok yakışan sağlıklı tonları tasarlıyoruz.
           </p>
-          <p class="tech-desc" data-i18n="tech_p2">
-            Saç tellerinizin yıpranmasına izin vermeden, yüz hatlarınıza en çok yakışan tonları birlikte belirliyoruz. Amacımız yalnızca güzel bir görünüm değil, sağlıklı ve uzun süre keyifle kullanabileceğiniz bir saç tasarımı sunmak.
-          </p>
+          <a href="https://wa.me/905526856907?text=Merhaba,%20Three%20Brothers%20salonunuzdan%20renklendirme%20ve%20saç%20analizi%20randevusu%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" class="btn-espresso-luxury">
+            <span>WhatsApp ile Randevu Al</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
         </div>
 
-        <!-- Sağ: Model & Saç Fotoğrafı -->
-        <div>
-          <div class="tech-visual-frame">
-            <img src="./images/gallery/gallery-1.webp" alt="Three Brothers Ombre ve Balyaj Sanatı" loading="lazy" />
+        <!-- Sağ: 3'lü Beyaz Özellik Kartları -->
+        <div class="tech-feature-cards">
+          
+          <div class="tech-feature-card reveal-stagger-item">
+            <h4 data-i18n="tech_c1_title">Doğal Ton Uyumu</h4>
+            <p data-i18n="tech_c1_desc">Saç renginize ve cilt alt tonunuza kusursuz uyum sağlayan geçişler.</p>
           </div>
+
+          <div class="tech-feature-card reveal-stagger-item">
+            <h4 data-i18n="tech_c2_title">Bağ Dokusu Koruma</h4>
+            <p data-i18n="tech_c2_desc">Saç tellerini yıpranmaya karşı koruyan patentli ve kontrollü açma işlemi.</p>
+          </div>
+
+          <div class="tech-feature-card reveal-stagger-item">
+            <h4 data-i18n="tech_c3_title">Modern Renk Tasarımı</h4>
+            <p data-i18n="tech_c3_desc">Ombre, Sombre, Balyaj ve Bebek Sarısı uygulamalarında uzmanlık.</p>
+          </div>
+
         </div>
 
       </div>
@@ -3232,7 +3121,7 @@
   </section>
 
   <!-- ==========================================
-       3. ÖNCE SAĞLIK, SONRA GÜZELLİK (DARK KONTRAST)
+       3. ÖNCE SAĞLIK, SONRA GÜZELLİK (KOYU KONTRAST BÖLÜM)
   =========================================== -->
   <section id="felsefe" class="boutique-section section-felsefe">
     <div class="section-container">
@@ -3245,14 +3134,14 @@
           </div>
         </div>
 
-        <!-- Sağ: Koyu Kontrast İletişim Metinleri -->
+        <!-- Sağ: Koyu Zemin Üzeri Editoryal Metinler -->
         <div>
           <span class="felsefe-kicker" data-i18n="health_kicker">ÖNCE SAĞLIK, SONRA GÜZELLİK</span>
           <h2 class="felsefe-title" data-i18n="health_title">
             Saç Analizi ve Dürüst Hizmet Anlayışı
           </h2>
           <p class="felsefe-desc" data-i18n="health_p1">
-            Manavgat’ta güvenebileceğiniz bir saç tasarım deneyimi için işlem öncesinde saç yapınızı analiz ediyoruz. Yıpranacak bir işleme girmek yerine, sizi dürüstçe bilgilendiriyor ve saçınız için en doğru alternatifi öneriyoruz.
+            Manavgat’ta güvenebileceğiniz bir saç tasarım deneyimi için işlem öncesinde saç yapınızı detaylıca analiz ediyoruz. Yıpranacak veya saça zarar verecek hiçbir işleme onay vermeden, dürüstçe en sağlıklı alternatifi sunuyoruz.
           </p>
           <p class="felsefe-desc" data-i18n="health_p2">
             Dürüstlük, hijyen ve şeffaflık Three Brothers’ın temelidir. Saçınıza zarar verecek hiçbir adımı atmıyor, sağlıklı ve sürdürülebilir sonuçlara odaklanıyoruz.
@@ -3268,141 +3157,69 @@
   </section>
 
   <!-- ==========================================
-       4. MANAVGAT ESKİHİSAR'DA PROFESYONEL DOKUNUŞ
-  =========================================== -->
-  <section id="eskihisar" class="boutique-section section-eskihisar">
-    <div class="section-container">
-      <div class="eskihisar-grid reveal-up">
-
-        <!-- Sol: Başlık & Açıklama -->
-        <div>
-          <span class="eskihisar-kicker" data-i18n="eskihisar_kicker">MANAVGAT ESKİHİSAR'DA PROFESYONEL DOKUNUŞ</span>
-          <h2 class="eskihisar-title" data-i18n="eskihisar_title">
-            Yıpranmış Saçlara Transparan Boya Çözümleri
-          </h2>
-          <p class="eskihisar-desc" data-i18n="eskihisar_p1">
-            Manavgat Eskihisar Mahallesi’ndeki salonumuzda, özellikle ağır kimyasal süreçlerden yorulmuş saçlar için uzman çözümler sunuyoruz. Saçın kendi doğal tonuna uygun transparan boya teknikleriyle yıpranmış telleri yeniden canlandırıyoruz.
-          </p>
-        </div>
-
-        <!-- Sağ: 3'lü Beyaz Bilgi Kartları -->
-        <div class="eskihisar-cards-list">
-          
-          <div class="eskihisar-feature-card reveal-stagger-item">
-            <h4 data-i18n="eskihisar_c1_title">Doğal Ton Uyumu</h4>
-            <p data-i18n="eskihisar_c1_desc">Saç renginize ve cilt tonunuza uygun geçişler.</p>
-          </div>
-
-          <div class="eskihisar-feature-card reveal-stagger-item">
-            <h4 data-i18n="eskihisar_c2_title">Saç Sağlığı Odaklı İşlem</h4>
-            <p data-i18n="eskihisar_c2_desc">Yıpranmayı azaltan profesyonel yaklaşım.</p>
-          </div>
-
-          <div class="eskihisar-feature-card reveal-stagger-item">
-            <h4 data-i18n="eskihisar_c3_title">Modern Teknikler</h4>
-            <p data-i18n="eskihisar_c3_desc">Ombre, Sombre, Balyaj ve Blonde uygulamalarında uzmanlık.</p>
-          </div>
-
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================
-       5. KİŞİYE ÖZEL STİL DANIŞMANLIĞI
-  =========================================== -->
-  <section id="danismanlik" class="boutique-section section-danismanlik">
-    <div class="section-container">
-      <div class="consult-grid reveal-up">
-
-        <!-- Sol: Başlık & Metin -->
-        <div>
-          <span class="consult-kicker" data-i18n="consult_kicker">KİŞİYE ÖZEL STİL DANIŞMANLIĞI</span>
-          <h2 class="consult-title" data-i18n="consult_title">
-            Sizi Dinliyor, Saçlarınızı Analiz Ediyoruz
-          </h2>
-          <p class="consult-desc" data-i18n="consult_p1">
-            Bizim için her misafir bir dosttur. Beklentilerinizi dinliyor, saç yapınızı inceliyor ve birlikte en doğru kararı veriyoruz. Manavgat’ın merkezinde profesyonel kuaförlük hizmetini samimiyet ve uzmanlıkla birleştiriyoruz.
-          </p>
-        </div>
-
-        <!-- Sağ: 2x2 Metrik / Güven Kartları -->
-        <div class="consult-stat-grid">
-
-          <div class="consult-stat-card reveal-stagger-item">
-            <div class="consult-stat-val" data-i18n="consult_card1_num">2014</div>
-            <div class="consult-stat-label" data-i18n="consult_card1_label">Yılından bu yana tecrübe</div>
-          </div>
-
-          <div class="consult-stat-card reveal-stagger-item">
-            <div class="consult-stat-val" data-i18n="consult_card2_title">Hijyen</div>
-            <div class="consult-stat-label" data-i18n="consult_card2_label">Salonumuzun değişmez standardı</div>
-          </div>
-
-          <div class="consult-stat-card reveal-stagger-item">
-            <div class="consult-stat-val" data-i18n="consult_card3_title">Analiz</div>
-            <div class="consult-stat-label" data-i18n="consult_card3_label">Her işlem öncesi kişiye özel değerlendirme</div>
-          </div>
-
-          <div class="consult-stat-card reveal-stagger-item">
-            <div class="consult-stat-val" data-i18n="consult_card4_title">Güven</div>
-            <div class="consult-stat-label" data-i18n="consult_card4_label">Dürüst ve şeffaf hizmet yaklaşımı</div>
-          </div>
-
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================
-       6. NEDEN BİZ? (NEDEN THREE BROTHERS?)
+       4. GÜVEN & KALİTE STANDARTLARIMIZ (BİRLEŞTİRİLMİŞ 4 KARTLI GÜVEN IZGARASI)
   =========================================== -->
   <section id="neden-biz" class="boutique-section section-neden-biz">
     <div class="section-container">
+      <div class="trust-grid-merged reveal-up">
 
-      <div class="why-header reveal-up">
-        <span class="why-kicker" data-i18n="why_kicker">NEDEN THREE BROTHERS?</span>
-        <h2 class="why-title" data-i18n="why_title">Manavgat’ta Güven Veren Saç Tasarım Deneyimi</h2>
+        <!-- Sol: Başlık & Giriş -->
+        <div class="trust-content-box">
+          <span class="trust-kicker" data-i18n="trust_kicker">GÜVEN & KALİTE STANDARTLARIMIZ</span>
+          <h2 class="trust-title" data-i18n="trust_title">
+            Manavgat’ta Güven Veren Saç Tasarım Deneyimi
+          </h2>
+          <p class="trust-desc" data-i18n="trust_desc">
+            Three Brothers stüdyomuzda her misafirimiz için şeffaf, samimi ve tavizsiz standartlarla çalışıyoruz. Beklentilerinizi dinliyor, saçınız için en doğru kararı birlikte veriyoruz.
+          </p>
+          <a href="https://wa.me/905526856907?text=Merhaba,%20Three%20Brothers%20salonunuzdan%20danışmanlık%20ve%20randevu%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" class="btn-espresso-luxury">
+            <span>Ön Görüşme & Randevu Al</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Sağ: 2x2 Grid (4 Güven & Metrik Kartı) -->
+        <div class="trust-cards-2x2">
+
+          <!-- Kart 1: 2014 Tecrübe -->
+          <div class="trust-metric-card reveal-stagger-item">
+            <div class="trust-card-top-val" data-i18n="trust_c1_val">2014</div>
+            <h3 class="trust-card-title" data-i18n="trust_c1_title">2014'ten Beri Tecrübe</h3>
+            <p class="trust-card-desc" data-i18n="trust_c1_desc">Yılların ustalığıyla saç yapısını bozmadan en doğru işlemi uyguluyoruz.</p>
+          </div>
+
+          <!-- Kart 2: Birebir Saç Analizi -->
+          <div class="trust-metric-card reveal-stagger-item">
+            <div class="trust-card-top-val" data-i18n="trust_c2_val">Analiz</div>
+            <h3 class="trust-card-title" data-i18n="trust_c2_title">Birebir Saç Analizi</h3>
+            <p class="trust-card-desc" data-i18n="trust_c2_desc">Her işlem öncesi saçın elastikiyeti ve geçmişi detaylıca değerlendirilir.</p>
+          </div>
+
+          <!-- Kart 3: %100 Orijinal Ürünler -->
+          <div class="trust-metric-card reveal-stagger-item">
+            <div class="trust-card-top-val" data-i18n="trust_c3_val">%100</div>
+            <h3 class="trust-card-title" data-i18n="trust_c3_title">%100 Orijinal Ürünler</h3>
+            <p class="trust-card-desc" data-i18n="trust_c3_desc">Dünyaca onaylı, saç sağlığını koruyan profesyonel formüller.</p>
+          </div>
+
+          <!-- Kart 4: Değişmez Hijyen Standardı -->
+          <div class="trust-metric-card reveal-stagger-item">
+            <div class="trust-card-top-val" data-i18n="trust_c4_val">Hijyen</div>
+            <h3 class="trust-card-title" data-i18n="trust_c4_title">Değişmez Hijyen Standardı</h3>
+            <p class="trust-card-desc" data-i18n="trust_c4_desc">Kişiye özel steril ekipmanlar ve tertemiz butik salon ortamı.</p>
+          </div>
+
+        </div>
+
       </div>
-
-      <div class="why-cards-grid">
-
-        <!-- Kart 01 -->
-        <div class="why-card reveal-stagger-item">
-          <span class="why-card-num" data-i18n="why_c1_num">01</span>
-          <h3 class="why-card-title" data-i18n="why_c1_title">Uzman Analiz</h3>
-          <p class="why-card-desc" data-i18n="why_c1_desc">
-            Saç stilistlerimizin 2014'ten bu yana süregelen tecrübesiyle, saç yapınızı bozmadan en doğru işlemi belirliyoruz.
-          </p>
-        </div>
-
-        <!-- Kart 02 -->
-        <div class="why-card reveal-stagger-item">
-          <span class="why-card-num" data-i18n="why_c2_num">02</span>
-          <h3 class="why-card-title" data-i18n="why_c2_title">Önce Hijyen</h3>
-          <p class="why-card-desc" data-i18n="why_c2_desc">
-            Salonumuzda hijyen kuralları bir seçenek değil, sizin sağlığınız için değişmez bir standarttır.
-          </p>
-        </div>
-
-        <!-- Kart 03 -->
-        <div class="why-card reveal-stagger-item">
-          <span class="why-card-num" data-i18n="why_c3_num">03</span>
-          <h3 class="why-card-title" data-i18n="why_c3_title">Güven ve Samimiyet</h3>
-          <p class="why-card-desc" data-i18n="why_c3_desc">
-            Saçınıza zarar verecek hiçbir adımı atmıyor, size en doğru sonucu samimiyetle sunuyoruz.
-          </p>
-        </div>
-
-      </div>
-
     </div>
   </section>
 
   <!-- ==========================================
-       7. 4 ADIMDA SÜREÇ & ONARIM VİTRİNİ
+       5. 4 ADIMDA SÜREÇ & ONARIM VİTRİNİ
   =========================================== -->
   <section id="surec" class="boutique-section section-process">
     <div class="section-container">
