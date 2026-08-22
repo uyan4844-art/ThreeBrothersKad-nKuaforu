@@ -15,6 +15,7 @@ const I18N_LANGUAGES = {
 
 const I18N_TRANSLATIONS = {
   "tr": {
+    "hero_kicker": "MANAVGAT KİŞİYE ÖZEL RENK MİMARİSİ",
     "tech_kicker": "PROFESYONEL RENKLENDİRME & BAĞ KORUMA",
     "tech_title": "Transparan Renklendirme ve Kişiye Özel Doğal Işıltı",
     "tech_desc": "Manavgat Eskihisar’daki salonumuzda; Ombre, Sombre ve Balyaj uygulamalarını saçın bağ dokusunu koruyan transparan tekniklerle gerçekleştiriyoruz. Saç yapınızı yıpratmadan, yüz hatlarınıza ve ten renginize en çok yakışan sağlıklı tonları tasarlıyoruz.",
@@ -244,6 +245,7 @@ const I18N_TRANSLATIONS = {
     "about_page_cta": "WhatsApp ile İletişime Geçin"
   },
   "en": {
+    "hero_kicker": "MANAVGAT BESPOKE COLOR ARCHITECTURE",
     "tech_kicker": "PROFESSIONAL COLORING & BOND PROTECTION",
     "tech_title": "Transparent Coloring & Tailored Natural Radiance",
     "tech_desc": "In our Manavgat Eskihisar studio, we perform Ombre, Sombre, and Balayage using bond-protecting transparent techniques. We craft healthy, luminous tones that enhance your facial features and skin complexion without compromising hair integrity.",
@@ -473,6 +475,7 @@ const I18N_TRANSLATIONS = {
     "about_page_cta": "Contact Us on WhatsApp"
   },
   "de": {
+    "hero_kicker": "MANAVGAT INDIVIDUELLE FARBARCHITEKTUR",
     "tech_kicker": "PROFESSIONELLE FÄRBUNG & STRUKTURSCHUTZ",
     "tech_title": "Transparente Färbung & Maßgeschneiderter Glanz",
     "tech_desc": "In unserem Salon in Manavgat Eskihisar führen wir Ombré, Sombré und Balayage mit strukturschonenden, transparenten Methoden durch. Wir gestalten gesunde, strahlende Nuancen, die harmonisch zu Ihrem Hautton passen.",
@@ -702,6 +705,7 @@ const I18N_TRANSLATIONS = {
     "about_page_cta": "Kontaktieren Sie uns per WhatsApp"
   },
   "ru": {
+    "hero_kicker": "МАНАВГАТ: АВТОРСКАЯ КОЛОРИСТИКА",
     "tech_kicker": "ПРОФЕССИОНАЛЬНОЕ ОКРАШИВАНИЕ И ЗАЩИТА СТРУКТУРЫ",
     "tech_title": "Прозрачное окрашивание и персональное сияние",
     "tech_desc": "В нашем салоне в Эскихисаре (Манавгат) мы выполняем омбре, сомбре и балаяж с применением защитных прозрачных техник. Создаем естественные и здоровые оттенки без повреждения структуры волос.",
@@ -931,6 +935,7 @@ const I18N_TRANSLATIONS = {
     "about_page_cta": "Связаться через WhatsApp"
   },
   "ar": {
+    "hero_kicker": "هندسة وتصميم ألوان الشعر المخصصة في مانافجات",
     "tech_kicker": "التلوين الاحترافي وحماية الروابط",
     "tech_title": "التلوين الشفاف وإشراقة طبيعية مخصصة",
     "tech_desc": "في صالوننا بحي إسكي حصار في مانافجات، ننفذ تقنيات الأومبري، السومبري والبالياج بأسلوب شفاف يحمي بنية الشعر ويمنحكِ درجات صحية وساحرة تتناغم مع ملامحكِ وبشرتكِ.",

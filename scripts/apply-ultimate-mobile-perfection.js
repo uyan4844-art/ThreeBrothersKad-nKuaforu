@@ -1,4 +1,28 @@
-@import "tailwindcss";
+const fs = require('fs');
+const path = require('path');
+const { execSync } = require('child_process');
+
+const indexPath = path.join(__dirname, '../index.html');
+const publicIndexPath = path.join(__dirname, '../public/index.html');
+const inputCssPath = path.join(__dirname, '../src/input.css');
+
+// 1. Update index.html to add kicker pill badge in Hero if not present
+let html = fs.readFileSync(indexPath, 'utf8');
+
+// Ensure Hero has the hero_kicker badge
+if (!html.includes('data-i18n="hero_kicker"')) {
+  html = html.replace(
+    '<div class="hero-content-box">',
+    `<div class="hero-content-box">\n        <span class="hero-kicker-pill" data-i18n="hero_kicker">MANAVGAT KİŞİYE ÖZEL RENK MİMARİSİ</span>`
+  );
+}
+
+fs.writeFileSync(indexPath, html, 'utf8');
+fs.writeFileSync(publicIndexPath, html, 'utf8');
+console.log('index.html updated with hero_kicker badge!');
+
+// 2. Comprehensive Master CSS with exact mobile stacking & desktop preservation
+const masterCss = `@import "tailwindcss";
 
 @theme {
   --color-brand-linen: #FAF7F2;
@@ -2348,3 +2372,7 @@ section[id] {
     padding: 16px 14px !important;
   }
 }
+`;
+
+fs.writeFileSync(inputCssPath, masterCss, 'utf8');
+console.log('src/input.css updated with ultimate mobile stacked layout!');
