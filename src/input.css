@@ -2484,25 +2484,108 @@ body.menu-open {
     line-height: 1.18 !important;
   }
 
-  /* 1. Mobile Header */
+  /* 1. Mobile Header (Shine Hair Dark Luxury Minimal Bar) */
   .luxury-header,
   .boutique-header {
-    height: 70px !important;
-    padding: 0 16px !important;
+    background: rgba(0, 0, 0, 0.85) !important;
+    backdrop-filter: blur(14px) !important;
+    -webkit-backdrop-filter: blur(14px) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+    height: calc(64px + env(safe-area-inset-top, 0px)) !important;
+    padding: calc(8px + env(safe-area-inset-top, 0px)) 20px 8px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 5000 !important;
   }
-  .brand-title {
-    font-size: 17px !important;
+
+  .luxury-header .header-insta-btn {
+    display: inline-flex !important;
+    width: 40px !important;
+    height: 40px !important;
+    background: transparent !important;
+    border: none !important;
+    color: #FFFFFF !important;
+    padding: 0 !important;
+    order: 1 !important;
   }
-  .brand-subtitle {
-    font-size: 7.5px !important;
-    letter-spacing: 0.16em !important;
+
+  .luxury-header .brand-link {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 0 !important;
+    order: 2 !important;
   }
-  .lang-switcher {
-    padding: 2px 4px !important;
+
+  .luxury-header .brand-logo-img {
+    display: none !important;
   }
-  .lang-btn {
-    padding: 3px 6px !important;
-    font-size: 10px !important;
+
+  .luxury-header .brand-title {
+    color: #FFFFFF !important;
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.01em !important;
+    font-family: var(--font-serif) !important;
+  }
+
+  .luxury-header .brand-subtitle {
+    color: #D6D3D1 !important;
+    font-size: 9px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.25em !important;
+    margin-top: -2px !important;
+    text-transform: uppercase !important;
+  }
+
+  .luxury-header .header-right-actions {
+    display: flex !important;
+    align-items: center !important;
+    order: 3 !important;
+  }
+
+  .luxury-header .lang-dropdown-container,
+  .luxury-header .btn-header-wa {
+    display: none !important;
+  }
+
+  .luxury-header .mobile-menu-btn {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-end !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    width: 40px !important;
+    height: 40px !important;
+    color: #FFFFFF !important;
+    cursor: pointer !important;
+  }
+
+  .luxury-header .mobile-menu-btn span:first-child {
+    display: none !important;
+  }
+
+  .luxury-header .mobile-menu-btn .menu-line-1 {
+    display: block !important;
+    width: 24px !important;
+    height: 2px !important;
+    background: #FFFFFF !important;
+    border-radius: 999px !important;
+  }
+
+  .luxury-header .mobile-menu-btn .menu-line-2 {
+    display: block !important;
+    width: 16px !important;
+    height: 2px !important;
+    background: #FFFFFF !important;
+    border-radius: 999px !important;
   }
 
   /* 2. Hero: Background Image with Soft Bottom Scrim */

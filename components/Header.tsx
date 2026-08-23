@@ -42,10 +42,50 @@ export const Header: React.FC<HeaderProps> = ({
   return (
     <>
       {/* =========================================================================
-          1. DESKTOP & MOBILE LUXURY STICKY HEADER (Desktop untouched)
+          1. SHINE HAIR MOBİL HEADER (md:hidden)
+      ========================================================================== */}
+      <header className="md:hidden sticky top-0 z-50 bg-black/80 backdrop-blur-md px-5 py-3.5 flex items-center justify-between border-b border-white/10 pt-[calc(0.875rem+env(safe-area-inset-top,0px))]">
+        {/* SOL: Sadece Minimal Instagram İkonu */}
+        <a 
+          href="https://www.instagram.com/threebrotherrrs/" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="w-10 h-10 flex items-center justify-center text-white hover:text-stone-300 transition-colors cursor-pointer"
+          aria-label="Instagram"
+        >
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+        </a>
+
+        {/* ORTA: Ortalanmış Logo & Alt Başlık */}
+        <Link href="/" className="flex flex-col items-center text-center no-underline">
+          <span className="text-white font-serif text-lg font-bold tracking-tight">
+            Three Brothers
+          </span>
+          <span className="text-[9px] uppercase tracking-[0.25em] text-stone-300 font-medium -mt-0.5">
+            KADIN KUAFÖRÜ
+          </span>
+        </Link>
+
+        {/* SAĞ: İki Çizgili Minimal Menü İkonu */}
+        <button 
+          onClick={() => setIsDrawerOpen(true)}
+          className="w-10 h-10 flex flex-col items-end justify-center gap-1.5 text-white cursor-pointer"
+          aria-label="Menüyü Aç"
+        >
+          <span className="w-6 h-[2px] bg-white rounded-full"></span>
+          <span className="w-4 h-[2px] bg-white rounded-full"></span>
+        </button>
+      </header>
+
+      {/* =========================================================================
+          2. DESKTOP LUXURY STICKY HEADER (hidden md:flex - 100% Intact)
       ========================================================================== */}
       <header
-        className={`fixed top-0 left-0 w-full z-40 px-4 sm:px-8 py-3.5 sm:py-4.5 pt-[calc(0.875rem+env(safe-area-inset-top,0px))] flex items-center justify-between transition-all duration-300 ${
+        className={`hidden md:flex fixed top-0 left-0 w-full z-40 px-4 sm:px-8 py-3.5 sm:py-4.5 pt-[calc(0.875rem+env(safe-area-inset-top,0px))] items-center justify-between transition-all duration-300 ${
           isScrolled
             ? 'bg-[#FAF7F2]/90 backdrop-blur-md border-b border-[#C5A880]/20 shadow-sm'
             : 'bg-[#FAF7F2]/60 backdrop-blur-xs border-b border-[#C5A880]/15'
@@ -93,7 +133,7 @@ export const Header: React.FC<HeaderProps> = ({
           </Link>
         </nav>
 
-        {/* Right Actions: Language Selector + Instagram + Randevu Al + Mobile Menu Button */}
+        {/* Right Actions: Language Selector + Instagram + Randevu Al */}
         <div className="flex items-center gap-3">
           {/* Tıklanabilir Lüks Dil Seçici (Language Dropdown) */}
           <LanguageSelector
@@ -128,20 +168,6 @@ export const Header: React.FC<HeaderProps> = ({
             </svg>
             <span>Randevu Al</span>
           </a>
-
-          {/* Mobil Menü Butonu (Zarif İki Çizgili Hamburger + "MENU" Yazısı) */}
-          <button
-            type="button"
-            onClick={() => setIsDrawerOpen(true)}
-            aria-label="Menüyü Aç"
-            className="inline-flex lg:hidden items-center gap-1.5 border border-[#C5A880]/35 bg-white/80 hover:bg-white rounded-full px-3 py-1.5 text-xs font-bold text-[#1F1C19] shadow-2xs transition-colors cursor-pointer"
-          >
-            <span>MENU</span>
-            <div className="flex flex-col gap-1 w-3.5">
-              <span className="w-full h-[1.5px] bg-[#1F1C19] rounded-full" />
-              <span className="w-full h-[1.5px] bg-[#1F1C19] rounded-full" />
-            </div>
-          </button>
         </div>
       </header>
 
