@@ -24,11 +24,14 @@ export default function Home() {
       {/* Hero Section (Tam Ekran Arka Planlı Absolute/Layered Yapı) */}
       <section id="hero" className="relative min-h-[90dvh] w-full flex flex-col justify-end items-center px-5 pb-10 pt-24 overflow-hidden">
         {/* Arka Plan Görseli */}
-        <img
-          src="/images/hero-model.webp"
-          alt="Three Brothers Saç Tasarımı - Manavgat Kadın Kuaförü"
-          className="hero-bg-image absolute inset-0 w-full h-full object-cover object-[center_top] -z-20 pointer-events-none"
-        />
+        <picture className="absolute inset-0 w-full h-full -z-20 pointer-events-none">
+          <source media="(max-width: 768px)" srcSet="/images/hero-model-mobile.webp" />
+          <img
+            src="/images/hero-model.webp"
+            alt="Three Brothers Saç Tasarımı - Manavgat Kadın Kuaförü"
+            className="hero-bg-image absolute inset-0 w-full h-full object-cover object-[72%_12%]"
+          />
+        </picture>
 
         {/* Sadece Alt Geçiş Degradesi */}
         <div className="absolute inset-0 bg-gradient-to-t from-[#FAF8F5] via-[#FAF8F5]/40 to-transparent pointer-events-none -z-10" />
