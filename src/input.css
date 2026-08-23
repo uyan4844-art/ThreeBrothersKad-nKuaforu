@@ -1388,6 +1388,56 @@ body.menu-open {
   margin: 0;
 }
 
+/* 01 / 02 / 03 Shine Hair Minimalist Trust Blocks */
+.shine-trust-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 36px;
+}
+
+.shine-trust-card {
+  background: #FAF7F2;
+  border: 1px solid rgba(197, 168, 128, 0.28);
+  border-radius: 24px;
+  padding: 32px 26px;
+  position: relative;
+  transition: all 0.35s var(--ease-expo);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.02);
+}
+
+.shine-trust-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(116, 109, 101, 0.1);
+  border-color: var(--gold-primary);
+}
+
+.shine-trust-num {
+  font-family: var(--font-serif);
+  font-size: 42px;
+  font-weight: 800;
+  color: rgba(197, 168, 128, 0.4);
+  line-height: 1;
+  margin-bottom: 14px;
+}
+
+.shine-trust-title {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 700;
+  color: #1F1C19;
+  margin-bottom: 10px;
+  line-height: 1.25;
+}
+
+.shine-trust-desc {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13.5px;
+  color: #635E57;
+  line-height: 1.65;
+  margin: 0;
+}
+
 /* ==========================================================================
    10. 4 ADIMDA SÜREÇ & ONARIM VİTRİNİ (#surec)
    ========================================================================== */
@@ -2546,33 +2596,61 @@ body.menu-open {
     font-size: 14px !important;
   }
 
-  /* 3. Bento Grid Mobile */
+  /* 3. Bento Grid Mobile (Shine Hair Single Column Aspect 4/3) */
   .bento-mosaic {
     display: flex !important;
     flex-direction: column !important;
-    gap: 14px !important;
+    gap: 18px !important;
     width: 100% !important;
+    padding: 0 4px !important;
   }
 
-  .bento-item {
-    width: 100% !important;
-    height: 200px !important;
-    border-radius: 16px !important;
-  }
-
+  .bento-item,
   .bento-item.tall {
-    height: 220px !important;
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 4 / 3 !important;
+    border-radius: 20px !important;
+    overflow: hidden !important;
+  }
+
+  .bento-item img {
+    width: 100% !important;
+    height: 100% !important;
+    aspect-ratio: 4 / 3 !important;
+    object-fit: cover !important;
+    border-radius: 20px !important;
   }
 
   .bento-overlay {
-    padding: 18px !important;
+    padding: 22px 18px !important;
+    background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.3) 50%, transparent 80%) !important;
   }
 
   .bento-overlay h3 {
-    font-size: 1.15rem !important;
+    font-size: 1.25rem !important;
+    font-weight: 700 !important;
+    margin-bottom: 8px !important;
   }
 
-  /* 4. Teknikler Mobile */
+  /* 4. Shine Hair Trust 01 / 02 / 03 Mobile */
+  .shine-trust-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+    margin-top: 24px !important;
+  }
+
+  .shine-trust-card {
+    padding: 24px 20px !important;
+    border-radius: 20px !important;
+  }
+
+  .shine-trust-num {
+    font-size: 34px !important;
+    margin-bottom: 8px !important;
+  }
+
+  /* 5. Teknikler Mobile */
   .tech-grid-merged {
     gap: 28px !important;
   }

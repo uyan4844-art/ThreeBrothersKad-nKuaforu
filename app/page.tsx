@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { Header } from '../components/Header';
 import { Services } from '../components/Services';
+import { TrustSection } from '../components/TrustSection';
 import { MobileBottomNav } from '../components/MobileBottomNav';
 import { LanguageCode } from '../components/LanguageSelector';
 
@@ -53,10 +54,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Services with Tabs and Bottom Sheet Modal */}
+      {/* Services with Tabs and Direct Links */}
       <Services />
 
-      {/* App-Like Mobile Bottom Navigation */}
+      {/* 01 / 02 / 03 Numaralı Güven & Standartlar Bölümü */}
+      <TrustSection />
+
+      {/* Modern Mobil Alt Hızlı İletişim Barı */}
       <MobileBottomNav />
     </main>
   );

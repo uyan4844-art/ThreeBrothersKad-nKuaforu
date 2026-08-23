@@ -207,18 +207,30 @@ export const Header: React.FC<HeaderProps> = ({
 
               {/* Hizmetler Bölümü (Ayrı Linkler) */}
               <div className="space-y-2 mb-6">
-                <span className="text-[10px] font-bold text-[#A48358] tracking-widest uppercase block mb-2 px-3">
+                <span className="text-xs uppercase tracking-widest text-stone-400 font-semibold mb-3 mt-4 block px-3">
                   HİZMETLERİMİZ
                 </span>
                 <div className="space-y-1.5 font-montserrat text-xs font-semibold text-[#1F1C19]">
                   <Link
                     href="/hizmetler/balyaj"
                     onClick={() => setIsDrawerOpen(false)}
-                    className="flex items-center justify-between p-3 bg-white border border-[#C5A880]/20 rounded-xl hover:border-[#C5A880] transition-colors shadow-2xs"
+                    className="flex items-center justify-between p-3 bg-white border border-[#C5A880]/20 rounded-xl hover:border-[#C5A880] transition-colors shadow-2xs min-h-[44px]"
                   >
                     <div className="flex items-center gap-2">
                       <span className="text-[#A48358]">•</span>
-                      <span>Balyaj & Blonde</span>
+                      <span>Profesyonel Balyaj</span>
+                    </div>
+                    <span className="text-[#A48358]">→</span>
+                  </Link>
+
+                  <Link
+                    href="/hizmetler/blonde"
+                    onClick={() => setIsDrawerOpen(false)}
+                    className="flex items-center justify-between p-3 bg-white border border-[#C5A880]/20 rounded-xl hover:border-[#C5A880] transition-colors shadow-2xs min-h-[44px]"
+                  >
+                    <div className="flex items-center gap-2">
+                      <span className="text-[#A48358]">•</span>
+                      <span>Blonde Saç Tasarımı</span>
                     </div>
                     <span className="text-[#A48358]">→</span>
                   </Link>
@@ -226,7 +238,7 @@ export const Header: React.FC<HeaderProps> = ({
                   <Link
                     href="/hizmetler/kaynak"
                     onClick={() => setIsDrawerOpen(false)}
-                    className="flex items-center justify-between p-3 bg-white border border-[#C5A880]/20 rounded-xl hover:border-[#C5A880] transition-colors shadow-2xs"
+                    className="flex items-center justify-between p-3 bg-white border border-[#C5A880]/20 rounded-xl hover:border-[#C5A880] transition-colors shadow-2xs min-h-[44px]"
                   >
                     <div className="flex items-center gap-2">
                       <span className="text-[#A48358]">•</span>
@@ -238,7 +250,7 @@ export const Header: React.FC<HeaderProps> = ({
                   <Link
                     href="/hizmetler/ombre"
                     onClick={() => setIsDrawerOpen(false)}
-                    className="flex items-center justify-between p-3 bg-white border border-[#C5A880]/20 rounded-xl hover:border-[#C5A880] transition-colors shadow-2xs"
+                    className="flex items-center justify-between p-3 bg-white border border-[#C5A880]/20 rounded-xl hover:border-[#C5A880] transition-colors shadow-2xs min-h-[44px]"
                   >
                     <div className="flex items-center gap-2">
                       <span className="text-[#A48358]">•</span>
@@ -250,7 +262,7 @@ export const Header: React.FC<HeaderProps> = ({
                   <Link
                     href="/hizmetler/renklendirme"
                     onClick={() => setIsDrawerOpen(false)}
-                    className="flex items-center justify-between p-3 bg-white border border-[#C5A880]/20 rounded-xl hover:border-[#C5A880] transition-colors shadow-2xs"
+                    className="flex items-center justify-between p-3 bg-white border border-[#C5A880]/20 rounded-xl hover:border-[#C5A880] transition-colors shadow-2xs min-h-[44px]"
                   >
                     <div className="flex items-center gap-2">
                       <span className="text-[#A48358]">•</span>
@@ -260,13 +272,13 @@ export const Header: React.FC<HeaderProps> = ({
                   </Link>
 
                   <Link
-                    href="/hizmetler/renklendirme"
+                    href="/hizmetler/renklendirme#kesim"
                     onClick={() => setIsDrawerOpen(false)}
-                    className="flex items-center justify-between p-3 bg-white border border-[#C5A880]/20 rounded-xl hover:border-[#C5A880] transition-colors shadow-2xs"
+                    className="flex items-center justify-between p-3 bg-white border border-[#C5A880]/20 rounded-xl hover:border-[#C5A880] transition-colors shadow-2xs min-h-[44px]"
                   >
                     <div className="flex items-center gap-2">
                       <span className="text-[#A48358]">•</span>
-                      <span>Kişiye Özel Kesim</span>
+                      <span>Kişiye Özel Saç Kesimi</span>
                     </div>
                     <span className="text-[#A48358]">→</span>
                   </Link>
@@ -292,11 +304,11 @@ export const Header: React.FC<HeaderProps> = ({
                 </div>
               </div>
 
-              {/* Yan Yana İki Buton: Hemen Ara & Konum */}
+              {/* Yan Yana İki Buton: Hemen Ara & Konumu Aç */}
               <div className="grid grid-cols-2 gap-2">
                 <a
                   href="tel:+905526856907"
-                  className="flex items-center justify-center gap-1.5 bg-[#1F1C19] hover:bg-[#36312C] text-white py-2.5 px-3 rounded-xl text-xs font-bold font-montserrat shadow-sm transition-colors text-center"
+                  className="flex items-center justify-center gap-1.5 bg-[#1F1C19] hover:bg-[#36312C] text-white min-h-[44px] py-2.5 px-3 rounded-xl text-xs font-bold font-montserrat shadow-sm transition-colors text-center active:scale-95 cursor-pointer"
                 >
                   <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z"/>
@@ -307,13 +319,13 @@ export const Header: React.FC<HeaderProps> = ({
                   href="https://maps.google.com/?cid=16986332279537405342"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-1.5 bg-white border border-[#C5A880]/40 hover:bg-[#FAF7F2] text-[#1F1C19] py-2.5 px-3 rounded-xl text-xs font-bold font-montserrat shadow-2xs transition-colors text-center"
+                  className="flex items-center justify-center gap-1.5 bg-white border border-[#C5A880]/40 hover:bg-[#FAF7F2] text-[#1F1C19] min-h-[44px] py-2.5 px-3 rounded-xl text-xs font-bold font-montserrat shadow-2xs transition-colors text-center active:scale-95 cursor-pointer"
                 >
                   <svg className="w-3.5 h-3.5 text-[#A48358]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     <circle cx="12" cy="11" r="3" />
                   </svg>
-                  <span>Konum / Yol Tarifi</span>
+                  <span>Konumu Aç</span>
                 </a>
               </div>
 
@@ -322,12 +334,12 @@ export const Header: React.FC<HeaderProps> = ({
                 href="https://wa.me/905526856907?text=Merhaba,%20Three%20Brothers%20salonunuzdan%20randevu%20almak%20istiyorum."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-[#25D366] to-[#128C7E] text-white py-3 px-4 rounded-xl text-xs font-bold font-montserrat shadow-md shadow-[#25D366]/20 hover:shadow-lg transition-transform active:scale-98"
+                className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-[#25D366] to-[#128C7E] text-white min-h-[44px] py-3 px-4 rounded-xl text-xs font-bold font-montserrat shadow-md shadow-[#25D366]/20 hover:shadow-lg transition-transform active:scale-95 cursor-pointer"
               >
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
                   <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
                 </svg>
-                <span>WhatsApp ile Randevu Al</span>
+                <span>WhatsApp Randevu Al</span>
               </a>
             </div>
           </aside>

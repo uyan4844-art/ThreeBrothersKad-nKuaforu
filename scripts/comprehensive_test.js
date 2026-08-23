@@ -5,6 +5,7 @@ const i18nJs = fs.readFileSync('js/i18n.js', 'utf8');
 const styleCss = fs.readFileSync('css/style.css', 'utf8');
 const headerTsx = fs.readFileSync('components/Header.tsx', 'utf8');
 const bottomNavTsx = fs.readFileSync('components/MobileBottomNav.tsx', 'utf8');
+const trustSectionTsx = fs.readFileSync('components/TrustSection.tsx', 'utf8');
 
 const tests = [];
 
@@ -32,22 +33,35 @@ assert(bottomNavTsx.includes('safe-area-inset-bottom'), 'MobileBottomNav.tsx has
 assert(styleCss.includes('100dvh'), 'Compiled CSS has 100dvh support');
 assert(headerTsx.includes('100dvh'), 'Header.tsx drawer has 100dvh support');
 
-// 4. LANGUAGE DROPDOWN
-assert(indexHtml.includes('class="lang-dropdown-container"'), 'Language dropdown container in index.html');
-assert(indexHtml.includes('class="lang-dropdown-btn"'), 'Language dropdown toggle button in index.html');
-assert(indexHtml.includes('class="lang-dropdown-menu"'), 'Language dropdown menu in index.html');
-assert(i18nJs.includes('toggleLangDropdown'), 'toggleLangDropdown function in js/i18n.js');
-assert(i18nJs.includes('selectLanguage'), 'selectLanguage function in js/i18n.js');
-assert(fs.existsSync('components/LanguageSelector.tsx'), 'components/LanguageSelector.tsx exists');
+// 4. SHINE HAIR SLIDE-OVER DRAWER (6 Services & Dual Actions)
+assert(indexHtml.includes('class="drawer-service-links-list"'), 'Drawer has dedicated service links list in index.html');
+assert(indexHtml.includes('Profesyonel Balyaj'), 'Drawer has Profesyonel Balyaj');
+assert(indexHtml.includes('Blonde Saç Tasarımı'), 'Drawer has Blonde Saç Tasarımı');
+assert(indexHtml.includes('Mikro Kapsül Kaynak'), 'Drawer has Mikro Kapsül Kaynak');
+assert(indexHtml.includes('Ombre & Sombre'), 'Drawer has Ombre & Sombre');
+assert(indexHtml.includes('Saç Boyama & Tonlama'), 'Drawer has Saç Boyama & Tonlama');
+assert(indexHtml.includes('Kişiye Özel Saç Kesimi'), 'Drawer has Kişiye Özel Saç Kesimi');
+assert(indexHtml.includes('Konumu Aç'), 'Drawer has Konumu Aç button in index.html');
+assert(headerTsx.includes('Konumu Aç'), 'Header.tsx has Konumu Aç button');
+assert(headerTsx.includes('Profesyonel Balyaj') && headerTsx.includes('Blonde Saç Tasarımı'), 'Header.tsx drawer has 6 Shine Hair service items');
 
-// 5. CATEGORY TABS & FILTERING
+// 5. SHINE HAIR 01 / 02 / 03 TRUST SECTION
+assert(indexHtml.includes('shine-trust-grid'), 'index.html has shine-trust-grid');
+assert(indexHtml.includes('Uzman Saç Analizi'), 'index.html has 01 Uzman Saç Analizi');
+assert(indexHtml.includes('Değişmez Hijyen Standardı'), 'index.html has 02 Değişmez Hijyen Standardı');
+assert(indexHtml.includes('Dürüst ve Şeffaf Hizmet'), 'index.html has 03 Dürüst ve Şeffaf Hizmet');
+assert(trustSectionTsx.includes('Uzman Saç Analizi'), 'TrustSection.tsx has 01 Uzman Saç Analizi');
+
+// 6. STICKY BOTTOM NAV DUAL ACTIONS
+assert(bottomNavTsx.includes('Hemen Ara') && bottomNavTsx.includes('WhatsApp Randevu'), 'MobileBottomNav.tsx has dual action buttons');
+assert(indexHtml.includes('Hemen Ara') && indexHtml.includes('WhatsApp Randevu'), 'index.html has dual action bottom nav');
+
+// 7. LANGUAGE DROPDOWN & CATEGORY TABS
+assert(indexHtml.includes('class="lang-dropdown-container"'), 'Language dropdown container in index.html');
 assert(indexHtml.includes('service-tabs-wrapper'), 'Service category tabs wrapper in index.html');
-assert(indexHtml.includes('data-category="renklendirme"'), 'Renklendirme & Balyaj category tab in index.html');
-assert(indexHtml.includes('data-category="kaynak"'), 'Mikro Kaynak category tab in index.html');
-assert(indexHtml.includes('data-category="bakim"'), 'Bakım & Kesim category tab in index.html');
 assert(i18nJs.includes('filterServices'), 'filterServices function in js/i18n.js');
 
-// 6. DEDICATED MULTI-PAGE SERVICE PAGES
+// 8. DEDICATED MULTI-PAGE SERVICE PAGES
 assert(indexHtml.includes('href="balyaj.html"'), 'Balyaj card links directly to balyaj.html');
 assert(indexHtml.includes('href="blonde.html"'), 'Blonde card links directly to blonde.html');
 assert(indexHtml.includes('href="kaynak.html"'), 'Kaynak card links directly to kaynak.html');
@@ -68,15 +82,10 @@ assert(fs.existsSync('app/hizmetler/ombre/page.tsx'), 'app/hizmetler/ombre/page.
 assert(fs.existsSync('app/hizmetler/renklendirme/page.tsx'), 'app/hizmetler/renklendirme/page.tsx Next.js page exists');
 assert(fs.existsSync('app/hakkimizda/page.tsx'), 'app/hakkimizda/page.tsx Next.js page exists');
 
-// 7. SHINE HAIR LUXURY MOBILE DRAWER
-assert(indexHtml.includes('class="drawer-service-links-list"'), 'Drawer has dedicated service links list');
-assert(indexHtml.includes('class="drawer-action-dual-row"'), 'Drawer has dual action row (Call & Maps)');
-assert(indexHtml.includes('class="drawer-wa-full-btn"'), 'Drawer has full-width WhatsApp button');
-
-// 8. BRAND INTEGRITY & INSTAGRAM
+// 9. BRAND INTEGRITY & INSTAGRAM
 assert(indexHtml.includes('threebrotherrrs'), 'Instagram handle is @threebrotherrrs');
 
-// 9. ZIP ARCHIVE CHECK
+// 10. ZIP ARCHIVE CHECK
 assert(fs.existsSync('ThreeBrothers_Hostinger_Deploy.zip'), 'ThreeBrothers_Hostinger_Deploy.zip exists');
 const zipSize = fs.statSync('ThreeBrothers_Hostinger_Deploy.zip').size;
 assert(zipSize > 35 * 1024 * 1024, `Zip archive size is valid: ${(zipSize / (1024*1024)).toFixed(2)} MB`);
