@@ -37,6 +37,27 @@
   --ease-spring: cubic-bezier(0.34, 1.4, 0.64, 1);
 }
 
+/* Luxury Hero Entrance & Slow Breathing Animation */
+@keyframes heroEntrance {
+  0% {
+    opacity: 0;
+    transform: scale(1.08);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.0);
+  }
+}
+
+@keyframes heroSlowBreathing {
+  0% {
+    transform: scale(1.0);
+  }
+  100% {
+    transform: scale(1.04);
+  }
+}
+
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -743,7 +764,9 @@ body.menu-open {
   object-position: 72% 12%;
   filter: contrast(105%) saturate(104%);
   display: block;
-  transform-origin: center center;
+  transform-origin: center 25%;
+  animation: heroEntrance 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards, heroSlowBreathing 9s ease-in-out 1.2s infinite alternate;
+  will-change: transform, opacity;
 }
 
 .hero-backdrop-scrim {
@@ -2663,6 +2686,9 @@ body.menu-open {
     -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%) !important;
     mask-image: linear-gradient(to bottom, black 50%, transparent 100%) !important;
     pointer-events: none !important;
+    transform-origin: 60% 25% !important;
+    animation: heroEntrance 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards, heroSlowBreathing 9s ease-in-out 1.2s infinite alternate !important;
+    will-change: transform, opacity !important;
   }
 
   .hero-backdrop-scrim {
