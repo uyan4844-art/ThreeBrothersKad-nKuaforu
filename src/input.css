@@ -343,6 +343,41 @@ section[id] {
   transform: translateY(-2px);
 }
 
+.header-right-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-header-wa {
+  background: #1F1C19;
+  color: #FFFFFF !important;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  padding: 8px 18px;
+  border-radius: 999px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.3s var(--ease-expo);
+  box-shadow: 0 4px 14px rgba(31, 28, 25, 0.16);
+  border: 1px solid rgba(197, 168, 128, 0.3);
+}
+
+.btn-header-wa:hover {
+  background: #36312C;
+  border-color: var(--gold-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(31, 28, 25, 0.25);
+}
+
+.btn-header-wa svg {
+  color: #25D366;
+}
+
 .mobile-menu-btn {
   background: transparent;
   border: 1px solid rgba(197, 168, 128, 0.35);
