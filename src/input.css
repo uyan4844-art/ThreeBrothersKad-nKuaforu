@@ -2653,7 +2653,7 @@ body.menu-open {
     flex-direction: column !important;
     justify-content: flex-end !important;
     align-items: center !important;
-    padding: 70px 20px 75px !important;
+    padding: 60px 20px 95px !important;
     overflow: hidden !important;
     background-color: #FAF8F5 !important;
   }
@@ -2699,7 +2699,7 @@ body.menu-open {
     width: 100% !important;
     height: 100% !important;
     z-index: 1 !important;
-    background: linear-gradient(to top, #FAF8F5 0%, rgba(250, 248, 245, 0.5) 45%, rgba(250, 248, 245, 0.1) 75%, transparent 100%) !important;
+    background: linear-gradient(to top, #FAF8F5 0%, rgba(250, 248, 245, 0.75) 55%, rgba(250, 248, 245, 0.25) 80%, transparent 100%) !important;
     display: block !important;
     pointer-events: none !important;
   }
@@ -2714,7 +2714,7 @@ body.menu-open {
     flex-direction: column !important;
     align-items: center !important;
     text-align: center !important;
-    transform: translateY(-20px) !important;
+    transform: translateY(-50px) !important;
   }
 
   .hero-content-box {
