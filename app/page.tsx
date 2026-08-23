@@ -34,19 +34,19 @@ export default function Home() {
             Manavgat’ta Doğal ve Çekici Işıltının Adresi. Saçlarınızda doğal geçişler ve göz alıcı parlaklık arıyorsanız doğru yerdesiniz.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-4 max-w-xs sm:max-w-none mx-auto">
-            {/* 1. Hizmetlerimiz (Beyaz Oval Buton) */}
+            {/* 1. Hizmetlerimiz (Siyah Dolgulu / Beyaz Yazılı Buton) */}
             <a
               href="#hizmetler"
-              className="w-full sm:w-auto bg-white hover:bg-stone-100 text-black font-montserrat text-sm font-bold uppercase tracking-wider py-3.5 px-8 rounded-full shadow-md border border-stone-200 transition-all duration-300 text-center"
+              className="w-full sm:w-auto bg-[#1A1918] hover:bg-[#2C2724] text-white font-montserrat text-sm font-bold uppercase tracking-wider py-3.5 px-8 rounded-full shadow-md border border-[#1A1918] transition-all duration-300 text-center"
             >
               Hizmetlerimiz
             </a>
-            {/* 2. Randevu Al (Şeffaf/Siyah İnce Beyaz Çerçeveli Buton) */}
+            {/* 2. Randevu Al (Krem Zeminli / Siyah Çerçeveli Buton) */}
             <a
               href="https://wa.me/905526856907?text=Merhaba,%20Three%20Brothers%20salonunuzdan%20randevu%20almak%20istiyorum."
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto bg-black/80 hover:bg-black text-white font-montserrat text-sm font-bold uppercase tracking-wider py-3.5 px-8 rounded-full shadow-md border border-white/80 transition-all duration-300 text-center"
+              className="w-full sm:w-auto bg-[#FAF8F5] hover:bg-[#1A1918] hover:text-white text-[#1A1918] font-montserrat text-sm font-bold uppercase tracking-wider py-3.5 px-8 rounded-full shadow-md border-1.5 border-[#1A1918] transition-all duration-300 text-center"
             >
               Randevu Al
             </a>

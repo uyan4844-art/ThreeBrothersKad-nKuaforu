@@ -44,13 +44,13 @@ export const Header: React.FC<HeaderProps> = ({
       {/* =========================================================================
           1. SHINE HAIR MOBİL HEADER (md:hidden)
       ========================================================================== */}
-      <header className="md:hidden sticky top-0 z-50 bg-black/80 backdrop-blur-md px-5 py-3.5 flex items-center justify-between border-b border-white/10 pt-[calc(0.875rem+env(safe-area-inset-top,0px))]">
+      <header className="md:hidden sticky top-0 z-50 bg-[#FAF8F5]/90 backdrop-blur-md px-5 py-3.5 flex items-center justify-between border-b border-stone-200/60 pt-[calc(0.875rem+env(safe-area-inset-top,0px))]">
         {/* SOL: Sadece Minimal Instagram İkonu */}
         <a 
           href="https://www.instagram.com/threebrotherrrs/" 
           target="_blank" 
           rel="noopener noreferrer"
-          className="w-10 h-10 flex items-center justify-center text-white hover:text-stone-300 transition-colors cursor-pointer"
+          className="w-10 h-10 flex items-center justify-center text-[#1A1918] hover:text-[#C5A880] transition-colors cursor-pointer"
           aria-label="Instagram"
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
@@ -62,10 +62,10 @@ export const Header: React.FC<HeaderProps> = ({
 
         {/* ORTA: Ortalanmış Logo & Alt Başlık */}
         <Link href="/" className="flex flex-col items-center text-center no-underline">
-          <span className="text-white font-serif text-lg font-bold tracking-tight">
+          <span className="text-[#1A1918] font-serif text-lg font-bold tracking-tight">
             Three Brothers
           </span>
-          <span className="text-[9px] uppercase tracking-[0.25em] text-stone-300 font-medium -mt-0.5">
+          <span className="text-[9px] uppercase tracking-[0.25em] text-stone-500 font-medium -mt-0.5">
             KADIN KUAFÖRÜ
           </span>
         </Link>
@@ -73,11 +73,11 @@ export const Header: React.FC<HeaderProps> = ({
         {/* SAĞ: İki Çizgili Minimal Menü İkonu */}
         <button 
           onClick={() => setIsDrawerOpen(true)}
-          className="w-10 h-10 flex flex-col items-end justify-center gap-1.5 text-white cursor-pointer"
+          className="w-10 h-10 flex flex-col items-end justify-center gap-1.5 text-[#1A1918] cursor-pointer"
           aria-label="Menüyü Aç"
         >
-          <span className="w-6 h-[2px] bg-white rounded-full"></span>
-          <span className="w-4 h-[2px] bg-white rounded-full"></span>
+          <span className="w-6 h-[2px] bg-[#1A1918] rounded-full"></span>
+          <span className="w-4 h-[2px] bg-[#1A1918] rounded-full"></span>
         </button>
       </header>
 
