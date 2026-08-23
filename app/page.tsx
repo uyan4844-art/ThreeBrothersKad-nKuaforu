@@ -23,15 +23,19 @@ export default function Home() {
 
       {/* Hero Section (Tam Ekran Arka Planlı Absolute/Layered Yapı) */}
       <section id="hero" className="relative min-h-[90dvh] w-full flex flex-col justify-end items-center px-5 pb-10 pt-24 overflow-hidden">
-        {/* Arka Plan Görseli */}
+        {/* Arka Plan Görseli (Mask Gradient ile alta doğru eriyen) */}
         <img
           src="/images/hero-model.webp"
           alt="Three Brothers Sarı Saç ve Renk Uzmanlığı"
           className="absolute inset-0 w-full h-full object-cover object-[60%_top] -z-20 pointer-events-none"
+          style={{
+            maskImage: 'linear-gradient(to bottom, black 50%, transparent 100%)',
+            WebkitMaskImage: 'linear-gradient(to bottom, black 50%, transparent 100%)'
+          }}
         />
 
-        {/* Geçiş Degradesi */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#FAF8F5] via-[#FAF8F5]/60 to-transparent -z-10 pointer-events-none" />
+        {/* Üzerine Krem Degrade */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#FAF8F5] via-[#FAF8F5]/50 to-transparent pointer-events-none -z-10" />
 
         {/* İçerik (Yazılar ve Butonlar) */}
         <div className="relative z-10 text-center space-y-6 max-w-4xl mx-auto flex flex-col items-center">
