@@ -2645,15 +2645,15 @@ body.menu-open {
   /* 2. Hero: Fullscreen Layered Background with Smooth Bottom Cream Fade */
   .boutique-hero {
     position: relative !important;
-    min-height: 90dvh !important;
-    min-height: 90vh !important;
+    min-height: 85dvh !important;
+    min-height: 85vh !important;
     width: 100% !important;
     height: auto !important;
     display: flex !important;
     flex-direction: column !important;
     justify-content: flex-end !important;
     align-items: center !important;
-    padding: 96px 20px 40px !important;
+    padding: 70px 20px 75px !important;
     overflow: hidden !important;
     background-color: #FAF8F5 !important;
   }
@@ -2714,6 +2714,7 @@ body.menu-open {
     flex-direction: column !important;
     align-items: center !important;
     text-align: center !important;
+    transform: translateY(-20px) !important;
   }
 
   .hero-content-box {
