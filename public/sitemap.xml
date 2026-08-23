@@ -1,45 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://threebrothers.com.tr/</loc>
+    <loc>https://three-brothers-kad-n-kuaforu.vercel.app/</loc>
     <lastmod>2026-08-23</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://threebrothers.com.tr/hakkimizda.html</loc>
+    <loc>https://three-brothers-kad-n-kuaforu.vercel.app/services/balyaj</loc>
     <lastmod>2026-08-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://threebrothers.com.tr/balyaj.html</loc>
+    <loc>https://three-brothers-kad-n-kuaforu.vercel.app/services/blonde</loc>
     <lastmod>2026-08-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://threebrothers.com.tr/blonde.html</loc>
+    <loc>https://three-brothers-kad-n-kuaforu.vercel.app/services/kaynak</loc>
     <lastmod>2026-08-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://threebrothers.com.tr/kaynak.html</loc>
+    <loc>https://three-brothers-kad-n-kuaforu.vercel.app/services/ombre</loc>
     <lastmod>2026-08-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://threebrothers.com.tr/ombre.html</loc>
+    <loc>https://three-brothers-kad-n-kuaforu.vercel.app/services/boyama</loc>
     <lastmod>2026-08-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://threebrothers.com.tr/renklendirme.html</loc>
+    <loc>https://three-brothers-kad-n-kuaforu.vercel.app/services/kesim</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://three-brothers-kad-n-kuaforu.vercel.app/hizmetler/balyaj</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://three-brothers-kad-n-kuaforu.vercel.app/hizmetler/blonde</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://three-brothers-kad-n-kuaforu.vercel.app/hizmetler/kaynak</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://three-brothers-kad-n-kuaforu.vercel.app/hizmetler/ombre</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://three-brothers-kad-n-kuaforu.vercel.app/hizmetler/renklendirme</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://three-brothers-kad-n-kuaforu.vercel.app/hakkimizda</loc>
     <lastmod>2026-08-23</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.8</priority>
   </url>
 </urlset>

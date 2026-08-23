@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://threebrothers.com.tr/sitemap.xml
+
+Sitemap: https://three-brothers-kad-n-kuaforu.vercel.app/sitemap.xml

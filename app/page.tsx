@@ -26,7 +26,7 @@ export default function Home() {
         {/* Arka Plan Görseli (Mask Gradient & Lüks Yavaş Süzülme Animasyonu) */}
         <img
           src="/images/hero-model.webp"
-          alt="Three Brothers Sarı Saç ve Renk Uzmanlığı"
+          alt="Manavgat Kadın Kuaförü - Three Brothers Profesyonel Balyaj ve Saç Tasarımı"
           className="hero-bg-image absolute inset-0 w-full h-full object-cover object-[60%_top] -z-20 pointer-events-none"
           style={{
             maskImage: 'linear-gradient(to bottom, black 50%, transparent 100%)',
@@ -43,13 +43,14 @@ export default function Home() {
         {/* İçerik (Yazılar ve Butonlar) */}
         <div className="relative z-10 text-center space-y-6 max-w-4xl mx-auto flex flex-col items-center">
           <span className="inline-block bg-[#C5A880]/15 text-[#A48358] border border-[#C5A880]/30 text-xs font-bold tracking-widest uppercase px-4 py-1.5 rounded-full">
-            2014’TEN BERİ MANAVGAT’TA BUTİK KUAFÖR DENEYİMİ
+            2014’TEN BERİ MANAVGAT’TA BUTİK KADIN KUAFÖRÜ DENEYİMİ
           </span>
           <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl font-bold text-[#1A1918] leading-tight">
-            Işıltı Saçlarda Başlar.
+            Manavgat Kadın Kuaförü <br />
+            <span className="text-[#A48358] font-normal italic">Three Brothers</span>
           </h1>
           <p className="text-stone-700 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed font-medium">
-            Manavgat’ta Doğal ve Çekici Işıltının Adresi. Saçlarınızda doğal geçişler ve göz alıcı parlaklık arıyorsanız doğru yerdesiniz.
+            Manavgat’ta doğal balyaj, kusursuz sarışın renklendirme, ombre ve mikro kaynak uzmanlığı. Saç sağlığınızı koruyan lüks ve butik kuaför deneyimi.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-4 max-w-xs sm:max-w-none mx-auto w-full">
             {/* 1. Hizmetlerimiz (Siyah Dolgulu / Beyaz Yazılı Buton) */}

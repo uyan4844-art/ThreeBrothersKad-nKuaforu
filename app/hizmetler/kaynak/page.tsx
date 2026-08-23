@@ -4,8 +4,16 @@ import { Header } from '../../../components/Header';
 import { MobileBottomNav } from '../../../components/MobileBottomNav';
 
 export const metadata = {
-  title: 'Mikro Kapsül Kaynak | Three Brothers Manavgat',
-  description: '%100 doğal el değmemiş saçlar ve nano keratin kapsüllerle uygulanan, görünmez ve hafif saç uzatma çözümü.',
+  title: 'Manavgat Mikro Kaynak & Saç Uzatma | Three Brothers Kadın Kuaförü',
+  description: 'Manavgat mikro kaynak, nano keratin ve görünmez kapsül saç uzatma. %100 doğal el değmemiş saçlarla Three Brothers Kadın Kuaförü garantili mikro kaynak.',
+  keywords: [
+    'manavgat mikro kaynak',
+    'manavgat kadın kuaförü',
+    'manavgat saç kaynak',
+    'threebrothers manavgat',
+    'manavgat kuaför',
+    'three brothers kadın kuaförü'
+  ],
 };
 
 export default function KaynakPage() {
@@ -27,7 +35,7 @@ export default function KaynakPage() {
         <div className="relative rounded-3xl overflow-hidden shadow-xl aspect-[16/9] mb-10">
           <img
             src="/images/services/bento-6.webp"
-            alt="Mikro Kapsül Kaynak"
+            alt="Manavgat Mikro Kapsül Kaynak - Three Brothers Kadın Kuaförü"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col justify-end p-6 md:p-12 text-white">

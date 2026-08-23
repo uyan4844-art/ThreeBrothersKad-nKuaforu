@@ -4,8 +4,16 @@ import { Header } from '../../components/Header';
 import { MobileBottomNav } from '../../components/MobileBottomNav';
 
 export const metadata = {
-  title: 'Hakkımızda | Three Brothers Bayan Kuaförü Manavgat',
-  description: '2014’ten beri Manavgat’ta sarı saç ustalığı ve saç sağlığı odaklı butik kuaför salonu.',
+  title: 'Hakkımızda | Three Brothers Kadın Kuaförü Manavgat',
+  description: '2014’ten beri Manavgat’ta sarı saç ustalığı, balyaj ve mikro kaynak alanında saç sağlığı odaklı butik kadın kuaförü deneyimi.',
+  keywords: [
+    'manavgat kadın kuaförü',
+    'threebrothers',
+    'threebrothersmanavgat',
+    'manavgat kuaför',
+    'three brothers kadın kuaförü',
+    'three brothers manavgat'
+  ],
 };
 
 export default function HakkimizdaPage() {
@@ -24,12 +32,12 @@ export default function HakkimizdaPage() {
           HİKAYEMİZ & VİZYONUMUZ
         </span>
         <h1 className="font-serif text-3xl sm:text-5xl font-bold text-[#1A1918] mt-2 mb-6">
-          Sarı Saçın Manavgat’taki Butik Adresi
+          Manavgat Kadın Kuaförü Three Brothers
         </h1>
 
         <div className="space-y-6 text-stone-700 leading-relaxed text-sm sm:text-base">
           <p>
-            2014 yılında Manavgat’ta kurulan <strong>Three Brothers Bayan Kuaförü</strong>, sarı saç renklendirme, profesyonel balyaj ve mikro kaynak alanlarında uzmanlaşmış butik bir kuaför salonudur.
+            2014 yılında Manavgat’ta kurulan <strong>Three Brothers Kadın Kuaförü</strong>, sarı saç renklendirme, profesyonel balyaj ve mikro kaynak alanlarında uzmanlaşmış butik bir kuaför salonudur.
           </p>
           <p>
             Bizim için her misafirimiz eşsizdir. Saçınızın geçmiş kimyasal geçmişini, elastikiyetini ve saç sağlığını analiz ederek ten alt tonunuza en uygun tonu tasarlıyoruz.

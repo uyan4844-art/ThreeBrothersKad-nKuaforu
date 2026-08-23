@@ -4,8 +4,16 @@ import { Header } from '../../../components/Header';
 import { MobileBottomNav } from '../../../components/MobileBottomNav';
 
 export const metadata = {
-  title: 'Profesyonel Balyaj & Sarı Saç | Three Brothers Manavgat',
-  description: '6-8 ay dip boyası gerektirmeyen, doğal geçişli ve kişiselleştirilmiş profesyonel balyaj tasarımı.',
+  title: 'Manavgat Balyaj & Sarı Saç Tasarımı | Three Brothers Kadın Kuaförü',
+  description: 'Manavgat balyaj ve sarı saç tasarımında 6-8 ay dip boyası gerektirmeyen doğal geçişler. Three Brothers Kadın Kuaförü profesyonel balyaj randevusu.',
+  keywords: [
+    'manavgat balyaj',
+    'manavgat kadın kuaförü',
+    'manavgat kuaför',
+    'threebrothers manavgat',
+    'three brothers',
+    'üç kardeşler kadın kuaförü'
+  ],
 };
 
 export default function BalyajPage() {
@@ -27,7 +35,7 @@ export default function BalyajPage() {
         <div className="relative rounded-3xl overflow-hidden shadow-xl aspect-[16/9] mb-10">
           <img
             src="/images/services/bento-5.webp"
-            alt="Profesyonel Balyaj & Sarı Saç"
+            alt="Manavgat Balyaj ve Saç Tasarımı - Three Brothers Kadın Kuaförü"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col justify-end p-6 md:p-12 text-white">
@@ -35,7 +43,7 @@ export default function BalyajPage() {
               UZMANLIK ALANI
             </span>
             <h1 className="font-serif text-3xl sm:text-5xl font-bold leading-tight mb-2">
-              Profesyonel Balyaj & Sarı Saç
+              Manavgat Balyaj & Sarı Saç Tasarımı
             </h1>
             <p className="text-white/90 text-sm sm:text-base max-w-2xl font-light">
               Doğal saç diplerinden başlayarak kademeli açılan, dip boyası stresini ortadan kaldıran kişiselleştirilmiş ışıltı sanatı.

@@ -4,8 +4,16 @@ import { Header } from '../../../components/Header';
 import { MobileBottomNav } from '../../../components/MobileBottomNav';
 
 export const metadata = {
-  title: 'Blonde & İpeksi Renk Tasarımı | Three Brothers Manavgat',
-  description: 'Bebek sarısı, bej blonde ve platin tonlarında, bağ yapısını koruyarak uygulanan saf sarışınlık sanatı.',
+  title: 'Manavgat Sarı Saç & Blonde Renk Tasarımı | Three Brothers Kadın Kuaförü',
+  description: 'Manavgat sarı saç ve blonde renklendirme uzmanı. Bebek sarısı, bej blonde ve platin tonlarında saç bağ yapısını koruyan kusursuz saç tasarımı.',
+  keywords: [
+    'manavgat sarı saç',
+    'manavgat kadın kuaförü',
+    'manavgat blonde',
+    'threebrothers manavgat',
+    'manavgat kuaför',
+    'three brothers kadın kuaförü'
+  ],
 };
 
 export default function BlondePage() {
@@ -27,7 +35,7 @@ export default function BlondePage() {
         <div className="relative rounded-3xl overflow-hidden shadow-xl aspect-[16/9] mb-10">
           <img
             src="/images/services/bento-2.webp"
-            alt="Blonde & İpeksi Renk Tasarımı"
+            alt="Manavgat Sarı Saç ve Blonde Renk Tasarımı - Three Brothers Kadın Kuaförü"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col justify-end p-6 md:p-12 text-white">

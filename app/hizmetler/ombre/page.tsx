@@ -4,8 +4,16 @@ import { Header } from '../../../components/Header';
 import { MobileBottomNav } from '../../../components/MobileBottomNav';
 
 export const metadata = {
-  title: 'Ombre & Sombre Geçişleri | Three Brothers Manavgat',
-  description: 'Doğal dip tonundan ışıltılı uçlara kesintisiz renk degrade geçişi.',
+  title: 'Manavgat Ombre & Sombre Geçişleri | Three Brothers Kadın Kuaförü',
+  description: 'Manavgat ombre ve sombre saç renklendirme tasarımı. Doğal dip tonundan ışıltılı sarı uçlara yumuşak degrade geçişleri. Three Brothers randevu.',
+  keywords: [
+    'manavgat ombre',
+    'manavgat sombre',
+    'manavgat kadın kuaförü',
+    'threebrothers manavgat',
+    'manavgat kuaför',
+    'three brothers kadın kuaförü'
+  ],
 };
 
 export default function OmbrePage() {
@@ -27,7 +35,7 @@ export default function OmbrePage() {
         <div className="relative rounded-3xl overflow-hidden shadow-xl aspect-[16/9] mb-10">
           <img
             src="/images/services/bento-4.webp"
-            alt="Ombre & Sombre Geçişleri"
+            alt="Manavgat Ombre ve Sombre Saç Tasarımı - Three Brothers Kadın Kuaförü"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col justify-end p-6 md:p-12 text-white">

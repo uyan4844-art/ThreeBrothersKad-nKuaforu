@@ -10,6 +10,7 @@ export interface ServiceCardData {
   category: ServiceCategory[];
   badge: string;
   title: string;
+  alt: string;
   description: string;
   duration: string;
   image: string;
@@ -23,9 +24,10 @@ export const SERVICES_LIST: ServiceCardData[] = [
     category: ['renklendirme'],
     badge: 'UZMANLIK ALANI',
     title: 'Profesyonel Balyaj & Sarı Saç',
+    alt: 'Manavgat Balyaj ve Sarı Saç Tasarımı - Three Brothers Kadın Kuaförü',
     description: 'Doğal dip tonuyla yumuşak geçişler sunan, 6-8 ay dip boyası gerektirmeyen kişiselleştirilmiş ışıltılı sarı saç tasarımı.',
     duration: '3.5 – 5 Saat',
-    image: './images/services/bento-5.webp',
+    image: '/images/services/bento-5.webp',
     href: '/hizmetler/balyaj',
     isTall: true,
   },
@@ -34,9 +36,10 @@ export const SERVICES_LIST: ServiceCardData[] = [
     category: ['renklendirme'],
     badge: 'ÖZEL UZMANLIK',
     title: 'Blonde & İpeksi Renk Tasarımı',
+    alt: 'Manavgat Sarı Saç ve Blonde Renk Tasarımı - Three Brothers Kadın Kuaförü',
     description: 'Bebek sarısı, bej blonde ve platin tonlarında, bağ yapısını koruyarak uygulanan saf sarışınlık sanatı.',
     duration: '4 – 6 Saat',
-    image: './images/services/bento-2.webp',
+    image: '/images/services/bento-2.webp',
     href: '/hizmetler/blonde',
   },
   {
@@ -44,9 +47,10 @@ export const SERVICES_LIST: ServiceCardData[] = [
     category: ['kaynak'],
     badge: 'KONFOR & HACİM',
     title: 'Mikro Kapsül Kaynak',
+    alt: 'Manavgat Mikro Kapsül Saç Kaynak - Three Brothers Kadın Kuaförü',
     description: '%100 doğal el değmemiş saçlar ve nano keratin kapsüllerle uygulanan, görünmez ve hafif saç uzatma çözümü.',
     duration: '2.5 – 4 Saat',
-    image: './images/services/bento-6.webp',
+    image: '/images/services/bento-6.webp',
     href: '/hizmetler/kaynak',
   },
   {
@@ -54,9 +58,10 @@ export const SERVICES_LIST: ServiceCardData[] = [
     category: ['renklendirme'],
     badge: 'ZARİF GEÇİŞLER',
     title: 'Ombre & Sombre Geçişleri',
+    alt: 'Manavgat Ombre ve Sombre Saç Tasarımı - Three Brothers Kadın Kuaförü',
     description: 'Doğal dip tonundan ışıltılı uçlara kesintisiz renk degrade geçişi.',
     duration: '3 – 4.5 Saat',
-    image: './images/services/bento-4.webp',
+    image: '/images/services/bento-4.webp',
     href: '/hizmetler/ombre',
   },
   {
@@ -64,9 +69,10 @@ export const SERVICES_LIST: ServiceCardData[] = [
     category: ['renklendirme', 'bakim'],
     badge: 'KİŞİYE ÖZEL',
     title: 'Kişiye Özel Renklendirme & Tonlama',
+    alt: 'Manavgat Profesyonel Saç Boyama ve Renklendirme - Three Brothers Kadın Kuaförü',
     description: 'Ten alt tonunuza özel amonyaksız zengin pigmentli saç boyası ve parlaklık cilaları.',
     duration: '2 – 3 Saat',
-    image: './images/services/bento-1.webp',
+    image: '/images/services/bento-1.webp',
     href: '/hizmetler/renklendirme',
   },
 ];
@@ -139,7 +145,7 @@ export const Services: React.FC = () => {
                 {/* Background Image */}
                 <img
                   src={service.image}
-                  alt={service.title}
+                  alt={service.alt}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                 />
 

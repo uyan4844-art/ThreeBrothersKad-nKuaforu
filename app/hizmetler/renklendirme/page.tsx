@@ -4,8 +4,16 @@ import { Header } from '../../../components/Header';
 import { MobileBottomNav } from '../../../components/MobileBottomNav';
 
 export const metadata = {
-  title: 'Kişiye Özel Renklendirme & Tonlama | Three Brothers Manavgat',
-  description: 'Ten alt tonunuza özel amonyaksız zengin pigmentli saç boyası ve parlaklık cilaları.',
+  title: 'Manavgat Saç Boyama & Renklendirme | Three Brothers Kadın Kuaförü',
+  description: 'Manavgat saç renklendirme, dip boyama ve parlaklık tonlaması. Amonyaksız organik saç boyalarıyla Three Brothers Kadın Kuaförü randevu.',
+  keywords: [
+    'manavgat saç boyama',
+    'manavgat kadın kuaförü',
+    'manavgat saç renklendirme',
+    'threebrothers manavgat',
+    'manavgat kuaför',
+    'three brothers kadın kuaförü'
+  ],
 };
 
 export default function RenklendirmePage() {
@@ -27,7 +35,7 @@ export default function RenklendirmePage() {
         <div className="relative rounded-3xl overflow-hidden shadow-xl aspect-[16/9] mb-10">
           <img
             src="/images/services/bento-1.webp"
-            alt="Kişiye Özel Renklendirme & Tonlama"
+            alt="Manavgat Saç Boyama ve Renklendirme - Three Brothers Kadın Kuaförü"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col justify-end p-6 md:p-12 text-white">
