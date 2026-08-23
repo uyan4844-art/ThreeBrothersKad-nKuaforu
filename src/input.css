@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-linen: #FAF7F2;
+  --color-brand-linen: #FAF8F5;
   --color-brand-vizon: #F0EAE1;
   --color-brand-ivory: #FDFBF7;
-  --color-brand-espresso: #1F1C19;
-  --color-brand-dark: #141210;
+  --color-brand-espresso: #1A1918;
+  --color-brand-dark: #1A1918;
   --color-brand-gold: #C5A880;
   --color-brand-goldDark: #A48358;
   --color-brand-goldLight: #EBE0D2;
@@ -16,13 +16,13 @@
 }
 
 :root {
-  --bg-linen: #FAF7F2;
+  --bg-linen: #FAF8F5;
   --bg-vizon: #F0EAE1;
   --bg-ivory: #FDFBF7;
   --bg-white: #FFFFFF;
-  --bg-dark: #141210;
-  --text-dark: #1F1C19;
-  --text-espresso: #1F1C19;
+  --bg-dark: #1A1918;
+  --text-dark: #1A1918;
+  --text-espresso: #1A1918;
   --text-muted: #635E57;
   --gold-primary: #C5A880;
   --gold-dark: #A48358;
@@ -223,8 +223,8 @@ section[id] {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: env(safe-area-inset-top, 0px) 5% 0;
-  background: rgba(250, 247, 242, 0.94);
+  padding: env(safe-area-inset-top, 0px) calc(5% + env(safe-area-inset-right, 0px)) 0 calc(5% + env(safe-area-inset-left, 0px));
+  background: rgba(250, 248, 245, 0.94);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid rgba(197, 168, 128, 0.22);
@@ -235,7 +235,7 @@ section[id] {
 .luxury-header.is-scrolled,
 .boutique-header.is-scrolled {
   height: calc(72px + env(safe-area-inset-top, 0px));
-  background: rgba(250, 247, 242, 0.98);
+  background: rgba(250, 248, 245, 0.98);
   box-shadow: 0 10px 30px rgba(116, 109, 101, 0.08);
   border-bottom-color: rgba(197, 168, 128, 0.35);
 }
@@ -384,7 +384,7 @@ section[id] {
 }
 
 .btn-header-wa {
-  background: #1F1C19;
+  background: #1A1918;
   color: #FFFFFF !important;
   font-family: 'Montserrat', sans-serif;
   font-size: 12px;
@@ -397,19 +397,19 @@ section[id] {
   align-items: center;
   gap: 6px;
   transition: all 0.3s var(--ease-expo);
-  box-shadow: 0 4px 14px rgba(31, 28, 25, 0.16);
+  box-shadow: 0 4px 14px rgba(26, 25, 24, 0.16);
   border: 1px solid rgba(197, 168, 128, 0.3);
 }
 
 .btn-header-wa:hover {
-  background: #36312C;
+  background: #2C2724;
   border-color: var(--gold-primary);
   transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(31, 28, 25, 0.25);
+  box-shadow: 0 6px 18px rgba(26, 25, 24, 0.25);
 }
 
 .btn-header-wa svg {
-  color: #25D366;
+  color: #128C7E;
 }
 
 .mobile-menu-btn {
@@ -437,7 +437,7 @@ section[id] {
 .menu-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(31, 28, 25, 0.5);
+  background: rgba(26, 25, 24, 0.5);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   z-index: 10000;
@@ -461,7 +461,7 @@ section[id] {
   height: 100vh;
   height: 100dvh;
   min-height: 100dvh;
-  background: #FAF7F2;
+  background: #FAF8F5;
   border-left: 1px solid rgba(194, 163, 121, 0.25);
   box-shadow: -15px 0 45px rgba(0, 0, 0, 0.15);
   z-index: 10001;
@@ -490,7 +490,7 @@ section[id] {
 
 .drawer-close-btn {
   background: transparent;
-  border: 1px solid rgba(31, 28, 25, 0.2);
+  border: 1px solid rgba(26, 25, 24, 0.2);
   width: 38px;
   height: 38px;
   border-radius: 50%;
@@ -498,13 +498,13 @@ section[id] {
   align-items: center;
   justify-content: center;
   font-size: 16px;
-  color: #1F1C19;
+  color: #1A1918;
   cursor: pointer;
   transition: all 0.25s var(--ease-expo);
 }
 
 .drawer-close-btn:hover {
-  background: #1F1C19;
+  background: #1A1918;
   color: #FFFFFF;
   transform: rotate(90deg);
 }
@@ -521,7 +521,7 @@ section[id] {
   font-family: var(--font-serif);
   font-size: 1.25rem;
   font-weight: 700;
-  color: #1F1C19;
+  color: #1A1918;
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -572,7 +572,7 @@ section[id] {
   font-family: 'Montserrat', sans-serif;
   font-size: 13px;
   font-weight: 600;
-  color: #1F1C19;
+  color: #1A1918;
   transition: all 0.25s var(--ease-expo);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
 }
@@ -594,7 +594,7 @@ section[id] {
 }
 
 .drawer-service-links-list li a:hover {
-  background: #FAF7F2;
+  background: #FAF8F5;
   border-color: var(--gold-primary);
   transform: translateX(4px);
 }
@@ -649,23 +649,23 @@ section[id] {
 }
 
 .drawer-action-btn.btn-call {
-  background: #1F1C19;
+  background: #1A1918;
   color: #FFFFFF;
-  border: 1px solid #1F1C19;
+  border: 1px solid #1A1918;
 }
 
 .drawer-action-btn.btn-call:hover {
-  background: #36312C;
+  background: #2C2724;
 }
 
 .drawer-action-btn.btn-map {
   background: #FFFFFF;
-  color: #1F1C19;
+  color: #1A1918;
   border: 1px solid rgba(197, 168, 128, 0.4);
 }
 
 .drawer-action-btn.btn-map:hover {
-  background: #FAF7F2;
+  background: #FAF8F5;
   border-color: var(--gold-primary);
 }
 
@@ -674,7 +674,7 @@ section[id] {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  background: linear-gradient(135deg, #25D366, #128C7E);
+  background: linear-gradient(135deg, #128C7E, #0E7065);
   color: #FFFFFF;
   font-family: 'Montserrat', sans-serif;
   font-size: 13px;
@@ -682,14 +682,14 @@ section[id] {
   padding: 13px 18px;
   border-radius: 14px;
   text-decoration: none;
-  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3);
+  box-shadow: 0 4px 14px rgba(18, 140, 126, 0.35);
   transition: all 0.25s ease;
   margin-top: 2px;
 }
 
 .drawer-wa-full-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(37, 211, 102, 0.4);
+  box-shadow: 0 6px 18px rgba(18, 140, 126, 0.45);
 }
 
 body.menu-open {
@@ -743,7 +743,7 @@ body.menu-open {
 .hero-backdrop-scrim {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, #FAF7F2 0%, #FAF7F2 35%, rgba(250, 247, 242, 0.96) 46%, rgba(250, 247, 242, 0.45) 64%, rgba(250, 247, 242, 0.1) 82%, transparent 100%);
+  background: linear-gradient(90deg, #FAF8F5 0%, #FAF8F5 35%, rgba(250, 248, 245, 0.96) 46%, rgba(250, 248, 245, 0.45) 64%, rgba(250, 248, 245, 0.1) 82%, transparent 100%);
   pointer-events: none;
   z-index: 1;
 }
@@ -769,7 +769,7 @@ body.menu-open {
   font-size: clamp(2.4rem, 4.8vw, 4.2rem);
   line-height: 1.12;
   font-weight: 700;
-  color: #1F1C19;
+  color: #1A1918;
   margin-bottom: 18px;
   letter-spacing: -0.02em;
   opacity: 0;
@@ -779,7 +779,7 @@ body.menu-open {
 .hero-headline em {
   font-style: normal;
   font-weight: 700;
-  color: #1F1C19;
+  color: #1A1918;
 }
 
 .hero-description {
@@ -803,7 +803,7 @@ body.menu-open {
 }
 
 .btn-hero-primary {
-  background: #1F1C19;
+  background: #1A1918;
   color: #FFFFFF !important;
   font-weight: 600;
   font-size: 13.5px;
@@ -814,15 +814,15 @@ body.menu-open {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  box-shadow: 0 8px 22px rgba(31, 28, 25, 0.22);
+  box-shadow: 0 8px 22px rgba(26, 25, 24, 0.22);
   transition: all 0.35s var(--ease-expo);
   cursor: pointer;
 }
 
 .btn-hero-primary:hover {
-  background: #36312C;
+  background: #2C2724;
   transform: translateY(-3px);
-  box-shadow: 0 14px 30px rgba(31, 28, 25, 0.32);
+  box-shadow: 0 14px 30px rgba(26, 25, 24, 0.32);
 }
 
 .btn-hero-primary svg {
@@ -835,7 +835,7 @@ body.menu-open {
 
 .btn-hero-secondary {
   background: rgba(255, 255, 255, 0.85);
-  color: #1F1C19 !important;
+  color: #1A1918 !important;
   border: 1px solid rgba(197, 168, 128, 0.45);
   font-weight: 600;
   font-size: 13px;
@@ -866,11 +866,11 @@ body.menu-open {
 }
 
 .btn-hero-secondary:hover {
-  background: #1F1C19;
+  background: #1A1918;
   color: #FFFFFF !important;
-  border-color: #1F1C19;
+  border-color: #1A1918;
   transform: translateY(-3px);
-  box-shadow: 0 10px 24px rgba(31, 28, 25, 0.18);
+  box-shadow: 0 10px 24px rgba(26, 25, 24, 0.18);
 }
 
 /* ==========================================================================
@@ -903,7 +903,7 @@ body.menu-open {
   font-weight: 700;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: #A48358;
+  color: #C5A880;
   margin-bottom: 14px;
 }
 
@@ -912,7 +912,7 @@ body.menu-open {
   font-size: clamp(2.2rem, 3.8vw, 3.2rem);
   line-height: 1.15;
   font-weight: 800;
-  color: #1F1C19;
+  color: #1A1918;
   letter-spacing: -0.02em;
 }
 
@@ -924,10 +924,10 @@ body.menu-open {
 }
 
 .btn-espresso-luxury {
-  background: #1F1C19;
+  background: #1A1918;
   color: #FFFFFF !important;
-  border: 1px solid #1F1C19;
-  box-shadow: 0 8px 22px rgba(31, 28, 25, 0.22);
+  border: 1px solid #1A1918;
+  box-shadow: 0 8px 22px rgba(26, 25, 24, 0.22);
   border-radius: 999px;
   padding: 12px 26px;
   display: inline-flex;
@@ -942,10 +942,10 @@ body.menu-open {
 }
 
 .btn-espresso-luxury:hover {
-  background: #36312C;
-  border-color: #36312C;
+  background: #2C2724;
+  border-color: #2C2724;
   transform: translateY(-3px);
-  box-shadow: 0 14px 30px rgba(31, 28, 25, 0.32);
+  box-shadow: 0 14px 30px rgba(26, 25, 24, 0.32);
 }
 
 .btn-espresso-luxury svg {
@@ -960,7 +960,7 @@ body.menu-open {
    6. HİZMETLERİMİZ (BENTO MOSAIC & HOVER LIFT)
    ========================================================================== */
 #hizmetler {
-  background-color: #FAF7F2;
+  background-color: #FAF8F5;
   border-bottom: 1px solid rgba(197, 168, 128, 0.2);
 }
 
@@ -976,7 +976,7 @@ body.menu-open {
   font-weight: 700;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: #A48358;
+  color: #C5A880;
   display: block;
   margin-bottom: 12px;
 }
@@ -986,7 +986,7 @@ body.menu-open {
   font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: clamp(2.4rem, 4vw, 3.4rem);
   font-weight: 800;
-  color: #1F1C19 !important;
+  color: #1A1918 !important;
   line-height: 1.15;
   letter-spacing: -0.02em;
   margin-bottom: 16px;
@@ -1089,7 +1089,7 @@ body.menu-open {
    7. TRANSPARAN RENKLENDİRME & BAĞ KORUMA (#teknikler)
    ========================================================================== */
 .section-teknikler {
-  background-color: #FAF7F2;
+  background-color: #FAF8F5;
   border-bottom: 1px solid rgba(197, 168, 128, 0.2);
 }
 
@@ -1109,7 +1109,7 @@ body.menu-open {
   font-weight: 700;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: #A48358;
+  color: #C5A880;
   display: block;
   margin-bottom: 14px;
 }
@@ -1118,7 +1118,7 @@ body.menu-open {
   font-family: var(--font-serif);
   font-size: clamp(2.4rem, 4vw, 3.4rem);
   font-weight: 800;
-  color: #1F1C19;
+  color: #1A1918;
   line-height: 1.15;
   letter-spacing: -0.02em;
   margin-bottom: 22px;
@@ -1140,7 +1140,7 @@ body.menu-open {
   border-radius: 20px;
   overflow: hidden;
   position: relative;
-  background-color: #141210;
+  background-color: #1A1918;
   box-shadow: 0 16px 40px rgba(116, 109, 101, 0.12);
   border: none !important;
   transition: transform 0.4s var(--ease-expo), box-shadow 0.4s var(--ease-expo);
@@ -1186,7 +1186,7 @@ body.menu-open {
   font-family: var(--font-serif);
   font-size: 1.25rem;
   font-weight: 700;
-  color: #1F1C19;
+  color: #1A1918;
   margin-bottom: 6px;
 }
 
@@ -1201,8 +1201,8 @@ body.menu-open {
    8. ÖNCE SAĞLIK, SONRA GÜZELLİK (#felsefe) - DARK SECTION
    ========================================================================== */
 .section-felsefe {
-  background-color: #141210 !important;
-  color: #FAF7F2;
+  background-color: #1A1918 !important;
+  color: #FAF8F5;
   border-top: 1px solid rgba(197, 168, 128, 0.2);
   border-bottom: 1px solid rgba(197, 168, 128, 0.2);
 }
@@ -1221,7 +1221,7 @@ body.menu-open {
   border: 1px solid rgba(197, 168, 128, 0.35);
   aspect-ratio: 16 / 10;
   width: 100%;
-  background: #1F1C19;
+  background: #1A1918;
   position: relative;
 }
 
@@ -1262,7 +1262,7 @@ body.menu-open {
 .felsefe-desc {
   font-size: 1.05rem;
   line-height: 1.8;
-  color: rgba(250, 247, 242, 0.85);
+  color: rgba(250, 248, 245, 0.85);
   margin-bottom: 18px;
 }
 
@@ -1277,7 +1277,7 @@ body.menu-open {
 
 .btn-felsefe-about {
   background: #C5A880;
-  color: #141210 !important;
+  color: #1A1918 !important;
   font-weight: 700;
   font-size: 13.5px;
   letter-spacing: 0.03em;
@@ -1294,7 +1294,7 @@ body.menu-open {
 
 .btn-felsefe-about:hover {
   background: #EBE0D2;
-  color: #141210 !important;
+  color: #1A1918 !important;
   transform: translateY(-3px);
   box-shadow: 0 12px 28px rgba(197, 168, 128, 0.4);
 }
@@ -1330,7 +1330,7 @@ body.menu-open {
    9. GÜVEN & KALİTE STANDARTLARI (#neden-biz) & METRIC COUNT-UP
    ========================================================================== */
 .section-neden-biz {
-  background-color: #FAF7F2;
+  background-color: #FAF8F5;
   border-bottom: 1px solid rgba(197, 168, 128, 0.2);
 }
 
@@ -1350,7 +1350,7 @@ body.menu-open {
   font-weight: 700;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: #A48358;
+  color: #C5A880;
   display: block;
   margin-bottom: 14px;
 }
@@ -1359,7 +1359,7 @@ body.menu-open {
   font-family: var(--font-serif);
   font-size: clamp(2.4rem, 4vw, 3.4rem);
   font-weight: 800;
-  color: #1F1C19;
+  color: #1A1918;
   line-height: 1.15;
   letter-spacing: -0.02em;
   margin-bottom: 22px;
@@ -1408,7 +1408,7 @@ body.menu-open {
   font-family: var(--font-serif);
   font-size: 1.15rem;
   font-weight: 700;
-  color: #1F1C19;
+  color: #1A1918;
   margin-bottom: 6px;
   line-height: 1.25;
 }
@@ -1429,7 +1429,7 @@ body.menu-open {
 }
 
 .shine-trust-card {
-  background: #FAF7F2;
+  background: #FAF8F5;
   border: 1px solid rgba(197, 168, 128, 0.28);
   border-radius: 24px;
   padding: 32px 26px;
@@ -1457,7 +1457,7 @@ body.menu-open {
   font-family: var(--font-serif);
   font-size: 20px;
   font-weight: 700;
-  color: #1F1C19;
+  color: #1A1918;
   margin-bottom: 10px;
   line-height: 1.25;
 }
@@ -1474,7 +1474,7 @@ body.menu-open {
    10. 4 ADIMDA SÜREÇ & ONARIM VİTRİNİ (#surec)
    ========================================================================== */
 .section-process {
-  background-color: #FAF7F2;
+  background-color: #FAF8F5;
   border-bottom: 1px solid rgba(197, 168, 128, 0.2);
 }
 
@@ -1529,7 +1529,7 @@ body.menu-open {
   font-family: var(--font-serif);
   font-size: 20px;
   font-weight: 700;
-  color: #1F1C19;
+  color: #1A1918;
   margin-bottom: 12px;
   line-height: 1.25;
 }
@@ -1542,7 +1542,7 @@ body.menu-open {
 
 .repair-callout-box {
   margin-top: 60px;
-  background: linear-gradient(135deg, #FAF7F2 0%, #F1ECE4 100%);
+  background: linear-gradient(135deg, #FAF8F5 0%, #F1ECE4 100%);
   border-radius: 20px;
   border: 1px solid rgba(197, 168, 128, 0.35);
   padding: 40px 48px;
@@ -1569,7 +1569,7 @@ body.menu-open {
   border: 1px solid rgba(197, 168, 128, 0.25);
   font-size: 13px;
   font-weight: 600;
-  color: #1F1C19;
+  color: #1A1918;
   transition: transform 0.25s ease;
 }
 
@@ -1667,7 +1667,7 @@ body.menu-open {
 }
 
 .btn-insta-follow {
-  background: #1F1C19;
+  background: #1A1918;
   color: #FFFFFF !important;
   font-size: 13px;
   font-weight: 600;
@@ -1682,7 +1682,7 @@ body.menu-open {
 }
 
 .btn-insta-follow:hover {
-  background: #36312C;
+  background: #2C2724;
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
@@ -1740,7 +1740,7 @@ body.menu-open {
 .reel-username {
   font-size: 12.5px;
   font-weight: 700;
-  color: #1F1C19;
+  color: #1A1918;
   line-height: 1.2;
 }
 
@@ -1780,7 +1780,7 @@ body.menu-open {
   width: 52px;
   height: 52px;
   border-radius: 50%;
-  background: rgba(31, 28, 25, 0.65);
+  background: rgba(26, 25, 24, 0.65);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.3);
@@ -1811,7 +1811,7 @@ body.menu-open {
   width: 38px;
   height: 38px;
   border-radius: 50%;
-  background: rgba(31, 28, 25, 0.78);
+  background: rgba(26, 25, 24, 0.78);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border: 1.5px solid rgba(255, 255, 255, 0.35);
@@ -1826,14 +1826,14 @@ body.menu-open {
 
 .reel-sound-toggle-btn:hover {
   background: var(--gold-primary);
-  color: #141210;
+  color: #1A1918;
   border-color: var(--gold-primary);
   transform: scale(1.1);
 }
 
 .reel-sound-toggle-btn.is-unmuted {
   background: var(--gold-primary);
-  color: #141210;
+  color: #1A1918;
   border-color: #FFFFFF;
   box-shadow: 0 0 14px rgba(197, 168, 128, 0.65);
 }
@@ -1842,7 +1842,7 @@ body.menu-open {
   position: absolute;
   top: 14px;
   left: 14px;
-  background: rgba(31, 28, 25, 0.7);
+  background: rgba(26, 25, 24, 0.7);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   border: 1px solid rgba(197, 168, 128, 0.4);
@@ -1850,7 +1850,7 @@ body.menu-open {
   border-radius: 999px;
   font-size: 11px;
   font-weight: 600;
-  color: #FAF7F2;
+  color: #FAF8F5;
   z-index: 4;
 }
 
@@ -1876,7 +1876,7 @@ body.menu-open {
 .reel-icon-btn {
   background: transparent;
   border: none;
-  color: #1F1C19;
+  color: #1A1918;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
@@ -1896,7 +1896,7 @@ body.menu-open {
 .reel-likes-count {
   font-size: 12.5px;
   font-weight: 700;
-  color: #1F1C19;
+  color: #1A1918;
   margin-bottom: 4px;
 }
 
@@ -1976,7 +1976,7 @@ body.menu-open {
 .review-body-quote {
   font-size: 15.5px;
   line-height: 1.75;
-  color: #2D2926;
+  color: #1A1918;
   margin-bottom: 24px;
 }
 
@@ -1992,7 +1992,7 @@ body.menu-open {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #FAF7F2, #EBE4D8);
+  background: linear-gradient(135deg, #FAF8F5, #EBE4D8);
   border: 1.5px solid rgba(197, 168, 128, 0.4);
   color: #A48358;
   font-weight: 800;
@@ -2007,7 +2007,7 @@ body.menu-open {
   font-family: var(--font-serif);
   font-size: 15px;
   font-weight: 700;
-  color: #1F1C19;
+  color: #1A1918;
   margin: 0;
 }
 
@@ -2029,16 +2029,16 @@ body.menu-open {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: #1F1C19;
+  color: #1A1918;
   cursor: pointer;
   z-index: 10;
   transition: all 0.3s var(--ease-expo);
 }
 
 .review-nav-btn:hover {
-  background: #1F1C19;
+  background: #1A1918;
   color: #FFFFFF;
-  border-color: #1F1C19;
+  border-color: #1A1918;
   transform: translateY(-50%) scale(1.08);
 }
 
@@ -2073,7 +2073,7 @@ body.menu-open {
    13. SALONUMUZDAN KARELER GALERİ (#galeri)
    ========================================================================== */
 #galeri {
-  background-color: #FAF7F2;
+  background-color: #FAF8F5;
   border-bottom: 1px solid rgba(194, 163, 121, 0.18);
 }
 
@@ -2119,7 +2119,7 @@ body.menu-open {
    14. SIKÇA SORULAN SORULAR ACCORDION (#sss)
    ========================================================================== */
 #sss {
-  background-color: #FAF7F2;
+  background-color: #FAF8F5;
   border-bottom: 1px solid rgba(197, 168, 128, 0.2);
 }
 
@@ -2162,7 +2162,7 @@ body.menu-open {
   font-family: var(--font-serif);
   font-size: 17px;
   font-weight: 700;
-  color: #1F1C19;
+  color: #1A1918;
   text-align: left;
   cursor: pointer;
   transition: color 0.25s ease;
@@ -2265,7 +2265,7 @@ body.menu-open {
   font-family: var(--font-serif);
   font-size: 16px;
   font-weight: 700;
-  color: #1F1C19;
+  color: #1A1918;
   margin-bottom: 4px;
 }
 
@@ -2301,7 +2301,7 @@ body.menu-open {
    16. FOOTER & STICKY ACTION BAR
    ========================================================================== */
 .boutique-footer {
-  background-color: #1A1715 !important;
+  background-color: #1A1918 !important;
   color: #EBE0D2;
   padding: 85px 24px 36px;
   border-top: 1px solid rgba(194, 163, 121, 0.2);
@@ -2366,7 +2366,7 @@ body.menu-open {
 
 .footer-social-btn:hover {
   background: var(--gold-primary);
-  color: #1A1715;
+  color: #1A1918;
   border-color: var(--gold-primary);
   transform: translateY(-2px);
 }
@@ -3016,11 +3016,11 @@ body.menu-open {
     left: 0 !important;
     right: 0 !important;
     z-index: 9999 !important;
-    background: rgba(250, 247, 242, 0.97) !important;
+    background: rgba(250, 248, 245, 0.97) !important;
     backdrop-filter: blur(14px) !important;
     -webkit-backdrop-filter: blur(14px) !important;
     border-top: 1px solid rgba(197, 168, 128, 0.35) !important;
-    padding: 8px 14px !important;
+    padding: 8px calc(14px + env(safe-area-inset-right, 0px)) calc(8px + env(safe-area-inset-bottom, 0px)) calc(14px + env(safe-area-inset-left, 0px)) !important;
     gap: 10px !important;
     box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08) !important;
   }
@@ -3040,8 +3040,8 @@ body.menu-open {
 
   .mobile-call-btn {
     background: #FFFFFF !important;
-    border: 1px solid rgba(31, 28, 25, 0.25) !important;
-    color: #1F1C19 !important;
+    border: 1px solid rgba(26, 25, 24, 0.25) !important;
+    color: #1A1918 !important;
   }
 
   .mobile-wa-btn {
@@ -3188,7 +3188,7 @@ body.menu-open {
   font-weight: 700;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: #A48358;
+  color: #C5A880;
   display: block;
   margin-bottom: 12px;
   opacity: 0;
@@ -3200,7 +3200,7 @@ body.menu-open {
   font-family: var(--font-serif);
   font-size: clamp(2.4rem, 3.8vw, 3.2rem);
   font-weight: 800;
-  color: #1F1C19;
+  color: #1A1918;
   line-height: 1.15;
   letter-spacing: -0.02em;
   margin-bottom: 18px;
@@ -3212,7 +3212,7 @@ body.menu-open {
   font-size: 1.12rem;
   font-weight: 600;
   line-height: 1.7;
-  color: #2D2926;
+  color: #1A1918;
   margin-bottom: 18px;
   opacity: 0;
   animation: heroContentFadeUp 0.75s var(--ease-expo) 0.3s forwards;
@@ -3245,7 +3245,7 @@ body.menu-open {
   font-family: var(--font-serif);
   font-size: 1.25rem;
   font-weight: 700;
-  color: #1F1C19;
+  color: #1A1918;
   margin-bottom: 6px;
 }
 
@@ -3255,7 +3255,7 @@ body.menu-open {
   gap: 16px;
   padding: 14px 16px;
   border-radius: 12px;
-  background: #FAF7F2;
+  background: #FAF8F5;
   border: 1px solid rgba(197, 168, 128, 0.2);
   transition: transform 0.3s var(--ease-expo), background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
@@ -3294,7 +3294,7 @@ body.menu-open {
   font-family: var(--font-serif);
   font-size: 1.05rem;
   font-weight: 700;
-  color: #1F1C19;
+  color: #1A1918;
   margin-bottom: 4px;
 }
 
@@ -3345,10 +3345,10 @@ body.menu-open {
 
 /* CTA Buttons in Subpages */
 .btn-espresso-cta {
-  background: #1F1C19;
+  background: #1A1918;
   color: #FFFFFF !important;
-  border: 1px solid #1F1C19;
-  box-shadow: 0 10px 26px rgba(31, 28, 25, 0.22);
+  border: 1px solid #1A1918;
+  box-shadow: 0 10px 26px rgba(26, 25, 24, 0.22);
   border-radius: 999px;
   padding: 14px 30px;
   display: inline-flex;
@@ -3366,10 +3366,10 @@ body.menu-open {
 }
 
 .btn-espresso-cta:hover {
-  background: #36312C;
-  border-color: #36312C;
+  background: #2C2724;
+  border-color: #2C2724;
   transform: translateY(-3px);
-  box-shadow: 0 16px 36px rgba(31, 28, 25, 0.32);
+  box-shadow: 0 16px 36px rgba(26, 25, 24, 0.32);
 }
 
 @media (max-width: 900px) {
@@ -3408,7 +3408,7 @@ body.menu-open {
   font-family: var(--font-serif);
   font-size: 1.02rem;
   font-style: italic;
-  color: #1F1C19;
+  color: #1A1918;
   line-height: 1.6;
   opacity: 0;
   animation: heroContentFadeUp 0.75s var(--ease-expo) 0.38s forwards;
@@ -3419,7 +3419,7 @@ body.menu-open {
 }
 
 .about-signature-card {
-  background: #FAF7F2;
+  background: #FAF8F5;
   border: 1px solid rgba(197, 168, 128, 0.35);
   border-radius: 14px;
   padding: 16px 20px;
@@ -3435,7 +3435,7 @@ body.menu-open {
   font-family: var(--font-serif);
   font-size: 1.12rem;
   font-weight: 800;
-  color: #1F1C19;
+  color: #1A1918;
   letter-spacing: -0.01em;
 }
 
@@ -3500,7 +3500,7 @@ body.menu-open {
   -webkit-backdrop-filter: blur(16px);
   border-radius: 14px;
   border: 1px solid rgba(197, 168, 128, 0.3);
-  box-shadow: 0 12px 32px rgba(31, 28, 25, 0.12);
+  box-shadow: 0 12px 32px rgba(26, 25, 24, 0.12);
   padding: 6px;
   z-index: 1000;
   opacity: 0;
@@ -3588,9 +3588,9 @@ body.menu-open {
 }
 
 .service-tab-btn.active {
-  background: #1F1C19;
+  background: #1A1918;
   color: #FFFFFF;
-  box-shadow: 0 4px 12px rgba(31, 28, 25, 0.2);
+  box-shadow: 0 4px 12px rgba(26, 25, 24, 0.2);
 }
 
 /* Service Card Detail Button */
@@ -3624,7 +3624,7 @@ body.menu-open {
 .sheet-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(15, 12, 10, 0.65);
+  background: rgba(26, 25, 24, 0.65);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   z-index: 9999;
@@ -3666,7 +3666,7 @@ body.menu-open {
   display: none;
   width: 44px;
   height: 4.5px;
-  background: rgba(31, 28, 25, 0.2);
+  background: rgba(26, 25, 24, 0.2);
   border-radius: 999px;
   margin: 12px auto 6px;
 }
@@ -3679,7 +3679,7 @@ body.menu-open {
   height: 34px;
   border-radius: 50%;
   border: 1px solid rgba(197, 168, 128, 0.3);
-  background: rgba(250, 247, 242, 0.9);
+  background: rgba(250, 248, 245, 0.9);
   color: var(--text-espresso);
   display: flex;
   align-items: center;
@@ -3692,7 +3692,7 @@ body.menu-open {
 }
 
 .sheet-close-btn:hover {
-  background: #1F1C19;
+  background: #1A1918;
   color: #FFFFFF;
 }
 
@@ -3718,7 +3718,7 @@ body.menu-open {
   font-family: var(--font-serif);
   font-size: 26px;
   font-weight: 700;
-  color: #1F1C19;
+  color: #1A1918;
   line-height: 1.2;
   margin-bottom: 12px;
 }
@@ -3729,7 +3729,7 @@ body.menu-open {
   gap: 12px;
   margin-bottom: 20px;
   padding: 10px 14px;
-  background: #FAF7F2;
+  background: #FAF8F5;
   border-radius: 12px;
   border: 1px solid rgba(197, 168, 128, 0.2);
 }
@@ -3813,7 +3813,7 @@ body.menu-open {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  background: #25D366;
+  background: #128C7E;
   color: #FFFFFF !important;
   font-family: 'Montserrat', sans-serif;
   font-size: 14px;
@@ -3821,14 +3821,14 @@ body.menu-open {
   padding: 14px 20px;
   border-radius: 14px;
   text-decoration: none;
-  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.3);
+  box-shadow: 0 8px 24px rgba(18, 140, 126, 0.35);
   transition: all 0.3s ease;
 }
 
 .sheet-wa-cta:hover {
-  background: #20BA5A;
+  background: #0E7065;
   transform: translateY(-2px);
-  box-shadow: 0 12px 28px rgba(37, 211, 102, 0.4);
+  box-shadow: 0 12px 28px rgba(18, 140, 126, 0.45);
 }
 
 /* Mobile Bottom Sheet & App Navigation Adjustments */
@@ -3869,15 +3869,15 @@ body.menu-open {
   left: 0;
   right: 0;
   z-index: 5000;
-  background: rgba(255, 255, 255, 0.94);
+  background: rgba(250, 248, 245, 0.96);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-top: 1px solid rgba(197, 168, 128, 0.25);
   display: flex;
   align-items: center;
   justify-content: space-around;
-  padding: 6px 10px calc(0.75rem + env(safe-area-inset-bottom, 0px));
-  box-shadow: 0 -4px 20px rgba(31, 28, 25, 0.08);
+  padding: 6px calc(10px + env(safe-area-inset-right, 0px)) calc(0.75rem + env(safe-area-inset-bottom, 0px)) calc(10px + env(safe-area-inset-left, 0px));
+  box-shadow: 0 -4px 20px rgba(26, 25, 24, 0.08);
 }
 
 @media (min-width: 769px) {
@@ -3912,20 +3912,20 @@ body.menu-open {
 }
 
 .app-nav-item:hover, .app-nav-item.active {
-  color: #A48358;
+  color: #C5A880;
 }
 
 .app-nav-item.active svg {
   transform: scale(1.1);
-  stroke: #A48358;
+  stroke: #C5A880;
 }
 
 .app-nav-wa-special {
-  background: linear-gradient(135deg, #25D366, #128C7E);
+  background: linear-gradient(135deg, #128C7E, #0E7065);
   color: #FFFFFF !important;
   border-radius: 12px;
   padding: 5px 12px;
-  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
+  box-shadow: 0 4px 14px rgba(18, 140, 126, 0.35);
 }
 
 .app-nav-wa-special svg {

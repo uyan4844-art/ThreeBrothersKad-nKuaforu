@@ -9,15 +9,18 @@ module.exports = {
     extend: {
       colors: {
         brand: {
-          espresso: '#0F0F11',
-          charcoal: '#141417',
-          surface: '#18181C',
-          card: '#1F1F24',
-          gold: '#D4AF37',
+          cream: '#FAF8F5',
+          espresso: '#1A1918',
+          charcoal: '#1A1918',
+          surface: '#1A1918',
+          card: '#242220',
+          gold: '#C5A880',
           champagne: '#C5A880',
           goldLight: '#EFE2CE',
-          goldMuted: '#9E8057',
-          accent: '#E5C07B'
+          goldMuted: '#A48358',
+          accent: '#C5A880',
+          whatsapp: '#128C7E',
+          whatsappHover: '#0E7065'
         }
       },
       fontFamily: {

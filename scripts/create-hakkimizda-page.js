@@ -21,9 +21,9 @@ const hakkimizdaHTML = `<!DOCTYPE html>
 
   <style>
     :root {
-      --bg-cream: #FAF7F2;
+      --bg-cream: #FAF8F5;
       --bg-linen: #F0EAE1;
-      --text-espresso: #1F1C19;
+      --text-espresso: #1A1918;
       --text-muted: #5A554E;
       --gold-primary: #C5A880;
       --gold-dark: #A48358;
@@ -71,7 +71,7 @@ const hakkimizdaHTML = `<!DOCTYPE html>
       bottom: 0;
       width: 100%;
       max-width: 440px;
-      background: #FAF7F2;
+      background: #FAF8F5;
       border-left: 1px solid rgba(194, 163, 121, 0.25);
       box-shadow: -15px 0 45px rgba(0, 0, 0, 0.12);
       z-index: 10001;
@@ -101,7 +101,7 @@ const hakkimizdaHTML = `<!DOCTYPE html>
       font-family: var(--font-serif);
       font-size: 24px;
       font-weight: 700;
-      color: #1F1C19;
+      color: #1A1918;
       margin: 0;
       line-height: 1.1;
       letter-spacing: 1.5px;
@@ -128,13 +128,13 @@ const hakkimizdaHTML = `<!DOCTYPE html>
       align-items: center;
       justify-content: center;
       font-size: 16px;
-      color: #1F1C19;
+      color: #1A1918;
       cursor: pointer;
       transition: all 0.25s ease;
     }
 
     .drawer-close-btn:hover {
-      background: #1F1C19;
+      background: #1A1918;
       color: #FFFFFF;
       transform: rotate(90deg);
     }
@@ -155,7 +155,7 @@ const hakkimizdaHTML = `<!DOCTYPE html>
       font-family: var(--font-serif);
       font-size: 22px;
       font-weight: 600;
-      color: #1F1C19;
+      color: #1A1918;
       text-decoration: none;
       padding-bottom: 8px;
       border-bottom: 1px solid rgba(194, 163, 121, 0.12);
@@ -203,7 +203,7 @@ const hakkimizdaHTML = `<!DOCTYPE html>
       border-radius: 999px;
       font-size: 12px;
       font-weight: 500;
-      color: #1F1C19;
+      color: #1A1918;
       text-decoration: none;
       transition: all 0.25s ease;
     }
@@ -251,7 +251,7 @@ const hakkimizdaHTML = `<!DOCTYPE html>
     .drawer-contact-line {
       font-size: 15px;
       font-weight: 700;
-      color: #1F1C19;
+      color: #1A1918;
       margin-bottom: 4px;
     }
 
@@ -279,15 +279,15 @@ const hakkimizdaHTML = `<!DOCTYPE html>
       font-weight: 600;
       text-decoration: none;
       border: 1px solid rgba(31, 28, 25, 0.25);
-      color: #1F1C19;
+      color: #1A1918;
       background: #FFFFFF;
       transition: all 0.25s ease;
     }
 
     .drawer-btn-outline:hover {
-      background: #1F1C19;
+      background: #1A1918;
       color: #FFFFFF;
-      border-color: #1F1C19;
+      border-color: #1A1918;
     }
 
     /* About Main Layout */
@@ -350,7 +350,7 @@ const hakkimizdaHTML = `<!DOCTYPE html>
       font-size: clamp(2.2rem, 3.8vw, 3.2rem);
       line-height: 1.15;
       margin: 12px 0 24px;
-      color: #1F1C19;
+      color: #1A1918;
     }
 
     .about-paragraph {
@@ -392,7 +392,7 @@ const hakkimizdaHTML = `<!DOCTYPE html>
       font-family: var(--font-serif);
       font-size: 2.2rem;
       font-weight: 700;
-      color: #1F1C19;
+      color: #1A1918;
       line-height: 1.1;
       margin-bottom: 6px;
     }
@@ -407,7 +407,7 @@ const hakkimizdaHTML = `<!DOCTYPE html>
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      background: #1F1C19;
+      background: #1A1918;
       color: #FFFFFF !important;
       padding: 14px 34px;
       border-radius: 999px;
@@ -420,14 +420,14 @@ const hakkimizdaHTML = `<!DOCTYPE html>
     }
 
     .btn-espresso-cta:hover {
-      background: #36312C;
+      background: #2C2724;
       transform: translateY(-2px);
       box-shadow: 0 12px 28px rgba(31, 28, 25, 0.35);
     }
 
     /* Footer CSS */
     .boutique-footer {
-      background-color: #1A1715 !important;
+      background-color: #1A1918 !important;
       color: #EBE0D2;
       padding: 90px 24px 36px;
       border-top: 1px solid rgba(194, 163, 121, 0.2);
@@ -501,7 +501,7 @@ const hakkimizdaHTML = `<!DOCTYPE html>
 
     .footer-social-btn:hover {
       background: var(--gold-primary);
-      color: #1A1715;
+      color: #1A1918;
       border-color: var(--gold-primary);
     }
 
@@ -601,7 +601,7 @@ const hakkimizdaHTML = `<!DOCTYPE html>
     
     <!-- Sol: Instagram İkonu -->
     <div style="flex: 1; display: flex; align-items: center; justify-content: flex-start;">
-      <a href="https://instagram.com/threebrotherss" target="_blank" rel="noopener noreferrer" style="color: #1F1C19; display: inline-flex; align-items: center; text-decoration: none; transition: opacity 0.3s;" aria-label="Instagram">
+      <a href="https://instagram.com/threebrotherss" target="_blank" rel="noopener noreferrer" style="color: #1A1918; display: inline-flex; align-items: center; text-decoration: none; transition: opacity 0.3s;" aria-label="Instagram">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
           <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
           <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
@@ -613,16 +613,16 @@ const hakkimizdaHTML = `<!DOCTYPE html>
     <!-- Orta: Logo & Marka İsmi -->
     <div style="flex: 2; text-align: center;">
       <a href="index.html" style="text-decoration: none; display: inline-flex; flex-direction: column; align-items: center;">
-        <span style="font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 600; color: #1F1C19; letter-spacing: 2px; line-height: 1.1;" data-i18n="brand_name">Three Brothers</span>
+        <span style="font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 600; color: #1A1918; letter-spacing: 2px; line-height: 1.1;" data-i18n="brand_name">Three Brothers</span>
         <span style="font-family: 'Montserrat', sans-serif; font-size: 0.62rem; color: #A48358; letter-spacing: 3.5px; font-weight: 600; margin-top: 4px; text-transform: uppercase;" data-i18n="brand_tagline">BAYAN KUAFÖRÜ &bull; MANAVGAT</span>
       </a>
     </div>
 
     <!-- Sağ: Minimalist Menü -->
     <div style="flex: 1; display: flex; align-items: center; justify-content: flex-end;">
-      <button id="openMobileMenuBtn" onclick="toggleMenu()" type="button" aria-label="Menüyü Aç" style="background: transparent; border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; color: #1F1C19; font-family: 'Montserrat', sans-serif; font-size: 0.78rem; font-weight: 600; letter-spacing: 2px; padding: 0;">
+      <button id="openMobileMenuBtn" onclick="toggleMenu()" type="button" aria-label="Menüyü Aç" style="background: transparent; border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; color: #1A1918; font-family: 'Montserrat', sans-serif; font-size: 0.78rem; font-weight: 600; letter-spacing: 2px; padding: 0;">
         <span>MENU</span>
-        <span style="display: inline-block; width: 20px; height: 1.5px; background-color: #1F1C19;"></span>
+        <span style="display: inline-block; width: 20px; height: 1.5px; background-color: #1A1918;"></span>
       </button>
     </div>
 
@@ -735,7 +735,7 @@ const hakkimizdaHTML = `<!DOCTYPE html>
         </div>
 
         <a href="https://wa.me/905526856907?text=Merhaba,%20Three%20Brothers%20hakkında%20bilgi%20ve%20randevu%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" class="btn-espresso-cta" data-i18n="about_page_cta">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="#25D366">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#128C7E">
             <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
           </svg>
           <span>İletişime Geç (WhatsApp)</span>

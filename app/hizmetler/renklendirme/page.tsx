@@ -10,7 +10,7 @@ export const metadata = {
 
 export default function RenklendirmePage() {
   return (
-    <main className="min-h-[100dvh] bg-[#FAF7F2] text-[#1F1C19] selection:bg-[#C5A880]/30 pb-[calc(6rem+env(safe-area-inset-bottom,0px))] md:pb-0">
+    <main className="min-h-[100dvh] bg-[#FAF8F5] text-[#1A1918] selection:bg-[#C5A880]/30 pb-[calc(6rem+env(safe-area-inset-bottom,0px))] md:pb-0">
       <Header />
 
       <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
@@ -20,7 +20,7 @@ export default function RenklendirmePage() {
           <span>/</span>
           <Link href="/#hizmetler" className="hover:text-[#A48358]">Hizmetler</Link>
           <span>/</span>
-          <span className="text-[#1F1C19]">Renklendirme</span>
+          <span className="text-[#1A1918]">Renklendirme</span>
         </div>
 
         {/* Hero Banner */}
@@ -31,7 +31,7 @@ export default function RenklendirmePage() {
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col justify-end p-6 md:p-12 text-white">
-            <span className="bg-[#C5A880] text-[#1F1C19] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest w-fit mb-3">
+            <span className="bg-[#C5A880] text-[#1A1918] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest w-fit mb-3">
               KİŞİYE ÖZEL
             </span>
             <h1 className="font-serif text-3xl sm:text-5xl font-bold leading-tight mb-2">
@@ -49,19 +49,19 @@ export default function RenklendirmePage() {
             <span className="text-xs font-bold text-[#A48358] uppercase tracking-wider block mb-1">
               Tahmini Süre
             </span>
-            <h3 className="font-serif text-xl font-bold text-[#1F1C19]">2 – 3 Saat</h3>
+            <h3 className="font-serif text-xl font-bold text-[#1A1918]">2 – 3 Saat</h3>
           </div>
           <div className="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm">
             <span className="text-xs font-bold text-[#A48358] uppercase tracking-wider block mb-1">
               Boya Teknolojisi
             </span>
-            <h3 className="font-serif text-xl font-bold text-[#1F1C19]">Amonyaksız Inoa</h3>
+            <h3 className="font-serif text-xl font-bold text-[#1A1918]">Amonyaksız Inoa</h3>
           </div>
           <div className="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm">
             <span className="text-xs font-bold text-[#A48358] uppercase tracking-wider block mb-1">
               Moleküler Bakım
             </span>
-            <h3 className="font-serif text-xl font-bold text-[#1F1C19]">K18 Biomimetic</h3>
+            <h3 className="font-serif text-xl font-bold text-[#1A1918]">K18 Biomimetic</h3>
           </div>
         </div>
 
@@ -71,7 +71,7 @@ export default function RenklendirmePage() {
             href="https://wa.me/905526856907?text=Merhaba,%20Renklendirme%20hizmetiniz%20hakkında%20bilgi%20ve%20randevu%20almak%20istiyorum."
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20BA5A] text-white font-montserrat text-sm font-bold py-4 px-8 rounded-full shadow-lg transition-transform hover:scale-105"
+            className="inline-flex items-center gap-2 bg-[#128C7E] hover:bg-[#0E7065] text-white font-montserrat text-sm font-bold py-4 px-8 rounded-full shadow-lg transition-transform hover:scale-105"
           >
             <span>WhatsApp ile Renklendirme Randevusu Al</span>
             <span>→</span>

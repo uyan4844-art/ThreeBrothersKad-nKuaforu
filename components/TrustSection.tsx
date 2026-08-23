@@ -28,7 +28,7 @@ export const TrustSection: React.FC = () => {
           <span className="text-[#A48358] text-xs font-bold tracking-widest uppercase">
             GÜVEN & KALİTE STANDARTLARIMIZ
           </span>
-          <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#1F1C19]">
+          <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#1A1918]">
             Manavgat’ta Güven Veren Saç Tasarım Deneyimi
           </h2>
           <p className="text-stone-600 text-sm sm:text-base font-light">
@@ -41,12 +41,12 @@ export const TrustSection: React.FC = () => {
           {TRUST_POINTS.map((item) => (
             <div
               key={item.number}
-              className="bg-[#FAF7F2] border border-[#C5A880]/25 rounded-3xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-all duration-300 relative group overflow-hidden"
+              className="bg-[#FAF8F5] border border-[#C5A880]/25 rounded-3xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-all duration-300 relative group overflow-hidden"
             >
               <div className="text-4xl sm:text-5xl font-serif font-extrabold text-[#C5A880]/30 group-hover:text-[#A48358]/50 transition-colors mb-4">
                 {item.number}
               </div>
-              <h3 className="font-serif text-lg sm:text-xl font-bold text-[#1F1C19] mb-2.5">
+              <h3 className="font-serif text-lg sm:text-xl font-bold text-[#1A1918] mb-2.5">
                 {item.title}
               </h3>
               <p className="text-stone-600 text-xs sm:text-sm leading-relaxed">

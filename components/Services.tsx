@@ -86,14 +86,14 @@ export const Services: React.FC = () => {
   );
 
   return (
-    <section id="hizmetler" className="py-20 bg-[#FAF7F2] relative">
+    <section id="hizmetler" className="py-20 bg-[#FAF8F5] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-10 space-y-3">
           <span className="text-[#A48358] text-xs font-bold tracking-widest uppercase">
             UZMANLIK ALANLARIMIZ
           </span>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1F1C19]">
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1A1918]">
             Kişiye Özel Profesyonel Dokunuşlar
           </h2>
           <p className="text-stone-600 text-sm sm:text-base font-light">
@@ -113,8 +113,8 @@ export const Services: React.FC = () => {
                   onClick={() => setActiveCategory(tab.key)}
                   className={`px-5 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-all duration-300 cursor-pointer ${
                     isActive
-                      ? 'bg-[#1F1C19] text-white shadow-md'
-                      : 'text-stone-600 hover:text-[#1F1C19]'
+                      ? 'bg-[#1A1918] text-white shadow-md'
+                      : 'text-stone-600 hover:text-[#1A1918]'
                   }`}
                 >
                   {tab.label}

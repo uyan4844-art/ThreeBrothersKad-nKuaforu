@@ -79,7 +79,7 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({
         aria-expanded={isOpen}
         aria-haspopup="true"
         aria-label="Dil Seçimi"
-        className="flex items-center gap-1.5 bg-white/85 hover:bg-white border border-[#C5A880]/35 hover:border-[#C5A880] rounded-full px-3.5 py-1.5 text-xs font-bold text-[#1F1C19] shadow-sm backdrop-blur-md transition-all duration-200 cursor-pointer"
+        className="flex items-center gap-1.5 bg-white/85 hover:bg-white border border-[#C5A880]/35 hover:border-[#C5A880] rounded-full px-3.5 py-1.5 text-xs font-bold text-[#1A1918] shadow-sm backdrop-blur-md transition-all duration-200 cursor-pointer"
       >
         <span>{currentOption.flag}</span>
         <span className="font-montserrat uppercase tracking-wider">{currentOption.code}</span>
@@ -110,7 +110,7 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({
                 className={`w-full flex items-center justify-between px-3.5 py-2 text-xs font-semibold transition-colors duration-150 cursor-pointer ${
                   isSelected
                     ? 'bg-[#C5A880]/20 text-[#A48358] font-bold'
-                    : 'text-[#1F1C19] hover:bg-[#FAF7F2] hover:text-[#A48358]'
+                    : 'text-[#1A1918] hover:bg-[#FAF8F5] hover:text-[#A48358]'
                 }`}
               >
                 <div className="flex items-center gap-2">

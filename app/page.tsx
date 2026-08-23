@@ -17,7 +17,7 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-[100dvh] bg-[#FAF7F2] text-[#1F1C19] selection:bg-[#C5A880]/30 pb-12">
+    <main className="min-h-[100dvh] bg-[#FAF8F5] text-[#1A1918] selection:bg-[#C5A880]/30 pb-12">
       {/* Sticky Glassmorphism Header */}
       <Header currentLang={currentLang} onLanguageChange={handleLanguageChange} />
 
@@ -27,7 +27,7 @@ export default function Home() {
           <span className="inline-block bg-[#C5A880]/15 text-[#A48358] border border-[#C5A880]/30 text-xs font-bold tracking-widest uppercase px-4 py-1.5 rounded-full">
             2014’TEN BERİ MANAVGAT’TA BUTİK KUAFÖR DENEYİMİ
           </span>
-          <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl font-bold text-[#1F1C19] leading-tight">
+          <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl font-bold text-[#1A1918] leading-tight">
             Işıltı Saçlarda Başlar.
           </h1>
           <p className="text-stone-600 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">

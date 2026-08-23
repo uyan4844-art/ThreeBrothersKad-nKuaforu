@@ -162,7 +162,7 @@ html = html.replace(oldPillarsRegex, newPillarsHTML);
 const oldContactBtnsRegex = /<div style="display: flex; gap: 14px; flex-wrap: wrap;">[\s\S]*?<\/div>\s*<\/div>\s*<!-- Right Info Items -->/;
 const newContactBtnsHTML = `<div style="display: flex; gap: 14px; flex-wrap: wrap;">
             <a href="https://wa.me/905526856907?text=Merhaba,%20Three%20Brothers%20salonunuzdan%20randevu%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" class="btn-espresso-luxury btn-shimmer" data-i18n="c_btn_wa">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="#25D366">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="#128C7E">
                 <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
               </svg>
               <span>WhatsApp ile Randevu Al</span>
@@ -310,9 +310,9 @@ const polishesCSS = `
 
     /* Contact Espresso Luxury Button */
     .btn-espresso-luxury {
-      background: #1F1C19;
+      background: #1A1918;
       color: #FFFFFF !important;
-      border: 1px solid #1F1C19;
+      border: 1px solid #1A1918;
       box-shadow: 0 8px 22px rgba(31, 28, 25, 0.25);
       border-radius: 999px;
       padding: 12px 26px;
@@ -328,15 +328,15 @@ const polishesCSS = `
     }
 
     .btn-espresso-luxury:hover {
-      background: #36312C;
-      border-color: #36312C;
+      background: #2C2724;
+      border-color: #2C2724;
       transform: translateY(-2px);
       box-shadow: 0 12px 28px rgba(31, 28, 25, 0.35);
     }
 
     .btn-outline-gold {
       background: rgba(255, 255, 255, 0.9);
-      color: #1F1C19 !important;
+      color: #1A1918 !important;
       border: 1px solid rgba(194, 163, 121, 0.4);
       border-radius: 999px;
       padding: 12px 24px;
@@ -351,16 +351,16 @@ const polishesCSS = `
     }
 
     .btn-outline-gold:hover {
-      background: #1F1C19;
+      background: #1A1918;
       color: #FFFFFF !important;
-      border-color: #1F1C19;
+      border-color: #1A1918;
       transform: translateY(-2px);
       box-shadow: 0 8px 20px rgba(31, 28, 25, 0.15);
     }
 
     /* Rich 4-Column Footer CSS */
     .boutique-footer {
-      background-color: #1A1715 !important;
+      background-color: #1A1918 !important;
       color: #EBE0D2;
       padding: 90px 24px 36px;
       border-top: 1px solid rgba(194, 163, 121, 0.2);
@@ -439,7 +439,7 @@ const polishesCSS = `
 
     .footer-social-btn:hover {
       background: var(--gold-primary);
-      color: #1A1715;
+      color: #1A1918;
       border-color: var(--gold-primary);
     }
 

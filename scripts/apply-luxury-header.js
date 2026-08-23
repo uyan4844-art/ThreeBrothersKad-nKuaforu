@@ -161,8 +161,8 @@ const newHeaderCSS = `/* ==========================================
       width: 7px;
       height: 7px;
       border-radius: 50%;
-      background: #25D366;
-      box-shadow: 0 0 8px #25D366;
+      background: #128C7E;
+      box-shadow: 0 0 8px #128C7E;
       animation: pulseDot 2s infinite;
     }
 

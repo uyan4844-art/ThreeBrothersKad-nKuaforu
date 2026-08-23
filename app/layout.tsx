@@ -14,7 +14,7 @@ export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   viewportFit: 'cover',
-  themeColor: '#FAF7F2',
+  themeColor: '#FAF8F5',
 };
 
 export default function RootLayout({
@@ -33,7 +33,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="bg-[#FAF7F2] text-[#1F1C19] antialiased selection:bg-[#C5A880]/30 min-h-[100dvh]">
+      <body className="bg-[#FAF8F5] text-[#1A1918] antialiased selection:bg-[#C5A880]/30 min-h-[100dvh]">
         {children}
       </body>
     </html>

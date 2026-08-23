@@ -10,20 +10,20 @@ export const metadata = {
 
 export default function HakkimizdaPage() {
   return (
-    <main className="min-h-[100dvh] bg-[#FAF7F2] text-[#1F1C19] selection:bg-[#C5A880]/30 pb-[calc(6rem+env(safe-area-inset-bottom,0px))] md:pb-0">
+    <main className="min-h-[100dvh] bg-[#FAF8F5] text-[#1A1918] selection:bg-[#C5A880]/30 pb-[calc(6rem+env(safe-area-inset-bottom,0px))] md:pb-0">
       <Header />
 
       <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
         <div className="flex items-center gap-2 text-xs font-semibold text-stone-500 mb-6 font-montserrat">
           <Link href="/" className="hover:text-[#A48358]">Anasayfa</Link>
           <span>/</span>
-          <span className="text-[#1F1C19]">Hakkımızda</span>
+          <span className="text-[#1A1918]">Hakkımızda</span>
         </div>
 
         <span className="text-xs font-bold text-[#A48358] tracking-widest uppercase">
           HİKAYEMİZ & VİZYONUMUZ
         </span>
-        <h1 className="font-serif text-3xl sm:text-5xl font-bold text-[#1F1C19] mt-2 mb-6">
+        <h1 className="font-serif text-3xl sm:text-5xl font-bold text-[#1A1918] mt-2 mb-6">
           Sarı Saçın Manavgat’taki Butik Adresi
         </h1>
 
@@ -38,14 +38,14 @@ export default function HakkimizdaPage() {
 
         <div className="mt-10 p-6 bg-white rounded-2xl border border-stone-200 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
           <div>
-            <h3 className="font-serif text-xl font-bold text-[#1F1C19]">Salonumuzu Ziyaret Edin</h3>
+            <h3 className="font-serif text-xl font-bold text-[#1A1918]">Salonumuzu Ziyaret Edin</h3>
             <p className="text-xs text-stone-500">Bahçelievler Mah. Demokrasi Bulv. No:8Z1 Manavgat, Antalya</p>
           </div>
           <a
             href="https://wa.me/905526856907?text=Merhaba,%20Three%20Brothers%20salonunuzdan%20randevu%20almak%20istiyorum."
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-[#1F1C19] hover:bg-[#36312C] text-white text-xs font-bold px-6 py-3 rounded-full font-montserrat uppercase tracking-wider"
+            className="bg-[#1A1918] hover:bg-[#2C2724] text-white text-xs font-bold px-6 py-3 rounded-full font-montserrat uppercase tracking-wider"
           >
             Randevu Al
           </a>
