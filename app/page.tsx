@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import { Header } from '../components/Header';
 import { Services } from '../components/Services';
 import { TrustSection } from '../components/TrustSection';
-import { MobileBottomNav } from '../components/MobileBottomNav';
 import { LanguageCode } from '../components/LanguageSelector';
 
 export default function Home() {
@@ -18,7 +17,7 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-[100dvh] bg-[#FAF7F2] text-[#1F1C19] selection:bg-[#C5A880]/30 pb-[calc(6rem+env(safe-area-inset-bottom,0px))] md:pb-0">
+    <main className="min-h-[100dvh] bg-[#FAF7F2] text-[#1F1C19] selection:bg-[#C5A880]/30 pb-12">
       {/* Sticky Glassmorphism Header */}
       <Header currentLang={currentLang} onLanguageChange={handleLanguageChange} />
 
@@ -29,26 +28,27 @@ export default function Home() {
             2014’TEN BERİ MANAVGAT’TA BUTİK KUAFÖR DENEYİMİ
           </span>
           <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl font-bold text-[#1F1C19] leading-tight">
-            Sarı Saçta Doğallık & <br className="hidden sm:inline" />
-            <span className="italic font-normal text-[#A48358]">Kişiye Özel Lüks Dokunuş</span>
+            Işıltı Saçlarda Başlar.
           </h1>
           <p className="text-stone-600 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-            Biyolojik saç sağlığını ve bağ koruma teknolojisini merkezimize alarak, ten renginizle kusursuz uyum sağlayan sarışınlık ve saç tasarımı sunuyoruz.
+            Manavgat’ta Doğal ve Çekici Işıltının Adresi. Saçlarınızda doğal geçişler ve göz alıcı parlaklık arıyorsanız doğru yerdesiniz.
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-4 max-w-xs sm:max-w-none mx-auto">
+            {/* 1. Hizmetlerimiz (Beyaz Oval Buton) */}
+            <a
+              href="#hizmetler"
+              className="w-full sm:w-auto bg-white hover:bg-stone-100 text-black font-montserrat text-sm font-bold uppercase tracking-wider py-3.5 px-8 rounded-full shadow-md border border-stone-200 transition-all duration-300 text-center"
+            >
+              Hizmetlerimiz
+            </a>
+            {/* 2. Randevu Al (Şeffaf/Siyah İnce Beyaz Çerçeveli Buton) */}
             <a
               href="https://wa.me/905526856907?text=Merhaba,%20Three%20Brothers%20salonunuzdan%20randevu%20almak%20istiyorum."
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-[#1F1C19] hover:bg-[#36312C] text-white font-montserrat text-xs font-bold uppercase tracking-wider py-4 px-8 rounded-full shadow-lg transition-all duration-300 hover:-translate-y-0.5"
+              className="w-full sm:w-auto bg-black/80 hover:bg-black text-white font-montserrat text-sm font-bold uppercase tracking-wider py-3.5 px-8 rounded-full shadow-md border border-white/80 transition-all duration-300 text-center"
             >
-              WhatsApp ile Randevu Al
-            </a>
-            <a
-              href="#hizmetler"
-              className="bg-white/80 hover:bg-white border border-[#C5A880]/40 text-[#1F1C19] font-montserrat text-xs font-bold uppercase tracking-wider py-4 px-8 rounded-full shadow-sm transition-all duration-300"
-            >
-              Hizmetleri İncele
+              Randevu Al
             </a>
           </div>
         </div>
@@ -59,9 +59,6 @@ export default function Home() {
 
       {/* 01 / 02 / 03 Numaralı Güven & Standartlar Bölümü */}
       <TrustSection />
-
-      {/* Modern Mobil Alt Hızlı İletişim Barı */}
-      <MobileBottomNav />
     </main>
   );
 }

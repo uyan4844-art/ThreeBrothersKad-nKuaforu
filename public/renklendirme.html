@@ -828,7 +828,34 @@
     <!-- ==========================================
        1. STICKY GLASSMORPHISM LUXURY HEADER
   =========================================== -->
-  <header class="luxury-header" id="boutiqueHeader">
+    <!-- ==========================================  
+       1. SHINE HAIR MOBIL HEADER (md:hidden)
+  =========================================== -->
+  <header class="mobile-shine-header" id="mobileHeader">
+    <!-- Sol: Sadece Minimal Instagram İkonu -->
+    <a href="https://www.instagram.com/threebrotherrrs/" target="_blank" rel="noopener noreferrer" class="mobile-insta-btn" aria-label="Instagram">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+      </svg>
+    </a>
+
+    <!-- Orta: Ortalanmış Logo & Alt Başlık -->
+    <a href="index.html" class="mobile-brand-center" aria-label="Three Brothers Ana Sayfa">
+      <span class="mobile-brand-name">Three Brothers</span>
+      <span class="mobile-brand-tag">KADIN KUAFÖRÜ</span>
+    </a>
+
+    <!-- Sağ: İki Çizgili Minimal Menü İkonu -->
+    <button id="openMobileMenuBtn" onclick="toggleMenu()" type="button" aria-label="Menüyü Aç" class="mobile-menu-burger">
+      <span class="menu-burger-line-1"></span>
+      <span class="menu-burger-line-2"></span>
+    </button>
+  </header>
+
+  <!-- 1. DESKTOP STICKY LUXURY HEADER (hidden md:flex) -->
+  <header class="luxury-header desktop-only-header" id="boutiqueHeader">
     
     <!-- Sol: Logo & Marka İsmi -->
     <a href="index.html#hero" class="brand-link" aria-label="Three Brothers Ana Sayfa">
@@ -1231,22 +1258,6 @@
     <!-- ==========================================
        11. MODERN TELEFON UYUMLU SABİT ALT BAR (STICKY BOTTOM NAV)
   =========================================== -->
-  <nav class="app-bottom-nav" aria-label="Mobil Hızlı İletişim">
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%; max-width: 440px; margin: 0 auto;">
-      <a href="tel:+905526856907" class="drawer-action-btn btn-call" style="min-height: 44px; border-radius: 999px; font-size: 13px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; background: #1F1C19; color: #FFFFFF; box-shadow: 0 4px 14px rgba(0,0,0,0.15);">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="color: #C5A880;">
-          <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z"/>
-        </svg>
-        <span>Hemen Ara</span>
-      </a>
-
-      <a href="https://wa.me/905526856907?text=Merhaba,%20Three%20Brothers%20salonunuzdan%20randevu%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" class="drawer-wa-full-btn" style="min-height: 44px; border-radius: 999px; font-size: 13px; font-weight: 700; margin: 0; display: inline-flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; background: linear-gradient(135deg, #25D366, #128C7E); color: #FFFFFF; box-shadow: 0 4px 14px rgba(37,211,102,0.35);">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
-        </svg>
-        <span>WhatsApp Randevu</span>
-      </a>
-    </div>
-  </nav>
+  
 </body>
 </html>
