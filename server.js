@@ -106,7 +106,12 @@ const server = http.createServer((req, res) => {
       'Cache-Control': 'no-cache, no-store, must-revalidate',
       'Pragma': 'no-cache',
       'Expires': '0',
-      'X-Content-Type-Options': 'nosniff'
+      'X-DNS-Prefetch-Control': 'on',
+      'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload',
+      'X-Frame-Options': 'DENY',
+      'X-Content-Type-Options': 'nosniff',
+      'Referrer-Policy': 'origin-when-cross-origin',
+      'Permissions-Policy': 'camera=(), microphone=(), geolocation=()'
     };
 
     const acceptEncoding = req.headers['accept-encoding'] || '';

@@ -32,6 +32,10 @@
 # 4. Security Headers & UTF-8
 AddDefaultCharset UTF-8
 <IfModule mod_headers.c>
+  Header set X-DNS-Prefetch-Control "on"
+  Header set Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
+  Header set X-Frame-Options "DENY"
   Header set X-Content-Type-Options "nosniff"
-  Header set X-Frame-Options "SAMEORIGIN"
+  Header set Referrer-Policy "origin-when-cross-origin"
+  Header set Permissions-Policy "camera=(), microphone=(), geolocation=()"
 </IfModule>
