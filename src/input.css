@@ -2650,7 +2650,7 @@ body.menu-open {
     width: 100% !important;
     height: 100% !important;
     object-fit: cover !important;
-    object-position: 72% 12% !important;
+    object-position: 45% top !important;
     display: block !important;
     filter: contrast(104%) saturate(106%) brightness(102%) !important;
   }
