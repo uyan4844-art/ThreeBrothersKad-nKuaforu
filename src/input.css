@@ -2653,7 +2653,7 @@ body.menu-open {
     flex-direction: column !important;
     justify-content: flex-end !important;
     align-items: center !important;
-    padding: 60px 20px 95px !important;
+    padding: 60px 20px 85px !important;
     overflow: hidden !important;
     background-color: #FAF8F5 !important;
   }
@@ -2682,14 +2682,15 @@ body.menu-open {
     width: 100% !important;
     height: 100% !important;
     object-fit: cover !important;
-    object-position: 60% top !important;
+    object-position: center top !important;
     display: block !important;
-    filter: contrast(104%) saturate(106%) brightness(102%) !important;
+    filter: contrast(102%) saturate(104%) brightness(101%) !important;
     -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%) !important;
     mask-image: linear-gradient(to bottom, black 50%, transparent 100%) !important;
     pointer-events: none !important;
-    transform-origin: 60% 25% !important;
-    animation: heroEntrance 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards, heroSlowBreathing 9s ease-in-out 1.2s infinite alternate !important;
+    transform: scale(1) !important;
+    transform-origin: center top !important;
+    animation: heroEntrance 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards !important;
     will-change: transform, opacity !important;
   }
 
@@ -2699,7 +2700,7 @@ body.menu-open {
     width: 100% !important;
     height: 100% !important;
     z-index: 1 !important;
-    background: linear-gradient(to top, #FAF8F5 0%, rgba(250, 248, 245, 0.75) 55%, rgba(250, 248, 245, 0.25) 80%, transparent 100%) !important;
+    background: linear-gradient(to top, #FAF8F5 0%, #FAF8F5 28%, rgba(250, 248, 245, 0.85) 55%, rgba(250, 248, 245, 0.35) 78%, transparent 100%) !important;
     display: block !important;
     pointer-events: none !important;
   }
@@ -2707,14 +2708,14 @@ body.menu-open {
   .hero-container {
     position: relative !important;
     z-index: 10 !important;
-    padding: 0 !important;
+    padding: 0 16px !important;
     width: 100% !important;
     margin: 0 auto !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
     text-align: center !important;
-    transform: translateY(-50px) !important;
+    transform: translateY(-40px) !important;
   }
 
   .hero-content-box {
@@ -2724,16 +2725,20 @@ body.menu-open {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
+    padding: 16px 14px 12px !important;
+    border-radius: 24px !important;
+    background: radial-gradient(ellipse at center, rgba(250, 248, 245, 0.75) 0%, rgba(250, 248, 245, 0.35) 65%, transparent 100%) !important;
   }
 
   .hero-headline {
-    font-size: clamp(34px, 9vw, 44px) !important;
-    line-height: 1.12 !important;
-    margin-bottom: 14px !important;
+    font-size: clamp(30px, 8vw, 38px) !important;
+    line-height: 1.15 !important;
+    margin-bottom: 10px !important;
     color: #1A1918 !important;
     font-family: var(--font-serif) !important;
     font-weight: 700 !important;
     text-align: center !important;
+    letter-spacing: -0.015em !important;
   }
 
   .hero-headline em {
@@ -2743,9 +2748,9 @@ body.menu-open {
 
   .hero-description {
     font-size: 14.5px !important;
-    line-height: 1.55 !important;
-    margin-bottom: 24px !important;
-    max-width: 320px !important;
+    line-height: 1.5 !important;
+    margin-bottom: 22px !important;
+    max-width: 310px !important;
     color: #44403C !important;
     text-align: center !important;
     font-weight: 500 !important;

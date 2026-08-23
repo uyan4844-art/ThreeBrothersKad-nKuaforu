@@ -50,7 +50,7 @@ export default function Home() {
             Doğal Zarafet.
           </h1>
           <p className="text-stone-700 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed font-medium">
-            Manavgat'ta saçın sağlığını koruyan profesyonel balyaj, mikro kaynak ve kişiye özel sarışınlık tasarımı. Saçınızı yıpratmadan, teninize en çok yakışan tonu birlikte keşfedelim.
+            Saç sağlığını koruyan profesyonel renklendirme ve mikro kaynak stüdyosu.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-4 max-w-xs sm:max-w-none mx-auto w-full">
             {/* 1. Hizmetlerimizi Keşfet (Siyah Dolgulu / Beyaz Yazılı Buton) */}
