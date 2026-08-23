@@ -46,8 +46,7 @@ export default function Home() {
             2014’TEN BERİ MANAVGAT’TA BUTİK KADIN KUAFÖRÜ DENEYİMİ
           </span>
           <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl font-bold text-[#1A1918] leading-tight">
-            Manavgat Kadın Kuaförü <br />
-            <span className="text-[#A48358] font-normal italic">Three Brothers</span>
+            Işıltı Saçlarda Başlar.
           </h1>
           <p className="text-stone-700 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed font-medium">
             Manavgat’ta doğal balyaj, kusursuz sarışın renklendirme, ombre ve mikro kaynak uzmanlığı. Saç sağlığınızı koruyan lüks ve butik kuaför deneyimi.
