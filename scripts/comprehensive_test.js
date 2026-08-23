@@ -16,45 +16,49 @@ assert(indexHtml.includes('class="lang-dropdown-btn"'), 'Language dropdown toggl
 assert(indexHtml.includes('class="lang-dropdown-menu"'), 'Language dropdown menu in index.html');
 assert(i18nJs.includes('toggleLangDropdown'), 'toggleLangDropdown function in js/i18n.js');
 assert(i18nJs.includes('selectLanguage'), 'selectLanguage function in js/i18n.js');
+assert(fs.existsSync('components/LanguageSelector.tsx'), 'components/LanguageSelector.tsx exists');
 
-// 2. CATEGORY TABS
+// 2. CATEGORY TABS & FILTERING
 assert(indexHtml.includes('service-tabs-wrapper'), 'Service category tabs wrapper in index.html');
 assert(indexHtml.includes('data-category="renklendirme"'), 'Renklendirme & Balyaj category tab in index.html');
 assert(indexHtml.includes('data-category="kaynak"'), 'Mikro Kaynak category tab in index.html');
 assert(indexHtml.includes('data-category="bakim"'), 'Bakım & Kesim category tab in index.html');
 assert(i18nJs.includes('filterServices'), 'filterServices function in js/i18n.js');
 
-// 3. SERVICE DETAIL MODAL / BOTTOM SHEET
-assert(indexHtml.includes('id="serviceDetailBackdrop"'), 'Service detail modal backdrop in index.html');
-assert(indexHtml.includes('id="sheetModalTitle"'), 'Modal title element in index.html');
-assert(indexHtml.includes('id="sheetModalDuration"'), 'Modal duration element in index.html');
-assert(indexHtml.includes('id="sheetModalProducts"'), 'Modal products container in index.html');
-assert(indexHtml.includes('id="sheetModalSteps"'), 'Modal steps container in index.html');
-assert(indexHtml.includes('id="sheetModalWaBtn"'), 'Modal WhatsApp CTA in index.html');
-assert(i18nJs.includes('SERVICE_MODAL_DATA'), 'Service modal dictionary in js/i18n.js');
-assert(i18nJs.includes('openServiceModal'), 'openServiceModal function in js/i18n.js');
-assert(i18nJs.includes('closeServiceModal'), 'closeServiceModal function in js/i18n.js');
+// 3. DEDICATED MULTI-PAGE SERVICE PAGES & NAVIGATION
+assert(indexHtml.includes('href="balyaj.html"'), 'Balyaj card links directly to balyaj.html');
+assert(indexHtml.includes('href="blonde.html"'), 'Blonde card links directly to blonde.html');
+assert(indexHtml.includes('href="kaynak.html"'), 'Kaynak card links directly to kaynak.html');
+assert(indexHtml.includes('href="ombre.html"'), 'Ombre card links directly to ombre.html');
+assert(indexHtml.includes('href="renklendirme.html"'), 'Renklendirme card links directly to renklendirme.html');
 
-// 4. APP-LIKE MOBILE BOTTOM NAV
+assert(fs.existsSync('balyaj.html'), 'balyaj.html static page exists');
+assert(fs.existsSync('blonde.html'), 'blonde.html static page exists');
+assert(fs.existsSync('kaynak.html'), 'kaynak.html static page exists');
+assert(fs.existsSync('ombre.html'), 'ombre.html static page exists');
+assert(fs.existsSync('renklendirme.html'), 'renklendirme.html static page exists');
+assert(fs.existsSync('hakkimizda.html'), 'hakkimizda.html static page exists');
+
+assert(fs.existsSync('app/hizmetler/balyaj/page.tsx'), 'app/hizmetler/balyaj/page.tsx Next.js page exists');
+assert(fs.existsSync('app/hizmetler/blonde/page.tsx'), 'app/hizmetler/blonde/page.tsx Next.js page exists');
+assert(fs.existsSync('app/hizmetler/kaynak/page.tsx'), 'app/hizmetler/kaynak/page.tsx Next.js page exists');
+assert(fs.existsSync('app/hizmetler/ombre/page.tsx'), 'app/hizmetler/ombre/page.tsx Next.js page exists');
+assert(fs.existsSync('app/hizmetler/renklendirme/page.tsx'), 'app/hizmetler/renklendirme/page.tsx Next.js page exists');
+assert(fs.existsSync('app/hakkimizda/page.tsx'), 'app/hakkimizda/page.tsx Next.js page exists');
+
+// 4. APP-LIKE MOBILE BOTTOM NAV & HEADER
 assert(indexHtml.includes('class="app-bottom-nav"'), 'App-like bottom navigation in index.html');
-assert(indexHtml.includes('href="#hero"') && indexHtml.includes('Anasayfa'), 'App Nav: Anasayfa tab');
-assert(indexHtml.includes('href="#hizmetler"') && indexHtml.includes('Hizmetler'), 'App Nav: Hizmetler tab');
-assert(indexHtml.includes('href="#yorumlar"') && indexHtml.includes('Yorumlar'), 'App Nav: Yorumlar tab');
-assert(indexHtml.includes('class="app-nav-item app-nav-wa-special"'), 'App Nav: WhatsApp special button');
+assert(fs.existsSync('components/MobileBottomNav.tsx'), 'components/MobileBottomNav.tsx exists');
+assert(fs.existsSync('components/Header.tsx'), 'components/Header.tsx exists');
+assert(fs.existsSync('components/Services.tsx'), 'components/Services.tsx exists');
+assert(fs.existsSync('app/page.tsx'), 'app/page.tsx exists');
 
-// 5. REACT / TYPESCRIPT COMPONENTS
-assert(fs.existsSync('components/LanguageSelector.tsx'), 'components/LanguageSelector.tsx created');
-assert(fs.existsSync('components/Services.tsx'), 'components/Services.tsx created');
-assert(fs.existsSync('components/ServiceDetailModal.tsx'), 'components/ServiceDetailModal.tsx created');
-assert(fs.existsSync('components/MobileBottomNav.tsx'), 'components/MobileBottomNav.tsx created');
-assert(fs.existsSync('components/Header.tsx'), 'components/Header.tsx created');
-assert(fs.existsSync('app/page.tsx'), 'app/page.tsx created');
+// 5. BRAND INTEGRITY & INSTAGRAM
+assert(indexHtml.includes('threebrotherrrs'), 'Instagram handle is @threebrotherrrs');
 
 // 6. CSS COMPILED STYLES
 assert(styleCss.includes('lang-dropdown-container'), 'Compiled CSS has lang-dropdown-container');
 assert(styleCss.includes('service-tabs-wrapper'), 'Compiled CSS has service-tabs-wrapper');
-assert(styleCss.includes('sheet-backdrop'), 'Compiled CSS has sheet-backdrop');
-assert(styleCss.includes('sheet-modal'), 'Compiled CSS has sheet-modal');
 assert(styleCss.includes('app-bottom-nav'), 'Compiled CSS has app-bottom-nav');
 
 // 7. ZIP ARCHIVE CHECK
