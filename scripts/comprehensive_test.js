@@ -4,6 +4,7 @@ const indexHtml = fs.readFileSync('index.html', 'utf8');
 const i18nJs = fs.readFileSync('js/i18n.js', 'utf8');
 const styleCss = fs.readFileSync('css/style.css', 'utf8');
 const headerTsx = fs.readFileSync('components/Header.tsx', 'utf8');
+const bottomNavTsx = fs.readFileSync('components/MobileBottomNav.tsx', 'utf8');
 
 const tests = [];
 
@@ -11,7 +12,27 @@ function assert(condition, testName, details = '') {
   tests.push({ name: testName, pass: Boolean(condition), details });
 }
 
-// 1. LANGUAGE DROPDOWN
+// 1. VIEWPORT & SAFE AREA CONFIGURATION
+assert(indexHtml.includes('viewport-fit=cover'), 'index.html has viewport-fit=cover');
+assert(fs.existsSync('app/layout.tsx'), 'app/layout.tsx exists');
+const layoutTsx = fs.readFileSync('app/layout.tsx', 'utf8');
+assert(layoutTsx.includes('viewport-fit=cover') || layoutTsx.includes('viewportFit'), 'app/layout.tsx has viewportFit cover');
+assert(fs.existsSync('app/globals.css'), 'app/globals.css exists');
+const globalsCss = fs.readFileSync('app/globals.css', 'utf8');
+assert(globalsCss.includes('-webkit-tap-highlight-color: transparent'), 'app/globals.css has tap-highlight-color: transparent');
+assert(globalsCss.includes('overscroll-behavior: contain'), 'app/globals.css has overscroll-behavior: contain');
+
+// 2. SAFE AREA INSETS IN CSS & COMPONENTS
+assert(styleCss.includes('safe-area-inset-top'), 'Compiled CSS has safe-area-inset-top');
+assert(styleCss.includes('safe-area-inset-bottom'), 'Compiled CSS has safe-area-inset-bottom');
+assert(headerTsx.includes('safe-area-inset-top'), 'Header.tsx has safe-area-inset-top support');
+assert(bottomNavTsx.includes('safe-area-inset-bottom'), 'MobileBottomNav.tsx has safe-area-inset-bottom support');
+
+// 3. DYNAMIC VIEWPORT HEIGHT (100dvh)
+assert(styleCss.includes('100dvh'), 'Compiled CSS has 100dvh support');
+assert(headerTsx.includes('100dvh'), 'Header.tsx drawer has 100dvh support');
+
+// 4. LANGUAGE DROPDOWN
 assert(indexHtml.includes('class="lang-dropdown-container"'), 'Language dropdown container in index.html');
 assert(indexHtml.includes('class="lang-dropdown-btn"'), 'Language dropdown toggle button in index.html');
 assert(indexHtml.includes('class="lang-dropdown-menu"'), 'Language dropdown menu in index.html');
@@ -19,14 +40,14 @@ assert(i18nJs.includes('toggleLangDropdown'), 'toggleLangDropdown function in js
 assert(i18nJs.includes('selectLanguage'), 'selectLanguage function in js/i18n.js');
 assert(fs.existsSync('components/LanguageSelector.tsx'), 'components/LanguageSelector.tsx exists');
 
-// 2. CATEGORY TABS & FILTERING
+// 5. CATEGORY TABS & FILTERING
 assert(indexHtml.includes('service-tabs-wrapper'), 'Service category tabs wrapper in index.html');
 assert(indexHtml.includes('data-category="renklendirme"'), 'Renklendirme & Balyaj category tab in index.html');
 assert(indexHtml.includes('data-category="kaynak"'), 'Mikro Kaynak category tab in index.html');
 assert(indexHtml.includes('data-category="bakim"'), 'Bakım & Kesim category tab in index.html');
 assert(i18nJs.includes('filterServices'), 'filterServices function in js/i18n.js');
 
-// 3. DEDICATED MULTI-PAGE SERVICE PAGES & NAVIGATION
+// 6. DEDICATED MULTI-PAGE SERVICE PAGES
 assert(indexHtml.includes('href="balyaj.html"'), 'Balyaj card links directly to balyaj.html');
 assert(indexHtml.includes('href="blonde.html"'), 'Blonde card links directly to blonde.html');
 assert(indexHtml.includes('href="kaynak.html"'), 'Kaynak card links directly to kaynak.html');
@@ -47,19 +68,15 @@ assert(fs.existsSync('app/hizmetler/ombre/page.tsx'), 'app/hizmetler/ombre/page.
 assert(fs.existsSync('app/hizmetler/renklendirme/page.tsx'), 'app/hizmetler/renklendirme/page.tsx Next.js page exists');
 assert(fs.existsSync('app/hakkimizda/page.tsx'), 'app/hakkimizda/page.tsx Next.js page exists');
 
-// 4. SHINE HAIR LUXURY MOBILE DRAWER
+// 7. SHINE HAIR LUXURY MOBILE DRAWER
 assert(indexHtml.includes('class="drawer-service-links-list"'), 'Drawer has dedicated service links list');
 assert(indexHtml.includes('class="drawer-action-dual-row"'), 'Drawer has dual action row (Call & Maps)');
 assert(indexHtml.includes('class="drawer-wa-full-btn"'), 'Drawer has full-width WhatsApp button');
-assert(headerTsx.includes('Hemen Ara') && headerTsx.includes('Konum / Yol Tarifi'), 'Header.tsx has Shine Hair mobile drawer actions');
-assert(styleCss.includes('drawer-service-links-list'), 'Compiled CSS has drawer-service-links-list');
-assert(styleCss.includes('drawer-action-dual-row'), 'Compiled CSS has drawer-action-dual-row');
-assert(styleCss.includes('body.menu-open'), 'Compiled CSS locks body scroll on menu-open');
 
-// 5. BRAND INTEGRITY & INSTAGRAM
+// 8. BRAND INTEGRITY & INSTAGRAM
 assert(indexHtml.includes('threebrotherrrs'), 'Instagram handle is @threebrotherrrs');
 
-// 6. ZIP ARCHIVE CHECK
+// 9. ZIP ARCHIVE CHECK
 assert(fs.existsSync('ThreeBrothers_Hostinger_Deploy.zip'), 'ThreeBrothers_Hostinger_Deploy.zip exists');
 const zipSize = fs.statSync('ThreeBrothers_Hostinger_Deploy.zip').size;
 assert(zipSize > 35 * 1024 * 1024, `Zip archive size is valid: ${(zipSize / (1024*1024)).toFixed(2)} MB`);

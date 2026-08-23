@@ -45,9 +45,9 @@ export const Header: React.FC<HeaderProps> = ({
           1. DESKTOP & MOBILE LUXURY STICKY HEADER (Desktop untouched)
       ========================================================================== */}
       <header
-        className={`fixed top-0 left-0 w-full z-40 px-4 sm:px-8 py-3.5 sm:py-4.5 flex items-center justify-between transition-all duration-300 ${
+        className={`fixed top-0 left-0 w-full z-40 px-4 sm:px-8 py-3.5 sm:py-4.5 pt-[calc(0.875rem+env(safe-area-inset-top,0px))] flex items-center justify-between transition-all duration-300 ${
           isScrolled
-            ? 'bg-[#FAF7F2]/90 backdrop-blur-md border-b border-[#C5A880]/20 shadow-sm py-2.5 sm:py-3.5'
+            ? 'bg-[#FAF7F2]/90 backdrop-blur-md border-b border-[#C5A880]/20 shadow-sm'
             : 'bg-[#FAF7F2]/60 backdrop-blur-xs border-b border-[#C5A880]/15'
         }`}
       >
@@ -157,7 +157,7 @@ export const Header: React.FC<HeaderProps> = ({
           />
 
           {/* Drawer Panel */}
-          <aside className="relative w-full max-w-[360px] bg-[#FAF7F2] h-full shadow-2xl p-6 flex flex-col justify-between overflow-y-auto z-10 animate-in slide-in-from-right duration-300">
+          <aside className="relative w-full max-w-[360px] bg-[#FAF7F2] h-[100dvh] min-h-[100dvh] shadow-2xl p-6 pb-[calc(1.5rem+env(safe-area-inset-bottom,0px))] flex flex-col justify-between overflow-y-auto z-10 animate-in slide-in-from-right duration-300 overscroll-contain">
             <div>
               {/* Üst Kısım: Başlık & Kapat Butonu */}
               <div className="flex items-center justify-between border-b border-[#C5A880]/20 pb-4 mb-6">

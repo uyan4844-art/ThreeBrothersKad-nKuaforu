@@ -17,7 +17,7 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen bg-[#FAF7F2] text-[#1F1C19] selection:bg-[#C5A880]/30">
+    <main className="min-h-[100dvh] bg-[#FAF7F2] text-[#1F1C19] selection:bg-[#C5A880]/30 pb-[calc(6rem+env(safe-area-inset-bottom,0px))] md:pb-0">
       {/* Sticky Glassmorphism Header */}
       <Header currentLang={currentLang} onLanguageChange={handleLanguageChange} />
 

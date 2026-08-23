@@ -85,7 +85,7 @@ export const MobileBottomNav: React.FC = () => {
 
   return (
     <nav
-      className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-lg border-t border-[#C5A880]/25 px-4 py-2 flex justify-around items-center shadow-lg pb-[calc(0.5rem+env(safe-area-inset-bottom,0px))]"
+      className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-lg border-t border-[#C5A880]/25 px-4 pt-2 flex justify-around items-center shadow-lg pb-[calc(0.75rem+env(safe-area-inset-bottom,0px))]"
       aria-label="Mobil Alt Gezinme Barı"
     >
       {navItems.map((item) => {

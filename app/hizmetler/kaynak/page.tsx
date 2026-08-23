@@ -10,7 +10,7 @@ export const metadata = {
 
 export default function KaynakPage() {
   return (
-    <main className="min-h-screen bg-[#FAF7F2] text-[#1F1C19] selection:bg-[#C5A880]/30">
+    <main className="min-h-[100dvh] bg-[#FAF7F2] text-[#1F1C19] selection:bg-[#C5A880]/30 pb-[calc(6rem+env(safe-area-inset-bottom,0px))] md:pb-0">
       <Header />
 
       <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">

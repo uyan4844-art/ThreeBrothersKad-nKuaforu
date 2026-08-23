@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+/* Dokunmatik gri flaş efektini kaldır */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Açılır menü açıkken arka planın elastik kaymasını engelle */
+.drawer-open, body.menu-open {
+  overflow: hidden !important;
+  overscroll-behavior: contain !important;
+  touch-action: none;
+}
+
+/* iOS Safe Area Utilities */
+:root {
+  --sat: env(safe-area-inset-top, 0px);
+  --sar: env(safe-area-inset-right, 0px);
+  --sab: env(safe-area-inset-bottom, 0px);
+  --sal: env(safe-area-inset-left, 0px);
+}
