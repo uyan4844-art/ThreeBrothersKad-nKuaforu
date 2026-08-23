@@ -46,27 +46,28 @@ export default function Home() {
             2014’TEN BERİ MANAVGAT’TA BUTİK KADIN KUAFÖRÜ DENEYİMİ
           </span>
           <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl font-bold text-[#1A1918] leading-tight">
-            Işıltı Saçlarda Başlar.
+            Kusursuz Renk, <br />
+            Doğal Zarafet.
           </h1>
           <p className="text-stone-700 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed font-medium">
-            Manavgat’ta doğal balyaj, kusursuz sarışın renklendirme, ombre ve mikro kaynak uzmanlığı. Saç sağlığınızı koruyan lüks ve butik kuaför deneyimi.
+            Manavgat'ta saçın sağlığını koruyan profesyonel balyaj, mikro kaynak ve kişiye özel sarışınlık tasarımı. Saçınızı yıpratmadan, teninize en çok yakışan tonu birlikte keşfedelim.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-4 max-w-xs sm:max-w-none mx-auto w-full">
-            {/* 1. Hizmetlerimiz (Siyah Dolgulu / Beyaz Yazılı Buton) */}
+            {/* 1. Hizmetlerimizi Keşfet (Siyah Dolgulu / Beyaz Yazılı Buton) */}
             <a
               href="#hizmetler"
               className="w-full sm:w-auto bg-[#1A1918] hover:bg-[#2C2724] text-white font-montserrat text-sm font-bold uppercase tracking-wider py-3.5 px-8 rounded-full shadow-md border border-[#1A1918] transition-all duration-300 text-center"
             >
-              Hizmetlerimiz
+              Hizmetlerimizi Keşfet
             </a>
-            {/* 2. Randevu Al (Krem Zeminli / Siyah Çerçeveli Buton) */}
+            {/* 2. Randevu & Saç Analizi (Krem Zeminli / Siyah Çerçeveli Buton) */}
             <a
-              href="https://wa.me/905526856907?text=Merhaba,%20Three%20Brothers%20salonunuzdan%20randevu%20almak%20istiyorum."
+              href="https://wa.me/905526856907?text=Merhaba,%20Three%20Brothers%20salonunuzdan%20randevu%20ve%20saç%20analizi%20almak%20istiyorum."
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto bg-[#FAF8F5] hover:bg-[#1A1918] hover:text-white text-[#1A1918] font-montserrat text-sm font-bold uppercase tracking-wider py-3.5 px-8 rounded-full shadow-md border-1.5 border-[#1A1918] transition-all duration-300 text-center"
             >
-              Randevu Al
+              Randevu & Saç Analizi
             </a>
           </div>
         </div>
