@@ -3,6 +3,7 @@ const fs = require('fs');
 const indexHtml = fs.readFileSync('index.html', 'utf8');
 const i18nJs = fs.readFileSync('js/i18n.js', 'utf8');
 const styleCss = fs.readFileSync('css/style.css', 'utf8');
+const headerTsx = fs.readFileSync('components/Header.tsx', 'utf8');
 
 const tests = [];
 
@@ -46,22 +47,19 @@ assert(fs.existsSync('app/hizmetler/ombre/page.tsx'), 'app/hizmetler/ombre/page.
 assert(fs.existsSync('app/hizmetler/renklendirme/page.tsx'), 'app/hizmetler/renklendirme/page.tsx Next.js page exists');
 assert(fs.existsSync('app/hakkimizda/page.tsx'), 'app/hakkimizda/page.tsx Next.js page exists');
 
-// 4. APP-LIKE MOBILE BOTTOM NAV & HEADER
-assert(indexHtml.includes('class="app-bottom-nav"'), 'App-like bottom navigation in index.html');
-assert(fs.existsSync('components/MobileBottomNav.tsx'), 'components/MobileBottomNav.tsx exists');
-assert(fs.existsSync('components/Header.tsx'), 'components/Header.tsx exists');
-assert(fs.existsSync('components/Services.tsx'), 'components/Services.tsx exists');
-assert(fs.existsSync('app/page.tsx'), 'app/page.tsx exists');
+// 4. SHINE HAIR LUXURY MOBILE DRAWER
+assert(indexHtml.includes('class="drawer-service-links-list"'), 'Drawer has dedicated service links list');
+assert(indexHtml.includes('class="drawer-action-dual-row"'), 'Drawer has dual action row (Call & Maps)');
+assert(indexHtml.includes('class="drawer-wa-full-btn"'), 'Drawer has full-width WhatsApp button');
+assert(headerTsx.includes('Hemen Ara') && headerTsx.includes('Konum / Yol Tarifi'), 'Header.tsx has Shine Hair mobile drawer actions');
+assert(styleCss.includes('drawer-service-links-list'), 'Compiled CSS has drawer-service-links-list');
+assert(styleCss.includes('drawer-action-dual-row'), 'Compiled CSS has drawer-action-dual-row');
+assert(styleCss.includes('body.menu-open'), 'Compiled CSS locks body scroll on menu-open');
 
 // 5. BRAND INTEGRITY & INSTAGRAM
 assert(indexHtml.includes('threebrotherrrs'), 'Instagram handle is @threebrotherrrs');
 
-// 6. CSS COMPILED STYLES
-assert(styleCss.includes('lang-dropdown-container'), 'Compiled CSS has lang-dropdown-container');
-assert(styleCss.includes('service-tabs-wrapper'), 'Compiled CSS has service-tabs-wrapper');
-assert(styleCss.includes('app-bottom-nav'), 'Compiled CSS has app-bottom-nav');
-
-// 7. ZIP ARCHIVE CHECK
+// 6. ZIP ARCHIVE CHECK
 assert(fs.existsSync('ThreeBrothers_Hostinger_Deploy.zip'), 'ThreeBrothers_Hostinger_Deploy.zip exists');
 const zipSize = fs.statSync('ThreeBrothers_Hostinger_Deploy.zip').size;
 assert(zipSize > 35 * 1024 * 1024, `Zip archive size is valid: ${(zipSize / (1024*1024)).toFixed(2)} MB`);

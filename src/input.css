@@ -498,30 +498,167 @@ section[id] {
   padding-left: 6px;
 }
 
-.drawer-pills-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+.drawer-services-section {
   margin-bottom: 24px;
 }
 
-.drawer-pill {
+.drawer-section-tag {
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--gold-dark);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.drawer-service-links-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.drawer-service-links-list li a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background: #FFFFFF;
+  border: 1px solid rgba(197, 168, 128, 0.25);
+  border-radius: 12px;
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1F1C19;
+  transition: all 0.25s var(--ease-expo);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.drawer-service-links-list li a .bullet {
+  color: var(--gold-primary);
+  margin-right: 8px;
+  font-size: 14px;
+}
+
+.drawer-service-links-list li a .service-name {
+  flex: 1;
+}
+
+.drawer-service-links-list li a .service-arrow {
+  color: var(--gold-dark);
+  font-size: 14px;
+  transition: transform 0.25s ease;
+}
+
+.drawer-service-links-list li a:hover {
+  background: #FAF7F2;
+  border-color: var(--gold-primary);
+  transform: translateX(4px);
+}
+
+.drawer-service-links-list li a:hover .service-arrow {
+  transform: translateX(3px);
+}
+
+.drawer-footer-info {
+  margin-top: auto;
+  padding-top: 20px;
+  border-top: 1px solid rgba(197, 168, 128, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.drawer-contact-line, .drawer-hours-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Montserrat', sans-serif;
   font-size: 12px;
   font-weight: 600;
-  padding: 6px 14px;
-  border-radius: 999px;
-  background: #FFFFFF;
-  border: 1px solid rgba(197, 168, 128, 0.35);
-  color: #1F1C19;
+  color: #78716C;
+}
+
+.drawer-contact-line svg, .drawer-hours-line svg {
+  color: var(--gold-dark);
+  flex-shrink: 0;
+}
+
+.drawer-action-dual-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.drawer-action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
   text-decoration: none;
   transition: all 0.25s var(--ease-expo);
 }
 
-.drawer-pill:hover {
-  background: var(--gold-primary);
+.drawer-action-btn.btn-call {
+  background: #1F1C19;
   color: #FFFFFF;
-  transform: translateY(-2px);
+  border: 1px solid #1F1C19;
 }
+
+.drawer-action-btn.btn-call:hover {
+  background: #36312C;
+}
+
+.drawer-action-btn.btn-map {
+  background: #FFFFFF;
+  color: #1F1C19;
+  border: 1px solid rgba(197, 168, 128, 0.4);
+}
+
+.drawer-action-btn.btn-map:hover {
+  background: #FAF7F2;
+  border-color: var(--gold-primary);
+}
+
+.drawer-wa-full-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  color: #FFFFFF;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 13px 18px;
+  border-radius: 14px;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3);
+  transition: all 0.25s ease;
+  margin-top: 2px;
+}
+
+.drawer-wa-full-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(37, 211, 102, 0.4);
+}
+
+body.menu-open {
+  overflow: hidden !important;
+  touch-action: none;
+}
+
 
 /* ==========================================================================
    4. HERO SECTION WITH CINEMATIC PARALLAX & ENTRANCES
