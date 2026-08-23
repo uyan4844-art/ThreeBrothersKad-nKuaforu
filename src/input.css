@@ -761,11 +761,11 @@ body.menu-open {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 72% 12%;
-  filter: contrast(105%) saturate(104%);
+  object-position: 40% center;
+  filter: contrast(103%) saturate(103%);
   display: block;
   transform-origin: center 25%;
-  animation: heroEntrance 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards, heroSlowBreathing 9s ease-in-out 1.2s infinite alternate;
+  animation: heroEntrance 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   will-change: transform, opacity;
 }
 
@@ -2642,7 +2642,7 @@ body.menu-open {
     border-radius: 999px !important;
   }
 
-  /* 2. Hero: Fullscreen Layered Background with Smooth Bottom Cream Fade */
+  /* 2. Hero: Fullscreen Layered Background with Crisp Visuals */
   .boutique-hero {
     position: relative !important;
     min-height: 85dvh !important;
@@ -2653,7 +2653,7 @@ body.menu-open {
     flex-direction: column !important;
     justify-content: flex-end !important;
     align-items: center !important;
-    padding: 60px 20px 85px !important;
+    padding: 60px 20px 55px !important;
     overflow: hidden !important;
     background-color: #FAF8F5 !important;
   }
@@ -2671,8 +2671,8 @@ body.menu-open {
     box-shadow: none !important;
     border: none !important;
     overflow: hidden !important;
-    -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%) !important;
-    mask-image: linear-gradient(to bottom, black 50%, transparent 100%) !important;
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
     pointer-events: none !important;
   }
 
@@ -2684,9 +2684,8 @@ body.menu-open {
     object-fit: cover !important;
     object-position: center top !important;
     display: block !important;
-    filter: contrast(102%) saturate(104%) brightness(101%) !important;
-    -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%) !important;
-    mask-image: linear-gradient(to bottom, black 50%, transparent 100%) !important;
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
     pointer-events: none !important;
     transform: scale(1) !important;
     transform-origin: center top !important;
@@ -2694,13 +2693,14 @@ body.menu-open {
     will-change: transform, opacity !important;
   }
 
+  /* Sadece en altta butonların altına hafif bir gölge / alt degrade */
   .hero-backdrop-scrim {
     position: absolute !important;
     inset: 0 !important;
     width: 100% !important;
     height: 100% !important;
     z-index: 1 !important;
-    background: linear-gradient(to top, #FAF8F5 0%, #FAF8F5 28%, rgba(250, 248, 245, 0.85) 55%, rgba(250, 248, 245, 0.35) 78%, transparent 100%) !important;
+    background: linear-gradient(to top, #FAF8F5 0%, rgba(250, 248, 245, 0.9) 20%, rgba(250, 248, 245, 0.4) 42%, transparent 68%) !important;
     display: block !important;
     pointer-events: none !important;
   }
@@ -2715,7 +2715,7 @@ body.menu-open {
     flex-direction: column !important;
     align-items: center !important;
     text-align: center !important;
-    transform: translateY(-40px) !important;
+    transform: translateY(-15px) !important;
   }
 
   .hero-content-box {
@@ -2725,13 +2725,12 @@ body.menu-open {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
-    padding: 16px 14px 12px !important;
-    border-radius: 24px !important;
-    background: radial-gradient(ellipse at center, rgba(250, 248, 245, 0.75) 0%, rgba(250, 248, 245, 0.35) 65%, transparent 100%) !important;
+    padding: 0 !important;
+    background: none !important;
   }
 
   .hero-headline {
-    font-size: clamp(30px, 8vw, 38px) !important;
+    font-size: clamp(30px, 8.5vw, 40px) !important;
     line-height: 1.15 !important;
     margin-bottom: 10px !important;
     color: #1A1918 !important;
@@ -2747,11 +2746,11 @@ body.menu-open {
   }
 
   .hero-description {
-    font-size: 14.5px !important;
-    line-height: 1.5 !important;
-    margin-bottom: 22px !important;
-    max-width: 310px !important;
-    color: #44403C !important;
+    font-size: 15px !important;
+    line-height: 1.48 !important;
+    margin-bottom: 20px !important;
+    max-width: 320px !important;
+    color: #383431 !important;
     text-align: center !important;
     font-weight: 500 !important;
   }

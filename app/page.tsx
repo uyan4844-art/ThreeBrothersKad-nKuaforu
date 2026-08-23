@@ -23,22 +23,15 @@ export default function Home() {
 
       {/* Hero Section (Tam Ekran Arka Planlı Absolute/Layered Yapı) */}
       <section id="hero" className="relative min-h-[90dvh] w-full flex flex-col justify-end items-center px-5 pb-10 pt-24 overflow-hidden">
-        {/* Arka Plan Görseli (Mask Gradient & Lüks Yavaş Süzülme Animasyonu) */}
+        {/* Arka Plan Görseli */}
         <img
           src="/images/hero-model.webp"
-          alt="Manavgat Kadın Kuaförü - Three Brothers Profesyonel Balyaj ve Saç Tasarımı"
-          className="hero-bg-image absolute inset-0 w-full h-full object-cover object-[60%_top] -z-20 pointer-events-none"
-          style={{
-            maskImage: 'linear-gradient(to bottom, black 50%, transparent 100%)',
-            WebkitMaskImage: 'linear-gradient(to bottom, black 50%, transparent 100%)',
-            transformOrigin: '60% 25%',
-            animation: 'heroEntrance 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards, heroSlowBreathing 9s ease-in-out 1.2s infinite alternate',
-            willChange: 'transform, opacity'
-          }}
+          alt="Three Brothers Saç Tasarımı - Manavgat Kadın Kuaförü"
+          className="hero-bg-image absolute inset-0 w-full h-full object-cover object-[center_top] -z-20 pointer-events-none"
         />
 
-        {/* Üzerine Krem Degrade */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#FAF8F5] via-[#FAF8F5]/50 to-transparent pointer-events-none -z-10" />
+        {/* Sadece Alt Geçiş Degradesi */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#FAF8F5] via-[#FAF8F5]/40 to-transparent pointer-events-none -z-10" />
 
         {/* İçerik (Yazılar ve Butonlar) */}
         <div className="relative z-10 text-center space-y-6 max-w-4xl mx-auto flex flex-col items-center">
