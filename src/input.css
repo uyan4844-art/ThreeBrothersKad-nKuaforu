@@ -2556,12 +2556,13 @@ body.menu-open {
     left: 0 !important;
     width: 100% !important;
     z-index: 5000 !important;
-    background: rgba(250, 248, 245, 0.92) !important;
+    background: rgba(250, 248, 245, 0.75) !important;
     backdrop-filter: blur(16px) !important;
     -webkit-backdrop-filter: blur(16px) !important;
-    border-bottom: 1px solid rgba(231, 229, 228, 0.6) !important;
+    border-bottom: 1px solid rgba(231, 229, 228, 0.4) !important;
     padding: calc(8px + env(safe-area-inset-top, 0px)) calc(20px + env(safe-area-inset-right, 0px)) 8px calc(20px + env(safe-area-inset-left, 0px)) !important;
     height: calc(64px + env(safe-area-inset-top, 0px)) !important;
+    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1) !important;
   }
 
   .desktop-only-header,
