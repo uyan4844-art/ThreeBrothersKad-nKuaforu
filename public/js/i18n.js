@@ -1216,6 +1216,7 @@ class I18nEngine {
     this.applyTranslations();
     this.updateHtmlLangAttributes();
     this.updateActiveButtonUI();
+    this.updateDropdownUI();
   }
 
   t(key) {
@@ -1294,6 +1295,7 @@ class I18nEngine {
     this.updateHtmlLangAttributes();
     this.applyTranslations();
     this.updateActiveButtonUI();
+    this.updateDropdownUI();
 
     // Bind click events on all language switch buttons
     const buttons = document.querySelectorAll('.lang-btn');
@@ -1318,3 +1320,545 @@ if (document.readyState === 'loading') {
 } else {
   window.I18n.init();
 }
+
+
+// ==========================================
+// SERVICE DETAIL MODAL DATA & CONTROLLER
+// ==========================================
+const SERVICE_MODAL_DATA = {
+  balyaj: {
+    badge: 'UZMANLIK ALANI',
+    title: {
+      tr: 'Profesyonel Balyaj & Doğal Sarı Geçişler',
+      en: 'Professional Balayage & Natural Blonde Tones',
+      de: 'Professionelle Balayage & Natürliche Blondtöne',
+      ru: 'Профессиональный Балаяж и Натуральный Блонд',
+      ar: 'بالياج احترافي وتدرجات شقراء طبيعية'
+    },
+    duration: {
+      tr: '3.5 – 5 Saat',
+      en: '3.5 – 5 Hours',
+      de: '3.5 – 5 Stunden',
+      ru: '3.5 – 5 Часов',
+      ar: '3.5 – 5 ساعات'
+    },
+    desc: {
+      tr: 'Saçınızın doğal dip rengine uygun mikro tutamlarla açma ve tonlama yapılarak, dip boyası derdi olmadan 6-8 ay boyunca ışıltısını koruyan kişiselleştirilmiş balyaj tasarımı.',
+      en: 'Personalized balayage designed with micro-strands aligned to your natural base tone, providing radiant blonde luminosity lasting 6-8 months without harsh regrowth lines.',
+      de: 'Personalisierte Balayage mit feinen Strähnen, abgestimmt auf Ihren natürlichen Basiston für strahlenden Glanz über 6–8 Monate ohne harten Ansatz.',
+      ru: 'Индивидуальный балаяж с микро-прядями под ваш натуральный тон, сохраняющий сияние 6-8 месяцев без резкой границы отрастания.',
+      ar: 'تصميم بالياج مخصص مع خصلات دقيقة تتناسب مع لون جذورك الطبيعي، لتمنحك إشراقة تدوم 6-8 أشهر دون خطوط نمو مزعجة.'
+    },
+    products: ['Olaplex No.1 & No.2', 'L\x27Oréal Blond Studio 9', 'Schwarzkopf Fibreplex', 'Davines Heart of Glass'],
+    steps: {
+      tr: [
+        'Kişiye özel saç sağlığı, elastikiyet ve geçmiş boya analizi',
+        'Bağ koruyucu Plex teknolojisi ile kontrollü mikro açma',
+        'Ten rengine uygun soğuk/bej/sıcak ışıltılı cila tonlaması',
+        'Yoğun aminoasit saç maskesi ve ipeksi fön şekillendirme'
+      ],
+      en: [
+        'Personalized hair health, elasticity, and color history analysis',
+        'Controlled micro-lightening with bond-protecting Plex formula',
+        'Custom gloss toning (cool, beige, or warm champagne) matching skin tone',
+        'Intensive amino-acid treatment mask and signature silky styling'
+      ],
+      de: [
+        'Haaranalyse, Elastizitätsprüfung und Farbhistorie',
+        'Schonendes Blondieren mit bindungsstärkender Plex-Technologie',
+        'Individuelle Glanztonung passend zu Ihrem Hauttyp',
+        'Intensive Aminosäuren-Pflegemaske und seidenweiches Styling'
+      ],
+      ru: [
+        'Индивидуальный анализ здоровья, эластичности и истории волос',
+        'Контролируемое бережное осветление с защитным комплексом Plex',
+        'Тонирование и глянцевание под тон кожи (холодный, бежевый, жемчужный)',
+        'Интенсивная восстанавливающая маска и шелковая укладка'
+      ],
+      ar: [
+        'تحليل مخصص لصحة الشعر ومرونته وتاريخ الصبغات السابقة',
+        'تفتيح دقيق ومحمي بتقنية بلكس المقوية لروابط الشعر',
+        'رنساج ولمعان مخصص يتناغم تماماً مع درجة بشرتك',
+        'ماسك مكثف بالأحماض الأمينية وتسريح حريري أنيق'
+      ]
+    },
+    waText: 'Merhaba,%20Balyaj%20hizmetiniz%20hakk%C4%B1nda%20bilgi%20ve%20randevu%20almak%20istiyorum.'
+  },
+  blonde: {
+    badge: 'ÖZEL UZMANLIK',
+    title: {
+      tr: 'Blonde & İpeksi Sarı Saç Tasarımı',
+      en: 'Signature Blonde & Silky Platinum Design',
+      de: 'Signature Blond & Seidiges Platin-Design',
+      ru: 'Фирменный Блонд и Шелковистый Платиновый Дизайн',
+      ar: 'تصميم بلوند وشعر أشقر حريري فاخر'
+    },
+    duration: {
+      tr: '4 – 6 Saat',
+      en: '4 – 6 Hours',
+      de: '4 – 6 Stunden',
+      ru: '4 – 6 Часов',
+      ar: '4 – 6 ساعات'
+    },
+    desc: {
+      tr: 'Bebek sarısı, bej blonde, buz sarısı ve kremsi platin tonlarında, saç liflerini koruyarak sıfır kırılma prensibiyle uygulanan saf lüks sarışınlık.',
+      en: 'Ultra-refined baby blonde, beige champagne, ice blonde, and creamy platinum shades crafted with zero-breakage bond preservation.',
+      de: 'Babyblond, Champagner-Beige, Eisblond und cremiges Platin ohne Haarbruch dank tiefenwirksamer Faserprotektion.',
+      ru: 'Детский блонд, бежевый шелк, ледяной платиновый блонд с абсолютной защитой структуры волос.',
+      ar: 'درجات الأشقر الفاتح، والبيج، والبلاتيني الثلجي مع حماية تامة لألياف الشعر دون أي تكسر.'
+    },
+    products: ['Olaplex Bond Multiplier', 'Davines Century of Light', 'Kérastase Blond Absolu', 'Fanola No Yellow Pro'],
+    steps: {
+      tr: [
+        'Detaylı saç mukavemet ve pH dengesi ölçümü',
+        'Kademeli ve düşük volümlü homojen açma protokolü',
+        'Sararma karşıtı moleküler nötralizasyon ve cila',
+        'Derinlemesine hyalüronik asit nem yüklemesi'
+      ],
+      en: [
+        'Detailed hair tensile strength and pH balance assessment',
+        'Gradual low-volume controlled lightening protocol',
+        'Anti-yellow molecular neutralization and luminous gloss',
+        'Deep hyaluronic acid hydration and cuticle seal'
+      ],
+      de: [
+        'Prüfung von Haarfestigkeit und pH-Balance',
+        'Schrittweises, schonendes Aufhellen bei niedriger Oxidation',
+        'Molekulare Anti-Gelb Neutralisation und Farbveredelung',
+        'Tiefenwirksame Hyaluronsäure-Feuchtigkeitspflege'
+      ],
+      ru: [
+        'Оценка плотности и pH-баланса волос',
+        'Поэтапное низкооксидное осветление без перегрева',
+        'Молекулярная нейтрализация желтизны и глянцевый глянец',
+        'Глубокое увлажнение гиалуроновой кислотой'
+      ],
+      ar: [
+        'تقييم متانة الشعر وتوازن درجة الحموضة pH',
+        'بروتوكول تفتيح تدريجي بتركيز منخفض لحماية الشعر',
+        'معادلة جزيئية ضد الاصفرار ولمعان فائق النقاء',
+        'ترطيب عميق بحمض الهيالورونيك وحماية الأطراف'
+      ]
+    },
+    waText: 'Merhaba,%20Blonde%20ve%20Sar%C4%B1%20Sa%C3%A7%20hizmetiniz%20hakk%C4%B1nda%20bilgi%20ve%20randevu%20almak%20istiyorum.'
+  },
+  kaynak: {
+    badge: 'KONFOR & HACİM',
+    title: {
+      tr: 'Mikro Kapsül Görünmez Saç Kaynağı',
+      en: 'Invisible Micro Capsule Hair Extensions',
+      de: 'Unsichtbare Mikrokapsel-Haarverlängerung',
+      ru: 'Невидимое Микрокапсульное Наращивание',
+      ar: 'وصلات شعر ميكرو كبسول غير مرئية'
+    },
+    duration: {
+      tr: '2.5 – 4 Saat',
+      en: '2.5 – 4 Hours',
+      de: '2.5 – 4 Stunden',
+      ru: '2.5 – 4 Часа',
+      ar: '2.5 – 4 ساعات'
+    },
+    desc: {
+      tr: '%100 doğal işlenmemiş premium saçlar ve nano keratin kapsüllerle uygulanan, dışarıdan kesinlikle fark edilmeyen, saç derisini rahatsız etmeyen ultra hafif kaynak.',
+      en: '100% pure cuticle-aligned human hair fused with nano-keratin capsules for completely undetectable, weightless volume and length.',
+      de: '100% echtes Premium-Echthaar mit Nano-Keratinkapseln für unsichtbares Volumen und traumhafte Länge ohne Beschwerung.',
+      ru: '100% натуральные премиальные славянские волосы на нано-кератиновых капсулах: неощутимо, незаметно и безопасно.',
+      ar: 'شعر طبيعي 100% مع كبسولات نانو كيراتين فائقة الصغر وغير مرئية لتكثيف وتطويل الشعر براحة مطلقة.'
+    },
+    products: ['%100 Virgin Slavic Hair', 'Medical Grade Nano-Keratin', 'Ultrasonic Cold Fusion'],
+    steps: {
+      tr: [
+        'Doğal saç rengine ve dalgasına %100 uyumlu saç seçimi',
+        'Kişiye özel gramaj ve saç ayırma haritasının çıkarılması',
+        'Mikro termal/ultrasonik hassas kapsülleme işlemi',
+        'Entegre geçiş kesimi ve şekillendirme'
+      ],
+      en: [
+        'Exact hair color and texture matching from our virgin inventory',
+        'Custom sectioning map and density distribution planning',
+        'Precision micro-fusion attachment point bonding',
+        'Seamless blending cut and signature finishing'
+      ],
+      de: [
+        'Exakte Farb- und Strukturanpassung aus Premium-Echthaaren',
+        'Individuelle Aufteilung nach Haardichte und Tragekomfort',
+        'Präzise Mikroversiegelung der Keratinverbindungen',
+        'Nahtloser Übergangsschnitt und Finish'
+      ],
+      ru: [
+        'Точный подбор оттенка и структуры из премиального среза',
+        'Индивидуальная схема распределения капсул по зонам',
+        'Бережное микрокапсулирование',
+        'Адаптационная стрижка и моделирование'
+      ],
+      ar: [
+        'مطابقة تامة للون الشعر الطبيعي وكثافته',
+        'رسم خريطة توزيع الكبسولات المخصصة لراحة فروة الرأس',
+        'تثبيت دقيق بتقنية النانو كبسول المريحة',
+        'قص دمج احترافي لتسريحة طبيعية متجانسة'
+      ]
+    },
+    waText: 'Merhaba,%20Mikro%20Kaynak%20hizmetiniz%20hakk%C4%B1nda%20bilgi%20ve%20randevu%20almak%20istiyorum.'
+  },
+  ombre: {
+    badge: 'ZARİF GEÇİŞLER',
+    title: {
+      tr: 'Ombre & Sombre Geçiş Tasarımı',
+      en: 'Ombre & Soft Sombre Gradient Artistry',
+      de: 'Ombre & Soft Sombre Farbverläufe',
+      ru: 'Омбре и Мягкое Сомбре',
+      ar: 'أومبري وسومبري بتدرجات ناعمة'
+    },
+    duration: {
+      tr: '3 – 4.5 Saat',
+      en: '3 – 4.5 Hours',
+      de: '3 – 4.5 Stunden',
+      ru: '3 – 4.5 Часа',
+      ar: '3 – 4.5 ساعات'
+    },
+    desc: {
+      tr: 'Koyu dipten ışıltılı uçlara yumuşak ve kademeli geçiş sunan, dip rötuşu gerektirmeyen şık ve modern renklendirme.',
+      en: 'Seamless graduated transition from natural roots to sun-kissed luminous ends, offering effortless maintenance.',
+      de: 'Sanfte Farbverläufe vom natürlichen Ansatz zu hellen Spitzen für mühelose Eleganz ohne ständiges Nachfärben.',
+      ru: 'Плавный градиент от темных корней к сияющим кончикам без необходимости частого подкрашивания.',
+      ar: 'تدرج لوني انسيابي من الجذور الطبيعية إلى الأطراف المشرقة دون الحاجة لصبغ الجذور المتكرر.'
+    },
+    products: ['L\x27Oréal Majirel Glow', 'Wella Blondor Multi Blonde', 'Moroccanoil Color Calypso'],
+    steps: {
+      tr: [
+        'Kişisel kontrast seviyesi ve geçiş yüksekliği belirleme',
+        'Tarakla krepe tekniğiyle yumuşak degradé açma',
+        'Altın/bronz/soğuk tonlarda zengin pigmentli cila',
+        'Kütikül mühürleyici parlaklık bakımı'
+      ],
+      en: [
+        'Custom contrast level and graduation height planning',
+        'Backcombing & teasing technique for seamless gradient',
+        'Multi-tonal glossing in bespoke golden or cool hues',
+        'Cuticle sealing shine treatment'
+      ],
+      de: [
+        'Bestimmung von Farbkontrast und Verlaufshöhe',
+        'Toupiertes Anwenden für nahtlosen Farbverlauf',
+        'Multi-Ton Glossing für maximale Farbbrillanz',
+        'Glanzversiegelung und Pflege'
+      ],
+      ru: [
+        'Определение уровня контраста и высоты растяжки',
+        'Техника мягкой растушевки для плавного перехода',
+        'Многогранное тонирование выбранным оттенком',
+        'Глянцевое запечатывание кутикулы'
+      ],
+      ar: [
+        'تحديد مستوى التباين وارتفاع التدرج اللوني',
+        'تقنية الدمج المتدرج لنعومة فائقة في الانتقال',
+        'رنساج متعدد الأبعاد بألوان ذهبية أو باردة',
+        'علاج حبس اللمعان وحماية أطراف الشعر'
+      ]
+    },
+    waText: 'Merhaba,%20Ombre%20ve%20Sombre%20hizmetiniz%20hakk%C4%B1nda%20bilgi%20ve%20randevu%20almak%20istiyorum.'
+  },
+  renklendirme: {
+    badge: 'KİŞİYE ÖZEL',
+    title: {
+      tr: 'Kişiye Özel Renklendirme & Cila',
+      en: 'Custom Hair Color & Gloss Toning',
+      de: 'Individuelle Coloration & Glanz-Toning',
+      ru: 'Индивидуальное Окрашивание и Тонирование',
+      ar: 'تلوين مخصص ورنساج اللمعان الفائق'
+    },
+    duration: {
+      tr: '2 – 3 Saat',
+      en: '2 – 3 Hours',
+      de: '2 – 3 Stunden',
+      ru: '2 – 3 Часа',
+      ar: '2 – 3 ساعات'
+    },
+    desc: {
+      tr: 'Ten alt tonunuz ve göz renginizle mükemmel uyum sağlayan, amonyaksız veya bağ güçlendirici formüllerle uygulanan zengin pigmentli renk tasarımı.',
+      en: 'Ammonia-free, bond-infused color formulation tailored to your skin undertone and eye color for deep luminous radiance.',
+      de: 'Ammoniakfreie, faserpflegende Haarfarbe, perfekt abgestimmt auf Ihren Hautunterton und Ihre Augenfarbe.',
+      ru: 'Безаммиачное окрашивание с фибро-защитой, подобранное под ваш цветотип для глубокого стойкого сияния.',
+      ar: 'صبغات خالية من الأمونيا ومدعمة بمقويات الروابط، مصممة خصيصاً لتناسب لون بشرتك وعينيك بإشراقة عميقة.'
+    },
+    products: ['L\x27Oréal Inoa (Ammonia Free)', 'Wella Color Touch', 'K18 Biomimetic Hairscience'],
+    steps: {
+      tr: [
+        'Cilt alt tonu analizi (Sıcak/Soğuk/Nötr)',
+        'Özel pigment karışımının hazırlanması',
+        'Kökten uca eşit ve parlak uygulama',
+        'K18 Moleküler saç onarım terapisi'
+      ],
+      en: [
+        'Skin undertone colorimetry consultation',
+        'Custom multi-pigment formula compounding',
+        'Even root-to-tip application with gloss lock',
+        'K18 Molecular peptide repair therapy'
+      ],
+      de: [
+        'Farbanalyse des Hautuntertons',
+        'Mischung individueller Pigmentnuancen',
+        'Gleichmäßiges Auftragen für maximale Farbbrillanz',
+        'K18 Molekular-Peptid Reparaturpflege'
+      ],
+      ru: [
+        'Анализ цветотипа и подтона кожи',
+        'Создание авторского коктейля пигментов',
+        'Равномерное нанесение и фиксация блеска',
+        'Молекулярное восстановление K18'
+      ],
+      ar: [
+        'تحليل درجة البشرة ولونها الأساسي',
+        'مزج تركيبة صبغة خاصة غنية بالبيجمنت',
+        'تطبيق متساوٍ من الجذور حتى الأطراف مع قفل اللمعان',
+        'علاج K18 الجزيئي لترميم الشعر'
+      ]
+    },
+    waText: 'Merhaba,%20Renklendirme%20ve%20Tonlama%20hizmetiniz%20hakk%C4%B1nda%20bilgi%20ve%20randevu%20almak%20istiyorum.'
+  },
+  bakim: {
+    badge: 'SAÇ SAĞLIĞI',
+    title: {
+      tr: 'Biyolojik Saç Onarım & Keratin Bakımı',
+      en: 'Biological Hair Repair & Liquid Keratin Care',
+      de: 'Biologische Haarreparatur & Keratin-Therapie',
+      ru: 'Биологическое Восстановление и Кератиновый Уход',
+      ar: 'علاج بيولوجي لترميم الشعر وعناية الكيراتين'
+    },
+    duration: {
+      tr: '1.5 – 2.5 Saat',
+      en: '1.5 – 2.5 Hours',
+      de: '1.5 – 2.5 Stunden',
+      ru: '1.5 – 2.5 Часа',
+      ar: '1.5 – 2.5 ساعات'
+    },
+    desc: {
+      tr: 'Isı, açıcı veya çevresel faktörlerle yıpranmış saç tellerini moleküler seviyede onaran, elektriklenmeyi önleyen ve cam gibi pürüzsüz parlaklık kazandıran yoğun terapi.',
+      en: 'Molecular repair therapy for heat or chemical damage, eliminating frizz while imparting mirror-like smoothness and strength.',
+      de: 'Molekulare Intensivtherapie gegen Hitze- und Farbschäden, bändigt Frizz und schenkt spiegelnden Glanz.',
+      ru: 'Молекулярное восстановление после термо- и химических повреждений, устранение пушистости и зеркальный блеск.',
+      ar: 'علاج جزيئي مكثف للشعر التالف من الحرارة أو الصبغات، يزيل النفشة ويمنحه نعومة ولمعاناً كالمرآة.'
+    },
+    products: ['K18 Molecular Mist & Mask', 'Olaplex Broad Spectrum Chelating', 'Brazillian Blowout Original'],
+    steps: {
+      tr: [
+        'Mineral ve kireç arındırıcı şelasyon yıkaması',
+        'K18 Peptid ve sıvı keratin yüklemesi',
+        'Mikro buhar infüzyon terapisi',
+        'Kütikül kapatıcı ve ısıyla mühürleme fönü'
+      ],
+      en: [
+        'Deep clarifying and mineral chelating wash',
+        'K18 Peptide and liquid keratin infusion',
+        'Micro-steam deep penetrative treatment',
+        'Thermal cuticle sealing and mirror finish styling'
+      ],
+      de: [
+        'Tiefenreinigende Chelat-Wäsche gegen Mineralablagerungen',
+        'K18 Peptid- und Flüssigkeratin-Infusion',
+        'Mikrodampf-Tiefenbehandlung',
+        'Thermische Glanzversiegelung und Finish'
+      ],
+      ru: [
+        'Хелатирующее очищение от минералов и солей',
+        'Инфузия пептидов K18 и жидкого кератина',
+        'Микро-паровая терапия глубокого действия',
+        'Термо-запечатывание кутикулы и укладка'
+      ],
+      ar: [
+        'غسيل منقي يزيل الترسبات الكلسية والمعادن',
+        'تشبيع الشعر بببتيدات K18 والكيراتين السائل',
+        'علاج بالبخار الدقيق لامتصاص عميق',
+        'إغلاق حراري لمسام الشعر وتصفيف حريري'
+      ]
+    },
+    waText: 'Merhaba,%20Saç%20Bakımı%20hakkında%20bilgi%20ve%20randevu%20almak%20istiyorum.'
+  },
+  kesim: {
+    badge: 'STİL & TASARIM',
+    title: {
+      tr: 'Kişiye Özel Trend Kesim & Şekillendirme',
+      en: 'Custom Trend Haircut & Signature Styling',
+      de: 'Individueller Trendhaarschnitt & Styling',
+      ru: 'Авторская Стрижка и Фирменная Укладка',
+      ar: 'قص شعر عصري مخصص وتسريح مميز'
+    },
+    duration: {
+      tr: '45 – 75 Dakika',
+      en: '45 – 75 Minutes',
+      de: '45 – 75 Minuten',
+      ru: '45 – 75 Минут',
+      ar: '45 – 75 دقيقة'
+    },
+    desc: {
+      tr: 'Yüz hatlarınıza, saçınızın doğal düşüşüne ve yaşam tarzınıza uygun katlı, küt veya hareketli modern kesim mimarisi.',
+      en: 'Face-contouring bespoke haircut architecture harmonized with your natural hair fall and personal lifestyle.',
+      de: 'Gesichtskonturierender Haarschnitt, abgestimmt auf Ihre natürliche Haarstruktur und Ihren persönlichen Stil.',
+      ru: 'Анатомическая стрижка с учетом формы лица, плотности волос и легкой самостоятельной укладки.',
+      ar: 'هندسة قص متناسقة مع ملامح وجهك وطبيعة شعرك لتمنحك إطلالة عصرية يسهل تصفيفها يومياً.'
+    },
+    products: ['Davines OI All In One Milk', 'Kérastase Elixir Ultime', 'Balmain Texturizing Volume Spray'],
+    steps: {
+      tr: [
+        'Yüz şekli ve saç yoğunluğu konsültasyonu',
+        'Kişiselleştirilmiş doku ve boy kesimi',
+        'Uç hafifletme ve hacim kazandırma',
+        'İmzalı fön ve kalıcı dalgalandırma'
+      ],
+      en: [
+        'Facial shape and hair density consultation',
+        'Precision customized length and textural cutting',
+        'Weight removal and volume enhancement',
+        'Signature blowout and voluminous beach wave finish'
+      ],
+      de: [
+        'Beratung zu Gesichtsform und Haardichte',
+        'Präziser Längen- und Strukturschnitt',
+        'Volumenaufbau und Spitzenveredelung',
+        'Signature Blowout und langanhaltendes Wellenfinish'
+      ],
+      ru: [
+        'Консультация по форме лица и структуре волос',
+        'Точный текстурированный срез',
+        'Создание динамичного объема',
+        'Фирменная укладка на брашинг'
+      ],
+      ar: [
+        'استشارة لتحديد أنسب قصة لشكل وجهك',
+        'قص دقيق للأطوال وإضافة حركة للشعر',
+        'تخفيف الثقل ومنح كثافة طبيعية',
+        'تسريح احترافي وتمويج أنيق يدوم طويلاً'
+      ]
+    },
+    waText: 'Merhaba,%20Saç%20Kesimi%20hakkında%20bilgi%20ve%20randevu%20almak%20istiyorum.'
+  }
+};
+
+// Global Dropdown Handler
+window.toggleLangDropdown = function(e) {
+  if (e) {
+    e.preventDefault();
+    e.stopPropagation();
+  }
+  const dropdownContainers = document.querySelectorAll('.lang-dropdown-container');
+  dropdownContainers.forEach(container => {
+    container.classList.toggle('open');
+  });
+};
+
+window.selectLanguage = function(langCode) {
+  if (window.I18n) {
+    window.I18n.setLanguage(langCode);
+  }
+  const dropdownContainers = document.querySelectorAll('.lang-dropdown-container');
+  dropdownContainers.forEach(container => {
+    container.classList.remove('open');
+  });
+};
+
+// Global Category Filter Handler
+window.filterServices = function(category, btnElement) {
+  const tabButtons = document.querySelectorAll('.service-tab-btn');
+  tabButtons.forEach(b => b.classList.remove('active'));
+  if (btnElement) {
+    btnElement.classList.add('active');
+  } else {
+    const matchingBtn = document.querySelector(`.service-tab-btn[data-category="${category}"]`);
+    if (matchingBtn) matchingBtn.classList.add('active');
+  }
+
+  const cards = document.querySelectorAll('.bento-card, .service-item-card, [data-service-cat]');
+  cards.forEach(card => {
+    const cardCat = card.getAttribute('data-category') || card.getAttribute('data-service-cat') || 'all';
+    if (category === 'all' || cardCat.includes(category)) {
+      card.style.display = '';
+      card.style.opacity = '1';
+      card.style.transform = 'scale(1)';
+    } else {
+      card.style.display = 'none';
+      card.style.opacity = '0';
+      card.style.transform = 'scale(0.95)';
+    }
+  });
+};
+
+// Global Bottom Sheet / Modal Controller
+window.openServiceModal = function(serviceKey) {
+  const data = SERVICE_MODAL_DATA[serviceKey];
+  if (!data) return;
+
+  const currentLang = (window.I18n && window.I18n.currentLang) ? window.I18n.currentLang : 'tr';
+  const modalBackdrop = document.getElementById('serviceDetailBackdrop');
+  if (!modalBackdrop) return;
+
+  const titleEl = document.getElementById('sheetModalTitle');
+  const badgeEl = document.getElementById('sheetModalBadge');
+  const durationEl = document.getElementById('sheetModalDuration');
+  const descEl = document.getElementById('sheetModalDesc');
+  const productsContainer = document.getElementById('sheetModalProducts');
+  const stepsContainer = document.getElementById('sheetModalSteps');
+  const waBtn = document.getElementById('sheetModalWaBtn');
+
+  if (titleEl) titleEl.textContent = data.title[currentLang] || data.title.tr;
+  if (badgeEl) badgeEl.textContent = data.badge;
+  if (durationEl) durationEl.textContent = data.duration[currentLang] || data.duration.tr;
+  if (descEl) descEl.textContent = data.desc[currentLang] || data.desc.tr;
+
+  if (productsContainer) {
+    productsContainer.innerHTML = '';
+    data.products.forEach(p => {
+      const tag = document.createElement('span');
+      tag.className = 'sheet-product-tag';
+      tag.textContent = p;
+      productsContainer.appendChild(tag);
+    });
+  }
+
+  if (stepsContainer) {
+    stepsContainer.innerHTML = '';
+    const stepsList = data.steps[currentLang] || data.steps.tr;
+    stepsList.forEach((step, idx) => {
+      const li = document.createElement('li');
+      li.className = 'sheet-step-item';
+      li.innerHTML = `<span class="sheet-step-number">${idx + 1}</span><span>${step}</span>`;
+      stepsContainer.appendChild(li);
+    });
+  }
+
+  if (waBtn) {
+    const waBase = 'https://wa.me/905526856907?text=';
+    waBtn.href = waBase + data.waText;
+  }
+
+  modalBackdrop.classList.add('active');
+  document.body.style.overflow = 'hidden';
+};
+
+window.closeServiceModal = function() {
+  const modalBackdrop = document.getElementById('serviceDetailBackdrop');
+  if (modalBackdrop) {
+    modalBackdrop.classList.remove('active');
+  }
+  document.body.style.overflow = '';
+};
+
+// Global Outside Click Listeners
+document.addEventListener('click', function(e) {
+  // Close Language Dropdown when clicked outside
+  if (!e.target.closest('.lang-dropdown-container')) {
+    const dropdownContainers = document.querySelectorAll('.lang-dropdown-container');
+    dropdownContainers.forEach(container => {
+      container.classList.remove('open');
+    });
+  }
+});
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    window.closeServiceModal();
+    const dropdownContainers = document.querySelectorAll('.lang-dropdown-container');
+    dropdownContainers.forEach(container => {
+      container.classList.remove('open');
+    });
+  }
+});

@@ -854,12 +854,28 @@
     <div class="header-right-actions">
       
       <!-- Çok Dilli Dil Seçici -->
-      <div class="lang-switcher" aria-label="Dil Seçimi">
-        <button class="lang-btn active" data-lang="tr" type="button" aria-label="Türkçe">TR</button>
-        <button class="lang-btn" data-lang="en" type="button" aria-label="English">EN</button>
-        <button class="lang-btn" data-lang="de" type="button" aria-label="Deutsch">DE</button>
-        <button class="lang-btn" data-lang="ru" type="button" aria-label="Русский">RU</button>
-        <button class="lang-btn" data-lang="ar" type="button" aria-label="العربية">AR</button>
+      <div class="lang-dropdown-container" id="headerLangDropdown">
+        <button class="lang-dropdown-btn" onclick="toggleLangDropdown(event)" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Dil Seçimi">
+          <span class="selected-lang-label">🇹🇷 TR</span>
+          <span class="lang-dropdown-chevron">▼</span>
+        </button>
+        <div class="lang-dropdown-menu" role="menu">
+          <button class="lang-dropdown-item active" data-lang="tr" onclick="selectLanguage('tr')" role="menuitem">
+            <span>🇹🇷</span> <span>Türkçe (TR)</span>
+          </button>
+          <button class="lang-dropdown-item" data-lang="en" onclick="selectLanguage('en')" role="menuitem">
+            <span>🇬🇧</span> <span>English (EN)</span>
+          </button>
+          <button class="lang-dropdown-item" data-lang="ru" onclick="selectLanguage('ru')" role="menuitem">
+            <span>🇷🇺</span> <span>Русский (RU)</span>
+          </button>
+          <button class="lang-dropdown-item" data-lang="de" onclick="selectLanguage('de')" role="menuitem">
+            <span>🇩🇪</span> <span>Deutsch (DE)</span>
+          </button>
+          <button class="lang-dropdown-item" data-lang="ar" onclick="selectLanguage('ar')" role="menuitem">
+            <span>🇦🇪</span> <span>العربية (AR)</span>
+          </button>
+        </div>
       </div>
 
       <!-- Instagram İkon Butonu (Masaüstü) -->
@@ -1162,19 +1178,39 @@
   <!-- ==========================================
        11. MOBILE FLOATING ACTION BAR (STICKY BOTTOM)
   =========================================== -->
-  <div class="mobile-float-bar" aria-label="Mobil Hızlı Eylem Çubuğu">
-    <a href="tel:+905526856907" class="mobile-float-btn mobile-call-btn" aria-label="Telefonla Hemen Arayın">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z"/>
+  <nav class="app-bottom-nav" aria-label="Mobil Alt Gezinme">
+    <a href="index.html#hero" class="app-nav-item" aria-label="Ana Sayfa">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+        <polyline points="9 22 9 12 15 12 15 22"></polyline>
       </svg>
-      <span data-i18n="c_btn_call">Hemen Ara</span>
+      <span>Anasayfa</span>
     </a>
-    <a href="https://wa.me/905526856907?text=Merhaba,%20Blonde%20ve%20Sar%C4%B1%20Sa%C3%A7%20hizmetiniz%20hakk%C4%B1nda%20bilgi%20ve%20randevu%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" class="mobile-float-btn mobile-wa-btn" aria-label="WhatsApp ile Randevu Al">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+
+    <a href="index.html#hizmetler" class="app-nav-item active" aria-label="Hizmetlerimiz">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="6" cy="6" r="3"></circle>
+        <circle cx="6" cy="18" r="3"></circle>
+        <line x1="20" y1="4" x2="8.12" y2="15.88"></line>
+        <line x1="14.47" y1="14.48" x2="20" y2="20"></line>
+        <line x1="8.12" y1="8.12" x2="12" y2="12"></line>
+      </svg>
+      <span>Hizmetler</span>
+    </a>
+
+    <a href="index.html#yorumlar" class="app-nav-item" aria-label="Google Yorumları">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+      </svg>
+      <span>Yorumlar</span>
+    </a>
+
+    <a href="https://wa.me/905526856907?text=Merhaba,%20Three%20Brothers%20salonunuzdan%20randevu%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" class="app-nav-item app-nav-wa-special" aria-label="WhatsApp Randevu">
+      <svg viewBox="0 0 24 24">
         <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
       </svg>
-      <span data-i18n="floating_wa">WhatsApp Randevu</span>
+      <span>WhatsApp</span>
     </a>
-  </div>
+  </nav>
 </body>
 </html>

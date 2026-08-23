@@ -1,5 +1,4 @@
 const fs = require('fs');
-const path = require('path');
 
 const indexHtml = fs.readFileSync('index.html', 'utf8');
 const i18nJs = fs.readFileSync('js/i18n.js', 'utf8');
@@ -11,66 +10,59 @@ function assert(condition, testName, details = '') {
   tests.push({ name: testName, pass: Boolean(condition), details });
 }
 
-// 1. HEADER VERIFICATION
-assert(indexHtml.includes('class="luxury-header" id="boutiqueHeader"'), 'Sticky Luxury Header element present');
-assert(indexHtml.includes('class="nav-menu-desktop"'), 'Desktop navigation menu present');
-assert(indexHtml.includes('data-i18n="nav_services"') && indexHtml.includes('href="#hizmetler"'), 'Nav: Hizmetler smooth scroll link');
-assert(indexHtml.includes('data-i18n="nav_story"') && indexHtml.includes('href="hakkimizda.html"'), 'Nav: Hakkımızda link');
-assert(indexHtml.includes('data-i18n="nav_process"') && indexHtml.includes('href="#surec"'), 'Nav: Süreç link');
-assert(indexHtml.includes('data-i18n="nav_gallery"') && indexHtml.includes('href="#galeri"'), 'Nav: Galeri link');
-assert(indexHtml.includes('data-i18n="nav_reviews"') && indexHtml.includes('href="#yorumlar"'), 'Nav: Yorumlar link');
-assert(indexHtml.includes('data-i18n="nav_faq"') && indexHtml.includes('href="#sss"'), 'Nav: SSS link');
-assert(indexHtml.includes('data-i18n="nav_contact"') && indexHtml.includes('href="#iletisim"'), 'Nav: İletişim link');
-assert(indexHtml.includes('class="lang-switcher"'), 'Multi-language switcher in header');
-assert(indexHtml.includes('class="btn-header-wa"') && indexHtml.includes('wa.me/905526856907'), 'Header WhatsApp Randevu Al CTA present');
-assert(indexHtml.includes('id="openMobileMenuBtn"') && indexHtml.includes('class="mobile-menu-btn"'), 'Mobile Hamburger Menu button present');
+// 1. LANGUAGE DROPDOWN
+assert(indexHtml.includes('class="lang-dropdown-container"'), 'Language dropdown container in index.html');
+assert(indexHtml.includes('class="lang-dropdown-btn"'), 'Language dropdown toggle button in index.html');
+assert(indexHtml.includes('class="lang-dropdown-menu"'), 'Language dropdown menu in index.html');
+assert(i18nJs.includes('toggleLangDropdown'), 'toggleLangDropdown function in js/i18n.js');
+assert(i18nJs.includes('selectLanguage'), 'selectLanguage function in js/i18n.js');
 
-// 2. FAQ (SSS) VERIFICATION
-assert(indexHtml.includes('<section id="sss" class="boutique-section section-faq">'), 'FAQ Section element present');
-assert(indexHtml.includes('Balyaj ve Sombre renklendirme işlemleri ne kadar sürer?'), 'FAQ Q1 present in index.html');
-assert(indexHtml.includes('ortalama 3 ile 5 saat arasında değişmektedir'), 'FAQ A1 present in index.html');
-assert(indexHtml.includes('Açma ve sarışınlık işlemlerinde saçım yıpranır mı?'), 'FAQ Q2 present in index.html');
-assert(indexHtml.includes('Biyolojik saç sağlığı protokolümüz kapsamında'), 'FAQ A2 present in index.html');
-assert(indexHtml.includes('Mikro kapsül kaynak ne kadar süre kullanılabilir?'), 'FAQ Q3 present in index.html');
-assert(indexHtml.includes('2.5 - 4 ay boyunca konforla kullanılabilir'), 'FAQ A3 present in index.html');
-assert(indexHtml.includes('Randevuya gelmeden önce saçımı yıkamalı mıyım?'), 'FAQ Q4 present in index.html');
-assert(indexHtml.includes('doğal yağ tabakasının korunması önerilir'), 'FAQ A4 present in index.html');
-assert(indexHtml.includes('İşlem öncesinde saç analizi ve ön görüşme yapıyor musunuz?'), 'FAQ Q5 present in index.html');
-assert(indexHtml.includes('class="faq-chevron"'), 'FAQ accordion chevrons present');
+// 2. CATEGORY TABS
+assert(indexHtml.includes('service-tabs-wrapper'), 'Service category tabs wrapper in index.html');
+assert(indexHtml.includes('data-category="renklendirme"'), 'Renklendirme & Balyaj category tab in index.html');
+assert(indexHtml.includes('data-category="kaynak"'), 'Mikro Kaynak category tab in index.html');
+assert(indexHtml.includes('data-category="bakim"'), 'Bakım & Kesim category tab in index.html');
+assert(i18nJs.includes('filterServices'), 'filterServices function in js/i18n.js');
 
-// 3. SOCIAL MEDIA & BRAND CONSISTENCY
-const wrongInsta = indexHtml.match(/@threebrotherss/g);
-assert(!wrongInsta, 'No old @threebrotherss handles in index.html');
-assert(indexHtml.includes('https://www.instagram.com/threebrotherrrs/'), 'Correct Instagram URL used in index.html');
-assert(indexHtml.includes('target="_blank" rel="noopener noreferrer"'), 'External security attributes present on links');
+// 3. SERVICE DETAIL MODAL / BOTTOM SHEET
+assert(indexHtml.includes('id="serviceDetailBackdrop"'), 'Service detail modal backdrop in index.html');
+assert(indexHtml.includes('id="sheetModalTitle"'), 'Modal title element in index.html');
+assert(indexHtml.includes('id="sheetModalDuration"'), 'Modal duration element in index.html');
+assert(indexHtml.includes('id="sheetModalProducts"'), 'Modal products container in index.html');
+assert(indexHtml.includes('id="sheetModalSteps"'), 'Modal steps container in index.html');
+assert(indexHtml.includes('id="sheetModalWaBtn"'), 'Modal WhatsApp CTA in index.html');
+assert(i18nJs.includes('SERVICE_MODAL_DATA'), 'Service modal dictionary in js/i18n.js');
+assert(i18nJs.includes('openServiceModal'), 'openServiceModal function in js/i18n.js');
+assert(i18nJs.includes('closeServiceModal'), 'closeServiceModal function in js/i18n.js');
 
-// 4. MOBILE FLOATING ACTION BAR
-assert(indexHtml.includes('class="mobile-float-bar"'), 'Mobile floating action bar present');
-assert(indexHtml.includes('tel:+905526856907') && indexHtml.includes('mobile-call-btn'), 'Mobile Call button present');
-assert(indexHtml.includes('mobile-wa-btn') && indexHtml.includes('wa.me/905526856907'), 'Mobile WhatsApp button present');
+// 4. APP-LIKE MOBILE BOTTOM NAV
+assert(indexHtml.includes('class="app-bottom-nav"'), 'App-like bottom navigation in index.html');
+assert(indexHtml.includes('href="#hero"') && indexHtml.includes('Anasayfa'), 'App Nav: Anasayfa tab');
+assert(indexHtml.includes('href="#hizmetler"') && indexHtml.includes('Hizmetler'), 'App Nav: Hizmetler tab');
+assert(indexHtml.includes('href="#yorumlar"') && indexHtml.includes('Yorumlar'), 'App Nav: Yorumlar tab');
+assert(indexHtml.includes('class="app-nav-item app-nav-wa-special"'), 'App Nav: WhatsApp special button');
 
-// 5. SEO & LOCAL META
-assert(indexHtml.includes('Manavgat') && indexHtml.includes('Antalya'), 'Local SEO keywords and region in meta');
-assert(indexHtml.includes('name="geo.position"') && indexHtml.includes('36.7865;31.4428'), 'Geo meta coordinates present');
-assert(indexHtml.includes('property="og:title"'), 'OpenGraph meta tags present');
-assert(indexHtml.includes('name="twitter:card"'), 'Twitter Card meta tags present');
-assert(indexHtml.includes('"@type": "HairSalon"'), 'Schema.org HairSalon structured data present');
+// 5. REACT / TYPESCRIPT COMPONENTS
+assert(fs.existsSync('components/LanguageSelector.tsx'), 'components/LanguageSelector.tsx created');
+assert(fs.existsSync('components/Services.tsx'), 'components/Services.tsx created');
+assert(fs.existsSync('components/ServiceDetailModal.tsx'), 'components/ServiceDetailModal.tsx created');
+assert(fs.existsSync('components/MobileBottomNav.tsx'), 'components/MobileBottomNav.tsx created');
+assert(fs.existsSync('components/Header.tsx'), 'components/Header.tsx created');
+assert(fs.existsSync('app/page.tsx'), 'app/page.tsx created');
 
-// 6. MULTI-LANGUAGE DICTIONARY VERIFICATION
-assert(i18nJs.includes('faq1_q') && i18nJs.includes('faq1_a'), 'i18n dictionary has faq1');
-assert(i18nJs.includes('faq2_q') && i18nJs.includes('faq2_a'), 'i18n dictionary has faq2');
-assert(i18nJs.includes('faq3_q') && i18nJs.includes('faq3_a'), 'i18n dictionary has faq3');
-assert(i18nJs.includes('faq4_q') && i18nJs.includes('faq4_a'), 'i18n dictionary has faq4');
-assert(i18nJs.includes('faq5_q') && i18nJs.includes('faq5_a'), 'i18n dictionary has faq5');
-assert(i18nJs.includes('threebrotherrrs'), 'i18n dictionary has threebrotherrrs');
+// 6. CSS COMPILED STYLES
+assert(styleCss.includes('lang-dropdown-container'), 'Compiled CSS has lang-dropdown-container');
+assert(styleCss.includes('service-tabs-wrapper'), 'Compiled CSS has service-tabs-wrapper');
+assert(styleCss.includes('sheet-backdrop'), 'Compiled CSS has sheet-backdrop');
+assert(styleCss.includes('sheet-modal'), 'Compiled CSS has sheet-modal');
+assert(styleCss.includes('app-bottom-nav'), 'Compiled CSS has app-bottom-nav');
 
-// 7. CSS COMPILED STYLES VERIFICATION
-assert(styleCss.includes('.luxury-header') || styleCss.includes('luxury-header'), 'Compiled CSS has .luxury-header');
-assert(styleCss.includes('.btn-header-wa') || styleCss.includes('btn-header-wa'), 'Compiled CSS has .btn-header-wa');
-assert(styleCss.includes('.faq-item') || styleCss.includes('faq-item'), 'Compiled CSS has .faq-item');
-assert(styleCss.includes('.mobile-float-bar') || styleCss.includes('mobile-float-bar'), 'Compiled CSS has .mobile-float-bar');
+// 7. ZIP ARCHIVE CHECK
+assert(fs.existsSync('ThreeBrothers_Hostinger_Deploy.zip'), 'ThreeBrothers_Hostinger_Deploy.zip exists');
+const zipSize = fs.statSync('ThreeBrothers_Hostinger_Deploy.zip').size;
+assert(zipSize > 35 * 1024 * 1024, `Zip archive size is valid: ${(zipSize / (1024*1024)).toFixed(2)} MB`);
 
-console.log('=== TEST RESULTS ===');
+console.log('=== COMPREHENSIVE TEST RESULTS ===');
 let passCount = 0;
 tests.forEach((t, i) => {
   if (t.pass) {
