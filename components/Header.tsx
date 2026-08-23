@@ -44,7 +44,7 @@ export const Header: React.FC<HeaderProps> = ({
       {/* =========================================================================
           1. SHINE HAIR MOBİL HEADER (md:hidden)
       ========================================================================== */}
-      <header className="md:hidden sticky top-0 z-50 bg-[#FAF8F5]/75 backdrop-blur-md border-b border-stone-200/40 px-5 py-3.5 flex items-center justify-between transition-all duration-300 pt-[calc(0.875rem+env(safe-area-inset-top,0px))]">
+      <header className="md:hidden fixed top-0 left-0 right-0 z-50 bg-[#FAF8F5]/75 backdrop-blur-md border-b border-stone-200/40 px-5 py-3.5 flex items-center justify-between transition-all duration-300 pt-[calc(0.875rem+env(safe-area-inset-top,0px))]">
         {/* SOL: Sadece Minimal Instagram İkonu */}
         <a 
           href="https://www.instagram.com/threebrotherrrs/" 
