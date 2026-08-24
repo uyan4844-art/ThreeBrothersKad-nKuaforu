@@ -47,7 +47,7 @@ export default function HakkimizdaPage() {
         <div className="mt-10 p-6 bg-white rounded-2xl border border-stone-200 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
           <div>
             <h3 className="font-serif text-xl font-bold text-[#1A1918]">Salonumuzu Ziyaret Edin</h3>
-            <p className="text-xs text-stone-500">Bahçelievler Mah. Demokrasi Bulv. No:8Z1 Manavgat, Antalya</p>
+            <p className="text-xs text-stone-500">Bahçelievler Mahallesi, Demokrasi Bulvarı No:8 D:0, 07600 Manavgat / Antalya</p>
           </div>
           <a
             href="https://wa.me/905526856907?text=Merhaba,%20Three%20Brothers%20salonunuzdan%20randevu%20almak%20istiyorum."

@@ -53,7 +53,7 @@ const jsonLdData = {
   priceRange: '₺₺',
   address: {
     '@type': 'PostalAddress',
-    streetAddress: 'Eski Hisar Mahallesi',
+    streetAddress: 'Bahçelievler Mahallesi, Demokrasi Bulvarı No:8 D:0',
     addressLocality: 'Manavgat',
     addressRegion: 'Antalya',
     postalCode: '07600',
@@ -73,7 +73,7 @@ const jsonLdData = {
   aggregateRating: {
     '@type': 'AggregateRating',
     ratingValue: '5.0',
-    reviewCount: '119',
+    reviewCount: '134',
   },
 };
 
