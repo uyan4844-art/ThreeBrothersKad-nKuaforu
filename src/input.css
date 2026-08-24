@@ -1245,7 +1245,7 @@ body.menu-open {
 }
 
 .felsefe-visual-frame {
-  border-radius: 1.25rem;
+  border-radius: 0;
   overflow: hidden;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
   border: 1px solid rgba(197, 168, 128, 0.35);
@@ -1264,7 +1264,7 @@ body.menu-open {
   aspect-ratio: 4 / 5;
   object-fit: cover;
   object-position: center top;
-  border-radius: 1.25rem;
+  border-radius: 0;
   display: block;
   transition: transform 0.85s var(--ease-expo);
 }
@@ -3035,7 +3035,7 @@ body.menu-open {
     width: 100% !important;
     max-width: 400px !important;
     margin: 0 auto !important;
-    border-radius: 20px !important;
+    border-radius: 0 !important;
   }
 
   .felsefe-visual-frame img,
@@ -3043,7 +3043,7 @@ body.menu-open {
     aspect-ratio: 4 / 5 !important;
     object-fit: cover !important;
     object-position: center top !important;
-    border-radius: 20px !important;
+    border-radius: 0 !important;
   }
 
   /* 6. Neden Biz 2x2 Metric Grid */
