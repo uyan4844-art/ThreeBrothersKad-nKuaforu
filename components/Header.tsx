@@ -9,29 +9,47 @@ interface HeaderProps {
   onLanguageChange?: (lang: LanguageCode) => void;
 }
 
-const translations = {
-  tr: {
+const translations: Record<string, {
+  home: string;
+  about: string;
+  contact: string;
+  services_title: string;
+  balyaj: string;
+  blonde: string;
+  kaynak: string;
+  ombre: string;
+  boyama: string;
+  kesim: string;
+  hours: string;
+  call: string;
+  book: string;
+  process?: string;
+  gallery?: string;
+  reviews?: string;
+  faq?: string;
+  openMap?: string;
+}> = {
+  TR: {
     home: "Ana Sayfa",
     about: "Hakkımızda",
     contact: "İletişim",
     services_title: "HİZMETLERİMİZ",
     balyaj: "Profesyonel Balyaj & Sarı Saç",
-    blonde: "Sarışın & İpeksi Renk Tasarımı",
+    blonde: "Blonde & İpeksi Renk Tasarımı",
     kaynak: "Mikro Kapsül Kaynak",
-    ombre: "Ombre ve Işıltı",
+    ombre: "Ombre & Işıltı",
     boyama: "Kişiye Özel Renklendirme & Tonlama",
     kesim: "Kişiye Özel Saç Kesimi",
+    hours: "Salı – Pazar: 08:30 – 20:30 (Pazartesi Kapalı)",
     call: "Hemen Ara",
     book: "Randevu Al",
-    hours: "Salı – Pazar: 08:30 – 20:30 (Pazartesi Kapalı)",
-    lang_btn: "🌐 Dil / Language: Türkçe",
     process: "Süreç",
     gallery: "Galeri",
     reviews: "Yorumlar",
     faq: "SSS",
     openMap: "Konumu Aç",
   },
-  en: {
+  EN: {
     home: "Home",
     about: "About Us",
     contact: "Contact",
@@ -42,17 +60,16 @@ const translations = {
     ombre: "Ombre & Highlights",
     boyama: "Custom Hair Coloring & Toning",
     kesim: "Custom Haircut & Styling",
+    hours: "Tue – Sun: 08:30 – 20:30 (Monday Closed)",
     call: "Call Now",
     book: "Book Appointment",
-    hours: "Tue – Sun: 08:30 – 20:30 (Monday Closed)",
-    lang_btn: "🌐 Language: English",
     process: "Process",
     gallery: "Gallery",
     reviews: "Reviews",
     faq: "FAQ",
     openMap: "Open Map",
   },
-  ru: {
+  RU: {
     home: "Главная",
     about: "О нас",
     contact: "Контакты",
@@ -63,17 +80,16 @@ const translations = {
     ombre: "Омбре и мелирование",
     boyama: "Окрашивание волос",
     kesim: "Стрижка и укладка",
+    hours: "Вт – Вс: 08:30 – 20:30 (Понедельник выходной)",
     call: "Позвонить",
     book: "Записаться",
-    hours: "Вт – Вс: 08:30 – 20:30 (Понедельник выходной)",
-    lang_btn: "🌐 Язык / Language: Русский",
     process: "Процесс",
     gallery: "Галерея",
     reviews: "Отзывы",
     faq: "Частые вопросы",
     openMap: "Как добраться",
   },
-  de: {
+  DE: {
     home: "Startseite",
     about: "Über uns",
     contact: "Kontakt",
@@ -84,16 +100,15 @@ const translations = {
     ombre: "Ombre & Highlights",
     boyama: "Individuelle Haarfärbung",
     kesim: "Individueller Haarschnitt",
+    hours: "Di – So: 08:30 – 20:30 (Montag geschlossen)",
     call: "Jetzt anrufen",
     book: "Termin vereinbaren",
-    hours: "Di – So: 08:30 – 20:30 (Montag geschlossen)",
-    lang_btn: "🌐 Sprache / Language: Deutsch",
     process: "Ablauf",
     gallery: "Galerie",
     reviews: "Bewertungen",
     faq: "FAQ",
     openMap: "Wegbeschreibung",
-  },
+  }
 };
 
 export const Header: React.FC<HeaderProps> = ({
@@ -102,9 +117,10 @@ export const Header: React.FC<HeaderProps> = ({
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const [isDrawerLangOpen, setIsDrawerLangOpen] = useState(false);
+  const [langOpen, setLangOpen] = useState(false);
 
-  const t = translations[currentLang] || translations.tr;
+  const langKey = (currentLang || 'tr').toUpperCase();
+  const t = translations[langKey] || translations.TR;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -122,7 +138,7 @@ export const Header: React.FC<HeaderProps> = ({
     } else {
       document.body.style.overflow = '';
       document.body.classList.remove('menu-open');
-      setIsDrawerLangOpen(false);
+      setLangOpen(false);
     }
     return () => {
       document.body.style.overflow = '';
@@ -135,9 +151,9 @@ export const Header: React.FC<HeaderProps> = ({
       onLanguageChange(code);
     }
     if (typeof window !== 'undefined' && (window as any).I18n) {
-      (window as any).I18n.setLanguage(code);
+      (window as any).I18n.setLanguage(code.toLowerCase());
     }
-    setIsDrawerLangOpen(false);
+    setLangOpen(false);
   };
 
   return (
@@ -218,16 +234,16 @@ export const Header: React.FC<HeaderProps> = ({
             {t.about}
           </Link>
           <Link href="/#surec" className="hover:text-[#A48358] transition-colors">
-            {t.process}
+            {t.process || 'Süreç'}
           </Link>
           <Link href="/#galeri" className="hover:text-[#A48358] transition-colors">
-            {t.gallery}
+            {t.gallery || 'Galeri'}
           </Link>
           <Link href="/#yorumlar" className="hover:text-[#A48358] transition-colors">
-            {t.reviews}
+            {t.reviews || 'Yorumlar'}
           </Link>
           <Link href="/#sss" className="hover:text-[#A48358] transition-colors">
-            {t.faq}
+            {t.faq || 'SSS'}
           </Link>
           <Link href="/#iletisim" className="hover:text-[#A48358] transition-colors">
             {t.contact}
@@ -304,81 +320,81 @@ export const Header: React.FC<HeaderProps> = ({
                 </button>
               </div>
 
-              {/* Kompakt Mobil Dil Seçici Açılır Liste (Dropdown) */}
-              <div className="relative mb-5 pb-4 border-b border-[#C5A880]/20">
-                <button
-                  type="button"
-                  onClick={() => setIsDrawerLangOpen(!isDrawerLangOpen)}
-                  className="w-full flex items-center justify-between bg-white border border-[#C5A880]/35 hover:border-[#A48358] rounded-xl px-3.5 py-2.5 text-xs font-montserrat font-semibold text-[#1A1918] shadow-2xs transition-all cursor-pointer"
-                  aria-expanded={isDrawerLangOpen}
-                  aria-label="Dil Seçimi"
-                >
-                  <span>{t.lang_btn}</span>
-                  <span className={`text-[#A48358] text-[10px] transition-transform duration-200 ${isDrawerLangOpen ? 'rotate-180' : ''}`}>
-                    ▼
-                  </span>
-                </button>
-
-                {isDrawerLangOpen && (
-                  <div className="mt-2 bg-white border border-[#C5A880]/30 rounded-xl p-1.5 shadow-lg flex flex-col gap-1 animate-in fade-in zoom-in-95 duration-150">
-                    {[
-                      { code: 'tr' as LanguageCode, label: 'Türkçe (TR)', flag: '🇹🇷' },
-                      { code: 'en' as LanguageCode, label: 'English (EN)', flag: '🇬🇧' },
-                      { code: 'ru' as LanguageCode, label: 'Русский (RU)', flag: '🇷🇺' },
-                      { code: 'de' as LanguageCode, label: 'Deutsch (DE)', flag: '🇩🇪' },
-                    ].map((lang) => {
-                      const isSelected = lang.code === currentLang;
-                      return (
-                        <button
-                          key={lang.code}
-                          type="button"
-                          onClick={() => handleLangSelect(lang.code)}
-                          className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-montserrat text-left transition-colors cursor-pointer ${
-                            isSelected
-                              ? 'bg-[#1A1918] text-white font-bold'
-                              : 'text-[#1A1918] hover:bg-[#FAF8F5] hover:text-[#A48358]'
-                          }`}
-                        >
-                          <span className="text-sm leading-none">{lang.flag}</span>
-                          <span>{lang.label}</span>
-                        </button>
-                      );
-                    })}
-                  </div>
-                )}
-              </div>
-
-              {/* Ana Sayfa Linkleri */}
-              <nav className="space-y-2 font-montserrat text-sm font-semibold text-[#1A1918] mb-5">
+              {/* Ana Sayfa Linkleri & Dil Seçimi (Ana Sayfa Stiliyle Birebir Aynı) */}
+              <nav className="space-y-1 font-montserrat text-sm font-semibold text-[#1A1918] mb-6">
                 <Link
                   href="/"
                   onClick={() => setIsDrawerOpen(false)}
-                  className="flex items-center justify-between py-2 px-3 rounded-xl hover:bg-white hover:text-[#A48358] transition-colors"
+                  className="flex items-center justify-between py-3 border-b border-stone-200/60 font-serif text-xl font-bold text-stone-900 hover:text-[#A48358] transition-colors"
                 >
                   <span>{t.home}</span>
-                  <span className="text-[#A48358]">→</span>
+                  <span className="text-stone-400 font-sans">→</span>
                 </Link>
                 <Link
                   href="/hakkimizda"
                   onClick={() => setIsDrawerOpen(false)}
-                  className="flex items-center justify-between py-2 px-3 rounded-xl hover:bg-white hover:text-[#A48358] transition-colors"
+                  className="flex items-center justify-between py-3 border-b border-stone-200/60 font-serif text-xl font-bold text-stone-900 hover:text-[#A48358] transition-colors"
                 >
                   <span>{t.about}</span>
-                  <span className="text-[#A48358]">→</span>
+                  <span className="text-stone-400 font-sans">→</span>
                 </Link>
                 <Link
                   href="/#iletisim"
                   onClick={() => setIsDrawerOpen(false)}
-                  className="flex items-center justify-between py-2 px-3 rounded-xl hover:bg-white hover:text-[#A48358] transition-colors"
+                  className="flex items-center justify-between py-3 border-b border-stone-200/60 font-serif text-xl font-bold text-stone-900 hover:text-[#A48358] transition-colors"
                 >
                   <span>{t.contact}</span>
-                  <span className="text-[#A48358]">→</span>
+                  <span className="text-stone-400 font-sans">→</span>
                 </Link>
+
+                {/* Dil Seçimi Satırı (Ana Sayfa Stiliyle Birebir Aynı) */}
+                <div className="border-b border-stone-200/60 py-1">
+                  <button
+                    type="button"
+                    onClick={() => setLangOpen(!langOpen)}
+                    className="w-full flex items-center justify-between py-3 text-left cursor-pointer"
+                  >
+                    <span className="text-xl font-bold text-stone-900 font-serif">
+                      Dil Seçimi <span className="text-sm font-medium text-stone-500 font-montserrat">({langKey})</span>
+                    </span>
+                    <span className="text-stone-400 text-lg transition-transform duration-300">
+                      {langOpen ? '▴' : '▾'}
+                    </span>
+                  </button>
+
+                  {/* Açılır Dil Seçenekleri */}
+                  {langOpen && (
+                    <div className="grid grid-cols-2 gap-2 pb-3 pt-1">
+                      {[
+                        { code: 'tr' as LanguageCode, name: 'Türkçe', label: 'TR' },
+                        { code: 'en' as LanguageCode, name: 'English', label: 'EN' },
+                        { code: 'ru' as LanguageCode, name: 'Русский', label: 'RU' },
+                        { code: 'de' as LanguageCode, name: 'Deutsch', label: 'DE' },
+                      ].map((item) => (
+                        <button
+                          key={item.code}
+                          type="button"
+                          onClick={() => {
+                            handleLangSelect(item.code);
+                            setLangOpen(false);
+                          }}
+                          className={`py-2 px-3 text-sm font-semibold rounded-xl text-center transition-all cursor-pointer font-montserrat ${
+                            currentLang.toLowerCase() === item.code.toLowerCase()
+                              ? 'bg-[#1A1918] text-white shadow-sm'
+                              : 'bg-white border border-stone-200 text-stone-700 hover:bg-stone-50'
+                          }`}
+                        >
+                          {item.name} ({item.label})
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
               </nav>
 
               {/* Hizmetler Bölümü */}
               <div className="space-y-2 mb-6">
-                <span className="text-xs uppercase tracking-widest text-[#A48358] font-bold mb-2.5 block px-3">
+                <span className="text-xs uppercase tracking-widest text-[#A48358] font-bold mb-2.5 block px-1">
                   {t.services_title}
                 </span>
                 <div className="space-y-1.5 font-montserrat text-xs font-semibold text-[#1A1918]">
@@ -496,7 +512,7 @@ export const Header: React.FC<HeaderProps> = ({
                     <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     <circle cx="12" cy="11" r="3" />
                   </svg>
-                  <span>{t.openMap}</span>
+                  <span>{t.openMap || 'Konumu Aç'}</span>
                 </a>
               </div>
 

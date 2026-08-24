@@ -13,9 +13,9 @@ const I18N_LANGUAGES = {
     "call": "Hemen Ara",
     "kesim": "Kişiye Özel Saç Kesimi",
     "boyama": "Kişiye Özel Renklendirme & Tonlama",
-    "ombre": "Ombre ve Işıltı",
+    "ombre": "Ombre & Işıltı",
     "kaynak": "Mikro Kapsül Kaynak",
-    "blonde": "Sarışın & İpeksi Renk Tasarımı",
+    "blonde": "Blonde & İpeksi Renk Tasarımı",
     "balyaj": "Profesyonel Balyaj & Sarı Saç",
     "contact": "İletişim",
     "about": "Hakkımızda",
@@ -977,7 +977,7 @@ class I18nEngine {
     this.languages = I18N_LANGUAGES;
     this.translations = I18N_TRANSLATIONS;
     this.defaultLang = 'tr';
-    this.currentLang = this.getSavedLanguage() || this.detectLanguage();
+    this.currentLang = this.getSavedLanguage() || 'tr';
   }
 
   detectLanguage() {
@@ -1041,31 +1041,23 @@ class I18nEngine {
     });
   }
 
-    updateDrawerLangUI() {
-    const labels = {
-      tr: '🌐 Dil / Language: Türkçe',
-      en: '🌐 Language: English',
-      ru: '🌐 Язык / Language: Русский',
-      de: '🌐 Sprache / Language: Deutsch'
-    };
-    const currentLabelEl = document.getElementById('drawerCurrentLangLabel');
-    if (currentLabelEl) {
-      currentLabelEl.textContent = labels[this.currentLang] || labels.tr;
+      updateDrawerLangUI() {
+    const badgeEl = document.getElementById('drawerLangBadge');
+    if (badgeEl) {
+      badgeEl.textContent = `(${this.currentLang.toUpperCase()})`;
     }
-    const wrapper = document.getElementById('drawerLangCompact');
-    if (wrapper) {
-      wrapper.classList.remove('open');
-      const btn = wrapper.querySelector('.drawer-lang-compact-btn');
-      if (btn) btn.setAttribute('aria-expanded', 'false');
+    const row = document.querySelector('.drawer-lang-row');
+    if (row) {
+      row.classList.remove('open');
     }
-    const items = document.querySelectorAll('.drawer-lang-dropdown-item');
-    items.forEach(item => {
-      if (item.getAttribute('data-lang') === this.currentLang) {
-        item.classList.add('active');
-        item.setAttribute('aria-selected', 'true');
+    const optionBtns = document.querySelectorAll('.drawer-lang-option-btn');
+    optionBtns.forEach(btn => {
+      if (btn.getAttribute('data-lang') === this.currentLang) {
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
       } else {
-        item.classList.remove('active');
-        item.setAttribute('aria-selected', 'false');
+        btn.classList.remove('active');
+        btn.setAttribute('aria-selected', 'false');
       }
     });
   }
@@ -1572,20 +1564,15 @@ const SERVICE_MODAL_DATA = {
   }
 };
 
-// Global Drawer Dropdown Handler
-window.toggleDrawerLangDropdown = function(e) {
+// Global Drawer Accordion Handler
+window.toggleDrawerLangAccordion = function(e) {
   if (e) {
     e.preventDefault();
     e.stopPropagation();
   }
-  const wrapper = document.getElementById('drawerLangCompact');
-  if (wrapper) {
-    wrapper.classList.toggle('open');
-    const btn = wrapper.querySelector('.drawer-lang-compact-btn');
-    if (btn) {
-      const isOpen = wrapper.classList.contains('open');
-      btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-    }
+  const row = document.querySelector('.drawer-lang-row');
+  if (row) {
+    row.classList.toggle('open');
   }
 };
 
@@ -1604,10 +1591,14 @@ window.selectLanguage = function(langCode) {
   if (window.I18n) {
     window.I18n.setLanguage(langCode);
   }
-  const dropdownContainers = document.querySelectorAll('.lang-dropdown-container, #drawerLangCompact');
+  const dropdownContainers = document.querySelectorAll('.lang-dropdown-container');
   dropdownContainers.forEach(container => {
     container.classList.remove('open');
   });
+  const row = document.querySelector('.drawer-lang-row');
+  if (row) {
+    row.classList.remove('open');
+  }
 };
 
 // Global Category Filter Handler

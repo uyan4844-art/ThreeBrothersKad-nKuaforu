@@ -903,33 +903,29 @@
     </div>
 
                 <!-- Kompakt Mobil Dil Seçici Dropdown -->
-    <div class="drawer-lang-compact-wrapper" id="drawerLangCompact">
-      <button type="button" class="drawer-lang-compact-btn" onclick="toggleDrawerLangDropdown(event)" aria-expanded="false" aria-label="Dil Seçimi">
-        <span class="drawer-lang-current" id="drawerCurrentLangLabel">🌐 Dil / Language: Türkçe</span>
-        <span class="drawer-lang-chevron">▾</span>
-      </button>
-      <div class="drawer-lang-dropdown-menu" id="drawerLangDropdownMenu">
-        <button type="button" class="drawer-lang-dropdown-item active" data-lang="tr" onclick="selectLanguage('tr')">
-          <span class="flag">🇹🇷</span> <span>Türkçe (TR)</span>
-        </button>
-        <button type="button" class="drawer-lang-dropdown-item" data-lang="en" onclick="selectLanguage('en')">
-          <span class="flag">🇬🇧</span> <span>English (EN)</span>
-        </button>
-        <button type="button" class="drawer-lang-dropdown-item" data-lang="ru" onclick="selectLanguage('ru')">
-          <span class="flag">🇷🇺</span> <span>Русский (RU)</span>
-        </button>
-        <button type="button" class="drawer-lang-dropdown-item" data-lang="de" onclick="selectLanguage('de')">
-          <span class="flag">🇩🇪</span> <span>Deutsch (DE)</span>
-        </button>
-      </div>
-    </div>
+    
 
     <nav class="drawer-nav">
       <!-- Ana Sayfa Linkleri -->
+            <!-- Ana Sayfa Linkleri & Dil Seçimi (Ana Sayfa Stiliyle Birebir Aynı) -->
       <ul class="drawer-main-links">
         <li><a href="index.html#hero" onclick="toggleMenu()"><span data-i18n="home">Ana Sayfa</span> <span class="arrow">&rarr;</span></a></li>
         <li><a href="hakkimizda.html"><span data-i18n="about">Hakkımızda</span> <span class="arrow">&rarr;</span></a></li>
         <li><a href="index.html#iletisim" onclick="toggleMenu()"><span data-i18n="contact">İletişim</span> <span class="arrow">&rarr;</span></a></li>
+        
+        <!-- Dil Seçimi Satırı (Ana Sayfa Stiliyle Birebir Aynı) -->
+        <li class="drawer-lang-row">
+          <button type="button" class="drawer-lang-accordion-btn" onclick="toggleDrawerLangAccordion(event)">
+            <span class="drawer-lang-title">Dil Seçimi <span class="drawer-lang-badge" id="drawerLangBadge">(TR)</span></span>
+            <span class="drawer-lang-chevron-icon" id="drawerLangChevronIcon">▾</span>
+          </button>
+          <div class="drawer-lang-options-grid" id="drawerLangOptionsGrid">
+            <button type="button" class="drawer-lang-option-btn active" data-lang="tr" onclick="selectLanguage('tr')">Türkçe (TR)</button>
+            <button type="button" class="drawer-lang-option-btn" data-lang="en" onclick="selectLanguage('en')">English (EN)</button>
+            <button type="button" class="drawer-lang-option-btn" data-lang="ru" onclick="selectLanguage('ru')">Русский (RU)</button>
+            <button type="button" class="drawer-lang-option-btn" data-lang="de" onclick="selectLanguage('de')">Deutsch (DE)</button>
+          </div>
+        </li>
       </ul>
 
       <!-- Hizmetler Bölümü (Ayrı Linkler) -->

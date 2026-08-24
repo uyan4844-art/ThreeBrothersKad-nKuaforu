@@ -4060,109 +4060,92 @@ body.menu-open {
 
 
 /* ==========================================================================
-   DRAWER COMPACT LUXURY LANGUAGE DROPDOWN
+   DRAWER ACCORDION LANGUAGE SELECTOR (MATCHING MAIN LINKS EXACTLY)
    ========================================================================== */
 .notranslate {
   display: inline-block;
   font-family: inherit;
 }
 
-.drawer-lang-compact-wrapper {
-  position: relative;
-  margin-bottom: 20px;
-  padding-bottom: 16px;
-  border-bottom: 1px solid rgba(194, 163, 121, 0.2);
+.drawer-lang-row {
+  border-bottom: 1px solid rgba(197, 168, 128, 0.18);
+  padding: 2px 0 6px;
+  list-style: none;
 }
 
-.drawer-lang-compact-btn {
+.drawer-lang-accordion-btn {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
-  background: #FFFFFF;
-  border: 1px solid rgba(197, 168, 128, 0.35);
-  border-radius: 12px;
-  padding: 10px 14px;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 12px;
-  font-weight: 600;
+  background: transparent;
+  border: none;
+  padding: 8px 0;
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 700;
   color: #1A1918;
   cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
-  -webkit-tap-highlight-color: transparent;
-  min-height: 44px;
+  text-align: left;
+  transition: color 0.25s var(--ease-expo);
 }
 
-.drawer-lang-compact-btn:hover {
-  background: #FAF8F5;
-  border-color: #A48358;
+.drawer-lang-accordion-btn:hover {
+  color: var(--gold-dark);
 }
 
-.drawer-lang-current {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  letter-spacing: 0.02em;
+.drawer-lang-badge {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #78716C;
+  margin-left: 6px;
 }
 
-.drawer-lang-chevron {
-  font-size: 12px;
-  color: #A48358;
+.drawer-lang-chevron-icon {
+  color: #A8A29E;
+  font-size: 1.1rem;
   transition: transform 0.25s ease;
 }
 
-.drawer-lang-compact-wrapper.open .drawer-lang-chevron {
+.drawer-lang-row.open .drawer-lang-chevron-icon {
   transform: rotate(180deg);
 }
 
-.drawer-lang-dropdown-menu {
+.drawer-lang-options-grid {
   display: none;
-  flex-direction: column;
-  background: #FFFFFF;
-  border: 1px solid rgba(197, 168, 128, 0.3);
-  border-radius: 12px;
-  margin-top: 6px;
-  padding: 4px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-  overflow: hidden;
-}
-
-.drawer-lang-compact-wrapper.open .drawer-lang-dropdown-menu {
-  display: flex;
-}
-
-.drawer-lang-dropdown-item {
-  display: flex;
-  align-items: center;
+  grid-template-columns: 1fr 1fr;
   gap: 8px;
-  width: 100%;
-  padding: 10px 12px;
-  background: transparent;
-  border: none;
-  border-radius: 8px;
+  padding: 6px 0 10px;
+}
+
+.drawer-lang-row.open .drawer-lang-options-grid {
+  display: grid;
+}
+
+.drawer-lang-option-btn {
+  background: #FFFFFF;
+  border: 1px solid rgba(229, 231, 235, 1);
+  border-radius: 12px;
+  padding: 9px 10px;
   font-family: 'Montserrat', sans-serif;
-  font-size: 12px;
-  font-weight: 500;
-  color: #1A1918;
-  text-align: left;
+  font-size: 13px;
+  font-weight: 600;
+  color: #44403C;
+  text-align: center;
   cursor: pointer;
-  transition: all 0.15s ease;
-  min-height: 38px;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
 }
 
-.drawer-lang-dropdown-item:hover {
+.drawer-lang-option-btn:hover {
   background: #FAF8F5;
-  color: #A48358;
+  border-color: #C5A880;
 }
 
-.drawer-lang-dropdown-item.active {
-  background: #1A1918;
-  color: #FFFFFF;
-  font-weight: 700;
-}
-
-.drawer-lang-dropdown-item .flag {
-  font-size: 14px;
-  line-height: 1;
+.drawer-lang-option-btn.active {
+  background: #1A1918 !important;
+  color: #FFFFFF !important;
+  border-color: #1A1918 !important;
+  box-shadow: 0 2px 8px rgba(26, 25, 24, 0.25);
 }
