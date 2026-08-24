@@ -28,9 +28,9 @@ export default function Home() {
 
         {/* İçerik (Yazılar ve Butonlar) */}
         <div className="relative z-10 text-center space-y-6 max-w-4xl mx-auto flex flex-col items-center">
-          <span className="inline-block bg-[#C5A880]/15 text-[#A48358] border border-[#C5A880]/30 text-xs font-bold tracking-widest uppercase px-4 py-1.5 rounded-full">
-            2014’TEN BERİ MANAVGAT’TA BUTİK KADIN KUAFÖRÜ DENEYİMİ
-          </span>
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#1A1918]/5 border border-stone-300 text-[11px] uppercase tracking-widest font-semibold text-stone-700 mb-4">
+            <span>✨</span> 2014'ten Beri Manavgat'ta
+          </div>
           <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl font-bold text-[#1A1918] leading-tight">
             Kusursuz Renk, <br />
             Doğal Zarafet.
