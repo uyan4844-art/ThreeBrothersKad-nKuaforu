@@ -44,21 +44,6 @@ export default function HakkimizdaPage() {
           </p>
         </div>
 
-        {/* Tecrübe Kartı */}
-        <div className="mt-8 p-6 bg-[#F0EAE1]/60 rounded-2xl border border-[#C5A880]/30 shadow-sm relative overflow-hidden flex items-start gap-4">
-          <div className="w-10 h-10 rounded-xl bg-[#C5A880]/20 flex items-center justify-center text-[#A48358] text-lg shrink-0 mt-0.5">
-            ✨
-          </div>
-          <div>
-            <h3 className="font-serif text-lg font-bold text-[#1A1918] mb-1.5">
-              2014'ten Beri Kesintisiz Güven
-            </h3>
-            <p className="text-stone-600 text-sm sm:text-base leading-relaxed">
-              12 yılı aşkın mesleki tecrübemizle Manavgat Bahçelievler'de saç sağlığını ön planda tutan profesyonel dokunuşlar sunuyoruz.
-            </p>
-          </div>
-        </div>
-
         <div className="mt-10 p-6 bg-white rounded-2xl border border-stone-200 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
           <div>
             <h3 className="font-serif text-xl font-bold text-[#1A1918]">Salonumuzu Ziyaret Edin</h3>
