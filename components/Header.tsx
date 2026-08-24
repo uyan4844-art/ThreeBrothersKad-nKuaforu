@@ -9,143 +9,90 @@ interface HeaderProps {
   onLanguageChange?: (lang: LanguageCode) => void;
 }
 
-const HEADER_LABELS: Record<LanguageCode, {
-  home: string;
-  about: string;
-  contact: string;
-  services: string;
-  process: string;
-  gallery: string;
-  reviews: string;
-  faq: string;
-  book: string;
-  callNow: string;
-  openMap: string;
-  waBook: string;
-  hours: string;
-  featuredServices: string;
-  selectLanguage: string;
-  balyaj: string;
-  blonde: string;
-  kaynak: string;
-  ombre: string;
-  renklendirme: string;
-  kesim: string;
-}> = {
+const translations = {
   tr: {
-    home: 'Ana Sayfa',
-    about: 'Hakkımızda',
-    contact: 'İletişim',
-    services: 'Hizmetlerimiz',
-    process: 'Süreç',
-    gallery: 'Galeri',
-    reviews: 'Yorumlar',
-    faq: 'SSS',
-    book: 'Randevu Al',
-    callNow: 'Hemen Ara',
-    openMap: 'Konumu Aç',
-    waBook: 'WhatsApp Randevu Al',
-    hours: 'Salı – Pazar | 08:30 – 20:30',
-    featuredServices: 'HİZMETLERİMİZ',
-    selectLanguage: 'DİL SEÇİMİ · LANGUAGE',
-    balyaj: 'Profesyonel Balyaj',
-    blonde: 'Blonde Saç Tasarımı',
-    kaynak: 'Mikro Kapsül Kaynak',
-    ombre: 'Ombre & Sombre',
-    renklendirme: 'Saç Boyama & Tonlama',
-    kesim: 'Kişiye Özel Saç Kesimi',
+    home: "Ana Sayfa",
+    about: "Hakkımızda",
+    contact: "İletişim",
+    services_title: "HİZMETLERİMİZ",
+    balyaj: "Profesyonel Balyaj & Sarı Saç",
+    blonde: "Sarışın & İpeksi Renk Tasarımı",
+    kaynak: "Mikro Kapsül Kaynak",
+    ombre: "Ombre ve Işıltı",
+    boyama: "Kişiye Özel Renklendirme & Tonlama",
+    kesim: "Kişiye Özel Saç Kesimi",
+    call: "Hemen Ara",
+    book: "Randevu Al",
+    hours: "Salı – Pazar: 08:30 – 20:30 (Pazartesi Kapalı)",
+    lang_btn: "🌐 Dil / Language: Türkçe",
+    process: "Süreç",
+    gallery: "Galeri",
+    reviews: "Yorumlar",
+    faq: "SSS",
+    openMap: "Konumu Aç",
   },
   en: {
-    home: 'Home',
-    about: 'About Us',
-    contact: 'Contact',
-    services: 'Services',
-    process: 'Process',
-    gallery: 'Gallery',
-    reviews: 'Reviews',
-    faq: 'FAQ',
-    book: 'Book Now',
-    callNow: 'Call Now',
-    openMap: 'Open Map',
-    waBook: 'Book via WhatsApp',
-    hours: 'Tue – Sun | 08:30 – 20:30',
-    featuredServices: 'OUR SERVICES',
-    selectLanguage: 'SELECT LANGUAGE',
-    balyaj: 'Professional Balayage',
-    blonde: 'Blonde Hair Artistry',
-    kaynak: 'Micro Capsule Extensions',
-    ombre: 'Ombré & Sombré',
-    renklendirme: 'Coloring & Toning',
-    kesim: 'Bespoke Haircut & Styling',
-  },
-  de: {
-    home: 'Startseite',
-    about: 'Über Uns',
-    contact: 'Kontakt',
-    services: 'Leistungen',
-    process: 'Ablauf',
-    gallery: 'Galerie',
-    reviews: 'Bewertungen',
-    faq: 'FAQ',
-    book: 'Termin Buchen',
-    callNow: 'Jetzt Anrufen',
-    openMap: 'Wegbeschreibung',
-    waBook: 'WhatsApp Termin',
-    hours: 'Di – So | 08:30 – 20:30',
-    featuredServices: 'UNSERE LEISTUNGEN',
-    selectLanguage: 'SPRACHE WÄHLEN',
-    balyaj: 'Professionelle Balayage',
-    blonde: 'Blond & Farbdesign',
-    kaynak: 'Mikrokapsel Verlängerung',
-    ombre: 'Ombré & Sombré',
-    renklendirme: 'Coloration & Glossing',
-    kesim: 'Individueller Haarschnitt',
+    home: "Home",
+    about: "About Us",
+    contact: "Contact",
+    services_title: "OUR SERVICES",
+    balyaj: "Professional Balayage & Blonde",
+    blonde: "Blonde & Silky Color Design",
+    kaynak: "Micro Capsule Hair Extensions",
+    ombre: "Ombre & Highlights",
+    boyama: "Custom Hair Coloring & Toning",
+    kesim: "Custom Haircut & Styling",
+    call: "Call Now",
+    book: "Book Appointment",
+    hours: "Tue – Sun: 08:30 – 20:30 (Monday Closed)",
+    lang_btn: "🌐 Language: English",
+    process: "Process",
+    gallery: "Gallery",
+    reviews: "Reviews",
+    faq: "FAQ",
+    openMap: "Open Map",
   },
   ru: {
-    home: 'Главная',
-    about: 'О Нас',
-    contact: 'Контакты',
-    services: 'Услуги',
-    process: 'Процесс',
-    gallery: 'Галерея',
-    reviews: 'Отзывы',
-    faq: 'Частые вопросы',
-    book: 'Записаться',
-    callNow: 'Позвонить',
-    openMap: 'Как добраться',
-    waBook: 'Запись в WhatsApp',
-    hours: 'Вт – Вс | 08:30 – 20:30',
-    featuredServices: 'НАШИ УСЛУГИ',
-    selectLanguage: 'ВЫБОР ЯЗЫКА',
-    balyaj: 'Профессиональный Балаяж',
-    blonde: 'Блонд и Колористика',
-    kaynak: 'Микрокапсульное Наращивание',
-    ombre: 'Омбре и Сомбре',
-    renklendirme: 'Окрашивание и Тонирование',
-    kesim: 'Индивидуальная Стрижка',
+    home: "Главная",
+    about: "О нас",
+    contact: "Контакты",
+    services_title: "НАШИ УСЛУГИ",
+    balyaj: "Профессиональный балаяж",
+    blonde: "Дизайн блонда и тонирование",
+    kaynak: "Микрокапсульное наращивание",
+    ombre: "Омбре и мелирование",
+    boyama: "Окрашивание волос",
+    kesim: "Стрижка и укладка",
+    call: "Позвонить",
+    book: "Записаться",
+    hours: "Вт – Вс: 08:30 – 20:30 (Понедельник выходной)",
+    lang_btn: "🌐 Язык / Language: Русский",
+    process: "Процесс",
+    gallery: "Галерея",
+    reviews: "Отзывы",
+    faq: "Частые вопросы",
+    openMap: "Как добраться",
   },
-  ar: {
-    home: 'الرئيسية',
-    about: 'من نحن',
-    contact: 'اتصل بنا',
-    services: 'خدماتنا',
-    process: 'الخطوات',
-    gallery: 'المعرض',
-    reviews: 'التقييمات',
-    faq: 'الأسئلة الشائعة',
-    book: 'حجز موعد',
-    callNow: 'اتصل الآن',
-    openMap: 'الاتجاهات',
-    waBook: 'حجز عبر واتساب',
-    hours: 'الثلاثاء – الأحد | 08:30 – 20:30',
-    featuredServices: 'خدماتنا',
-    selectLanguage: 'اختر اللغة',
-    balyaj: 'بالياج احترافي',
-    blonde: 'تصميم الشعر الأشقر',
-    kaynak: 'وصلات شعر ميكرو كبسول',
-    ombre: 'أومبري وسومبري',
-    renklendirme: 'صبغ وتلوين مخصص',
-    kesim: 'قص شعر عصري مخصص',
+  de: {
+    home: "Startseite",
+    about: "Über uns",
+    contact: "Kontakt",
+    services_title: "UNSERE LEISTUNGEN",
+    balyaj: "Professionelle Balayage & Blond",
+    blonde: "Blonde & Farbdesign",
+    kaynak: "Mikrokapsel-Haarverlängerung",
+    ombre: "Ombre & Highlights",
+    boyama: "Individuelle Haarfärbung",
+    kesim: "Individueller Haarschnitt",
+    call: "Jetzt anrufen",
+    book: "Termin vereinbaren",
+    hours: "Di – So: 08:30 – 20:30 (Montag geschlossen)",
+    lang_btn: "🌐 Sprache / Language: Deutsch",
+    process: "Ablauf",
+    gallery: "Galerie",
+    reviews: "Bewertungen",
+    faq: "FAQ",
+    openMap: "Wegbeschreibung",
   },
 };
 
@@ -155,8 +102,9 @@ export const Header: React.FC<HeaderProps> = ({
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [isDrawerLangOpen, setIsDrawerLangOpen] = useState(false);
 
-  const t = HEADER_LABELS[currentLang] || HEADER_LABELS.tr;
+  const t = translations[currentLang] || translations.tr;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -174,6 +122,7 @@ export const Header: React.FC<HeaderProps> = ({
     } else {
       document.body.style.overflow = '';
       document.body.classList.remove('menu-open');
+      setIsDrawerLangOpen(false);
     }
     return () => {
       document.body.style.overflow = '';
@@ -188,6 +137,7 @@ export const Header: React.FC<HeaderProps> = ({
     if (typeof window !== 'undefined' && (window as any).I18n) {
       (window as any).I18n.setLanguage(code);
     }
+    setIsDrawerLangOpen(false);
   };
 
   return (
@@ -262,7 +212,7 @@ export const Header: React.FC<HeaderProps> = ({
         {/* Center: Desktop Navigation */}
         <nav className="hidden lg:flex items-center gap-6 text-xs font-semibold text-[#1A1918] font-montserrat">
           <Link href="/#hizmetler" className="hover:text-[#A48358] transition-colors">
-            {t.services}
+            {t.services_title}
           </Link>
           <Link href="/hakkimizda" className="hover:text-[#A48358] transition-colors">
             {t.about}
@@ -354,36 +304,48 @@ export const Header: React.FC<HeaderProps> = ({
                 </button>
               </div>
 
-              {/* 4'lü Minimalist Sade Mobil Dil Seçici Barı */}
-              <div className="mb-5 pb-4 border-b border-[#C5A880]/20">
-                <span className="text-[10px] font-bold text-[#A48358] tracking-widest uppercase mb-2 block px-1">
-                  {t.selectLanguage}
-                </span>
-                <div className="grid grid-cols-4 gap-2">
-                  {[
-                    { code: 'tr' as LanguageCode, label: 'TR', title: 'Türkçe' },
-                    { code: 'en' as LanguageCode, label: 'EN', title: 'English' },
-                    { code: 'ru' as LanguageCode, label: 'RU', title: 'Русский' },
-                    { code: 'de' as LanguageCode, label: 'DE', title: 'Deutsch' },
-                  ].map((lang) => {
-                    const isSelected = lang.code === currentLang;
-                    return (
-                      <button
-                        key={lang.code}
-                        type="button"
-                        onClick={() => handleLangSelect(lang.code)}
-                        className={`flex items-center justify-center py-2.5 px-1 rounded-xl border text-xs font-montserrat font-bold tracking-wider transition-all cursor-pointer ${
-                          isSelected
-                            ? 'bg-[#1A1918] text-white border-[#1A1918] shadow-sm'
-                            : 'bg-transparent text-[#1A1918] border-stone-300 hover:border-[#1A1918] hover:bg-stone-100/60'
-                        }`}
-                        aria-label={lang.title}
-                      >
-                        {lang.label}
-                      </button>
-                    );
-                  })}
-                </div>
+              {/* Kompakt Mobil Dil Seçici Açılır Liste (Dropdown) */}
+              <div className="relative mb-5 pb-4 border-b border-[#C5A880]/20">
+                <button
+                  type="button"
+                  onClick={() => setIsDrawerLangOpen(!isDrawerLangOpen)}
+                  className="w-full flex items-center justify-between bg-white border border-[#C5A880]/35 hover:border-[#A48358] rounded-xl px-3.5 py-2.5 text-xs font-montserrat font-semibold text-[#1A1918] shadow-2xs transition-all cursor-pointer"
+                  aria-expanded={isDrawerLangOpen}
+                  aria-label="Dil Seçimi"
+                >
+                  <span>{t.lang_btn}</span>
+                  <span className={`text-[#A48358] text-[10px] transition-transform duration-200 ${isDrawerLangOpen ? 'rotate-180' : ''}`}>
+                    ▼
+                  </span>
+                </button>
+
+                {isDrawerLangOpen && (
+                  <div className="mt-2 bg-white border border-[#C5A880]/30 rounded-xl p-1.5 shadow-lg flex flex-col gap-1 animate-in fade-in zoom-in-95 duration-150">
+                    {[
+                      { code: 'tr' as LanguageCode, label: 'Türkçe (TR)', flag: '🇹🇷' },
+                      { code: 'en' as LanguageCode, label: 'English (EN)', flag: '🇬🇧' },
+                      { code: 'ru' as LanguageCode, label: 'Русский (RU)', flag: '🇷🇺' },
+                      { code: 'de' as LanguageCode, label: 'Deutsch (DE)', flag: '🇩🇪' },
+                    ].map((lang) => {
+                      const isSelected = lang.code === currentLang;
+                      return (
+                        <button
+                          key={lang.code}
+                          type="button"
+                          onClick={() => handleLangSelect(lang.code)}
+                          className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-montserrat text-left transition-colors cursor-pointer ${
+                            isSelected
+                              ? 'bg-[#1A1918] text-white font-bold'
+                              : 'text-[#1A1918] hover:bg-[#FAF8F5] hover:text-[#A48358]'
+                          }`}
+                        >
+                          <span className="text-sm leading-none">{lang.flag}</span>
+                          <span>{lang.label}</span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                )}
               </div>
 
               {/* Ana Sayfa Linkleri */}
@@ -417,7 +379,7 @@ export const Header: React.FC<HeaderProps> = ({
               {/* Hizmetler Bölümü */}
               <div className="space-y-2 mb-6">
                 <span className="text-xs uppercase tracking-widest text-[#A48358] font-bold mb-2.5 block px-3">
-                  {t.featuredServices}
+                  {t.services_title}
                 </span>
                 <div className="space-y-1.5 font-montserrat text-xs font-semibold text-[#1A1918]">
                   <Link
@@ -475,7 +437,7 @@ export const Header: React.FC<HeaderProps> = ({
                   >
                     <div className="flex items-center gap-2">
                       <span className="text-[#A48358]">•</span>
-                      <span>{t.renklendirme}</span>
+                      <span>{t.boyama}</span>
                     </div>
                     <span className="text-[#A48358]">→</span>
                   </Link>
@@ -522,7 +484,7 @@ export const Header: React.FC<HeaderProps> = ({
                   <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z"/>
                   </svg>
-                  <span>{t.callNow}</span>
+                  <span>{t.call}</span>
                 </a>
                 <a
                   href="https://maps.google.com/?cid=16986332279537405342"
@@ -548,7 +510,7 @@ export const Header: React.FC<HeaderProps> = ({
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
                   <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
                 </svg>
-                <span>{t.waBook}</span>
+                <span>{t.book}</span>
               </a>
             </div>
           </aside>
