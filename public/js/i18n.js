@@ -246,7 +246,7 @@ const I18N_TRANSLATIONS = {
     "contact_desc": "Ten renginize, saçınızın geçmiş işlemlerine ve sağlığına göre en doğru tonu planlamak için stüdyomuzdan ön görüşme randevusu alabilirsiniz.",
     "c_btn_wa": "Termin vereinbaren",
     "c_btn_call": "Jetzt anrufen",
-    "c_btn_maps": "Yol Tarifi Al",
+    "c_btn_maps": "Wegbeschreibung",
     "c_hours_title": "ÇALIŞMA SAATLERİ",
     "c_hours_val": "Salı – Pazar: 08:30 – 20:30 (Pazartesi Kapalı)",
     "c_phone_title": "TELEFON",
@@ -1041,7 +1041,7 @@ class I18nEngine {
     });
   }
 
-      updateDrawerLangUI() {
+        updateDrawerLangUI() {
     const badgeEl = document.getElementById('drawerLangBadge');
     if (badgeEl) {
       badgeEl.textContent = `(${this.currentLang.toUpperCase()})`;
@@ -1054,10 +1054,8 @@ class I18nEngine {
     optionBtns.forEach(btn => {
       if (btn.getAttribute('data-lang') === this.currentLang) {
         btn.classList.add('active');
-        btn.setAttribute('aria-selected', 'true');
       } else {
         btn.classList.remove('active');
-        btn.setAttribute('aria-selected', 'false');
       }
     });
   }
