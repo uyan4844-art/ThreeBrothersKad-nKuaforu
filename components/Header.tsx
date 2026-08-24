@@ -9,12 +9,154 @@ interface HeaderProps {
   onLanguageChange?: (lang: LanguageCode) => void;
 }
 
+const HEADER_LABELS: Record<LanguageCode, {
+  home: string;
+  about: string;
+  contact: string;
+  services: string;
+  process: string;
+  gallery: string;
+  reviews: string;
+  faq: string;
+  book: string;
+  callNow: string;
+  openMap: string;
+  waBook: string;
+  hours: string;
+  featuredServices: string;
+  selectLanguage: string;
+  balyaj: string;
+  blonde: string;
+  kaynak: string;
+  ombre: string;
+  renklendirme: string;
+  kesim: string;
+}> = {
+  tr: {
+    home: 'Ana Sayfa',
+    about: 'Hakkımızda',
+    contact: 'İletişim',
+    services: 'Hizmetlerimiz',
+    process: 'Süreç',
+    gallery: 'Galeri',
+    reviews: 'Yorumlar',
+    faq: 'SSS',
+    book: 'Randevu Al',
+    callNow: 'Hemen Ara',
+    openMap: 'Konumu Aç',
+    waBook: 'WhatsApp Randevu Al',
+    hours: 'Salı – Pazar | 08:30 – 20:30',
+    featuredServices: 'HİZMETLERİMİZ',
+    selectLanguage: 'DİL SEÇİMİ · LANGUAGE',
+    balyaj: 'Profesyonel Balyaj',
+    blonde: 'Blonde Saç Tasarımı',
+    kaynak: 'Mikro Kapsül Kaynak',
+    ombre: 'Ombre & Sombre',
+    renklendirme: 'Saç Boyama & Tonlama',
+    kesim: 'Kişiye Özel Saç Kesimi',
+  },
+  en: {
+    home: 'Home',
+    about: 'About Us',
+    contact: 'Contact',
+    services: 'Services',
+    process: 'Process',
+    gallery: 'Gallery',
+    reviews: 'Reviews',
+    faq: 'FAQ',
+    book: 'Book Now',
+    callNow: 'Call Now',
+    openMap: 'Open Map',
+    waBook: 'Book via WhatsApp',
+    hours: 'Tue – Sun | 08:30 – 20:30',
+    featuredServices: 'OUR SERVICES',
+    selectLanguage: 'SELECT LANGUAGE',
+    balyaj: 'Professional Balayage',
+    blonde: 'Blonde Hair Artistry',
+    kaynak: 'Micro Capsule Extensions',
+    ombre: 'Ombré & Sombré',
+    renklendirme: 'Coloring & Toning',
+    kesim: 'Bespoke Haircut & Styling',
+  },
+  de: {
+    home: 'Startseite',
+    about: 'Über Uns',
+    contact: 'Kontakt',
+    services: 'Leistungen',
+    process: 'Ablauf',
+    gallery: 'Galerie',
+    reviews: 'Bewertungen',
+    faq: 'FAQ',
+    book: 'Termin Buchen',
+    callNow: 'Jetzt Anrufen',
+    openMap: 'Wegbeschreibung',
+    waBook: 'WhatsApp Termin',
+    hours: 'Di – So | 08:30 – 20:30',
+    featuredServices: 'UNSERE LEISTUNGEN',
+    selectLanguage: 'SPRACHE WÄHLEN',
+    balyaj: 'Professionelle Balayage',
+    blonde: 'Blond & Farbdesign',
+    kaynak: 'Mikrokapsel Verlängerung',
+    ombre: 'Ombré & Sombré',
+    renklendirme: 'Coloration & Glossing',
+    kesim: 'Individueller Haarschnitt',
+  },
+  ru: {
+    home: 'Главная',
+    about: 'О Нас',
+    contact: 'Контакты',
+    services: 'Услуги',
+    process: 'Процесс',
+    gallery: 'Галерея',
+    reviews: 'Отзывы',
+    faq: 'Частые вопросы',
+    book: 'Записаться',
+    callNow: 'Позвонить',
+    openMap: 'Как добраться',
+    waBook: 'Запись в WhatsApp',
+    hours: 'Вт – Вс | 08:30 – 20:30',
+    featuredServices: 'НАШИ УСЛУГИ',
+    selectLanguage: 'ВЫБОР ЯЗЫКА',
+    balyaj: 'Профессиональный Балаяж',
+    blonde: 'Блонд и Колористика',
+    kaynak: 'Микрокапсульное Наращивание',
+    ombre: 'Омбре и Сомбре',
+    renklendirme: 'Окрашивание и Тонирование',
+    kesim: 'Индивидуальная Стрижка',
+  },
+  ar: {
+    home: 'الرئيسية',
+    about: 'من نحن',
+    contact: 'اتصل بنا',
+    services: 'خدماتنا',
+    process: 'الخطوات',
+    gallery: 'المعرض',
+    reviews: 'التقييمات',
+    faq: 'الأسئلة الشائعة',
+    book: 'حجز موعد',
+    callNow: 'اتصل الآن',
+    openMap: 'الاتجاهات',
+    waBook: 'حجز عبر واتساب',
+    hours: 'الثلاثاء – الأحد | 08:30 – 20:30',
+    featuredServices: 'خدماتنا',
+    selectLanguage: 'اختر اللغة',
+    balyaj: 'بالياج احترافي',
+    blonde: 'تصميم الشعر الأشقر',
+    kaynak: 'وصلات شعر ميكرو كبسول',
+    ombre: 'أومبري وسومبري',
+    renklendirme: 'صبغ وتلوين مخصص',
+    kesim: 'قص شعر عصري مخصص',
+  },
+};
+
 export const Header: React.FC<HeaderProps> = ({
   currentLang = 'tr',
   onLanguageChange,
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+  const t = HEADER_LABELS[currentLang] || HEADER_LABELS.tr;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,6 +181,15 @@ export const Header: React.FC<HeaderProps> = ({
     };
   }, [isDrawerOpen]);
 
+  const handleLangSelect = (code: LanguageCode) => {
+    if (onLanguageChange) {
+      onLanguageChange(code);
+    }
+    if (typeof window !== 'undefined' && (window as any).I18n) {
+      (window as any).I18n.setLanguage(code);
+    }
+  };
+
   return (
     <>
       {/* =========================================================================
@@ -62,7 +213,7 @@ export const Header: React.FC<HeaderProps> = ({
 
         {/* ORTA: Ortalanmış Logo & Alt Başlık */}
         <Link href="/" className="flex flex-col items-center text-center no-underline">
-          <span className="text-[#1A1918] font-serif text-lg font-bold tracking-tight">
+          <span className="text-[#1A1918] font-serif text-lg font-bold tracking-tight notranslate" translate="no">
             Three Brothers
           </span>
           <span className="text-[9px] uppercase tracking-[0.25em] text-stone-500 font-medium -mt-0.5">
@@ -99,7 +250,7 @@ export const Header: React.FC<HeaderProps> = ({
             className="w-10 h-10 rounded-full border border-[#C5A880]/30 shadow-2xs"
           />
           <div className="flex flex-col">
-            <span className="font-serif text-lg font-bold text-[#1A1918] tracking-wider leading-none">
+            <span className="font-serif text-lg font-bold text-[#1A1918] tracking-wider leading-none notranslate" translate="no">
               Three Brothers
             </span>
             <span className="text-[9px] font-bold text-[#A48358] tracking-widest uppercase mt-0.5">
@@ -108,28 +259,28 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
         </Link>
 
-        {/* Center: Desktop Navigation (100% Intact) */}
+        {/* Center: Desktop Navigation */}
         <nav className="hidden lg:flex items-center gap-6 text-xs font-semibold text-[#1A1918] font-montserrat">
           <Link href="/#hizmetler" className="hover:text-[#A48358] transition-colors">
-            Hizmetlerimiz
+            {t.services}
           </Link>
           <Link href="/hakkimizda" className="hover:text-[#A48358] transition-colors">
-            Hakkımızda
+            {t.about}
           </Link>
           <Link href="/#surec" className="hover:text-[#A48358] transition-colors">
-            Süreç
+            {t.process}
           </Link>
           <Link href="/#galeri" className="hover:text-[#A48358] transition-colors">
-            Galeri
+            {t.gallery}
           </Link>
           <Link href="/#yorumlar" className="hover:text-[#A48358] transition-colors">
-            Yorumlar
+            {t.reviews}
           </Link>
           <Link href="/#sss" className="hover:text-[#A48358] transition-colors">
-            SSS
+            {t.faq}
           </Link>
           <Link href="/#iletisim" className="hover:text-[#A48358] transition-colors">
-            İletişim
+            {t.contact}
           </Link>
         </nav>
 
@@ -138,7 +289,7 @@ export const Header: React.FC<HeaderProps> = ({
           {/* Tıklanabilir Lüks Dil Seçici (Language Dropdown) */}
           <LanguageSelector
             currentLang={currentLang}
-            onLanguageChange={onLanguageChange}
+            onLanguageChange={handleLangSelect}
           />
 
           {/* Instagram Butonu (Masaüstü) */}
@@ -166,13 +317,13 @@ export const Header: React.FC<HeaderProps> = ({
             <svg className="w-3.5 h-3.5 text-[#128C7E] fill-current" viewBox="0 0 24 24">
               <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
             </svg>
-            <span>Randevu Al</span>
+            <span>{t.book}</span>
           </a>
         </div>
       </header>
 
       {/* =========================================================================
-          2. "SHINE HAIR" TARZI LÜKS AÇILIR MOBİL MENÜ ÇEKMECESİ (md:hidden)
+          3. "SHINE HAIR" TARZI LÜKS AÇILIR MOBİL MENÜ ÇEKMECESİ (md:hidden)
       ========================================================================== */}
       {isDrawerOpen && (
         <div className="fixed inset-0 z-50 lg:hidden flex justify-end animate-in fade-in duration-200">
@@ -186,9 +337,9 @@ export const Header: React.FC<HeaderProps> = ({
           <aside className="relative w-full max-w-[360px] bg-[#FAF8F5] h-[100dvh] min-h-[100dvh] shadow-2xl p-6 pb-[calc(1.5rem+env(safe-area-inset-bottom,0px))] flex flex-col justify-between overflow-y-auto z-10 animate-in slide-in-from-right duration-300 overscroll-contain">
             <div>
               {/* Üst Kısım: Başlık & Kapat Butonu */}
-              <div className="flex items-center justify-between border-b border-[#C5A880]/20 pb-4 mb-6">
+              <div className="flex items-center justify-between border-b border-[#C5A880]/20 pb-4 mb-4">
                 <div>
-                  <h3 className="font-serif font-bold text-xl text-[#1A1918]">Three Brothers</h3>
+                  <h3 className="font-serif font-bold text-xl text-[#1A1918] notranslate" translate="no">Three Brothers</h3>
                   <span className="text-[9px] text-[#A48358] font-bold tracking-widest uppercase">
                     BAYAN KUAFÖRÜ · MANAVGAT
                   </span>
@@ -203,14 +354,47 @@ export const Header: React.FC<HeaderProps> = ({
                 </button>
               </div>
 
+              {/* 4'lü Lüks Mobil Dil Seçici Barı */}
+              <div className="mb-5 pb-4 border-b border-[#C5A880]/20">
+                <span className="text-[10px] font-bold text-[#A48358] tracking-widest uppercase mb-2.5 block px-1">
+                  {t.selectLanguage}
+                </span>
+                <div className="grid grid-cols-4 gap-2">
+                  {[
+                    { code: 'tr' as LanguageCode, label: 'TR', flag: '🇹🇷', title: 'Türkçe' },
+                    { code: 'en' as LanguageCode, label: 'EN', flag: '🇬🇧', title: 'English' },
+                    { code: 'ru' as LanguageCode, label: 'RU', flag: '🇷🇺', title: 'Русский' },
+                    { code: 'de' as LanguageCode, label: 'DE', flag: '🇩🇪', title: 'Deutsch' },
+                  ].map((lang) => {
+                    const isSelected = lang.code === currentLang;
+                    return (
+                      <button
+                        key={lang.code}
+                        type="button"
+                        onClick={() => handleLangSelect(lang.code)}
+                        className={`flex flex-col items-center justify-center py-2 px-1 rounded-xl border text-xs font-montserrat font-bold transition-all cursor-pointer ${
+                          isSelected
+                            ? 'bg-[#1A1918] text-white border-[#1A1918] shadow-sm ring-1 ring-[#C5A880]/40 scale-102'
+                            : 'bg-white text-[#1A1918] border-[#C5A880]/25 hover:border-[#C5A880] hover:bg-[#FAF8F5]'
+                        }`}
+                        aria-label={lang.title}
+                      >
+                        <span className="text-base leading-none mb-1">{lang.flag}</span>
+                        <span className="text-[11px] font-bold tracking-wider">{lang.label}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
               {/* Ana Sayfa Linkleri */}
-              <nav className="space-y-2.5 font-montserrat text-sm font-semibold text-[#1A1918] mb-6">
+              <nav className="space-y-2 font-montserrat text-sm font-semibold text-[#1A1918] mb-5">
                 <Link
                   href="/"
                   onClick={() => setIsDrawerOpen(false)}
                   className="flex items-center justify-between py-2 px-3 rounded-xl hover:bg-white hover:text-[#A48358] transition-colors"
                 >
-                  <span>Ana Sayfa</span>
+                  <span>{t.home}</span>
                   <span className="text-[#A48358]">→</span>
                 </Link>
                 <Link
@@ -218,7 +402,7 @@ export const Header: React.FC<HeaderProps> = ({
                   onClick={() => setIsDrawerOpen(false)}
                   className="flex items-center justify-between py-2 px-3 rounded-xl hover:bg-white hover:text-[#A48358] transition-colors"
                 >
-                  <span>Hakkımızda</span>
+                  <span>{t.about}</span>
                   <span className="text-[#A48358]">→</span>
                 </Link>
                 <Link
@@ -226,15 +410,15 @@ export const Header: React.FC<HeaderProps> = ({
                   onClick={() => setIsDrawerOpen(false)}
                   className="flex items-center justify-between py-2 px-3 rounded-xl hover:bg-white hover:text-[#A48358] transition-colors"
                 >
-                  <span>İletişim</span>
+                  <span>{t.contact}</span>
                   <span className="text-[#A48358]">→</span>
                 </Link>
               </nav>
 
-              {/* Hizmetler Bölümü (Ayrı Linkler) */}
+              {/* Hizmetler Bölümü */}
               <div className="space-y-2 mb-6">
-                <span className="text-xs uppercase tracking-widest text-stone-400 font-semibold mb-3 mt-4 block px-3">
-                  HİZMETLERİMİZ
+                <span className="text-xs uppercase tracking-widest text-[#A48358] font-bold mb-2.5 block px-3">
+                  {t.featuredServices}
                 </span>
                 <div className="space-y-1.5 font-montserrat text-xs font-semibold text-[#1A1918]">
                   <Link
@@ -244,7 +428,7 @@ export const Header: React.FC<HeaderProps> = ({
                   >
                     <div className="flex items-center gap-2">
                       <span className="text-[#A48358]">•</span>
-                      <span>Profesyonel Balyaj</span>
+                      <span>{t.balyaj}</span>
                     </div>
                     <span className="text-[#A48358]">→</span>
                   </Link>
@@ -256,7 +440,7 @@ export const Header: React.FC<HeaderProps> = ({
                   >
                     <div className="flex items-center gap-2">
                       <span className="text-[#A48358]">•</span>
-                      <span>Blonde Saç Tasarımı</span>
+                      <span>{t.blonde}</span>
                     </div>
                     <span className="text-[#A48358]">→</span>
                   </Link>
@@ -268,7 +452,7 @@ export const Header: React.FC<HeaderProps> = ({
                   >
                     <div className="flex items-center gap-2">
                       <span className="text-[#A48358]">•</span>
-                      <span>Mikro Kapsül Kaynak</span>
+                      <span>{t.kaynak}</span>
                     </div>
                     <span className="text-[#A48358]">→</span>
                   </Link>
@@ -280,7 +464,7 @@ export const Header: React.FC<HeaderProps> = ({
                   >
                     <div className="flex items-center gap-2">
                       <span className="text-[#A48358]">•</span>
-                      <span>Ombre & Sombre</span>
+                      <span>{t.ombre}</span>
                     </div>
                     <span className="text-[#A48358]">→</span>
                   </Link>
@@ -292,7 +476,7 @@ export const Header: React.FC<HeaderProps> = ({
                   >
                     <div className="flex items-center gap-2">
                       <span className="text-[#A48358]">•</span>
-                      <span>Saç Boyama & Tonlama</span>
+                      <span>{t.renklendirme}</span>
                     </div>
                     <span className="text-[#A48358]">→</span>
                   </Link>
@@ -304,7 +488,7 @@ export const Header: React.FC<HeaderProps> = ({
                   >
                     <div className="flex items-center gap-2">
                       <span className="text-[#A48358]">•</span>
-                      <span>Kişiye Özel Saç Kesimi</span>
+                      <span>{t.kesim}</span>
                     </div>
                     <span className="text-[#A48358]">→</span>
                   </Link>
@@ -326,7 +510,7 @@ export const Header: React.FC<HeaderProps> = ({
                     <circle cx="12" cy="12" r="10" />
                     <polyline points="12 6 12 12 16 14" />
                   </svg>
-                  <span>Salı – Pazar | 08:30 – 20:30</span>
+                  <span>{t.hours}</span>
                 </div>
               </div>
 
@@ -339,7 +523,7 @@ export const Header: React.FC<HeaderProps> = ({
                   <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z"/>
                   </svg>
-                  <span>Hemen Ara</span>
+                  <span>{t.callNow}</span>
                 </a>
                 <a
                   href="https://maps.google.com/?cid=16986332279537405342"
@@ -351,7 +535,7 @@ export const Header: React.FC<HeaderProps> = ({
                     <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     <circle cx="12" cy="11" r="3" />
                   </svg>
-                  <span>Konumu Aç</span>
+                  <span>{t.openMap}</span>
                 </a>
               </div>
 
@@ -365,7 +549,7 @@ export const Header: React.FC<HeaderProps> = ({
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
                   <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
                 </svg>
-                <span>WhatsApp Randevu Al</span>
+                <span>{t.waBook}</span>
               </a>
             </div>
           </aside>

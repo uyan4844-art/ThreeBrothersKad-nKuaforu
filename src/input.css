@@ -4057,3 +4057,75 @@ body.menu-open {
   transform: translateX(4px);
 }
 
+
+
+/* ==========================================================================
+   DRAWER 4-GRID LUXURY LANGUAGE SELECTOR & NOTRANSLATE SHIELD
+   ========================================================================== */
+.notranslate {
+  display: inline-block;
+  font-family: inherit;
+}
+
+.drawer-lang-selector {
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(194, 163, 121, 0.2);
+}
+
+.drawer-lang-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  width: 100%;
+}
+
+.drawer-lang-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #FFFFFF;
+  border: 1px solid rgba(197, 168, 128, 0.28);
+  border-radius: 14px;
+  padding: 8px 4px;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  -webkit-tap-highlight-color: transparent;
+  min-height: 52px;
+}
+
+.drawer-lang-btn .lang-flag {
+  font-size: 1.25rem;
+  line-height: 1;
+  margin-bottom: 3px;
+}
+
+.drawer-lang-btn .lang-code {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #1A1918;
+}
+
+.drawer-lang-btn:hover {
+  background: #FAF8F5;
+  border-color: #C5A880;
+  transform: translateY(-1px);
+}
+
+.drawer-lang-btn.active,
+.drawer-lang-btn[aria-pressed="true"] {
+  background: #1A1918 !important;
+  border-color: #1A1918 !important;
+  box-shadow: 0 4px 12px rgba(26, 25, 24, 0.25);
+  transform: scale(1.02);
+}
+
+.drawer-lang-btn.active .lang-code,
+.drawer-lang-btn[aria-pressed="true"] .lang-code {
+  color: #FFFFFF !important;
+}

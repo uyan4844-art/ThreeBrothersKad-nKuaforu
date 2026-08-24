@@ -106,7 +106,22 @@ const I18N_TRANSLATIONS = {
     "nav_reviews": "Yorumlar",
     "nav_gallery": "Galeri",
     "nav_contact": "İletişim",
-    "drawer_services_tag": "ÖNE ÇIKAN HİZMETLER",
+    "drawer_services_tag": "خدماتنا",
+    "lang_select_title": "اختر اللغة",
+    "srv6_title": "قص شعر عصري مخصص",
+    "srv_haircut_title": "قص شعر عصري مخصص",
+    "lang_select_title": "ВЫБОР ЯЗЫКА",
+    "srv6_title": "Индивидуальная Стрижка",
+    "srv_haircut_title": "Индивидуальная Стрижка",
+    "lang_select_title": "SPRACHE WÄHLEN",
+    "srv6_title": "Individueller Haarschnitt",
+    "srv_haircut_title": "Individueller Haarschnitt",
+    "lang_select_title": "SELECT LANGUAGE",
+    "srv6_title": "Bespoke Haircut & Styling",
+    "srv_haircut_title": "Bespoke Haircut & Styling",
+    "lang_select_title": "DİL SEÇİMİ · LANGUAGE",
+    "srv6_title": "Kişiye Özel Saç Kesimi",
+    "srv_haircut_title": "Kişiye Özel Saç Kesimi",
     "drawer_lang_tag": "DİL SEÇİMİ / LANGUAGE",
     "hero_title": "Kusursuz Renk,<br />Doğal Zarafet.",
     "hero_desc": "Saç sağlığını koruyan profesyonel renklendirme ve mikro kaynak stüdyosu.",
@@ -1236,9 +1251,9 @@ class I18nEngine {
   }
 
   updateActiveButtonUI() {
-    const buttons = document.querySelectorAll('.lang-btn');
+    const buttons = document.querySelectorAll('.lang-btn, .drawer-lang-btn, [data-lang], [data-lang-btn]');
     buttons.forEach(btn => {
-      const btnLang = btn.getAttribute('data-lang');
+      const btnLang = btn.getAttribute('data-lang') || btn.getAttribute('data-lang-btn');
       if (btnLang === this.currentLang) {
         btn.classList.add('active');
         btn.setAttribute('aria-pressed', 'true');

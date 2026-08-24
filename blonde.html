@@ -846,7 +846,7 @@
 
     <!-- Orta: Ortalanmış Logo & Alt Başlık -->
     <a href="index.html" class="mobile-brand-center" aria-label="Three Brothers Ana Sayfa">
-      <span class="mobile-brand-name">Three Brothers</span>
+      <span class="mobile-brand-name notranslate" translate="no">Three Brothers</span>
       <span class="mobile-brand-tag">KADIN KUAFÖRÜ</span>
     </a>
 
@@ -944,6 +944,29 @@
       </button>
     </div>
 
+    <!-- 4'lü Lüks Mobil Dil Seçici Barı -->
+    <div class="drawer-lang-selector">
+      <span class="drawer-section-tag" data-i18n="lang_select_title">DİL SEÇİMİ · LANGUAGE</span>
+      <div class="drawer-lang-grid">
+        <button type="button" class="drawer-lang-btn lang-btn active" data-lang="tr" onclick="selectLanguage('tr')" aria-label="Türkçe (TR)">
+          <span class="lang-flag">🇹🇷</span>
+          <span class="lang-code">TR</span>
+        </button>
+        <button type="button" class="drawer-lang-btn lang-btn" data-lang="en" onclick="selectLanguage('en')" aria-label="English (EN)">
+          <span class="lang-flag">🇬🇧</span>
+          <span class="lang-code">EN</span>
+        </button>
+        <button type="button" class="drawer-lang-btn lang-btn" data-lang="ru" onclick="selectLanguage('ru')" aria-label="Русский (RU)">
+          <span class="lang-flag">🇷🇺</span>
+          <span class="lang-code">RU</span>
+        </button>
+        <button type="button" class="drawer-lang-btn lang-btn" data-lang="de" onclick="selectLanguage('de')" aria-label="Deutsch (DE)">
+          <span class="lang-flag">🇩🇪</span>
+          <span class="lang-code">DE</span>
+        </button>
+      </div>
+    </div>
+
     <nav class="drawer-nav">
       <!-- Ana Sayfa Linkleri -->
       <ul class="drawer-main-links">
@@ -994,7 +1017,7 @@
           <li>
             <a href="renklendirme.html#kesim" style="min-height: 44px;">
               <span class="bullet">•</span>
-              <span class="service-name">Kişiye Özel Saç Kesimi</span>
+              <span class="service-name" data-i18n="srv6_title">Kişiye Özel Saç Kesimi</span>
               <span class="service-arrow">&rarr;</span>
             </a>
           </li>

@@ -32,12 +32,12 @@ export default function HakkimizdaPage() {
           HİKAYEMİZ & VİZYONUMUZ
         </span>
         <h1 className="font-serif text-3xl sm:text-5xl font-bold text-[#1A1918] mt-2 mb-6">
-          Manavgat Kadın Kuaförü Three Brothers
+          Manavgat Kadın Kuaförü <span className="notranslate" translate="no">Three Brothers</span>
         </h1>
 
         <div className="space-y-6 text-stone-700 leading-relaxed text-sm sm:text-base">
           <p>
-            2014 yılında Manavgat’ta kurulan <strong>Three Brothers Kadın Kuaförü</strong>, sarı saç renklendirme, profesyonel balyaj ve mikro kaynak alanlarında uzmanlaşmış butik bir kuaför salonudur.
+            2014 yılında Manavgat’ta kurulan <strong><span className="notranslate" translate="no">Three Brothers</span> Kadın Kuaförü</strong>, sarı saç renklendirme, profesyonel balyaj ve mikro kaynak alanlarında uzmanlaşmış butik bir kuaför salonudur.
           </p>
           <p>
             Bizim için her misafirimiz eşsizdir. Saçınızın geçmiş kimyasal geçmişini, elastikiyetini ve saç sağlığını analiz ederek ten alt tonunuza en uygun tonu tasarlıyoruz.
