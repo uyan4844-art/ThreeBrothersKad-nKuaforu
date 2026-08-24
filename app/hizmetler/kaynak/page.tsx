@@ -32,7 +32,7 @@ export default function KaynakPage() {
         </div>
 
         {/* Hero Banner */}
-        <div className="relative rounded-3xl overflow-hidden shadow-xl aspect-[16/9] mb-10">
+        <div className="relative rounded-none overflow-hidden shadow-xl aspect-[16/9] mb-10">
           <img
             src="/images/services/bento-6.webp"
             alt="Manavgat Mikro Kapsül Kaynak - Three Brothers Kadın Kuaförü"
@@ -53,19 +53,19 @@ export default function KaynakPage() {
 
         {/* Details Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-          <div className="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm">
+          <div className="bg-white p-6 rounded-none border border-stone-200 shadow-sm">
             <span className="text-xs font-bold text-[#A48358] uppercase tracking-wider block mb-1">
               Tahmini Süre
             </span>
             <h3 className="font-serif text-xl font-bold text-[#1A1918]">2.5 – 4 Saat</h3>
           </div>
-          <div className="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm">
+          <div className="bg-white p-6 rounded-none border border-stone-200 shadow-sm">
             <span className="text-xs font-bold text-[#A48358] uppercase tracking-wider block mb-1">
               Saç Kalitesi
             </span>
             <h3 className="font-serif text-xl font-bold text-[#1A1918]">%100 Virgin Hair</h3>
           </div>
-          <div className="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm">
+          <div className="bg-white p-6 rounded-none border border-stone-200 shadow-sm">
             <span className="text-xs font-bold text-[#A48358] uppercase tracking-wider block mb-1">
               Kapsül Teknolojisi
             </span>

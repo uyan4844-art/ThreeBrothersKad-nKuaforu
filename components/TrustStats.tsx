@@ -22,7 +22,7 @@ export const TrustStats: React.FC = () => {
         <div className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
           
           {/* 1. Kart: 2014 Yılı */}
-          <div className="bg-[#FAF8F5] p-7 rounded-2xl border border-stone-200/60 flex flex-col justify-center shadow-sm">
+          <div className="bg-[#FAF8F5] p-7 rounded-none border border-stone-200/60 flex flex-col justify-center shadow-sm">
             <span className="text-4xl sm:text-5xl font-bold text-[#1A1918] tracking-tight">
               2014
             </span>
@@ -32,7 +32,7 @@ export const TrustStats: React.FC = () => {
           </div>
 
           {/* 2. Kart: 5.0 Yıldız / Yorumlar */}
-          <div className="bg-[#FAF8F5] p-7 rounded-2xl border border-stone-200/60 flex flex-col justify-center shadow-sm">
+          <div className="bg-[#FAF8F5] p-7 rounded-none border border-stone-200/60 flex flex-col justify-center shadow-sm">
             <span className="text-4xl sm:text-5xl font-bold text-[#1A1918] tracking-tight flex items-center gap-1">
               5.0 <span className="text-[#C5A880] text-3xl">★</span>
             </span>
@@ -42,7 +42,7 @@ export const TrustStats: React.FC = () => {
           </div>
 
           {/* 3. Kart: Dürüst Teşhis */}
-          <div className="bg-[#FAF8F5] p-7 rounded-2xl border border-stone-200/60 flex flex-col justify-center shadow-sm">
+          <div className="bg-[#FAF8F5] p-7 rounded-none border border-stone-200/60 flex flex-col justify-center shadow-sm">
             <span className="text-2xl sm:text-3xl font-bold text-[#1A1918] tracking-tight">
               Saç Analizi
             </span>
@@ -52,7 +52,7 @@ export const TrustStats: React.FC = () => {
           </div>
 
           {/* 4. Kart: Kişiye Özel Tasarım */}
-          <div className="bg-[#FAF8F5] p-7 rounded-2xl border border-stone-200/60 flex flex-col justify-center shadow-sm">
+          <div className="bg-[#FAF8F5] p-7 rounded-none border border-stone-200/60 flex flex-col justify-center shadow-sm">
             <span className="text-2xl sm:text-3xl font-bold text-[#1A1918] tracking-tight">
               Özel Tasarım
             </span>

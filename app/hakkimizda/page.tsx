@@ -50,7 +50,7 @@ export default function HakkimizdaPage() {
           <TrustStats />
         </div>
 
-        <div className="mt-12 p-6 bg-white rounded-2xl border border-stone-200 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="mt-12 p-6 bg-white rounded-none border border-stone-200 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
           <div>
             <h3 className="font-serif text-xl font-bold text-[#1A1918]">Salonumuzu Ziyaret Edin</h3>
             <p className="text-xs text-stone-500">Bahçelievler Mahallesi, Demokrasi Bulvarı No:8 D:0, 07600 Manavgat / Antalya</p>

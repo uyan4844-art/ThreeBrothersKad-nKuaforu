@@ -41,7 +41,7 @@ export const TrustSection: React.FC = () => {
           {TRUST_POINTS.map((item) => (
             <div
               key={item.number}
-              className="bg-[#FAF8F5] border border-[#C5A880]/25 rounded-3xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-all duration-300 relative group overflow-hidden"
+              className="bg-[#FAF8F5] border border-[#C5A880]/25 rounded-none p-6 sm:p-8 shadow-sm hover:shadow-md transition-all duration-300 relative group overflow-hidden"
             >
               <div className="text-4xl sm:text-5xl font-serif font-extrabold text-[#C5A880]/30 group-hover:text-[#A48358]/50 transition-colors mb-4">
                 {item.number}

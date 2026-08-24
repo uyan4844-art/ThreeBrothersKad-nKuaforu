@@ -138,7 +138,7 @@ export const Services: React.FC = () => {
               <Link
                 key={service.id}
                 href={service.href}
-                className={`group relative rounded-3xl overflow-hidden shadow-sm hover:shadow-xl border border-stone-200/70 transition-all duration-500 block ${
+                className={`group relative rounded-none overflow-hidden shadow-sm hover:shadow-xl border border-stone-200/70 transition-all duration-500 block ${
                   isTall ? 'md:row-span-2' : ''
                 }`}
               >

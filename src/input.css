@@ -594,7 +594,7 @@ section[id] {
   padding: 10px 14px;
   background: #FFFFFF;
   border: 1px solid rgba(197, 168, 128, 0.25);
-  border-radius: 12px;
+  border-radius: 0;
   text-decoration: none;
   font-family: 'Montserrat', sans-serif;
   font-size: 13px;
@@ -667,7 +667,7 @@ section[id] {
   justify-content: center;
   gap: 6px;
   padding: 10px 12px;
-  border-radius: 12px;
+  border-radius: 0;
   font-family: 'Montserrat', sans-serif;
   font-size: 12px;
   font-weight: 700;
@@ -707,7 +707,7 @@ section[id] {
   font-size: 13px;
   font-weight: 700;
   padding: 13px 18px;
-  border-radius: 14px;
+  border-radius: 0;
   text-decoration: none;
   box-shadow: 0 4px 14px rgba(18, 140, 126, 0.35);
   transition: all 0.25s ease;
@@ -1047,7 +1047,7 @@ body.menu-open {
 
 .bento-item {
   position: relative;
-  border-radius: 16px;
+  border-radius: 0;
   overflow: hidden;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04);
   background-color: #EFE8DF;
@@ -1167,7 +1167,7 @@ body.menu-open {
   aspect-ratio: 1 / 1;
   max-width: 480px;
   margin: 0 auto;
-  border-radius: 20px;
+  border-radius: 0;
   overflow: hidden;
   position: relative;
   background-color: #1A1918;
@@ -1200,7 +1200,7 @@ body.menu-open {
 .tech-feature-card {
   background: #FFFFFF;
   border: 1px solid rgba(197, 168, 128, 0.35);
-  border-radius: 16px;
+  border-radius: 0;
   padding: 24px 26px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
   transition: all 0.35s var(--ease-expo);
@@ -1404,7 +1404,7 @@ body.menu-open {
 .trust-stat-box {
   background-color: #FAF8F5;
   padding: 28px;
-  border-radius: 16px;
+  border-radius: 0;
   border: 1px solid rgba(231, 229, 228, 0.8);
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
   display: flex;
@@ -1501,7 +1501,7 @@ body.menu-open {
 .trust-metric-card {
   background: #FFFFFF;
   border: 1px solid rgba(197, 168, 128, 0.35);
-  border-radius: 16px;
+  border-radius: 0;
   padding: 26px 22px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
   transition: all 0.35s var(--ease-expo);
@@ -1551,7 +1551,7 @@ body.menu-open {
 .shine-trust-card {
   background: #FAF8F5;
   border: 1px solid rgba(197, 168, 128, 0.28);
-  border-radius: 24px;
+  border-radius: 0;
   padding: 32px 26px;
   position: relative;
   transition: all 0.35s var(--ease-expo);
@@ -1607,7 +1607,7 @@ body.menu-open {
 
 .process-step-card {
   background: #FFFFFF;
-  border-radius: 18px;
+  border-radius: 0;
   padding: 32px 24px;
   border: 1px solid rgba(197, 168, 128, 0.25);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
@@ -1663,7 +1663,7 @@ body.menu-open {
 .repair-callout-box {
   margin-top: 60px;
   background: linear-gradient(135deg, #FAF8F5 0%, #F1ECE4 100%);
-  border-radius: 20px;
+  border-radius: 0;
   border: 1px solid rgba(197, 168, 128, 0.35);
   padding: 40px 48px;
   display: grid;
@@ -1712,7 +1712,7 @@ body.menu-open {
 
 .insta-profile-card {
   background: #FFFFFF;
-  border-radius: 20px;
+  border-radius: 0;
   padding: 24px 32px;
   border: 1px solid rgba(197, 168, 128, 0.25);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
@@ -1815,7 +1815,7 @@ body.menu-open {
 
 .insta-reel-card {
   background: #FFFFFF;
-  border-radius: 20px;
+  border-radius: 0;
   border: 1px solid rgba(197, 168, 128, 0.25);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.04);
   overflow: hidden;
@@ -2060,7 +2060,7 @@ body.menu-open {
 .single-review-card {
   display: none;
   background: #FFFFFF;
-  border-radius: 20px;
+  border-radius: 0;
   padding: 36px 38px;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.04);
   border: 1px solid rgba(197, 168, 128, 0.25);
@@ -2207,7 +2207,7 @@ body.menu-open {
 
 .gallery-tile {
   aspect-ratio: 1 / 1;
-  border-radius: 18px;
+  border-radius: 0;
   overflow: hidden;
   position: relative;
   border: 1px solid rgba(197, 168, 128, 0.25);
@@ -2253,7 +2253,7 @@ body.menu-open {
 
 .faq-item {
   background: #FFFFFF;
-  border-radius: 14px;
+  border-radius: 0;
   border: 1px solid rgba(197, 168, 128, 0.25);
   overflow: hidden;
   transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s var(--ease-expo);
@@ -2341,7 +2341,7 @@ body.menu-open {
 
 .contact-card-box {
   background: #FFFFFF;
-  border-radius: 24px;
+  border-radius: 0;
   border: 1px solid rgba(197, 168, 128, 0.25);
   box-shadow: 0 20px 50px rgba(116, 109, 101, 0.08);
   padding: 56px 48px;
@@ -2404,7 +2404,7 @@ body.menu-open {
 }
 
 .google-maps-box {
-  border-radius: 18px;
+  border-radius: 0;
   overflow: hidden;
   border: 1px solid rgba(197, 168, 128, 0.35);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
@@ -2937,7 +2937,7 @@ body.menu-open {
     width: 100% !important;
     height: auto !important;
     aspect-ratio: 4 / 3 !important;
-    border-radius: 20px !important;
+    border-radius: 0 !important;
     overflow: hidden !important;
   }
 
@@ -2946,7 +2946,7 @@ body.menu-open {
     height: 100% !important;
     aspect-ratio: 4 / 3 !important;
     object-fit: cover !important;
-    border-radius: 20px !important;
+    border-radius: 0 !important;
   }
 
   .bento-overlay {
@@ -2969,7 +2969,7 @@ body.menu-open {
 
   .shine-trust-card {
     padding: 24px 20px !important;
-    border-radius: 20px !important;
+    border-radius: 0 !important;
   }
 
   .shine-trust-num {
@@ -3019,7 +3019,7 @@ body.menu-open {
   .tech-video-wrapper {
     max-width: 100% !important;
     aspect-ratio: 1 / 1 !important;
-    border-radius: 16px !important;
+    border-radius: 0 !important;
     margin-top: 10px !important;
   }
 
@@ -3129,7 +3129,7 @@ body.menu-open {
   }
 
   .gallery-tile {
-    border-radius: 14px !important;
+    border-radius: 0 !important;
   }
 
   /* 11. FAQ Mobile */
@@ -3327,7 +3327,7 @@ body.menu-open {
 
 .service-image-card,
 .about-image-card {
-  border-radius: 20px;
+  border-radius: 0;
   overflow: hidden;
   box-shadow: 0 20px 50px rgba(116, 109, 101, 0.12);
   border: 1px solid rgba(197, 168, 128, 0.35);
@@ -3409,7 +3409,7 @@ body.menu-open {
 /* Service Process Steps (01 -> 02 -> 03) */
 .service-process-section {
   background: #FFFFFF;
-  border-radius: 18px;
+  border-radius: 0;
   padding: 28px 24px;
   border: 1px solid rgba(197, 168, 128, 0.3);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
@@ -3432,7 +3432,7 @@ body.menu-open {
   align-items: flex-start;
   gap: 16px;
   padding: 14px 16px;
-  border-radius: 12px;
+  border-radius: 0;
   background: #FAF8F5;
   border: 1px solid rgba(197, 168, 128, 0.2);
   transition: transform 0.3s var(--ease-expo), background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
@@ -3494,7 +3494,7 @@ body.menu-open {
 .about-stat-card {
   background: #FFFFFF;
   border: 1px solid rgba(197, 168, 128, 0.35);
-  border-radius: 16px;
+  border-radius: 0;
   padding: 22px 20px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.03);
   transition: all 0.35s var(--ease-expo);
@@ -3580,7 +3580,7 @@ body.menu-open {
 .about-quote-box {
   background: rgba(197, 168, 128, 0.1);
   border-left: 4px solid var(--gold-primary);
-  border-radius: 0 14px 14px 0;
+  border-radius: 0;
   padding: 16px 20px;
   margin: 20px 0;
   font-family: var(--font-serif);
@@ -3599,7 +3599,7 @@ body.menu-open {
 .about-signature-card {
   background: #FAF8F5;
   border: 1px solid rgba(197, 168, 128, 0.35);
-  border-radius: 14px;
+  border-radius: 0;
   padding: 16px 20px;
   margin: 20px 0 10px;
   display: flex;
@@ -3729,7 +3729,7 @@ body.menu-open {
 
 .sheet-modal {
   background: #FFFFFF;
-  border-radius: 24px;
+  border-radius: 0;
   border: 1px solid rgba(197, 168, 128, 0.3);
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
   width: 100%;
@@ -3815,7 +3815,7 @@ body.menu-open {
   margin-bottom: 20px;
   padding: 10px 14px;
   background: #FAF8F5;
-  border-radius: 12px;
+  border-radius: 0;
   border: 1px solid rgba(197, 168, 128, 0.2);
 }
 
@@ -3854,7 +3854,7 @@ body.menu-open {
   background: #FFFFFF;
   border: 1px solid rgba(197, 168, 128, 0.3);
   padding: 5px 12px;
-  border-radius: 8px;
+  border-radius: 0;
   font-size: 12px;
   font-weight: 600;
   color: var(--text-espresso);
@@ -3904,7 +3904,7 @@ body.menu-open {
   font-size: 14px;
   font-weight: 700;
   padding: 14px 20px;
-  border-radius: 14px;
+  border-radius: 0;
   text-decoration: none;
   box-shadow: 0 8px 24px rgba(18, 140, 126, 0.35);
   transition: all 0.3s ease;
@@ -3984,7 +3984,7 @@ body.menu-open {
   font-weight: 600;
   letter-spacing: 0.02em;
   padding: 4px 8px;
-  border-radius: 12px;
+  border-radius: 0;
   transition: all 0.2s ease;
   position: relative;
 }
@@ -4008,7 +4008,7 @@ body.menu-open {
 .app-nav-wa-special {
   background: linear-gradient(135deg, #128C7E, #0E7065);
   color: #FFFFFF !important;
-  border-radius: 12px;
+  border-radius: 0;
   padding: 5px 12px;
   box-shadow: 0 4px 14px rgba(18, 140, 126, 0.35);
 }
