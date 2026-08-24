@@ -354,17 +354,17 @@ export const Header: React.FC<HeaderProps> = ({
                 </button>
               </div>
 
-              {/* 4'lü Lüks Mobil Dil Seçici Barı */}
+              {/* 4'lü Minimalist Sade Mobil Dil Seçici Barı */}
               <div className="mb-5 pb-4 border-b border-[#C5A880]/20">
-                <span className="text-[10px] font-bold text-[#A48358] tracking-widest uppercase mb-2.5 block px-1">
+                <span className="text-[10px] font-bold text-[#A48358] tracking-widest uppercase mb-2 block px-1">
                   {t.selectLanguage}
                 </span>
                 <div className="grid grid-cols-4 gap-2">
                   {[
-                    { code: 'tr' as LanguageCode, label: 'TR', flag: '🇹🇷', title: 'Türkçe' },
-                    { code: 'en' as LanguageCode, label: 'EN', flag: '🇬🇧', title: 'English' },
-                    { code: 'ru' as LanguageCode, label: 'RU', flag: '🇷🇺', title: 'Русский' },
-                    { code: 'de' as LanguageCode, label: 'DE', flag: '🇩🇪', title: 'Deutsch' },
+                    { code: 'tr' as LanguageCode, label: 'TR', title: 'Türkçe' },
+                    { code: 'en' as LanguageCode, label: 'EN', title: 'English' },
+                    { code: 'ru' as LanguageCode, label: 'RU', title: 'Русский' },
+                    { code: 'de' as LanguageCode, label: 'DE', title: 'Deutsch' },
                   ].map((lang) => {
                     const isSelected = lang.code === currentLang;
                     return (
@@ -372,15 +372,14 @@ export const Header: React.FC<HeaderProps> = ({
                         key={lang.code}
                         type="button"
                         onClick={() => handleLangSelect(lang.code)}
-                        className={`flex flex-col items-center justify-center py-2 px-1 rounded-xl border text-xs font-montserrat font-bold transition-all cursor-pointer ${
+                        className={`flex items-center justify-center py-2.5 px-1 rounded-xl border text-xs font-montserrat font-bold tracking-wider transition-all cursor-pointer ${
                           isSelected
-                            ? 'bg-[#1A1918] text-white border-[#1A1918] shadow-sm ring-1 ring-[#C5A880]/40 scale-102'
-                            : 'bg-white text-[#1A1918] border-[#C5A880]/25 hover:border-[#C5A880] hover:bg-[#FAF8F5]'
+                            ? 'bg-[#1A1918] text-white border-[#1A1918] shadow-sm'
+                            : 'bg-transparent text-[#1A1918] border-stone-300 hover:border-[#1A1918] hover:bg-stone-100/60'
                         }`}
                         aria-label={lang.title}
                       >
-                        <span className="text-base leading-none mb-1">{lang.flag}</span>
-                        <span className="text-[11px] font-bold tracking-wider">{lang.label}</span>
+                        {lang.label}
                       </button>
                     );
                   })}

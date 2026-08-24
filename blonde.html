@@ -886,24 +886,24 @@
       <!-- Çok Dilli Dil Seçici -->
       <div class="lang-dropdown-container" id="headerLangDropdown">
         <button class="lang-dropdown-btn" onclick="toggleLangDropdown(event)" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Dil Seçimi">
-          <span class="selected-lang-label">🇹🇷 TR</span>
+          <span class="selected-lang-label">TR</span>
           <span class="lang-dropdown-chevron">▼</span>
         </button>
         <div class="lang-dropdown-menu" role="menu">
           <button class="lang-dropdown-item active" data-lang="tr" onclick="selectLanguage('tr')" role="menuitem">
-            <span>🇹🇷</span> <span>Türkçe (TR)</span>
+            <span>Türkçe (TR)</span>
           </button>
           <button class="lang-dropdown-item" data-lang="en" onclick="selectLanguage('en')" role="menuitem">
-            <span>🇬🇧</span> <span>English (EN)</span>
+            <span>English (EN)</span>
           </button>
           <button class="lang-dropdown-item" data-lang="ru" onclick="selectLanguage('ru')" role="menuitem">
-            <span>🇷🇺</span> <span>Русский (RU)</span>
+            <span>Русский (RU)</span>
           </button>
           <button class="lang-dropdown-item" data-lang="de" onclick="selectLanguage('de')" role="menuitem">
-            <span>🇩🇪</span> <span>Deutsch (DE)</span>
+            <span>Deutsch (DE)</span>
           </button>
           <button class="lang-dropdown-item" data-lang="ar" onclick="selectLanguage('ar')" role="menuitem">
-            <span>🇦🇪</span> <span>العربية (AR)</span>
+            <span>العربية (AR)</span>
           </button>
         </div>
       </div>
@@ -944,26 +944,14 @@
       </button>
     </div>
 
-    <!-- 4'lü Lüks Mobil Dil Seçici Barı -->
+            <!-- 4'lü Minimalist Sade Mobil Dil Seçici Barı -->
     <div class="drawer-lang-selector">
       <span class="drawer-section-tag" data-i18n="lang_select_title">DİL SEÇİMİ · LANGUAGE</span>
       <div class="drawer-lang-grid">
-        <button type="button" class="drawer-lang-btn lang-btn active" data-lang="tr" onclick="selectLanguage('tr')" aria-label="Türkçe (TR)">
-          <span class="lang-flag">🇹🇷</span>
-          <span class="lang-code">TR</span>
-        </button>
-        <button type="button" class="drawer-lang-btn lang-btn" data-lang="en" onclick="selectLanguage('en')" aria-label="English (EN)">
-          <span class="lang-flag">🇬🇧</span>
-          <span class="lang-code">EN</span>
-        </button>
-        <button type="button" class="drawer-lang-btn lang-btn" data-lang="ru" onclick="selectLanguage('ru')" aria-label="Русский (RU)">
-          <span class="lang-flag">🇷🇺</span>
-          <span class="lang-code">RU</span>
-        </button>
-        <button type="button" class="drawer-lang-btn lang-btn" data-lang="de" onclick="selectLanguage('de')" aria-label="Deutsch (DE)">
-          <span class="lang-flag">🇩🇪</span>
-          <span class="lang-code">DE</span>
-        </button>
+        <button type="button" class="drawer-lang-btn lang-btn active" data-lang="tr" onclick="selectLanguage('tr')" aria-label="Türkçe">TR</button>
+        <button type="button" class="drawer-lang-btn lang-btn" data-lang="en" onclick="selectLanguage('en')" aria-label="English">EN</button>
+        <button type="button" class="drawer-lang-btn lang-btn" data-lang="ru" onclick="selectLanguage('ru')" aria-label="Русский">RU</button>
+        <button type="button" class="drawer-lang-btn lang-btn" data-lang="de" onclick="selectLanguage('de')" aria-label="Deutsch">DE</button>
       </div>
     </div>
 

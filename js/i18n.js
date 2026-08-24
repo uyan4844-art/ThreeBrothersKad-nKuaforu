@@ -1264,6 +1264,23 @@ class I18nEngine {
     });
   }
 
+  updateDropdownUI() {
+    const selectedLabels = document.querySelectorAll('.selected-lang-label');
+    selectedLabels.forEach(el => {
+      el.textContent = this.currentLang.toUpperCase();
+    });
+    const items = document.querySelectorAll('.lang-dropdown-item');
+    items.forEach(item => {
+      if (item.getAttribute('data-lang') === this.currentLang) {
+        item.classList.add('active');
+        item.setAttribute('aria-selected', 'true');
+      } else {
+        item.classList.remove('active');
+        item.setAttribute('aria-selected', 'false');
+      }
+    });
+  }
+
   applyTranslations() {
     // 1. data-i18n (Text Content)
     const elements = document.querySelectorAll('[data-i18n]');
