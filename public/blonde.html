@@ -864,47 +864,27 @@
     <a href="index.html#hero" class="brand-link" aria-label="Three Brothers Ana Sayfa">
       <img src="./images/logo.webp" alt="Three Brothers Logo" class="brand-logo-img" width="44" height="44" />
       <div style="display: flex; flex-direction: column;">
-        <span class="brand-title notranslate" translate="no" data-i18n="brand_name">Three Brothers</span>
-        <span class="brand-subtitle" data-i18n="brand_tagline">BAYAN KUAFÖRÜ &bull; MANAVGAT</span>
+        <span class="brand-title notranslate" translate="no">Three Brothers</span>
+        <span class="brand-subtitle">BAYAN KUAFÖRÜ &bull; MANAVGAT</span>
       </div>
     </a>
 
     <!-- Orta: Masaüstü Gezinme Menüsü (Smooth Scroll / Linkler) -->
     <nav class="nav-menu-desktop" aria-label="Ana Gezinme">
-      <a href="index.html#hizmetler" class="nav-link" data-i18n="nav_services">Hizmetlerimiz</a>
-      <a href="hakkimizda.html" class="nav-link" data-i18n="about">Hakkımızda</a>
-      <a href="index.html#surec" class="nav-link" data-i18n="nav_process">Süreç</a>
-      <a href="index.html#galeri" class="nav-link" data-i18n="nav_gallery">Galeri</a>
-      <a href="index.html#yorumlar" class="nav-link" data-i18n="nav_reviews">Yorumlar</a>
-      <a href="index.html#sss" class="nav-link" data-i18n="nav_faq">SSS</a>
-      <a href="index.html#iletisim" class="nav-link" data-i18n="contact">İletişim</a>
+      <a href="index.html#hizmetler" class="nav-link">Hizmetlerimiz</a>
+      <a href="hakkimizda.html" class="nav-link">Hakkımızda</a>
+      <a href="index.html#surec" class="nav-link">Süreç</a>
+      <a href="index.html#galeri" class="nav-link">Galeri</a>
+      <a href="index.html#yorumlar" class="nav-link">Yorumlar</a>
+      <a href="index.html#sss" class="nav-link">SSS</a>
+      <a href="index.html#iletisim" class="nav-link">İletişim</a>
     </nav>
 
     <!-- Sağ: Çok Dilli Seçici + Instagram + Randevu Al + Mobil Menü -->
     <div class="header-right-actions">
       
       <!-- Çok Dilli Dil Seçici -->
-      <div class="lang-dropdown-container" id="headerLangDropdown">
-        <button class="lang-dropdown-btn" onclick="toggleLangDropdown(event)" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Dil Seçimi">
-          <span class="selected-lang-label">TR</span>
-          <span class="lang-dropdown-chevron">▼</span>
-        </button>
-        <div class="lang-dropdown-menu" role="menu">
-          <button class="lang-dropdown-item active" data-lang="tr" onclick="selectLanguage('tr')" role="menuitem">
-            <span>Türkçe (TR)</span>
-          </button>
-          <button class="lang-dropdown-item" data-lang="en" onclick="selectLanguage('en')" role="menuitem">
-            <span>English (EN)</span>
-          </button>
-          <button class="lang-dropdown-item" data-lang="ru" onclick="selectLanguage('ru')" role="menuitem">
-            <span>Русский (RU)</span>
-          </button>
-          <button class="lang-dropdown-item" data-lang="de" onclick="selectLanguage('de')" role="menuitem">
-            <span>Deutsch (DE)</span>
-          </button>
-          
-        </div>
-      </div>
+      
 
       <!-- Instagram İkon Butonu (Masaüstü) -->
       <a href="https://www.instagram.com/threebrotherrrs/" target="_blank" rel="noopener noreferrer" class="header-insta-btn" aria-label="Instagram">
@@ -916,7 +896,7 @@
       </a>
 
       <!-- WhatsApp Randevu Butonu (Masaüstü) -->
-      <a href="https://wa.me/905526856907?text=Merhaba,%20Blonde%20ve%20Sar%C4%B1%20Sa%C3%A7%20hizmetiniz%20hakk%C4%B1nda%20bilgi%20ve%20randevu%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" class="btn-header-wa" data-i18n="nav_book">
+      <a href="https://wa.me/905526856907?text=Merhaba,%20Blonde%20ve%20Sar%C4%B1%20Sa%C3%A7%20hizmetiniz%20hakk%C4%B1nda%20bilgi%20ve%20randevu%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" class="btn-header-wa">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
           <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
         </svg>
@@ -931,11 +911,11 @@
   <div id="menu-backdrop" class="menu-backdrop" onclick="toggleMenu()"></div>
 
   <!-- Sağdan Açılan Lüks "Shine Hair" Tarzı Menü Çekmecesi (Mobile Drawer) -->
-    <aside id="side-drawer" class="side-drawer" aria-label="Gezinme Menüsü">
+      <aside id="side-drawer" class="side-drawer" aria-label="Gezinme Menüsü">
     <div class="drawer-header">
       <div class="drawer-brand">
-        <h3 data-i18n="brand_name" class="notranslate" translate="no">Three Brothers</h3>
-        <span data-i18n="brand_tagline">KADIN KUAFÖRÜ · MANAVGAT</span>
+        <h3 class="notranslate" translate="no">Three Brothers</h3>
+        <span>KADIN KUAFÖRÜ · MANAVGAT</span>
       </div>
       <button class="drawer-close-btn" onclick="toggleMenu()" aria-label="Menüyü Kapat" type="button" style="min-width: 44px; min-height: 44px;">
         ✕
@@ -943,70 +923,56 @@
     </div>
 
     <nav class="drawer-nav">
-      <!-- Ana Sayfa Linkleri & Dil Seçimi (Ana Sayfa Stiliyle Birebir Aynı) -->
+      <!-- Ana Sayfa Linkleri -->
       <ul class="drawer-main-links">
-        <li><a href="index.html#hero" onclick="toggleMenu()"><span data-i18n="home">Ana Sayfa</span> <span class="arrow">&rarr;</span></a></li>
-        <li><a href="hakkimizda.html"><span data-i18n="about">Hakkımızda</span> <span class="arrow">&rarr;</span></a></li>
-        <li><a href="index.html#iletisim" onclick="toggleMenu()"><span data-i18n="contact">İletişim</span> <span class="arrow">&rarr;</span></a></li>
-        
-        <!-- Dil Seçimi Satırı (Ana Sayfa Stiliyle Birebir Aynı) -->
-        <li class="drawer-lang-row">
-          <button type="button" class="drawer-lang-accordion-btn" onclick="toggleDrawerLangAccordion(event)">
-            <span class="drawer-lang-title">Dil Seçimi <span class="drawer-lang-badge" id="drawerLangBadge">(TR)</span></span>
-            <span class="drawer-lang-chevron-icon" id="drawerLangChevronIcon">▾</span>
-          </button>
-          <div class="drawer-lang-options-grid" id="drawerLangOptionsGrid">
-            <button type="button" class="drawer-lang-option-btn active" data-lang="tr" onclick="selectLanguage('tr')">Türkçe (TR)</button>
-            <button type="button" class="drawer-lang-option-btn" data-lang="en" onclick="selectLanguage('en')">English (EN)</button>
-            <button type="button" class="drawer-lang-option-btn" data-lang="ru" onclick="selectLanguage('ru')">Русский (RU)</button>
-            <button type="button" class="drawer-lang-option-btn" data-lang="de" onclick="selectLanguage('de')">Deutsch (DE)</button>
-          </div>
-        </li>
+        <li><a href="index.html#hero" onclick="toggleMenu()"><span>Ana Sayfa</span> <span class="arrow">&rarr;</span></a></li>
+        <li><a href="hakkimizda.html"><span>Hakkımızda</span> <span class="arrow">&rarr;</span></a></li>
+        <li><a href="index.html#iletisim" onclick="toggleMenu()"><span>İletişim</span> <span class="arrow">&rarr;</span></a></li>
       </ul>
 
       <!-- Hizmetler Bölümü -->
       <div class="drawer-services-section">
-        <span class="drawer-section-tag" data-i18n="services_title">HİZMETLERİMİZ</span>
+        <span class="drawer-section-tag">HİZMETLERİMİZ</span>
         <ul class="drawer-service-links-list">
           <li>
             <a href="balyaj.html" style="min-height: 44px;">
               <span class="bullet">•</span>
-              <span class="service-name" data-i18n="balyaj">Profesyonel Balyaj & Sarı Saç</span>
+              <span class="service-name">Profesyonel Balyaj</span>
               <span class="service-arrow">&rarr;</span>
             </a>
           </li>
           <li>
             <a href="blonde.html" style="min-height: 44px;">
               <span class="bullet">•</span>
-              <span class="service-name" data-i18n="blonde">Blonde & İpeksi Renk Tasarımı</span>
+              <span class="service-name">Blonde & İpeksi Renk Tasarımı</span>
               <span class="service-arrow">&rarr;</span>
             </a>
           </li>
           <li>
             <a href="kaynak.html" style="min-height: 44px;">
               <span class="bullet">•</span>
-              <span class="service-name" data-i18n="kaynak">Mikro Kapsül Kaynak</span>
+              <span class="service-name">Mikro Kapsül Kaynak</span>
               <span class="service-arrow">&rarr;</span>
             </a>
           </li>
           <li>
             <a href="ombre.html" style="min-height: 44px;">
               <span class="bullet">•</span>
-              <span class="service-name" data-i18n="ombre">Ombre & Işıltı</span>
+              <span class="service-name">Ombre & Işıltı</span>
               <span class="service-arrow">&rarr;</span>
             </a>
           </li>
           <li>
             <a href="renklendirme.html" style="min-height: 44px;">
               <span class="bullet">•</span>
-              <span class="service-name" data-i18n="boyama">Kişiye Özel Renklendirme & Tonlama</span>
+              <span class="service-name">Kişiye Özel Saç Boyama</span>
               <span class="service-arrow">&rarr;</span>
             </a>
           </li>
           <li>
             <a href="renklendirme.html#kesim" style="min-height: 44px;">
               <span class="bullet">•</span>
-              <span class="service-name" data-i18n="kesim">Kişiye Özel Saç Kesimi</span>
+              <span class="service-name">Kişiye Özel Saç Kesimi</span>
               <span class="service-arrow">&rarr;</span>
             </a>
           </li>
@@ -1021,21 +987,21 @@
         </div>
         <div class="drawer-hours-line">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-          <span data-i18n="hours">Salı – Pazar: 08:30 – 20:30 (Pazartesi Kapalı)</span>
+          <span>Salı – Pazar: 08:30 – 20:30 (Pazartesi Kapalı)</span>
         </div>
         
         <div class="drawer-action-dual-row">
-          <a href="tel:+905526856907" class="drawer-action-btn btn-call" data-i18n="call" style="min-height: 44px;">
+          <a href="tel:+905526856907" class="drawer-action-btn btn-call" style="min-height: 44px;">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z"/></svg>
             <span>Hemen Ara</span>
           </a>
-          <a href="https://maps.google.com/?cid=16986332279537405342" target="_blank" rel="noopener noreferrer" class="drawer-action-btn btn-map" data-i18n="c_btn_maps" style="min-height: 44px;">
+          <a href="https://maps.google.com/?cid=16986332279537405342" target="_blank" rel="noopener noreferrer" class="drawer-action-btn btn-map" style="min-height: 44px;">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
             <span>Yol Tarifi Al</span>
           </a>
         </div>
 
-        <a href="https://wa.me/905526856907?text=Merhaba,%20Three%20Brothers%20salonunuzdan%20randevu%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" class="drawer-wa-full-btn" data-i18n="book" style="min-height: 44px;">
+        <a href="https://wa.me/905526856907?text=Merhaba,%20Three%20Brothers%20salonunuzdan%20randevu%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" class="drawer-wa-full-btn" style="min-height: 44px;">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
             <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
           </svg>

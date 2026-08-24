@@ -3,7 +3,7 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: 'Three Brothers | Manavgat Kadın Kuaförü & Profesyonel Saç Tasarımı',
-  description: 'Manavgat kadın kuaförü Three Brothers; profesyonel balyaj, sarışın renklendirme, mikro kapsül kaynak ve saç bakımı hizmetleri sunar. Threebrothers Manavgat randevu.',
+  description: "Manavgat Bahçelievler'de saç sağlığını önceleyen balyaj, sarışın renklendirme ve mikro kaynak stüdyosu.",
   keywords: [
     'manavgat kadın kuaförü',
     'threebrothers',
@@ -17,8 +17,8 @@ export const metadata: Metadata = {
     'manavgat saç tasarımı',
   ],
   openGraph: {
-    title: 'Three Brothers Kadın Kuaförü Manavgat',
-    description: 'Doğal Işıltı, Kusursuz Renk. Manavgatın lider kadın kuaförü ve saç tasarım stüdyosu.',
+    title: 'Three Brothers | Manavgat Kadın Kuaförü & Profesyonel Saç Tasarımı',
+    description: "Manavgat Bahçelievler'de saç sağlığını önceleyen balyaj, sarışın renklendirme ve mikro kaynak stüdyosu.",
     url: 'https://three-brothers-kad-n-kuaforu.vercel.app',
     siteName: 'Three Brothers Manavgat',
     locale: 'tr_TR',
@@ -64,12 +64,14 @@ const jsonLdData = {
     latitude: '36.7868',
     longitude: '31.4422',
   },
-  openingHoursSpecification: {
-    '@type': 'OpeningHoursSpecification',
-    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
-    opens: '09:00',
-    closes: '20:00',
-  },
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+      opens: '08:30',
+      closes: '20:30',
+    },
+  ],
   aggregateRating: {
     '@type': 'AggregateRating',
     ratingValue: '5.0',

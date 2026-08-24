@@ -1,25 +1,15 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { Header } from '../components/Header';
 import { Services } from '../components/Services';
 import { TrustSection } from '../components/TrustSection';
-import { LanguageCode } from '../components/LanguageSelector';
 
 export default function Home() {
-  const [currentLang, setCurrentLang] = useState<LanguageCode>('tr');
-
-  const handleLanguageChange = (lang: LanguageCode) => {
-    setCurrentLang(lang);
-    if (typeof window !== 'undefined' && (window as any).I18n) {
-      (window as any).I18n.setLanguage(lang);
-    }
-  };
-
   return (
     <main className="min-h-[100dvh] bg-[#FAF8F5] text-[#1A1918] selection:bg-[#C5A880]/30 pb-12">
       {/* Sticky Glassmorphism Header */}
-      <Header currentLang={currentLang} onLanguageChange={handleLanguageChange} />
+      <Header />
 
       {/* Hero Section (Tam Ekran Arka Planlı Absolute/Layered Yapı) */}
       <section id="hero" className="relative min-h-[90dvh] w-full flex flex-col justify-end items-center px-5 pb-10 pt-24 overflow-hidden">
@@ -46,7 +36,7 @@ export default function Home() {
             Doğal Zarafet.
           </h1>
           <p className="text-stone-700 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed font-medium">
-            Saç sağlığını koruyan profesyonel renklendirme ve mikro kaynak stüdyosu.
+            Manavgat'ta saçın sağlığını koruyan profesyonel balyaj, mikro kaynak ve kişiye özel sarışınlık tasarımı.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-4 max-w-xs sm:max-w-none mx-auto w-full">
             {/* 1. Hizmetlerimizi Keşfet (Siyah Dolgulu / Beyaz Yazılı Buton) */}

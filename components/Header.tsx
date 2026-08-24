@@ -2,125 +2,10 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { LanguageSelector, LanguageCode } from './LanguageSelector';
 
-interface HeaderProps {
-  currentLang?: LanguageCode;
-  onLanguageChange?: (lang: LanguageCode) => void;
-}
-
-const translations: Record<string, {
-  home: string;
-  about: string;
-  contact: string;
-  services_title: string;
-  balyaj: string;
-  blonde: string;
-  kaynak: string;
-  ombre: string;
-  boyama: string;
-  kesim: string;
-  hours: string;
-  call: string;
-  book: string;
-  process?: string;
-  gallery?: string;
-  reviews?: string;
-  faq?: string;
-  openMap?: string;
-}> = {
-  TR: {
-    home: "Ana Sayfa",
-    about: "Hakkımızda",
-    contact: "İletişim",
-    services_title: "HİZMETLERİMİZ",
-    balyaj: "Profesyonel Balyaj & Sarı Saç",
-    blonde: "Blonde & İpeksi Renk Tasarımı",
-    kaynak: "Mikro Kapsül Kaynak",
-    ombre: "Ombre & Işıltı",
-    boyama: "Kişiye Özel Renklendirme & Tonlama",
-    kesim: "Kişiye Özel Saç Kesimi",
-    hours: "Salı – Pazar: 08:30 – 20:30 (Pazartesi Kapalı)",
-    call: "Hemen Ara",
-    book: "Randevu Al",
-    process: "Süreç",
-    gallery: "Galeri",
-    reviews: "Yorumlar",
-    faq: "SSS",
-    openMap: "Konumu Aç",
-  },
-  EN: {
-    home: "Home",
-    about: "About Us",
-    contact: "Contact",
-    services_title: "OUR SERVICES",
-    balyaj: "Professional Balayage & Blonde",
-    blonde: "Blonde & Silky Color Design",
-    kaynak: "Micro Capsule Hair Extensions",
-    ombre: "Ombre & Highlights",
-    boyama: "Custom Hair Coloring & Toning",
-    kesim: "Custom Haircut & Styling",
-    hours: "Tue – Sun: 08:30 – 20:30 (Monday Closed)",
-    call: "Call Now",
-    book: "Book Appointment",
-    process: "Process",
-    gallery: "Gallery",
-    reviews: "Reviews",
-    faq: "FAQ",
-    openMap: "Open Map",
-  },
-  RU: {
-    home: "Главная",
-    about: "О нас",
-    contact: "Контакты",
-    services_title: "НАШИ УСЛУГИ",
-    balyaj: "Профессиональный балаяж",
-    blonde: "Дизайн блонда и тонирование",
-    kaynak: "Микрокапсульное наращивание",
-    ombre: "Омбре и мелирование",
-    boyama: "Окрашивание волос",
-    kesim: "Стрижка и укладка",
-    hours: "Вт – Вс: 08:30 – 20:30 (Понедельник выходной)",
-    call: "Позвонить",
-    book: "Записаться",
-    process: "Процесс",
-    gallery: "Галерея",
-    reviews: "Отзывы",
-    faq: "Частые вопросы",
-    openMap: "Как добраться",
-  },
-  DE: {
-    home: "Startseite",
-    about: "Über uns",
-    contact: "Kontakt",
-    services_title: "UNSERE LEISTUNGEN",
-    balyaj: "Professionelle Balayage & Blond",
-    blonde: "Blonde & Farbdesign",
-    kaynak: "Mikrokapsel-Haarverlängerung",
-    ombre: "Ombre & Highlights",
-    boyama: "Individuelle Haarfärbung",
-    kesim: "Individueller Haarschnitt",
-    hours: "Di – So: 08:30 – 20:30 (Montag geschlossen)",
-    call: "Jetzt anrufen",
-    book: "Termin vereinbaren",
-    process: "Ablauf",
-    gallery: "Galerie",
-    reviews: "Bewertungen",
-    faq: "FAQ",
-    openMap: "Wegbeschreibung",
-  }
-};
-
-export const Header: React.FC<HeaderProps> = ({
-  currentLang = 'tr',
-  onLanguageChange,
-}) => {
+export const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const [langOpen, setLangOpen] = useState(false);
-
-  const langKey = (currentLang || 'tr').toUpperCase();
-  const t = translations[langKey] || translations.TR;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -138,7 +23,6 @@ export const Header: React.FC<HeaderProps> = ({
     } else {
       document.body.style.overflow = '';
       document.body.classList.remove('menu-open');
-      setLangOpen(false);
     }
     return () => {
       document.body.style.overflow = '';
@@ -146,22 +30,12 @@ export const Header: React.FC<HeaderProps> = ({
     };
   }, [isDrawerOpen]);
 
-  const handleLangSelect = (code: LanguageCode) => {
-    if (onLanguageChange) {
-      onLanguageChange(code);
-    }
-    if (typeof window !== 'undefined' && (window as any).I18n) {
-      (window as any).I18n.setLanguage(code.toLowerCase());
-    }
-    setLangOpen(false);
-  };
-
   return (
     <>
       {/* =========================================================================
           1. SHINE HAIR MOBİL HEADER (md:hidden)
       ========================================================================== */}
-      <header className="md:hidden fixed top-0 left-0 right-0 z-50 bg-[#FAF8F5]/75 backdrop-blur-md border-b border-stone-200/40 px-5 py-3.5 flex items-center justify-between transition-all duration-300 pt-[calc(0.875rem+env(safe-area-inset-top,0px))]">
+      <header className="md:hidden fixed top-0 left-0 right-0 z-50 bg-[#FAF8F5]/80 backdrop-blur-md border-b border-stone-200/50 px-5 py-3.5 flex items-center justify-between transition-all duration-300 pt-[calc(0.875rem+env(safe-area-inset-top,0px))]">
         {/* SOL: Sadece Minimal Instagram İkonu */}
         <a 
           href="https://www.instagram.com/threebrotherrrs/" 
@@ -187,7 +61,7 @@ export const Header: React.FC<HeaderProps> = ({
           </span>
         </Link>
 
-        {/* SAĞ: İki Çizgili Minimal Menü İkonu */}
+        {/* SAĞ: İki Çizgili Minimal Menü Butonu (— —) */}
         <button 
           onClick={() => setIsDrawerOpen(true)}
           className="w-10 h-10 flex flex-col items-end justify-center gap-1.5 text-[#1A1918] cursor-pointer"
@@ -199,7 +73,7 @@ export const Header: React.FC<HeaderProps> = ({
       </header>
 
       {/* =========================================================================
-          2. DESKTOP LUXURY STICKY HEADER (hidden md:flex - 100% Intact)
+          2. DESKTOP LUXURY STICKY HEADER (hidden md:flex)
       ========================================================================== */}
       <header
         className={`hidden md:flex fixed top-0 left-0 w-full z-40 px-4 sm:px-8 py-3.5 sm:py-4.5 pt-[calc(0.875rem+env(safe-area-inset-top,0px))] items-center justify-between transition-all duration-300 ${
@@ -228,37 +102,31 @@ export const Header: React.FC<HeaderProps> = ({
         {/* Center: Desktop Navigation */}
         <nav className="hidden lg:flex items-center gap-6 text-xs font-semibold text-[#1A1918] font-montserrat">
           <Link href="/#hizmetler" className="hover:text-[#A48358] transition-colors">
-            {t.services_title}
+            HİZMETLERİMİZ
           </Link>
           <Link href="/hakkimizda" className="hover:text-[#A48358] transition-colors">
-            {t.about}
+            HAKKIMIZDA
           </Link>
           <Link href="/#surec" className="hover:text-[#A48358] transition-colors">
-            {t.process || 'Süreç'}
+            SÜREÇ
           </Link>
           <Link href="/#galeri" className="hover:text-[#A48358] transition-colors">
-            {t.gallery || 'Galeri'}
+            GALERİ
           </Link>
           <Link href="/#yorumlar" className="hover:text-[#A48358] transition-colors">
-            {t.reviews || 'Yorumlar'}
+            YORUMLAR
           </Link>
           <Link href="/#sss" className="hover:text-[#A48358] transition-colors">
-            {t.faq || 'SSS'}
+            SSS
           </Link>
           <Link href="/#iletisim" className="hover:text-[#A48358] transition-colors">
-            {t.contact}
+            İLETİŞİM
           </Link>
         </nav>
 
-        {/* Right Actions: Language Selector + Instagram + Randevu Al */}
+        {/* Right Actions: Instagram + WhatsApp Randevu Al */}
         <div className="flex items-center gap-3">
-          {/* Tıklanabilir Lüks Dil Seçici (Language Dropdown) */}
-          <LanguageSelector
-            currentLang={currentLang}
-            onLanguageChange={handleLangSelect}
-          />
-
-          {/* Instagram Butonu (Masaüstü) */}
+          {/* Instagram Butonu */}
           <a
             href="https://www.instagram.com/threebrotherrrs/"
             target="_blank"
@@ -273,7 +141,7 @@ export const Header: React.FC<HeaderProps> = ({
             </svg>
           </a>
 
-          {/* WhatsApp Randevu Butonu (Masaüstü) */}
+          {/* WhatsApp Randevu Butonu */}
           <a
             href="https://wa.me/905526856907?text=Merhaba,%20Three%20Brothers%20salonunuzdan%20randevu%20almak%20istiyorum."
             target="_blank"
@@ -283,7 +151,7 @@ export const Header: React.FC<HeaderProps> = ({
             <svg className="w-3.5 h-3.5 text-[#128C7E] fill-current" viewBox="0 0 24 24">
               <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
             </svg>
-            <span>{t.book}</span>
+            <span>Randevu Al</span>
           </a>
         </div>
       </header>
@@ -320,14 +188,14 @@ export const Header: React.FC<HeaderProps> = ({
                 </button>
               </div>
 
-              {/* Ana Sayfa Linkleri & Dil Seçimi (Ana Sayfa Stiliyle Birebir Aynı) */}
+              {/* Ana Sayfa Linkleri (100% Türkçe) */}
               <nav className="space-y-1 font-montserrat text-sm font-semibold text-[#1A1918] mb-6">
                 <Link
                   href="/"
                   onClick={() => setIsDrawerOpen(false)}
                   className="flex items-center justify-between py-3 border-b border-stone-200/60 font-serif text-xl font-bold text-stone-900 hover:text-[#A48358] transition-colors"
                 >
-                  <span>{t.home}</span>
+                  <span>Ana Sayfa</span>
                   <span className="text-stone-400 font-sans">→</span>
                 </Link>
                 <Link
@@ -335,7 +203,7 @@ export const Header: React.FC<HeaderProps> = ({
                   onClick={() => setIsDrawerOpen(false)}
                   className="flex items-center justify-between py-3 border-b border-stone-200/60 font-serif text-xl font-bold text-stone-900 hover:text-[#A48358] transition-colors"
                 >
-                  <span>{t.about}</span>
+                  <span>Hakkımızda</span>
                   <span className="text-stone-400 font-sans">→</span>
                 </Link>
                 <Link
@@ -343,59 +211,15 @@ export const Header: React.FC<HeaderProps> = ({
                   onClick={() => setIsDrawerOpen(false)}
                   className="flex items-center justify-between py-3 border-b border-stone-200/60 font-serif text-xl font-bold text-stone-900 hover:text-[#A48358] transition-colors"
                 >
-                  <span>{t.contact}</span>
+                  <span>İletişim</span>
                   <span className="text-stone-400 font-sans">→</span>
                 </Link>
-
-                {/* Dil Seçimi Satırı (Ana Sayfa Stiliyle Birebir Aynı) */}
-                <div className="border-b border-stone-200/60 py-1">
-                  <button
-                    type="button"
-                    onClick={() => setLangOpen(!langOpen)}
-                    className="w-full flex items-center justify-between py-3 text-left cursor-pointer"
-                  >
-                    <span className="text-xl font-bold text-stone-900 font-serif">
-                      Dil Seçimi <span className="text-sm font-medium text-stone-500 font-montserrat">({langKey})</span>
-                    </span>
-                    <span className="text-stone-400 text-lg transition-transform duration-300">
-                      {langOpen ? '▴' : '▾'}
-                    </span>
-                  </button>
-
-                  {/* Açılır Dil Seçenekleri */}
-                  {langOpen && (
-                    <div className="grid grid-cols-2 gap-2 pb-3 pt-1">
-                      {[
-                        { code: 'tr' as LanguageCode, name: 'Türkçe', label: 'TR' },
-                        { code: 'en' as LanguageCode, name: 'English', label: 'EN' },
-                        { code: 'ru' as LanguageCode, name: 'Русский', label: 'RU' },
-                        { code: 'de' as LanguageCode, name: 'Deutsch', label: 'DE' },
-                      ].map((item) => (
-                        <button
-                          key={item.code}
-                          type="button"
-                          onClick={() => {
-                            handleLangSelect(item.code);
-                            setLangOpen(false);
-                          }}
-                          className={`py-2 px-3 text-sm font-semibold rounded-xl text-center transition-all cursor-pointer font-montserrat ${
-                            currentLang.toLowerCase() === item.code.toLowerCase()
-                              ? 'bg-[#1A1918] text-white shadow-sm'
-                              : 'bg-white border border-stone-200 text-stone-700 hover:bg-stone-50'
-                          }`}
-                        >
-                          {item.name} ({item.label})
-                        </button>
-                      ))}
-                    </div>
-                  )}
-                </div>
               </nav>
 
               {/* Hizmetler Bölümü */}
               <div className="space-y-2 mb-6">
                 <span className="text-xs uppercase tracking-widest text-[#A48358] font-bold mb-2.5 block px-1">
-                  {t.services_title}
+                  HİZMETLERİMİZ
                 </span>
                 <div className="space-y-1.5 font-montserrat text-xs font-semibold text-[#1A1918]">
                   <Link
@@ -405,7 +229,7 @@ export const Header: React.FC<HeaderProps> = ({
                   >
                     <div className="flex items-center gap-2">
                       <span className="text-[#A48358]">•</span>
-                      <span>{t.balyaj}</span>
+                      <span>Profesyonel Balyaj</span>
                     </div>
                     <span className="text-[#A48358]">→</span>
                   </Link>
@@ -417,7 +241,7 @@ export const Header: React.FC<HeaderProps> = ({
                   >
                     <div className="flex items-center gap-2">
                       <span className="text-[#A48358]">•</span>
-                      <span>{t.blonde}</span>
+                      <span>Blonde & İpeksi Renk Tasarımı</span>
                     </div>
                     <span className="text-[#A48358]">→</span>
                   </Link>
@@ -429,7 +253,7 @@ export const Header: React.FC<HeaderProps> = ({
                   >
                     <div className="flex items-center gap-2">
                       <span className="text-[#A48358]">•</span>
-                      <span>{t.kaynak}</span>
+                      <span>Mikro Kapsül Kaynak</span>
                     </div>
                     <span className="text-[#A48358]">→</span>
                   </Link>
@@ -441,7 +265,7 @@ export const Header: React.FC<HeaderProps> = ({
                   >
                     <div className="flex items-center gap-2">
                       <span className="text-[#A48358]">•</span>
-                      <span>{t.ombre}</span>
+                      <span>Ombre & Işıltı</span>
                     </div>
                     <span className="text-[#A48358]">→</span>
                   </Link>
@@ -453,7 +277,7 @@ export const Header: React.FC<HeaderProps> = ({
                   >
                     <div className="flex items-center gap-2">
                       <span className="text-[#A48358]">•</span>
-                      <span>{t.boyama}</span>
+                      <span>Kişiye Özel Saç Boyama</span>
                     </div>
                     <span className="text-[#A48358]">→</span>
                   </Link>
@@ -465,7 +289,7 @@ export const Header: React.FC<HeaderProps> = ({
                   >
                     <div className="flex items-center gap-2">
                       <span className="text-[#A48358]">•</span>
-                      <span>{t.kesim}</span>
+                      <span>Kişiye Özel Saç Kesimi</span>
                     </div>
                     <span className="text-[#A48358]">→</span>
                   </Link>
@@ -487,11 +311,11 @@ export const Header: React.FC<HeaderProps> = ({
                     <circle cx="12" cy="12" r="10" />
                     <polyline points="12 6 12 12 16 14" />
                   </svg>
-                  <span>{t.hours}</span>
+                  <span>Salı – Pazar: 08:30 – 20:30 (Pazartesi Kapalı)</span>
                 </div>
               </div>
 
-              {/* Yan Yana İki Buton: Hemen Ara & Konumu Aç */}
+              {/* Yan Yana İki Buton: Hemen Ara & Yol Tarifi Al */}
               <div className="grid grid-cols-2 gap-2">
                 <a
                   href="tel:+905526856907"
@@ -500,7 +324,7 @@ export const Header: React.FC<HeaderProps> = ({
                   <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z"/>
                   </svg>
-                  <span>{t.call}</span>
+                  <span>Hemen Ara</span>
                 </a>
                 <a
                   href="https://maps.google.com/?cid=16986332279537405342"
@@ -512,7 +336,7 @@ export const Header: React.FC<HeaderProps> = ({
                     <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     <circle cx="12" cy="11" r="3" />
                   </svg>
-                  <span>{t.openMap || 'Konumu Aç'}</span>
+                  <span>Yol Tarifi Al</span>
                 </a>
               </div>
 
@@ -526,7 +350,7 @@ export const Header: React.FC<HeaderProps> = ({
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
                   <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
                 </svg>
-                <span>{t.book}</span>
+                <span>Randevu Al</span>
               </a>
             </div>
           </aside>
