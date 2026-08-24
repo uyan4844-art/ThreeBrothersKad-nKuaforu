@@ -3,6 +3,7 @@
 import React from 'react';
 import { Header } from '../components/Header';
 import { Services } from '../components/Services';
+import { TrustStats } from '../components/TrustStats';
 import { TrustSection } from '../components/TrustSection';
 
 export default function Home() {
@@ -61,6 +62,9 @@ export default function Home() {
 
       {/* Services with Tabs and Direct Links */}
       <Services />
+
+      {/* 4'lü Güven ve Tecrübe Bölümü */}
+      <TrustStats />
 
       {/* 01 / 02 / 03 Numaralı Güven & Standartlar Bölümü */}
       <TrustSection />

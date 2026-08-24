@@ -1361,6 +1361,92 @@ body.menu-open {
 }
 
 /* ==========================================================================
+   THREE BROTHERS 4'LÜ GÜVEN & TECRÜBE ALANI (TRUST STATS)
+   ========================================================================== */
+.trust-stats-section {
+  background-color: #FFFFFF;
+  padding: 80px 24px;
+  border-top: 1px solid rgba(197, 168, 128, 0.2);
+  border-bottom: 1px solid rgba(197, 168, 128, 0.2);
+}
+
+.trust-stats-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.trust-stats-layout {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 56px;
+  align-items: center;
+}
+
+@media (max-width: 991px) {
+  .trust-stats-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+.trust-stats-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 640px) {
+  .trust-stats-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.trust-stat-box {
+  background-color: #FAF8F5;
+  padding: 28px;
+  border-radius: 16px;
+  border: 1px solid rgba(231, 229, 228, 0.8);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: transform 0.3s var(--ease-expo), box-shadow 0.3s var(--ease-expo);
+}
+
+.trust-stat-box:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(116, 109, 101, 0.1);
+  border-color: rgba(197, 168, 128, 0.4);
+}
+
+.trust-stat-val-large {
+  font-size: clamp(2.2rem, 3vw, 2.8rem);
+  font-weight: 700;
+  color: #1A1918;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.trust-stat-val-med {
+  font-size: clamp(1.4rem, 2vw, 1.8rem);
+  font-weight: 700;
+  color: #1A1918;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.trust-stat-text {
+  font-size: 14px;
+  font-weight: 500;
+  color: #5A554E;
+  margin-top: 12px;
+  line-height: 1.5;
+}
+
+/* ==========================================================================
    9. GÜVEN & KALİTE STANDARTLARI (#neden-biz) & METRIC COUNT-UP
    ========================================================================== */
 .section-neden-biz {
