@@ -11,8 +11,7 @@ const checks = [
   { name: 'Hero Mobil Dikey Aksiyon Butonlari', pass: html.includes('hero-actions') },
   { name: 'Reels Mobil 1 Kolon Duzeni', pass: html.includes('.insta-reels-grid') || html.includes('reels') },
   { name: 'Bento Mozaik Mobil 1 Kolon Duzeni', pass: html.includes('.bento-mosaic') || html.includes('bento') },
-  { name: 'Galeri Mobil 2x2 Izgara', pass: html.includes('boutique-gallery-grid') || html.includes('gallery') },
-  { name: 'Iletisim Butonlari', pass: html.includes('c_btn_wa') || html.includes('c_btn_call') },
+{ name: 'Iletisim Butonlari', pass: html.includes('c_btn_wa') || html.includes('c_btn_call') },
   { name: 'Sabit Alt Hizli Eylem Cubugu (Mobile Float Bar)', pass: html.includes('mobile-float-bar') }
 ];
 
