@@ -497,7 +497,7 @@
       <div class="tech-grid-merged reveal-stagger-parent">
 
         <!-- Sol: Başlık, Açıklama ve WhatsApp Aksiyonu -->
-        <div class="tech-content-box reveal-stagger-item">
+        <div class="tech-content-box">
           <span class="tech-kicker">PROFESYONEL RENKLENDİRME & BAĞ KORUMA</span>
           <h2 class="tech-title">
             Transparan Renklendirme ve Kişiye Özel Doğal Işıltı
@@ -531,11 +531,11 @@
   =========================================== -->
   <section id="felsefe" class="boutique-section section-felsefe">
     <div class="section-container">
-      <div class="felsefe-grid reveal-stagger-parent">
+      <div class="felsefe-grid reveal-on-scroll">
 
         <!-- Sol: Gerçek Salon Fotoğrafı -->
         <div>
-          <div class="felsefe-visual-frame reveal-stagger-item">
+          <div class="felsefe-visual-frame">
             <img src="./images/story-salon.webp" alt="Three Brothers Manavgat Kadın Kuaförü Salon" class="felsefe-salon-img" loading="lazy" width="600" height="750" />
           </div>
         </div>
@@ -1492,34 +1492,26 @@
     window.toggleMenu = toggleMenu;
 
     document.addEventListener('DOMContentLoaded', () => {
-            // 1. Ultra-Smooth High-Performance IntersectionObserver for Scroll Reveals
+      // 1. High-Performance IntersectionObserver for Scroll Reveals
       const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -30px 0px'
+        threshold: 0.12,
+        rootMargin: '0px 0px -40px 0px'
       };
 
-      const revealTargets = document.querySelectorAll(
-        '.reveal-on-scroll, .reveal-slide-up, .reveal-fade, .reveal-scale, .reveal-slide-left, .reveal-slide-right, .reveal-stagger-parent'
-      );
+      const revealTargets = document.querySelectorAll('.reveal-on-scroll, .reveal-stagger-parent');
 
       if ('IntersectionObserver' in window) {
         const revealObserver = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
             if (entry.isIntersecting) {
               entry.target.classList.add('is-revealed');
-              revealObserver.unobserve(entry.target);
+            } else {
+              entry.target.classList.remove('is-revealed');
             }
           });
         }, observerOptions);
 
-        revealTargets.forEach(el => {
-          const rect = el.getBoundingClientRect();
-          if (rect.top < window.innerHeight && rect.bottom > 0) {
-            el.classList.add('is-revealed');
-          } else {
-            revealObserver.observe(el);
-          }
-        });
+        revealTargets.forEach(el => revealObserver.observe(el));
       } else {
         revealTargets.forEach(el => el.classList.add('is-revealed'));
       }

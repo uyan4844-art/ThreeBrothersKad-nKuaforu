@@ -975,10 +975,10 @@
        2. GÖVDE BÖLÜMÜ (2 KOLONLU EDİTORYAL DÜZEN)
   =========================================== -->
   <main class="about-main-container">
-    <div class="about-grid-2 reveal-stagger-parent">
+    <div class="about-grid-2">
       
       <!-- Sol: Görsel Vitrini -->
-      <div class="about-image-card reveal-stagger-item">
+      <div class="about-image-card">
         <img src="assets/images/three-brothers-storefront.jpg" alt="Three Brothers Bayan Kuaförü Manavgat" loading="eager" />
       </div>
 
@@ -1218,34 +1218,27 @@
     window.toggleMenu = toggleMenu;
 
     document.addEventListener('DOMContentLoaded', () => {
-            // 1. Ultra-Smooth High-Performance IntersectionObserver for Scroll Reveals
+      // 1. High-Performance IntersectionObserver for Scroll Reveals
       const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -30px 0px'
+        threshold: 0.12,
+        rootMargin: '0px 0px -40px 0px'
       };
 
-      const revealTargets = document.querySelectorAll(
-        '.reveal-on-scroll, .reveal-slide-up, .reveal-fade, .reveal-scale, .reveal-slide-left, .reveal-slide-right, .reveal-stagger-parent'
-      );
+      const revealTargets = document.querySelectorAll('.reveal-on-scroll, .reveal-stagger-parent');
 
       if ('IntersectionObserver' in window) {
         const revealObserver = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
             if (entry.isIntersecting) {
               entry.target.classList.add('is-revealed');
-              revealObserver.unobserve(entry.target);
+            } else {
+              // Repeat animation on every scroll in & out
+              entry.target.classList.remove('is-revealed');
             }
           });
         }, observerOptions);
 
-        revealTargets.forEach(el => {
-          const rect = el.getBoundingClientRect();
-          if (rect.top < window.innerHeight && rect.bottom > 0) {
-            el.classList.add('is-revealed');
-          } else {
-            revealObserver.observe(el);
-          }
-        });
+        revealTargets.forEach(el => revealObserver.observe(el));
       } else {
         revealTargets.forEach(el => el.classList.add('is-revealed'));
       }
